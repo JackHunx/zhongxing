@@ -78,7 +78,7 @@ function checkEmail(email){
 		document.getElementById('email_notice').innerHTML =email_msg_format;
 		submit_disabled = true;
 	}else{
-		$.get("index.php?user", { q: "action/check_email", email: email},function (result){
+		$.get("index.php?r", { q: "user/check_exists", email: email},function (result){
 			if ( result == true ){
 				document.getElementById('email_notice').innerHTML = msg_can_reg;
 				submit_disabled = false;
@@ -123,7 +123,7 @@ function checkUsername(username){
 		document.getElementById('username_notice').innerHTML = username_msg;
 		submit_disabled = true;
 	}else{
-		$.get("index.php?user", { q: "action/check_username", username: username},function (result){
+		$.get("index.php?r", { q: "user/check_exists", username: username},function (result){
 			if ( result == true ){
 				document.getElementById('username_notice').innerHTML = msg_can_reg;
 				submit_disabled = false;

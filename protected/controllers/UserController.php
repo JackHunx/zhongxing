@@ -28,7 +28,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','register'),
+				'actions'=>array('index','view','register','check_exists'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -93,6 +93,7 @@ class UserController extends Controller
         if(isset($_POST['User']))
         {   
             $value = $_POST['User'];
+            $value['username']=strtolower($value['username']);
             $value['password']=$this->encypt($value['password']);
             $value['addip']=Yii::app()->request->userHostAddress;
             $value['addtime']=time();
@@ -108,7 +109,21 @@ class UserController extends Controller
         }
         $this->render('register');   
      }
-     //encypt password by md5
+     /**
+      * check user name exist
+      * 
+      */
+    public function actionCheck_exists()
+    {
+        $exists=User::model()->findByPk('username',$_GET['username']);
+        if($exists=='')
+        {
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //encypt password by md5
     private function encypt($value)
     {
         return md5($value);

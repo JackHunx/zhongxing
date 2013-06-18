@@ -1,5 +1,4 @@
 
-<?php echo Yii::app()->request->userHostAddress;?>
 <form action="" method="post" name="formUser" onsubmit="return userReg();">
 		       <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0" class="zc_tab">
   <tbody><tr>

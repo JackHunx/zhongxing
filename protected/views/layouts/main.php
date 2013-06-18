@@ -17,6 +17,7 @@
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/css/js/User.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/css/js/jquery.js"></script>
 </head>
 
 <body>
