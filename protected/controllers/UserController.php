@@ -62,37 +62,57 @@ class UserController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new User;
+		/**
+ * $model=new User;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+ * 		// Uncomment the following line if AJAX validation is needed
+ * 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['User']))
-		{
-		  echo '<pre>';
-		  print_r($_POST['User']);
-          exit();
-			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->user_id));
-		}
+ * 		if(isset($_POST['User']))
+ * 		{
+ * 		  echo '<pre>';
+ * 		  print_r($_POST['User']);
+ *           exit();
+ * 			$model->attributes=$_POST['User'];
+ * 			if($model->save())
+ * 				$this->redirect(array('view','id'=>$model->user_id));
+ * 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+ * 		$this->render('create',array(
+ * 			'model'=>$model,
+ * 		));
+ */
 	}
     /**
-     * user regist
+     * user register
      */
      public function actionRegister()
      {
+        $model = new User;
+        //print_r($model->attributes);
         if(isset($_POST['User']))
-        {
-             print_r($_POST['User']);
+        {   
+            $value = $_POST['User'];
+            $value['password']=$this->encypt($value['password']);
+            $value['addip']=Yii::app()->request->userHostAddress;
+            $value['addtime']=time();
+            //print_r($value);
+         
+            $model->attributes=$value;
+            if($model->save())
+            {
+                $this->redirect(array('view','id'=>$model->user_id));
+            }
+            //$model->attributes = $_POST['User'];
+             //print_r($_POST['User']);
         }
         $this->render('register');   
      }
-
+     //encypt password by md5
+    private function encypt($value)
+    {
+        return md5($value);
+    }
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
