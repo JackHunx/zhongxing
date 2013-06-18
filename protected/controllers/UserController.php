@@ -28,7 +28,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','register'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -69,6 +69,9 @@ class UserController extends Controller
 
 		if(isset($_POST['User']))
 		{
+		  echo '<pre>';
+		  print_r($_POST['User']);
+          exit();
 			$model->attributes=$_POST['User'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->user_id));
@@ -78,6 +81,17 @@ class UserController extends Controller
 			'model'=>$model,
 		));
 	}
+    /**
+     * user regist
+     */
+     public function actionRegister()
+     {
+        if(isset($_POST['User']))
+        {
+             print_r($_POST['User']);
+        }
+        $this->render('register');   
+     }
 
 	/**
 	 * Updates a particular model.
