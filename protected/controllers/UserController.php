@@ -95,16 +95,16 @@ class UserController extends Controller
      */
     public function actionRegister()
     {
+        
         $model = new User;
         //print_r($model->attributes);
         if (isset($_POST['User'])) {
             $value = $_POST['User'];
             $value['username'] = strtolower($value['username']);
             $value['password'] = $this->encypt($value['password']);
-            $value['addip'] = Yii::app()->request->userHostAddress;
+            $value['addip'] = Yii::app()->request->getUserHostAddress;
             $value['addtime'] = time();
-            print_r($value);
-            exit();
+            
             $model->attributes = $value;
             if ($model->save()) {
                 $this->redirect(array('view', 'id' => $model->user_id));

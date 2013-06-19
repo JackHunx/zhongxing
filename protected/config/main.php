@@ -72,6 +72,9 @@ return array(
 			'assignmentTable'=>'zx_assignments',
 			'itemChildTable'=>'zx_itemchildren',
 		),
+        'request'=>array(
+            'class'=>'CmsCHttpRequest',
+        ),
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(
