@@ -137,7 +137,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif ,"宋体";}
 </style>
 
 <div class="demo">
-	<form id="thisForm" method="post" action="">
+	<form id="registerForm" method="post" action="">
 	<table width="100%">
 		<tr>
 			<td class="tdcon">会员登录名：</td>

@@ -3,7 +3,7 @@
  */
 function initValidator(base){
 	
-	$("#thisForm").validate({
+	$("#registerForm").validate({
 		onkeyup:false,
 		//设置验证规则   
 		rules: {
