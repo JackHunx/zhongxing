@@ -176,27 +176,8 @@ body{font:12px/180% Arial, Helvetica, sans-serif ,"宋体";}
 				<div class="tipinfo"></div>
 			</td>
 		</tr>
-		<tr>
-			<td class="tdcon">公司名称：</td>
-			<td>
-				<input class="stext" type='text' name="corpName" id="corpName" value="" />
-				<div class="tipinfo"></div>
-			</td>
-		</tr>
-		<tr>
-			<td class="tdcon">手机号码：</td>
-			<td>
-				<input class="stext" type='text' name="sms" id="sms" value="" />
-				<div class="tipinfo"></div>
-			</td>
-		</tr>
-		<tr>
-			<td class="tdcon">邮编：</td>
-			<td>
-				<input class="stext" type='text' name="User[email]" id="email" value="" />
-				<div class="tipinfo"></div>
-			</td>
-		</tr>
+		
+		
 		<tr>
 			<td></td>
 			<td><button name="Submit" type="submit" class="Button BlueButton Button18">同意以下服务条款并注册</button></td>

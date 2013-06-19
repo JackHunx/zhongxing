@@ -5,7 +5,8 @@ function initValidator(base){
 	
 	$("#registerForm").validate({
 		onkeyup:false,
-		//设置验证规则   
+		//设置验证规则  
+        //debug:true, 
 		rules: {
 			"User[username]": {
 				required: true,
@@ -29,13 +30,7 @@ function initValidator(base){
 				rangelength: [6, 12],
 				equalTo: "#passWord"
 			},
-			"corpName": {
-				required: true
-			},
-			"sms": {
-				required: true,
-				isMobile: true
-			},
+			
 			"User[email]": {
 				required: true,
 				isEmail: true,
@@ -43,7 +38,7 @@ function initValidator(base){
                     url:"/zhongxing/index.php?r=user/check_email",
                     type:"get",
                     data:{
-                        username:function(){
+                        email:function(){
                             return $("#email").val();
                         }
                     }
@@ -71,13 +66,7 @@ function initValidator(base){
 				rangelength: "密码长度为6-12位",
 				equalTo: "两次输入密码不相同"
 			},
-			"corpName": {
-				required: "请输入公司名称"
-			},
-			"sms": {
-				required: "请输入手机号码",
-				isMobile: "请输入有效的手机号码"
-			},
+			
 			"User[email]": {
 				required: "请输入邮箱",
 				isEmail: "请正确填写邮箱格式",

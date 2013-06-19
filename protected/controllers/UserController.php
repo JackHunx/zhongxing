@@ -103,8 +103,8 @@ class UserController extends Controller
             $value['password'] = $this->encypt($value['password']);
             $value['addip'] = Yii::app()->request->userHostAddress;
             $value['addtime'] = time();
-            //print_r($value);
-
+            print_r($value);
+            exit();
             $model->attributes = $value;
             if ($model->save()) {
                 $this->redirect(array('view', 'id' => $model->user_id));
