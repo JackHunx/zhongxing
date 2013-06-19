@@ -139,6 +139,15 @@ body{font:12px/180% Arial, Helvetica, sans-serif ,"宋体";}
 <div class="demo">
 	<form id="registerForm" method="post" action="">
 	<table width="100%">
+        	<tr>
+			<td class="tdcon">邮箱：</td>
+			<td>
+				<input class="stext" type='text' name="User[email]" id="email" value="" />
+				<div class="tipinfo"></div>
+			</td>
+		</tr>
+    
+        
 		<tr>
 			<td class="tdcon">会员登录名：</td>
 			<td>
@@ -160,6 +169,13 @@ body{font:12px/180% Arial, Helvetica, sans-serif ,"宋体";}
 				<div class="tipinfo"></div>
 			</td>
 		</tr>
+        <tr>
+			<td class="tdcon">真实姓名：</td>
+			<td>
+				<input class="stext" type='text' name="User[realname]" id="realname" value="" />
+				<div class="tipinfo"></div>
+			</td>
+		</tr>
 		<tr>
 			<td class="tdcon">公司名称：</td>
 			<td>
@@ -177,7 +193,7 @@ body{font:12px/180% Arial, Helvetica, sans-serif ,"宋体";}
 		<tr>
 			<td class="tdcon">邮编：</td>
 			<td>
-				<input class="stext" type='text' name="email" id="email" value="" />
+				<input class="stext" type='text' name="User[email]" id="email" value="" />
 				<div class="tipinfo"></div>
 			</td>
 		</tr>
