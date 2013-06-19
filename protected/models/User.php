@@ -91,7 +91,7 @@ class User extends CActiveRecord
 			array('realname, province, city, area, lastip', 'length', 'max'=>20),
 			array('litpic', 'length', 'max'=>250),
 			array('address', 'length', 'max'=>200),
-			array('remind, privacy', 'safe'),
+			array('remind, privacy,username', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('user_id, type_id, order, purview, username, password, paypassword, islock, invite_userid, invite_money, real_status, card_type, card_id, card_pic1, card_pic2, nation, realname, integral, status, avatar_status, email_status, phone_status, video_status, scene_status, email, sex, litpic, tel, phone, qq, wangwang, question, answer, birthday, province, city, area, address, remind, privacy, logintime, addtime, addip, uptime, upip, lasttime, lastip', 'safe', 'on'=>'search'),

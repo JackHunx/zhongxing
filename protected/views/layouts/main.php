@@ -16,8 +16,10 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
-    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/css/js/User.js"></script>
-    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/css/js/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/css/js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/css/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/css/js/validate.js"></script>
+    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/css/js/validate_expand.js"></script>
 </head>
 
 <body>
