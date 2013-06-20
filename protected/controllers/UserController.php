@@ -201,6 +201,11 @@ class UserController extends Controller
         }
 
     }
+    //send auth email
+    private function sendEmail($email,$realname)
+    {
+        
+    }
     //encypt password by md5
     private function encypt($value)
     {
