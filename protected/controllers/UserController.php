@@ -69,6 +69,10 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
+        $email = '43555015@qq.com';
+        $safeEmail = Yii::app()->authstring->authcode($email,'ENCODE','safeEmail');
+        $urlEnsafeEmail=urlencode($safeEmail);
+        print_r($urlEnsafeEmail);
         /**
          * $model=new User;
 
