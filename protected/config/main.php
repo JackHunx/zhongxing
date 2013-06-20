@@ -58,6 +58,7 @@ return array(
             ),
         // uncomment the following to enable the Gii tool
         'admin',
+        'User',
         'gii' => array(
             'class' => 'system.gii.GiiModule',
             'password' => 'admin',
