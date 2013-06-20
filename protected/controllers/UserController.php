@@ -68,11 +68,15 @@ class UserController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate()
-    {
-        $email = '43555015@qq.com';
-        $safeEmail = Yii::app()->authstring->authcode($email,'ENCODE','safeEmail');
-        $urlEnsafeEmail=urlencode($safeEmail);
-        print_r($urlEnsafeEmail);
+    {  
+        Yii::app()->sendemail->send('jack_hunx@163.com','test','est','send mail test');
+         /**
+
+         *         $email = '43555015@qq.com';
+         *         $safeEmail = Yii::app()->authstring->authcode($email,'ENCODE','safeEmail');
+         *         $urlEnsafeEmail=urlencode($safeEmail);
+         *         print_r($urlEnsafeEmail);
+         */
         /**
          * $model=new User;
 
@@ -99,7 +103,7 @@ class UserController extends Controller
      */
     public function actionRegister()
     {
-        
+
         $model = new User;
         //print_r($model->attributes);
         if (isset($_POST['User'])) {
@@ -108,7 +112,7 @@ class UserController extends Controller
             $value['password'] = $this->encypt($value['password']);
             $value['addip'] = Yii::app()->request->getUserHostAddress;
             $value['addtime'] = time();
-            
+
             $model->attributes = $value;
             if ($model->save()) {
                 $this->redirect(array('view', 'id' => $model->user_id));

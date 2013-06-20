@@ -82,6 +82,9 @@ return array(
         'request' => array('class' => 'CmsCHttpRequest', ),
         //encrypt string
         'authstring'=>array('class'=>'AuthString',),
+        //send email to user ÓÊÏäÑéÖ¤µÈ
+        'sendemail'=>array('class'=>'SendEmail'),
+        
         // uncomment the following to enable URLs in path-format
         /*
         'urlManager'=>array(
