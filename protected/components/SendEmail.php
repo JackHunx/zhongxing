@@ -18,6 +18,8 @@ class SendEmail
         $mail = Yii::createComponent('application.extensions.mailer.EMailer');
         //charset
         $mail->CharSet='utf-8';
+        //ishtml
+        $mail->IsHTML(true);
         //set smpt server host
         $mail->IsSMTP();
         //
@@ -42,6 +44,7 @@ class SendEmail
         $mail->Body = $body;
         //¸½¼ÓÐÅÏ¢
         $mail->AltBody=$altbody;
+        
         if(!$mail->Send())
         {
             throw new CHttpException('Email Send',$mail->ErrorInfo);
