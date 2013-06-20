@@ -58,6 +58,7 @@ return array(
             ),
         // uncomment the following to enable the Gii tool
         'admin',
+        //用户中心模块
         'User',
         'gii' => array(
             'class' => 'system.gii.GiiModule',

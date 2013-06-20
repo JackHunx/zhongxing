@@ -2,7 +2,7 @@
 
 class UserController extends Controller
 {
-    private $userInfo=array();
+    private $userInfo = array();
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -69,10 +69,10 @@ class UserController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate()
-    {  
-       echo $this->getEmailBody();
+    {
+        echo System::model()->find('nid=:nid', array(':nid' => 'con_weburl'))->value;
         exit();
-        $body="<head>
+        $body = "<head>
         <meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">
         </head>
 	<div style=\"background: url(http://www.1891d.com/data/images/base/email_bg.png) no-repeat left bottom; font-size:14px; width: 588px; \">
@@ -99,9 +99,9 @@ class UserController extends Controller
 </div>
 		";
         //$body = iconv('utf-8','gbk//ignore',$body);
-        
-        Yii::app()->sendemail->send('516012818@qq.com','test','est',$body);
-         /**
+
+        Yii::app()->sendemail->send('516012818@qq.com', 'test', 'est', $body);
+        /**
 
          *         $email = '43555015@qq.com';
          *         $safeEmail = Yii::app()->authstring->authcode($email,'ENCODE','safeEmail');
@@ -130,29 +130,39 @@ class UserController extends Controller
          */
     }
     //return email post body
-    private function getEmailBody(){
-        return "<head>
-        <meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">
-        </head>
-	<div style=\"background: url(http://www.1891d.com/data/images/base/email_bg.png) no-repeat left bottom; font-size:14px; width: 588px; \">
-	<div style=\"padding: 10px 0px; background: url(".$this->userInfo['webUrl']."/data/images/base/email_button.png)  no-repeat \">
+    private function getEmailBody()
+    {
+        return "
+	<div style=\"background: url(" . $this->userInfo['webUrl'] .
+            "/data/images/base/email_bg.png) no-repeat left bottom; font-size:14px; width: 588px; \">
+	<div style=\"padding: 10px 0px; background: url(" . $this->userInfo['webUrl'] .
+            "/data/images/base/email_button.png)  no-repeat \">
 		<h1 style=\"padding: 0px 15px; margin: 0px; overflow: hidden; height: 48px;\">
-			<a title=\"众兴投资用户中心\" href=\"http://www.1891d.com/index.php?user\" target=\"_blank\" swaped=\"true\">
-			<img style=\"border-width: 0px; padding: 0px; margin: 0px;\" alt=\"众兴投资用户中心\" src=\"http://www.1891d.com/data/images/base/email_logo.png\" height=\"48\" width=\"208\">		</a>
+			<a title=\"众兴投资用户中心\" href=\"" . $this->userInfo['webUrl'] .
+            "/index.php?r=User\" target=\"_blank\" swaped=\"true\">
+			<img style=\"border-width: 0px; padding: 0px; margin: 0px;\" alt=\"众兴投资用户中心\" src=\"" .
+            $this->userInfo['webUrl'] . "/data/images/base/email_logo.png\" height=\"48\" width=\"208\">		</a>
 		</h1>
 		<div style=\"padding: 0px 20px; overflow: hidden; line-height: 40px; height: 50px; text-align: right;\"> </div>
 		<div style=\"padding: 2px 20px 30px;\">
-			<p>亲爱的 <span style=\"color: rgb(196, 0, 0);\">".$this->userInfo['realname']."</span> , 您好！</p>
-			<p>感谢您注册众兴投资，您登录的邮箱帐号为 <strong style=\"font-size: 16px;\">".$this->userInfo['email']."</strong></p>
+			<p>亲爱的 <span style=\"color: rgb(196, 0, 0);\">" . $this->userInfo['realname'] .
+            "</span> , 您好！</p>
+			<p>感谢您注册众兴投资，您登录的邮箱帐号为 <strong style=\"font-size: 16px;\">" . $this->
+            userInfo['email'] . "</strong></p>
 			<p>请点击下面的链接即可完成激活。</p>
-			<p style=\"overflow: hidden; width: 100%; word-wrap: break-word;\"><a title=\"点击完成注册\" href=\"http://www.1891d.com/index.php?user&q=action/active&id=f5275MShXPaqX9EPtdjKVEqznhRMrCkoSbhdIGF6x5CXPeNhAC5SE4E\" target=\"_blank\" swaped=\"true\">http://www.1891d.com/index.php?user&q=action/active&id=f5275MShXPaqX9EPtdjKVEqznhRMrCkoSbhdIGF6x5CXPeNhAC5SE4E</a>
+			<p style=\"overflow: hidden; width: 100%; word-wrap: break-word;\"><a title=\"点击完成注册\" href=\"" .
+            $this->userInfo['webUrl'] .
+            "/index.php?r=user/checkemail&id=f5275MShXPaqX9EPtdjKVEqznhRMrCkoSbhdIGF6x5CXPeNhAC5SE4E\" target=\"_blank\" swaped=\"true\">" .
+            $this->userInfo['webUrl'] .
+            "/index.php?r=user/checkemail&id=f5275MShXPaqX9EPtdjKVEqznhRMrCkoSbhdIGF6x5CXPeNhAC5SE4E</a>
 			<br><span style=\"color: rgb(153, 153, 153);\">(如果链接无法点击，请将它拷贝到浏览器的地址栏中)</span></p>
 
 			<p>感谢您光临众兴投资用户中心，我们的宗旨：为您提供优秀的产品和优质的服务！ <br>现在就登录吧!
-			<a title=\"点击登录众兴投资用户中心\" style=\"color: rgb(15, 136, 221);\" href=\"http://www.1891d.com/index.php?user\" target=\"_blank\" swaped=\"true\">http://www.1891d.com/index.php?user</a> 
+			<a title=\"点击登录众兴投资用户中心\" style=\"color: rgb(15, 136, 221);\" href=\"".$this->userInfo['webUrl']."/index.php?r=User\" target=\"_blank\" swaped=\"true\">".$this->userInfo['webUrl']."/index.php?r=User</a> 
 			</p>
 			<p style=\"text-align: right;\"><br>众兴投资用户中心 敬启</p>
-			<p><br>此为自动发送邮件，请勿直接回复！如您有任何疑问，请点击<a title=\"点击联系我们\" style=\"color: rgb(15, 136, 221);\" href=\"http://www.1891d.com/help/index.html\" target=\"_blank\" >联系我们&gt;&gt;</a></p>
+			<p><br>此为自动发送邮件，请勿直接回复！如您有任何疑问，请点击<a title=\"点击联系我们\" style=\"color: rgb(15, 136, 221);\" href=\"" .
+            $this->userInfo['webUrl'] . "/help/index.html\" target=\"_blank\" >联系我们&gt;&gt;</a></p>
 		</div>
 	</div>
 </div>
@@ -170,9 +180,14 @@ class UserController extends Controller
             $value = $_POST['User'];
             $value['username'] = strtolower($value['username']);
             $value['password'] = $this->encypt($value['password']);
-            $value['addip'] = Yii::app()->request->getUserHostAddress;
+            $value['addip'] = Yii::app()->request->getUserHostAddress();
             $value['addtime'] = time();
-
+            //发送验证邮件
+            $this->sendEmail($value['email'],$value['realname']);
+            header("Content-Type: text/html; charset=utf-8");
+            echo '<pre>';
+            print_r($value);
+            exit();
             $model->attributes = $value;
             if ($model->save()) {
                 $this->redirect(array('view', 'id' => $model->user_id));
@@ -234,9 +249,14 @@ class UserController extends Controller
 
     }
     //send auth email
-    private function sendEmail($email,$realname)
+    private function sendEmail($email, $realname)
     {
-        
+        $this->userInfo['email'] = $email;
+        $this->userInfo['realname'] = $realname;
+        $this->userInfo['webUrl'] = System::model()->find('nid=:nid', array(':nid' =>
+                'con_weburl'))->value;
+        return Yii::app()->sendemail->send($this->userInfo['email'], '众兴投资有限公司', '邮件验证', $this->getEmailBody());
+
     }
     //encypt password by md5
     private function encypt($value)
