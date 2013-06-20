@@ -21,6 +21,10 @@ class AuthString
     {
         //parent::init();
     }
+    /**
+     * auth 
+     * save to database
+     */
     public function authcode($string, $operation = 'DECODE', $key = '', $expiry = 3600)
     {
 
