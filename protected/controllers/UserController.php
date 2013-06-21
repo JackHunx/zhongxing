@@ -198,10 +198,10 @@ class UserController extends Controller
             //            exit();
             $model->attributes = $value;
             if ($model->save()) {
-
-                $this->redirect(array('view', 'id' => $model->user_id));
                 //发送验证邮件并记录
                 $this->sendEmail($value['email'], $value['realname'], $model->user_id);
+                $this->redirect(array('view', 'id' => $model->user_id));
+                
             }
             //$model->attributes = $_POST['User'];
             //print_r($_POST['User']);
