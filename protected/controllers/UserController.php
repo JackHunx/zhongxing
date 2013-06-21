@@ -43,7 +43,7 @@ class UserController extends Controller
                 ),
             array(
                 'allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update'),
+                'actions' => array('create', 'update','setquestion'),
                 'users' => array('@'),
                 ),
             array(
