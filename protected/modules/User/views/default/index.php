@@ -65,8 +65,7 @@
                     </div>
                 </div>
                 <ul class="l" style="width:460px">
-                     <li class="username yahei" style="height: 26px; line-height: 26px; padding-left: 20px;"><span>
-                                testtset</span><span>，欢迎来到拍拍贷！</span> </li>
+                     <li class="username yahei" style="height: 26px; line-height: 26px; padding-left: 20px;"><span><?php echo $model->username;?></span><span>，欢迎来到拍拍贷！</span> </li>
                     <li>
                          <ul class="userlistnav2 l" style="width:205px;">
                            

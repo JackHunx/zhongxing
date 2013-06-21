@@ -2,10 +2,13 @@
 
 class DefaultController extends Controller
 {
+    //用户唯一id
+    private $_userId;
+
     public function init()
     {
-        Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/user.css');  
-        //Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/css/my.js'); 
+        Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
+        //Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/css/my.js');
     }
     /**
      * @return array action filters
@@ -33,7 +36,10 @@ class DefaultController extends Controller
                 ),
             array(
                 'allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('index','create', 'update'),
+                'actions' => array(
+                    'index',
+                    'create',
+                    'update'),
                 'users' => array('@'),
                 ),
             array(
@@ -48,13 +54,27 @@ class DefaultController extends Controller
             );
     }
 
-    private $_userId;
     public function actionIndex()
     {
+
+        
+
+
         if (isset($_GET['id'])) {
             $this->_userId = $_GET['id'];
         }
         //$this->_userId = $_GET['id'];
-        $this->render('index');
+       $userModel = $this->loadUserModel($this->_userId);
+        $this->render('index',array('model'=>$userModel));
+    }
+    //获取用户所有数据
+    private function loadUserModel($user_id)
+    {
+        //$value = User::model()->findByAttributes(array('user_id'=>$user_id));
+        $model = User::model()->findByPk($user_id);
+
+        if ($model === null)
+            throw new CHttpException(404, 'The requested page does not exist.');
+        return $model;
     }
 }
