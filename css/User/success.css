@@ -1,0 +1,29 @@
+.focus
+{
+    border: 1px solid #FC0 !important;
+    background: url(http://static.ppdai.com/skin/images/focus_bg.jpg) repeat-x !important;
+    color: #00F !important;
+}
+
+label.error
+{
+    color: Red;
+}
+
+/**********************************
+
+Name: cmxform Styles
+
+***********************************/
+
+
+form.cmxform label.error, label.error {
+	/* remove the next line when you have trouble in IE6 with labels in list */
+	color: red;
+	font-style: italic
+}
+div.error { display: none; }
+input.checkbox { border: none }
+input:focus { border: 1px dotted black; }
+/* input.error { border: 1px dotted red; } */
+form.cmxform .gray * { color: gray; }

@@ -17,9 +17,7 @@
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
     <?php Yii::app()->clientScript->registerCoreScript('jquery');?>
-    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/css/js/jquery.validate.js"></script>
-    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/css/js/validate.js"></script>
-    <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl;?>/css/js/validate_expand.js"></script>
+    
 </head>
 
 <body>

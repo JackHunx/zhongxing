@@ -7,7 +7,7 @@ class DefaultController extends Controller
 
     public function init()
     {
-        Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
+        Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . '/css/User/user.css');
         //Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/css/my.js');
     }
     /**

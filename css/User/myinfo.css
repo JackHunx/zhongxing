@@ -1,0 +1,862 @@
+@charset "utf-8";
+/* CSS Document */
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+	padding:0;
+	margin:0;
+}
+fieldset, img {
+	border:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+	width: 736px;
+}
+ol, ul {
+	list-style:none;
+}
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-weight:normal;
+	font-style:normal;
+}
+caption, th {
+	text-align:left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size:100%;
+}
+q:before, q:after {
+	content:'';
+}
+.clearfix {
+	display:block;
+	height:1%;
+}
+.clearfix:after {
+	content:".";
+	display:block;
+	clear:both;
+	visibility:hidden;
+	line-height:0;
+	height:0;
+}
+a {
+	text-decoration:none
+}
+a:hover {
+	text-decoration:underline
+}
+body {
+	font-size:12px;
+	font-family:simsun;
+}
+.wp {
+	width:980px;
+	margin:0 auto;
+	background:#FFFFFF
+}
+.leftside .leftframe h2, .leftside .leftframe h2 span, .saft_trading, .user_info li.renzheng span, .main_box h3, .friend_info_nav li, .friend_info .newsinfo li .like, .message {
+	background:url(http://static.ppdai.com/skin/images/myinfo.png) repeat-x
+}
+.nbackground {
+	background :url(http://static.ppdai.com/skin/images/bg2.jpg) repeat-x;
+	margin-top :-20px
+}
+.news-list li, .ware_nav li, .ware_nav li a {
+	background:url(http://static.ppdai.com/skin/images/icon.png) no-repeat
+}
+.user_info li .level-star, .user_info li .level-star span {
+	background:url(http://static.ppdai.com/skin/images/star.png) repeat-x
+}
+.leftside {
+	width:150px;
+	float:left;
+	margin-right:8px;
+	border-left:1px solid #C4D5DF;
+	border-right:1px solid #C4D5DF;
+	border-bottom:1px solid #C4D5DF
+}
+.leftside .leftframe {
+}
+.leftside .leftframe h2 {
+	border-top:1px solid #C4D5DF;
+	border-bottom:1px solid #C4D5DF;
+	height:28px;
+	line-height:28px;
+}
+.leftside .leftframe h2 span {
+	padding-left:25px;
+	display:block;
+	background-repeat:no-repeat;
+	cursor:pointer;
+	border:1px solid #FFFFFF
+}
+.leftside .leftframe h2.open span {
+	background-position:-8px -36px
+}
+.leftside .leftframe h2.close span {
+	background-position:-12px -36px
+}
+.leftside .leftframe .red {
+	color:#FF3300
+}
+.leftside .leftframe ul {
+	line-height:26px;
+	padding:3px 0 4px 27px;
+}
+.leftside .leftframe li a {
+	color:#414141
+}
+.main_content {
+	width:580px;
+	float:left
+}
+.main_content-1 {
+	width:535px;
+	float:left
+}
+.saft_trading {
+	padding-left:36px;
+	background-repeat:no-repeat;
+	color:#404040;
+	line-height:28px;
+	height:28px;
+	border:1px solid #FAE3B9;
+	background-color:#FDFFE3;
+	background-position:0 -102px;
+	margin-bottom:10px;
+}
+.saft_trading label {
+	color:#FD3301
+}
+.saft_trading a {
+	text-decoration:none
+}
+.saft_trading a:hover {
+	text-decoration:underline
+}
+.main_box {
+	border:1px solid #C4D5DF;
+	background:#FDFEFF;
+	margin-bottom:10px;
+}
+.main_box h3 {
+	height:24px;
+	background-position:0 -240px;
+	padding-left:14px;
+	color:#333333;
+	line-height:24px;
+	border-bottom:1px solid #C4D5DF
+}
+.user_info {
+	line-height:22px;
+	padding:5px 20px;
+	overflow:hidden;
+*zoom:1
+}
+.user_info ul {
+	float:left;
+	width:425px;
+}
+.user_info li {
+	color:#404040
+}
+.user_info li.name span {
+	color:#FD3301
+}
+.user_info li.level {
+	color:#0066CA
+}
+.user_info li label {
+	width:64px;
+	float:left;
+	color:#404040
+}
+.user_info li .level-star {
+	display:inline-block;
+	position:relative;
+	top:2px;
+	width:75px;
+	height:13px;
+	background-position:0 bottom
+}
+.user_info li .level-star span {
+	height:13px;
+	float:left
+}
+.user_info li .level-star .level1 {
+	width:15px;
+}
+.user_info li .level-star .level2 {
+	width:15px;
+}
+.user_info li .level-star .level3 {
+	width:15px;
+}
+.user_info li .level-star .level4 {
+	width:15px;
+}
+.user_info li .level-star .level5 {
+	width:15px;
+}
+.user_info li.renzheng span {
+	width:31px;
+	height:18px;
+	display:inline-block;
+	margin-right:3px;
+}
+.user_info li.renzheng .s1 {
+	background-position:0 -165px
+}
+.user_info li.renzheng .s2 {
+	background-position:0 -186px
+}
+.user_info li.renzheng .s3 {
+	background-position:0 -208px
+}
+.user_info li .right_1 {
+	float:left
+}
+.user_info li .right_1 a {
+	color:#0366CC
+}
+.user_info .photo {
+	float:left;
+	text-align:center
+}
+.user_info .photo .img {
+	width:80px;
+	height:80px;
+	padding:2px;
+	border:1px solid #E3E3E3
+}
+.user_info .photo div {
+}
+.user_info .photo div a {
+	color:#0164CA
+}
+.trading-frame {
+	margin-bottom:10px;
+}
+.trading-frame .table-info {
+	line-height:22px;
+	border-bottom:1px dashed #C7D5E0;
+	margin-left:10px;
+	margin-top:5px;
+	color:#404040;
+	width: 498px;
+}
+.trading-frame a {
+	color:#0065CD
+}
+.trading-frame .table-info label {
+	width:60px;
+	float:left
+}
+.friend_info {
+}
+.friend_info a {
+	color:#3367CD
+}
+.friend_info_nav {
+	line-height:23px;
+	border-bottom:2px solid #36B4FF;
+	overflow:hidden;
+*zoom:1
+}
+.friend_info_nav li {
+	float:left;
+	padding:0 20px;
+	margin-right:3px;
+	background-position:0 -274px;
+	border:1px solid #C2C2C2;
+	border-bottom:none;
+	color:#333333;
+}
+.friend_info_nav li.current {
+	border-color:#37B5FF;
+	background:#37B5FF;
+}
+.friend_info_nav li a {
+	color:#38B3FF;
+}
+.friend_info_nav li.current a {
+	color:#FFFFFF
+}
+.shuaxin {
+	text-align:right;
+	position:relative;
+	height:25px;
+	margin-top:-25px;
+	padding-right:10px;
+	top: 0px;
+	left: 25px;
+	width: 770px;
+}
+.friend_info .newsinfo {
+	margin-bottom:10px;
+}
+.friend_info .newsinfo li {
+	padding:10px 10px 4px 10px;
+	border-bottom:1px solid #E4EEF8;
+	overflow:hidden;
+	color:#404040
+}
+.friend_info .newsinfo li .pic {
+	width:50px;
+	height:50px;
+	float:left;
+	margin-right:12px;
+}
+.friend_info .newsinfo li .info-title {
+	line-height:23px;
+}
+.friend_info .newsinfo li .right-info {
+	float:left;
+	width:440px;
+}
+.friend_info .newsinfo li .photo {
+	border:1px solid #BBC9E3;
+	padding:2px;
+}
+.friend_info .newsinfo li .handle_info {
+	line-height:23px;
+	color:#888888;
+}
+.friend_info .newsinfo li .handle {
+	color:#3367CD
+}
+.friend_info .newsinfo li .handle a {
+	padding:0 6px
+}
+.friend_info .newsinfo li .input-dialog {
+	background:#F3FAFF;
+	padding:6px;
+	position:relative
+}
+.friend_info .newsinfo li .input-dialog b {
+	color:#F3FAFF;
+	position:absolute;
+	top:-6px;
+	left:20px;
+}
+.friend_info .newsinfo li .input1 {
+	background:#FFFFFF;
+	border:1px solid #CFE1EF;
+	height:20px;
+	line-height:20px;
+	width:420px;
+}
+.friend_info .newsinfo li .handle a.like {
+	background-repeat:no-repeat;
+	padding-left:18px;
+	background-position:0 -303px
+}
+.friend_info .newsinfo li .txt-info {
+	line-height:20px;
+}
+.friend_info .moreinfo {
+	height:38px;
+	line-height:38px;
+	background:#F0F5F8;
+	border:1px solid #CEE1EF;
+	color:#005DAB;
+	display:block;
+	font-size:20px;
+	font-weight:bold;
+	text-align:center
+}
+.friend_info .moreinfo:hover {
+	text-decoration:none
+}
+.right_side {
+	width:243px;
+	float:right;
+	margin-right:10px;
+	display:inline
+}
+.right_side-2 {
+	width:220px;
+	float:right;
+	display:inline
+}
+.message {
+	height:28px;
+	margin-bottom:10px;
+	line-height:28px;
+	padding-left:47px;
+	background-position:20px -320px;
+	border:1px solid #C4D5DF;
+	background-repeat:no-repeat
+}
+.message label {
+	font-weight:bold;
+	color:#FC3300
+}
+.message a {
+	color:#3367CD
+}
+.ad_right {
+	margin-bottom:10px;
+	display:block
+}
+.news-list ul {
+	padding:6px 2px 0 9px
+}
+.news-list li {
+	line-height:18px;
+	margin:0 0 10px 0;
+	background-position:-586px -101px
+}
+.news-list li a {
+	color:#3F3F3F;
+	padding-left:12px;
+	display:inline-block
+}
+.ware_nav {
+	height:31px;
+	line-height:31px;
+	font-size:20px;
+	border-bottom:4px solid #0DA900;
+	position:relative;
+	z-index:20
+}
+.ware_nav li {
+	float:left;
+	height:32px;
+	line-height:32px;
+	padding-left:20px;
+	background-position:0 -427px;
+	margin-right:1px;
+	position:relative;
+	top:3px;
+}
+.ware_nav li a {
+	float:left;
+	padding-right:20px;
+	background-position:right -427px;
+	color:#666666;
+	font-weight:bold;
+	text-decoration: none;
+}
+.ware_nav li.current {
+	background-position:0 -390px;
+}
+.ware_nav li.current a {
+	background-position:right -390px;
+	color:#FFFFFF;
+}
+.red_tips {
+	height:30px;
+	line-height:30px;
+	background:#CD3333;
+	text-align:center;
+	color:#FFFFFF
+}
+.no-tab-header {
+	border-bottom:4px solid #0DA900;
+	margin-bottom:13px;
+}
+.leftside-1 {
+	width:171px;
+	float:left;
+	margin-right:8px;
+	border:1px solid #C4D5DF;
+	position:relative;
+}
+.left-top {
+	position:absolute;
+	width:173px;
+	height:8px;
+	font-size:1px;
+	background:url(/images/left-top.jpg);
+	left:-1px;
+	top:-1px;
+}
+.left-foot {
+	position:absolute;
+	width:173px;
+	height:5px;
+	font-size:1px;
+	background:url(/images/left-foot.jpg);
+	left:-1px;
+	bottom:-1px;
+}
+.user-img {
+	background:#f4f4f4;
+	border-bottom:1px solid #C4D5DF;
+	text-align:center;
+}
+.user-img img {
+	margin:20px auto;
+	width:120px;
+	height:120px;
+}
+.btn-1 {
+	background:url(http://static.ppdai.com/skin/images/btn-1.jpg);
+	width:79px;
+	height:27px;
+	display:inline-block;
+	text-align:center;
+	line-height:27px;
+	color:#FFF;
+	cursor:pointer;
+}
+.btn-1:hover {
+	color:#FFF;
+}
+.btn-2 {
+	background:url(http://static.ppdai.com/skin/images/btn-2.jpg);
+	width:64px;
+	height:22px;
+	display:inline-block;
+	text-align:center;
+	line-height:22px;
+	color:#666666;
+	cursor:pointer;
+}
+.btn-2:hover {
+	color:#666666;
+}
+.leftside-box {
+	border-bottom:1px solid #C4D5DF;
+	padding:8px 0 11px 0;
+	text-align:center;
+}
+.left-user-info {
+	margin-left:15px;
+	padding:10px 0;
+}
+.left-user-info dt {
+	float:left;
+	padding:5px 0px;
+	margin-right:5px;
+	color:#666666
+}
+.left-user-info dd {
+	padding:5px 0px;
+	color:#666666
+}
+.left-user-info-btn {
+	text-align:center;
+	padding-bottom:11px;
+}
+.user-list div {
+	margin:10px 0 10px 10px;
+}
+.user-list ul {
+	padding:5px 0 3px 0;
+	position:relative;
+	left:5px;
+}
+.user-list ul li {
+	float:left;
+	width:66px;
+	text-align:center;
+}
+.user-list ul li .img {
+	height:50px;
+	border:1px solid #ccc
+}
+.user-list ul li .name {
+	line-height:100%;
+	margin:5px auto 10px;
+	height:15px;
+}
+.user-list ul li a {
+	width:50px;
+	overflow:hidden;
+	display:block;
+	margin:auto;
+	line-height:26px;
+	color:#006dd2;
+}
+.message-1 {
+	background:url(http://static.ppdai.com/skin/images/icon.png) -582px -368px no-repeat;
+	padding-left:15px;
+	line-height:16px;
+	color:#808080;
+	margin:0 0 10px 15px;
+}
+.message-1 a {
+	color:#0092d2
+}
+.lv-star {
+	display:inline-block;
+	position:relative;
+	top:2px;
+	height:13px;
+	background:url(http://static.ppdai.com/skin/images/star.png);
+}
+.lv-star span {
+	height:13px;
+	display:inline-block;
+}
+.lv-star .lv-1 {
+	width:15px;
+}
+.lv-star .lv-2 {
+	width:30px;
+}
+.lv-star .lv-3 {
+	width:45px;
+}
+.lv-star .lv-4 {
+	width:60px;
+}
+.lv-star .lv-5 {
+	width:75px;
+}
+.lv-huizh {
+	display:inline-block;
+	position:relative;
+	top:1px;
+	height:14px;
+	background:url(../images/huizh.jpg) left top;
+}
+.lv-huizh span {
+	height:14px;
+	display:inline-block;
+}
+.lv-huizh .lv-1 {
+	width:15px;
+}
+.lv-huizh .lv-2 {
+	width:30px;
+}
+.lv-huizh .lv-3 {
+	width:45px;
+}
+.lv-huizh .lv-4 {
+	width:60px;
+}
+.lv-huizh .lv-5 {
+	width:75px;
+}
+.uesr-info {
+	padding:3px 0 10px 0;
+	color:#0063dc;
+}
+.uesr-info label {
+	color:#434341;
+}
+.tab-list-1 {
+	margin:0 20px 20px 20px;
+}
+.tab-list-1 li {
+	line-height:42px;
+	height:42px;
+	border-bottom:1px dotted #c5d6e0;
+	padding:0 5px;
+	font-size:14px;
+	color:#666
+}
+.tab-list-1 li label.l-1 {
+	width:150px;
+	display:inline-block;
+}
+.tab-list-1 li label.l-2 {
+	width:100px;
+	display:inline-block;
+}
+.tbl-1 {
+	width:100%;
+	margin-top:15px;
+}
+.tbl-1 td {
+	line-height:20px;
+	color:#808080
+}
+.tbl-1 th {
+	width:65px;
+	line-height:20px;
+	color:#808080
+}
+.tbl-1 img.userimg {
+	height:60px;
+	width:60px;
+}
+.tbl-1 tt {
+	color:#3366cc
+}
+.credit img {
+	vertical-align:middle;
+}
+.tbl-2 {
+	width:100%;
+	margin-top:15px;
+	margin-bottom:15px;
+}
+.tbl-2 thead td {
+	line-height:20px;
+	border:1px solid #cbcbcb;
+	padding:5px 10px;
+	background:#f9f9f9;
+	color:#676767
+}
+.tbl-2 tbody td {
+	line-height:20px;
+	border:1px solid #cbcbcb;
+	padding:10px;
+	color:#676767
+}
+.tbl-2 tbody th {
+	width:65px;
+	line-height:20px;
+	border:1px solid #cbcbcb;
+	background:#f9f9f9;
+	color:#676767;
+	text-align:center;
+	width:110px;
+	padding:10px;
+	font-weight:bold
+}
+.t-credit tbody th {
+	text-align:left;
+}
+.t-credit tbody th img {
+	vertical-align:middle
+}
+.t-credit .score b {
+	color:Red;
+}
+.t-credit tbody th.scores {
+	width:auto;
+}
+.loading {
+	height:13px;
+	margin-right:4px;
+	overflow:hidden;
+	position:relative;
+	top:3px;
+	width:87px;
+	background:url(http://static.ppdai.com/skin/images/bg.png) repeat-x 0 -142px;
+	display:inline-block;
+}
+.loading span {
+	float:left;
+	height:13px;
+	overflow:hidden;
+	background:url(http://static.ppdai.com/skin/images/bg.png) repeat-x 0 -127px;
+}
+.loading_infobox {
+	clear:both;
+	float:right;
+	margin-top:5px;
+	width:87px;
+}
+.line {
+	height:15px;
+	font-size:1px;
+	border-bottom:1px solid #ebebeb;
+	margin-bottom:15px;
+}
+.left-box-2 {
+	background:#fbfbfb;
+	min-height:175px;
+	_height:175px;
+	border-top:1px solid #e4e4e4
+}
+.user-lv {
+	background:url(../images/lv-img.jpg);
+	width:45px;
+	height:20px;
+	display:inline-block;
+}
+.s-1, .s-2, .s-3, .s-4 {
+	background:url(../images/renz.jpg) no-repeat;
+	padding-left:50px;
+	height:30px;
+	display:inline-block
+}
+.s-1 {
+}
+.s-2 {
+	background-position:left -32px;
+}
+.s-3 {
+	background-position:left -62px;
+}
+.s-4 {
+	background-position:left -90px;
+}
+.listpage {
+	clear: both;
+	display: block;
+	margin: 10px auto;
+}
+.listpage table {
+	border: 0 solid White;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: auto !important;
+	width: auto !important;
+	height:auto;
+}
+.listpage td {
+	border: 0 solid White !important;
+	font-weight: normal;
+	padding: 0 !important;
+}
+.listpage a {
+	color: #3266CC;
+	float: left;
+	height: 22px;
+	padding: 0 7px;
+	line-height: 22px;
+	padding: 0 7px;
+	border: 0px
+}
+.listpage span {
+	float: left;
+	height: 22px;
+	line-height: 22px;
+	padding: 0 7px;
+	background: none repeat scroll 0 0 #17B000;
+	color: #FFFFFF;
+	text-decoration: none;
+	border: 0px
+}
+.listpage a:hover {
+	float: left;
+	height: 22px;
+	line-height: 22px;
+	padding: 0 7px;
+	background: none repeat scroll 0 0 #17B000;
+	color: #FFFFFF;
+	text-decoration: none;
+	border: 0px
+}
+.listpage td a:hover {
+	border: 0px solid #547ED8;
+}
+.page {
+	margin-left: 0px;
+	font-size: 14px;
+}
+.listpage td a, .listpage td label {
+	border: 0px solid White;
+	display: block;
+	padding: 0 7px;
+	color: #666666;
+}
+table.MemberBids div.title {
+	width: 240px;
+	overflow:hidden;
+	margin-right:10px
+}
+table.MemberBids {
+	margin:10px
+}
+.jiang {
+	position: relative;
+	left: 50px;
+	top: -30px;
+	overflow: hidden;
+	background-image: url(http://static.ppdai.com/skin/images/jiang.gif);
+	background-repeat: no-repeat;
+	width: 20px;
+	height: 20px;
+	margin-bottom:-20px;
+}

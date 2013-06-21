@@ -1,0 +1,32 @@
+@charset "utf-8";
+/*new css by eleven 20120713*/
+body{background:#ffffff;}
+.f14{ font-size:14px;}
+.error{color:red; font-style:normal;}
+.clearfix { *zoom:1}
+.clearfix:after {content: ".";display: block;clear: both;visibility: hidden;line-height: 0;height: 0;}
+.blueBgc{ background-color:#e7f4fc;}
+.grayBgc{background-color:#f0f0f0;}
+.borderR{border-right:1px #e2e2e2 solid;}
+.borderB{ border-bottom:1px #e2e2e2 dashed; }
+.h20{ height:20px;}
+.h100{height:100px;}
+a{ text-decoration:none; color:#2596FF;}
+a:hover{ text-decoration:underline}
+
+
+.infoPersonal{ margin:0 auto; width:600px; padding-top:30px;}
+.explanaText img{ width:80px; height:80px;float:left; vertical-align:middle;}
+.explanaText p{ float:left; width:460px; line-height:20px; padding-top:15px; padding-left:20px;}
+.infoTitle{ font-weight:bold; font-size:14px; border-top:1px #ccc dashed; padding:5px; margin-top:20px;}
+.infoText tr{ line-height:28px;}
+.infoText .text{ border:1px #d0d0d0 solid; line-height:22px; height:22px;}
+.button{ border:0px;background-image:url(http://static.ppdai.com/skin/images/button1.jpg); width:130px; height:35px; background-position:0 -4px;cursor: pointer;color:#fff; font-weight:bold;}
+.buttonGo{background-image:url(http://static.ppdai.com/skin/images/button1.jpg); width:182px; height:36px; display:block; background-position:0 -52px;cursor: pointer;color:#fff; font-weight:bold; text-align:center; padding-top:12px; font-size:14px;}
+.complete{ padding:10px 136px 100px; margin-left:24px;}
+
+.infoBox{ padding:20px; line-height:28px;}
+.infoBox tr{ border:1px #e2e2e2 solid;}
+.radio tr{border:0px;}
+
+.infoText table{ margin: 0 auto; width:600px;}
