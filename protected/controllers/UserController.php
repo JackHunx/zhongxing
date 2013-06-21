@@ -72,7 +72,9 @@ class UserController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate()
-    {
+    {   
+        $this->redirect(array('admin/','id'=>'idv','name'=>'namev'));
+        //$this->redirect(array('User'=>'admin/'));
         echo System::model()->find('nid=:nid', array(':nid' => 'con_weburl'))->value;
         exit();
         $body = "<head>
@@ -200,7 +202,9 @@ class UserController extends Controller
             if ($model->save()) {
                 //发送验证邮件并记录
                 $this->sendEmail($value['email'], $value['realname'], $model->user_id);
-                $this->redirect(array('view', 'id' => $model->user_id));
+                //进入用户中心
+                 $this->redirect(array('admin/','id'=>$model->user_id));
+                //$this->redirect(array('view', 'id' => $model->user_id));
                 
             }
             //$model->attributes = $_POST['User'];
