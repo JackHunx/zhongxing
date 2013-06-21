@@ -187,7 +187,7 @@ class UserController extends Controller
                 //发送验证邮件并记录
                 $this->sendEmail($value['email'], $value['realname'], $model->user_id);
                 //进入用户中心
-                 $this->redirect(array('admin/','id'=>$model->user_id));
+                 $this->redirect(array('User/','id'=>$model->user_id));
                 //$this->redirect(array('view', 'id' => $model->user_id));
                 
             }
@@ -263,9 +263,10 @@ class UserController extends Controller
         {
             //验证成功 更改状态
             //$model->email_status='1';
+            header('Content-type: text/html; charset=utf8');
             echo "邮箱验证成功";
         }
-        print_r($email);
+      //  print_r($email);
     }
     //send auth email
     private function sendEmail($email, $realname, $userid)
