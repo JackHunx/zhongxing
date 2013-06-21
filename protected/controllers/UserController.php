@@ -3,6 +3,8 @@
 class UserController extends Controller
 {
     private $userInfo = array();
+    //auth key
+    private $authKey = 'safeEmail';
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
      * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -35,7 +37,8 @@ class UserController extends Controller
                     'view',
                     'register',
                     'check_email',
-                    'check_username'),
+                    'check_username',
+                    'checkstring'),
                 'users' => array('*'),
                 ),
             array(
@@ -132,6 +135,10 @@ class UserController extends Controller
     //return email post body
     private function getEmailBody()
     {
+        $string = Yii::app()->authstring->authcode($this->userInfo['email'], 'ENCODE', $this->
+            authKey);
+        //对加密字符串进行编码传递 不能用urlencode()函数 此函数不能编码 ‘/’ 等数据
+        $string = rawurlencode($string);
         return "
 	<div style=\"background: url(" . $this->userInfo['webUrl'] .
             "/data/images/base/email_bg.png) no-repeat left bottom; font-size:14px; width: 588px; \">
@@ -151,14 +158,15 @@ class UserController extends Controller
             userInfo['email'] . "</strong></p>
 			<p>请点击下面的链接即可完成激活。</p>
 			<p style=\"overflow: hidden; width: 100%; word-wrap: break-word;\"><a title=\"点击完成注册\" href=\"" .
-            $this->userInfo['webUrl'] .
-            "/index.php?r=user/checkemail&id=f5275MShXPaqX9EPtdjKVEqznhRMrCkoSbhdIGF6x5CXPeNhAC5SE4E\" target=\"_blank\" swaped=\"true\">" .
-            $this->userInfo['webUrl'] .
-            "/index.php?r=user/checkemail&id=f5275MShXPaqX9EPtdjKVEqznhRMrCkoSbhdIGF6x5CXPeNhAC5SE4E</a>
+            $this->userInfo['webUrl'] . "/index.php?r=user/checkstring&string=" . $string .
+            "\" target=\"_blank\" swaped=\"true\">" . $this->userInfo['webUrl'] .
+            "/index.php?r=user/checkestring&string=" . $string . "</a>
 			<br><span style=\"color: rgb(153, 153, 153);\">(如果链接无法点击，请将它拷贝到浏览器的地址栏中)</span></p>
 
 			<p>感谢您光临众兴投资用户中心，我们的宗旨：为您提供优秀的产品和优质的服务！ <br>现在就登录吧!
-			<a title=\"点击登录众兴投资用户中心\" style=\"color: rgb(15, 136, 221);\" href=\"".$this->userInfo['webUrl']."/index.php?r=User\" target=\"_blank\" swaped=\"true\">".$this->userInfo['webUrl']."/index.php?r=User</a> 
+			<a title=\"点击登录众兴投资用户中心\" style=\"color: rgb(15, 136, 221);\" href=\"" . $this->
+            userInfo['webUrl'] . "/index.php?r=User\" target=\"_blank\" swaped=\"true\">" .
+            $this->userInfo['webUrl'] . "/index.php?r=User</a> 
 			</p>
 			<p style=\"text-align: right;\"><br>众兴投资用户中心 敬启</p>
 			<p><br>此为自动发送邮件，请勿直接回复！如您有任何疑问，请点击<a title=\"点击联系我们\" style=\"color: rgb(15, 136, 221);\" href=\"" .
@@ -183,14 +191,17 @@ class UserController extends Controller
             $value['addip'] = Yii::app()->request->getUserHostAddress();
             $value['addtime'] = time();
             //发送验证邮件
-            $this->sendEmail($value['email'],$value['realname']);
-            header("Content-Type: text/html; charset=utf-8");
-            echo '<pre>';
-            print_r($value);
-            exit();
+            //$this->sendEmail($value['email'], $value['realname']);
+            //            header("Content-Type: text/html; charset=utf-8");
+            //            echo '<pre>';
+            //            print_r($value);
+            //            exit();
             $model->attributes = $value;
             if ($model->save()) {
+
                 $this->redirect(array('view', 'id' => $model->user_id));
+                //发送验证邮件并记录
+                $this->sendEmail($value['email'], $value['realname'], $model->user_id);
             }
             //$model->attributes = $_POST['User'];
             //print_r($_POST['User']);
@@ -248,15 +259,39 @@ class UserController extends Controller
         }
 
     }
-    //send auth email
-    private function sendEmail($email, $realname)
+    //邮箱验证
+    public function actionCheckstring()
     {
+        //get string
+        $string = $_GET['string'];
+        //decode string
+        $string = rawurldecode($string);
+        $email = Yii::app()->authstring->authcode($string, 'DECODE', $this->authKey);
+        print_r($email);
+    }
+    //send auth email
+    private function sendEmail($email, $realname, $userid)
+    {
+        $model = new UserSendemailLog;
         $this->userInfo['email'] = $email;
         $this->userInfo['realname'] = $realname;
         $this->userInfo['webUrl'] = System::model()->find('nid=:nid', array(':nid' =>
                 'con_weburl'))->value;
-        return Yii::app()->sendemail->send($this->userInfo['email'], '众兴投资有限公司', '邮件验证', $this->getEmailBody());
-
+        //save log to user_sendemail_log
+        $model->attributes = array(
+            'status' => '1',
+            'title' => "注册邮件确认",
+            'type' => 'reg',
+            'email' => $this->userInfo['email'],
+            'user_id' => $userid,
+            'msg' => $this->getEmailBody(),
+            'addtime' => time(),
+            'addip' => Yii::app()->request->getUserHostAddress(),
+            );
+        if ($model->save()) {
+            return Yii::app()->sendemail->send($this->userInfo['email'], '众兴投资有限公司', '邮件验证',
+                $this->getEmailBody());
+        }
     }
     //encypt password by md5
     private function encypt($value)
