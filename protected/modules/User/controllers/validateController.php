@@ -2,13 +2,13 @@
 
 class ValidateController extends Controller
 {
-    private $_userid;
+    private $_user;
     /**
      * init 
      */
     public function init()
     {
-    
+        $this->_userid = Yii::app()->user;
     }
     public function actionCheck()
     {
@@ -16,8 +16,8 @@ class ValidateController extends Controller
     }
 	public function actionIndex()
 	{
-	   var_dump($_SESSION);
-       exit();
+	  // print_r($this->_userid);
+       //exit();
 	   //默认进入验证页面
 		$this->render('index');
 	}

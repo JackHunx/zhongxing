@@ -3,7 +3,7 @@
 class DefaultController extends Controller
 {
     //用户唯一id
-    private $_userId;
+    private $_user;
 
     public function init()
     {
@@ -58,13 +58,13 @@ class DefaultController extends Controller
     {
 
         
+    $this->_user=Yii::app()->user;
 
-
-        if (isset($_GET['id'])) {
-            $this->_userId = $_GET['id'];
-        }
+       // if (isset($_GET['id'])) {
+//            $this->_userId = $_GET['id'];
+//        }
         //$this->_userId = $_GET['id'];
-       $userModel = $this->loadUserModel($this->_userId);
+       $userModel = $this->loadUserModel($this->_user->id);
         $this->render('index',array('model'=>$userModel));
     }
     //获取用户所有数据
