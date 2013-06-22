@@ -61,7 +61,7 @@ class DefaultController extends Controller
     $this->_user=Yii::app()->user;
 
        // if (isset($_GET['id'])) {
-//            $this->_userId = $_GET['id'];
+//            $this->_userId = $_GET['id'];\
 //        }
         //$this->_userId = $_GET['id'];
        $userModel = $this->loadUserModel($this->_user->id);
