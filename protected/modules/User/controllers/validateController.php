@@ -24,8 +24,14 @@ class ValidateController extends Controller
     //validate emsil
     public function actionEmail()
     {
-        $this->render('email',array());
+        $this->render('email',array('model'=>$this->_model));
     }
+    //validate phone
+    public function actionPhone()
+    {
+        $this->render('phone',array('model'=>$this->_model));
+    }
+    
     
 	public function actionIndex()
 	{
