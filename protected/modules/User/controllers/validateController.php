@@ -13,7 +13,13 @@ class ValidateController extends Controller
         $this->loadModel($this->_user->id);
         //$this->_model= User::model();
         //init css and javascript
-        Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/validate/user.css');
+        $cs = Yii::app()->clientScript;
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/user_new.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/index.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/main_user.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/css.css');
+        //Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/validate/user.css');
     }
     //实名认证
     public function actionAvatar()
