@@ -8,7 +8,7 @@
 				<li>用户名：<?php echo $model->username; ?></li>
 				<li>姓 名 ：<?php echo $model->realname;?></li>
 				<li>邮 箱 ：<?php echo $model->email;?></li>
-				<li>选择客服 ：<select name="kefu_userid">
+				<li>选择客服 ：<select name="UserCache[kefu_userid]">
 								<option value="7">这一秒行动 下一秒收益(众兴为民)</option>
 								<option value="6">想，就立刻行动(众兴飞腾)</option>
 								</select></li>

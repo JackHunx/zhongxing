@@ -178,6 +178,8 @@ class UserController extends Controller
             $value['password'] = $this->encypt($value['password']);
             $value['addip'] = Yii::app()->request->getUserHostAddress();
             $value['addtime'] = time();
+            $value['uptime']=$value['addtime'];
+            $value['upip']=$value['addip'];
             //发送验证邮件
             //$this->sendEmail($value['email'], $value['realname']);
             //            header("Content-Type: text/html; charset=utf-8");
