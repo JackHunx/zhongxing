@@ -1,195 +1,331 @@
-<div class="nav">
-        <div class="l leftnav" id="leftnav"><ul><li class="titleft l"></li><li class="titcenter l bold"><span class="icon l"></span><span class="l tit">我是借入者</span></li><li class="titright l"></li></ul><div style="clear: both"></div><ul class="tablist"><li><a class="onnow" href="/account1/borrow.aspx">我的账户首页 </a></li><li><a href="/account/report/paybackborrow.aspx">我的借款列表 </a></li><li><a href="/upload/uploadlist.aspx">上传资料 </a></li><li><a href="/cert/validatevideo.aspx">拍拍贷认证 </a></li><li><a href="/borrowhelper.aspx" target="_blank">优先计划 </a></li></ul><ul><li class="titleftnext l"></li><li class="titcenter l bold"><span class="icon l"></span><span class="l tit">基本设置 </span></li><li class="titrightnext l"></li></ul><div style="clear: both"></div><ul class="tablist"><li><a href="/info1/adduserinfo.aspx">编辑个人资料 </a></li><li><a href="/auth/safetysetting.aspx">安全设置</a></li><li><a href="/login1/setquestion.aspx">密保问题</a></li><li><a href="/changepassword.aspx">修改密码</a></li><li><a href="/auth/bindmobile.aspx">绑定/修改手机</a></li><li><a href="/common1/accountbind.aspx">关联账户</a></li><li><a href="/upload/uploadpicture.aspx">更换头像</a></li></ul><ul><li class="titleftnext l"></li><li class="titcenter l bold"><span class="icon l"></span><span class="l tit">资金管理 </span></li><li class="titrightnext l"></li></ul><div style="clear: both"></div><ul class="tablist"><li><a href="/alibank/inpour/">账户充值</a></li><li><a href="/bank/draw_request.aspx">账户提现</a></li><li><a href="/account/moneyhistory1.aspx">资金记录</a></li></ul><ul><li class="titleftnext l"></li><li class="titcenter l bold"><span class="icon l"></span><span class="l tit">有奖活动</span></li><li class="titrightnext l"></li></ul><div style="clear: both"></div><ul class="tablist"><li><a href="/account/refer.aspx">有奖推广</a></li><li><a href="/account/wodejiangquan.aspx">我的抽奖券</a></li><li><a href="/account/mycoupon.aspx">我的优惠券</a></li></ul><div class="listbottom"></div></div><span id="ctl00_MainContent_AccountNavbar1"></span>
-        <div class="l centernav">
-            <!-- 新版本 -->
-            <div style="background: url(http://static.ppdai.com/skin/images/Iknow.png) 0 0 no-repeat;
-                _background: url(http://static.ppdai.com/skin/images/Iknow.gif) 0 0 no-repeat;
-                width: 353px; height: 201px; position: absolute; margin-top: -20px; margin-left: -120px;
-                display:none" id="showOld">
-                <span style="width: 50px; height: 20px; display: block; margin-left: 249px; margin-top: 150px;
-                    cursor: pointer;" onclick="ShowOld()"></span>
-            </div>
-            <!-- 安全问题 -->
-            <div style="background: url(http://static.ppdai.com/skin/images/Iknow1.png) 0 -11px no-repeat;
-                _background: url(http://static.ppdai.com/skin/images/Iknow1.gif) 0 -11px no-repeat;
-                width: 353px; height: 191px; position: absolute; margin-top: 273px; z-index: 9999;
-                margin-left: -180px; " id="showSafe">
-                <span style="width: 50px; height: 20px; display: block; margin-left: 249px; margin-top: 150px;
-                    cursor: pointer;" onclick="ShowSafe()"></span>
-            </div>
-            <!-- 0元时 -->
-            <div style="background: url(http://static.ppdai.com/skin/images/Iknow/Iknow2.png) 0 0 no-repeat;
-                _background: url(http://static.ppdai.com/skin/images/Iknow/Iknow2.gif) 0 0 no-repeat;
-                width: 353px; height: 201px; position: absolute; margin-top: 140px; margin-left: 105px;
-                display:none" id="isZero">
-                <span style="width: 50px; height: 20px; display: block; margin-left: 249px; margin-top: 150px;
-                    cursor: pointer;" onclick="isZero()"></span>
-            </div>
-            <!-- 3000元时 -->
-            <div style="background: url(http://static.ppdai.com/skin/images/Iknow/Iknow3.png) 0 0 no-repeat;
-                _background: url(http://static.ppdai.com/skin/images/Iknow/Iknow3.gif) 0 0 no-repeat;
-                width: 353px; height: 201px; position: absolute; margin-top: 140px; margin-left: 105px;
-                display:none" id="isThreeThousand">
-                <span style="width: 85px; height: 20px; display: block; margin-left: 209px; margin-top: 155px;
-                    cursor: pointer;" onclick="isThreeThousand()"></span>
-            </div>
-            <!-- 认证 -->
-            <div style="background: url(http://static.ppdai.com/skin/images/Iknow/Iknow4.png) 0 -11px no-repeat;
-                _background: url(http://static.ppdai.com/skin/images/Iknow/Iknow4.gif) 0 -11px no-repeat;
-                width: 353px; height: 201px; position: absolute; margin-top: 131px; margin-left: -168px;
-                display:none" id="isAuthenticate">
-                <span style="width: 50px; height: 20px; display: block; margin-left: 249px; margin-top: 150px;
-                    cursor: pointer;" onclick="isAuthenticate()"></span>
-            </div>
-            <!-- 上传资料 -->
-            <div style="background: url(http://static.ppdai.com/skin/images/Iknow/Iknow5.png) 0 -11px no-repeat;
-                _background: url(http://static.ppdai.com/skin/images/Iknow/Iknow5.gif) 0 -11px no-repeat;
-                width: 353px; height: 201px; position: absolute; margin-top: 106px; margin-left: -182px;
-                display:none" id="isUpload">
-                <span style="width: 50px; height: 20px; display: block; margin-left: 249px; margin-top: 150px;
-                    cursor: pointer;" onclick="isUpload()"></span>
-            </div>
-            <!-- 时光机~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~` -->
-            
-            <!-- 时光机END~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-            <div class="toptitle">
-                <span class="topicon l" style="float: left;"></span><span class="red" style="float: left;">号外</span><span class="color1" style="float: left;">：</span>
-                <a target="_blank" href="/login1/SetQuestion.aspx"><span class="color2">已有50,800位用户开启密保问题保障账户安全！马上开启&gt;&gt;</span></a>
-                
-            </div>
-            <div class="usernav" style="min-height: 137px;">
-                <div class="l">
-                    <div class="userimgnav">
-                        <a title="更换头像" href="/upload/UploadPicture.aspx">
-                            <img src="http://static.ppdai.com/app_themes/images/head/nophoto_80.gif"></a>
-                    </div>
-                </div>
-                <ul class="l" style="width:460px">
-                     <li class="username yahei" style="height: 26px; line-height: 26px; padding-left: 20px;"><span><?php echo $model->username;?></span><span>，欢迎来到众兴投资！</span> </li>
-                    <li>
-                         <ul class="userlistnav2 l" style="width:205px;">
-                           
-                            <li>信用等级：<span class="yahei">10(HR)</span></li>
-                            <li>借款总额度：<span class="yahei">¥0.00</span></li>
-                            <li>可使用额度：<span class="yahei">¥0.00</span></li>
-                            <li>提现中金额：<span class="yahei">¥0.00</span></li>
-                        </ul>
-                        <ul class="amountnav2 l" style="margin-top: 2px;">
-                            <li><span class="l">账户总额：</span><span class="  yahei">¥0.00</span><span class="color2 cursor" style="display: none;">&nbsp;<a href="/account/MoneyHistory1.aspx">[查看资金记录]</a></span></li>
-                            <li><span class="l">可用余额：</span><span class="  yahei">¥0.00</span><span class="color2 cursor">&nbsp;[<a href="/alibank/inpour/">充值</a></span><span class="color1">&nbsp;|&nbsp;</span><span class="color2 cursor"><a href="/bank/draw_request.aspx">提现</a>]</span></li>
-                            <li><span class="l">待还金额：</span><span class="yahei ">¥0.00</span></li>
-                            <li class="mibaoWTFloat2" style="display: block">设置<a href="http://www.ppdai.com/login1/SetQuestion.aspx" target="_blank">密保问题</a></li>
-                            <li><span class="l">账号安全等级：</span><a href="http://www.ppdai.com/Auth/SafetySetting.aspx" target="_blank"><span style="display: block" id="AnQuanlevel" class="l level1"></span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-                
-            </div>
-            <div id="ctl00_MainContent_Prompt" style="margin-top: 10px; height: 71px; width: 562px;">
-                <a href="/info1/adduserinfo.aspx" title="填写个人详细资料"><span class="l Prompt1"></span>
-                </a><a href="/borrow/" title="发布借款标需求"><span class="l Prompt2"></span></a><a href="/upload/UploadList.aspx" title="上传资料"><span class="l Prompt3"></span></a><span class="l Prompt4"></span>
-            </div>
-            
-            <div id="ctl00_MainContent_divRecommend" class="centertabnav">
-                <ul>
-                    <li class="tab">推荐产品 </li>
-                </ul>
-            </div>
-            <div class="listnav" style="_width: 400px; _overflow: hidden">
-                <ul style="padding-left: 40px; padding-top: 20px;"><li><div class="l borrowimg"><a href="/borrow/ListType_bt.htm"><img src="http://static.ppdai.com/v/images/bt.jpg"></a></div> <div class="l p"><p class="bold"><a href="/borrow/ListType_bt.htm">普通借款标</a></p><p class="color1 l">查看还缺哪些内容即可发标</p><span class="borrowjian l"></span><div class="centernav_Floatnav"><div class="Floattop"></div><div class="Floatbottom"><ul><li><a href="/info1/RegSucc.aspx">基本资料需完整</a></li></ul></div></div></div></li></ul>
-            </div>
-            <div style="width: 90%; border: 1px solid red; width: 560px; display: none">
-                TEST：
-                
-            </div>
-        </div>
-        <div class="l rightnav">
-            <div class="righttopnav" id="__message" style="display: none;">
-            </div>
-            <div class="topnav">
-                <div class="notice">
-                    <div style="float: right; margin-right: 5px; font-weight: normal;">
-                        <a href="http://group.ppdai.com/forum.php?mod=announcement" style="color: #999;">
-                            &gt;&gt;更多</a></div>
-                    最新公告</div>
-                <ul id="Ul1">
-                    
-                           <script type="text/javascript" src="http://group.ppdai.com/api.php?mod=js&amp;bid=5"></script><li class="color1 cursor clear"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/forum.php?mod=announcement&amp;id=995" title="拍拍贷网站客服电话暂停服务通告" target="_blank">拍拍贷网站客服电话暂停服务通告...</a></span></li><li class="color1 cursor clear"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/forum.php?mod=announcement&amp;id=993" title="发“安非标”6618，送&quot;优先计划&quot;" target="_blank">发“安非标”6618，送"优先计划"...</a></span></li><li class="color1 cursor clear"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/forum.php?mod=announcement&amp;id=992" title="端午节放假公告" target="_blank">端午节放假公告...</a></span></li><li class="color1 cursor clear"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/forum.php?mod=announcement&amp;id=991" title="“借出者服务月--审错就赔”服务" target="_blank">“借出者服务月--审错就赔”服务...</a></span></li><li class="color1 cursor clear"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/forum.php?mod=announcement&amp;id=990" title="轻松借款好运相伴 千元现金等你" target="_blank">轻松借款好运相伴 千元现金等你...</a></span></li>
-                </ul>
-            </div>
+<div class="wrap950 " style="margin-top:0">
+	<!--左边的导航 开始-->
+	<div class="user_left">
+		
+		<script type="text/javascript">
+ function changeUserMenu(id){
+    var mu = $("#user_title_"+id);
+    var qe = $("#user_menu_"+id);
+    if(qe.css('display')=='none'){
+        mu.removeClass('title1').addClass('title');
+        qe.css('display', 'block');
+    }else{
+        mu.removeClass('title').addClass('title1');
+        qe.css('display', 'none');
+    }
+}
+ </script>
 
-            <div class="topnav" style="display:none">
-                <div class="notice">
-                    <div style="float: right; margin-right: 5px; font-weight: normal;">
-                        <a href="http://group.ppdai.com/publicnotice/NoticeList.aspx?categoryid=1" style="color: #999;">
-                            &gt;&gt;更多</a></div>
-                    最新公告</div>
-                <ul id="gonggao">
-                    
-                            <li class="color1 cursor clear" id="0"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/publicnotice/NoticeContent.aspx?articleid=185" title="关于“发非提现安全标6888，送68元优先计划”活动延期的公告" target="_blank">
-                                关于“发非提现安全标6888，...</a>
-                            </span></li>
-                        
-                            <li class="color1 cursor clear" id="1"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/publicnotice/NoticeContent.aspx?articleid=183" title="拍拍贷网站社区暂停服务公告" target="_blank">
-                                拍拍贷网站社区暂停服务公告</a>
-                            </span></li>
-                        
-                            <li class="color1 cursor clear" id="2"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/publicnotice/NoticeContent.aspx?articleid=182" title="拍拍贷新版推广计划上线，奖项更多，门槛更低！" target="_blank">
-                                拍拍贷新版推广计划上线，奖项更...</a>
-                            </span></li>
-                        
-                            <li class="color1 cursor clear" id="3"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/publicnotice/NoticeContent.aspx?articleid=181" title="拍拍贷有奖推广计划升级在即，旧版计划停止服务" target="_blank">
-                                拍拍贷有奖推广计划升级在即，旧...</a>
-                            </span></li>
-                        
-                            <li class="color1 cursor clear" id="4"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/publicnotice/NoticeContent.aspx?articleid=180" title=" 拍拍贷推出新产品－－网购达人标" target="_blank">
-                                 拍拍贷推出新产品－－网购达人标</a>
-                            </span></li>
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                </ul>
-            </div>
-            <div class="topnav" style="margin-top: 6px;">
-                <div class="notice">
-                    <div style="float: right; margin-right: 5px; font-weight: normal;">
-                        <a href="http://group.ppdai.com/forum.php?mod=forumdisplay&amp;fid=51" style="color: #999;">
-                            &gt;&gt;更多</a></div>
-                    成功借入故事
-                </div>
-                <ul>
-                   <script type="text/javascript" src="http://group.ppdai.com/api.php?mod=js&amp;bid=7"></script><li class="color1 cursor clear" id="0"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/forum.php?mod=viewthread&amp;tid=702711" title="第二次借款，信用累积中！20分钟满标！顶起！" target="_blank">第二次借款，信用累积中！20分钟...</a></span></li><li class="color1 cursor clear" id="0"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/forum.php?mod=viewthread&amp;tid=702700" title="到底能不能借到款呀？" target="_blank">到底能不能借到款呀？...</a></span></li><li class="color1 cursor clear" id="0"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/forum.php?mod=viewthread&amp;tid=702691" title="狂喷米饭！审核MM的那些事、拍拍贷的那些事！" target="_blank">狂喷米饭！审核MM的那些事、拍拍...</a></span></li><li class="color1 cursor clear" id="0"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/forum.php?mod=viewthread&amp;tid=702684" title="第一次借款成功" target="_blank">第一次借款成功...</a></span></li><li class="color1 cursor clear" id="0"><span class="l titicon"></span><span class="l"><a href="http://group.ppdai.com/forum.php?mod=viewthread&amp;tid=702672" title="当天申请、当天审批放款  （kinmark 4次成功，0次流标）。" target="_blank">当天申请、当天审批放款  （kinm...</a></span></li>
-                </ul>
-            </div>
-            <div class="topnav" style="margin-top: 6px;">
-                <div class="notice">
-                    <div style="float: right; margin-right: 5px; font-weight: normal;">
-                        <a href="http://help.ppdai.com/List.aspx?CategoryId=52" style="color: #999;">&gt;&gt;更多</a></div>
-                    借入者帮助手册
-                </div>
-                <ul>
-                    <li class="color1 cursor clear"><span class="l titicon"></span><span class="l"><a href="http://help.ppdai.com/HelpDetail.aspx?HelpId=244" title="如何发布借款列表？" target="_blank">
-                        如何发布借款列表？</a> </span></li>
-                    <li class="color1 cursor clear"><span class="l titicon"></span><span class="l"><a href="http://help.ppdai.com/HelpDetail.aspx?HelpId=264" title="怎样才能尽快满标？" target="_blank">
-                        怎样才能尽快满标？</a> </span></li>
-                    <li class="color1 cursor clear"><span class="l titicon"></span><span class="l"><a href="http://help.ppdai.com/HelpDetail.aspx?HelpId=249" title="发标后还需要做什么事情？" target="_blank">发标后还需要做什么事情？</a> </span></li>
-                    <li class="color1 cursor clear"><span class="l titicon"></span><span class="l"><a href="http://help.ppdai.com/HelpDetail.aspx?HelpId=267" title="审核需要什么资料？" target="_blank">
-                        审核需要什么资料？</a> </span></li>
-                    <li class="color1 cursor clear"><span class="l titicon"></span><span class="l"><a href="http://help.ppdai.com/HelpDetail.aspx?HelpId=269" title="审核需要多少时间？" target="_blank">
-                        审核需要多少时间？</a> </span></li>
-                </ul>
-            </div>
-            <div class="bottomnav" style="display: none">
-                <div style="width: 242px; height: 309px; background-color: #999">
-                </div>
-            </div>
-        </div>
-    </div>
+ 
+<div class="user_menus">
+	<div class="title" id="user_title_touzi"><span onclick="changeUserMenu('touzi')">&nbsp;</span>我是投资者</div>
+	<div class="menu">
+		<ul id="user_menu_touzi" style="display:block">
+			<li><a href="/invest/index.html" target="_blank">我要投资</a></li>
+			<li><a href="/index.php?user&amp;q=code/borrow/succes">已成功投资的借款</a></li>
+			<li><a href="/index.php?user&amp;q=code/borrow/bid">正在投标的借款</a></li>
+			<li><a href="/index.php?user&amp;q=code/borrow/tender_vouch">我担保的借款</a></li>
+			<!--
+			<li><a href="/index.php?user&q=code/borrow/appraisal">我的评价</a></li>
+			<li><a href="/index.php?user&q=code/borrow/attention">我关注的借款</a></li>
+			<li><a href="/index.php?user&q=code/borrow/tender_reply">贷款者回复</a></li>
+			-->
+		</ul>
+	</div>
+</div>
+ 
+
+  
+<div class="user_menus">
+	<div class="title" id="user_title_jiekuan"><span onclick="changeUserMenu('jiekuan')">&nbsp;</span>我是借款者</div>
+	<div class="menu">
+		<ul id="user_menu_jiekuan">
+			<li><a href="borrow/index.html" target="_blank">我要借款</a></li>
+			<li><a href="/index.php?user&amp;q=code/borrow/publish">正在招标的借款</a></li>
+			<li><a href="/index.php?user&amp;q=code/borrow/unpublish">尚未发布的借款</a></li>
+			<li><a href="/index.php?user&amp;q=code/borrow/repayment">正在还款的借款</a></li>
+			<li><a href="/index.php?user&amp;q=code/borrow/loanermsg">投资者回复</a></li>
+			<li><a href="/index.php?user&amp;q=code/borrow/limitapp">额度申请</a></li>
+		</ul>
+	</div>
+</div>
+ 
+ 
+<div class="user_menus">
+	<div class="title" id="user_title_zijin"><span onclick="changeUserMenu('zijin')">&nbsp;</span>资金管理</div>
+	<div class="menu">
+		<ul id="user_menu_zijin">
+			<li><a href="/index.php?user&amp;q=code/account">帐户详情</a></li>
+			<li><a href="/index.php?user&amp;q=code/account/bank">银行帐户</a></li>
+			<li><a href="/index.php?user&amp;q=code/account/cash_new">帐户提现</a></li>
+			<li><a href="/index.php?user&amp;q=code/account/recharge_new">帐户充值</a></li>
+			<li><a href="/index.php?user&amp;q=code/account/cash">提现记录</a></li>
+			<li><a href="/index.php?user&amp;q=code/account/recharge">充值记录</a></li>
+			<li><a href="/index.php?user&amp;q=code/account/log">资金记录</a></li>
+		</ul>
+	</div>
+</div>
+ 
+ <!--
+<div class="user_menus">
+	<div class="title" id="user_title_kefu" ><span onclick="changeUserMenu('kefu')">&nbsp;</span>客户服务</div>
+	<div class="menu">
+		<ul id="user_menu_kefu">
+			<li><a href="/index.php?user&q=view#info">我要提问</a></li>
+			<li><a href="/index.php?user&q=view#info">在线客户</a></li>
+		</ul>
+	</div>
+</div> 
+-->	
+
+<div class="user_menus">
+	<div class="title" id="user_title_shezhi"><span onclick="changeUserMenu('shezhi')">&nbsp;</span>基本设置</div>
+	<div class="menu">
+		<ul id="user_menu_shezhi">
+			<li><a href="/index.php?user&amp;q=code/userinfo">填写个人资料</a></li>
+			<li><a href="/index.php?user&amp;q=code/user/avatar">更换头像</a></li>
+			<li><a href="/index.php?user&amp;q=code/user/privacy">设置隐私</a></li>
+			<li><a href="/index.php?user&amp;q=code/message">站内信</a></li>
+			<li><a href="/index.php?user&amp;q=code/remind">提醒设置</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="user_menus">
+	<div class="title" id="user_title_renzheng"><span onclick="changeUserMenu('renzheng')">&nbsp;</span>认证中心</div>
+	<div class="menu">
+		<ul id="user_menu_renzheng">
+			<li><a href="/index.php?user&amp;q=code/user/realname">实名认证</a></li>
+			<li><a href="/index.php?user&amp;q=code/user/email_status">邮箱认证</a></li>
+			<li><a href="/index.php?user&amp;q=code/user/phone_status">手机认证</a></li>
+			<li><a href="/index.php?user&amp;q=code/user/video_status">视频认证</a></li>
+			<li><a href="/index.php?user&amp;q=code/user/scene_status">现场认证</a></li>
+			<li><a href="/index.php?user&amp;q=code/attestation">资料证明</a></li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="user_menus">
+	<div class="title" id="user_title_haoyou"><span onclick="changeUserMenu('haoyou')">&nbsp;</span>好友管理</div>
+	<div class="menu">
+		<ul id="user_menu_haoyou">
+			<li><a href="/index.php?user&amp;q=code/user/reginvite">邀请好友</a></li>
+			<li><a href="/index.php?user&amp;q=code/user/request">好友请求</a></li>
+			<li><a href="/index.php?user&amp;q=code/user/myfriend">我的好友</a></li>
+			<li><a href="/index.php?user&amp;q=code/user/black">我的黑名单</a></li>
+		</ul>
+	</div>
+</div>
+
+
+
+<div class="user_menus">
+	<div class="title" id="user_title_safe"><span onclick="changeUserMenu('safe')">&nbsp;</span>安全中心</div>
+	<div class="menu">
+		<ul id="user_menu_safe">
+			<li><a href="/index.php?user&amp;q=code/user/userpwd">修改登录密码</a></li>
+			<li><a href="/index.php?user&amp;q=code/user/paypwd">修改支付密码</a></li>
+			<li><a href="/index.php?user&amp;q=code/user/protection">密码保护</a></li>
+		</ul>
+	</div>
+</div>
+
+<!--
+<div class="user_menus">
+	<div class="title" id="user_title_jifen" ><span onclick="changeUserMenu('jifen')">&nbsp;</span>礼品折扣</div>
+	<div class="menu">
+		<ul id="user_menu_jifen">
+			<li><a href="/index.php?user&q=view#info">积分礼品</a></li>
+			<li><a href="/index.php?user&q=view#info">折扣商家</a></li>
+		</ul>
+	</div>
+</div>
+-->
+<div class="user_menus">
+	<div class="title" id="user_title_shequ"><span onclick="changeUserMenu('shequ')">&nbsp;</span>社区管理</div>
+	<div class="menu">
+		<ul id="user_menu_shequ">
+			<li><a href="/index.php?user&amp;q=view#info">我的话题</a></li>
+		</ul>
+	</div>
+</div>
+	</div>
+	<!--左边的导航 结束-->
+	
+	<!--右边的内容 开始-->
+	<div class="user_right ">
+		<div class="user_right_l ">
+						<div class="user_right_lmain">
+				<div class="user_right_img">
+					<img src="/data/avatar/30_avatar_middle.jpg" height="90" class="picborder"><br>
+					<a href="index.php?user&amp;q=code/user/avatar"><font color="#FF0000">[更换头像]</font></a>
+				</div>
+				<div class="user_right_txt">
+					<ul>
+						<li><span>信用等级：</span><img src="/data/images/credit/credit_s15.gif" title="67"><a href="/index.php?user&amp;q=code/user/credit"><font color="#FF0000">积分查看</font></a></li>
+						<li style="overflow:hidden">
+							<div class="floatl"><span> 认&nbsp;&nbsp;&nbsp;   证：</span></div> 
+							<a href="/index.php?user&amp;q=code/user/realname"><div class="credit_pic_card_1" title="实名已认证"></div></a>
+							<a href="/index.php?user&amp;q=code/user/phone_status"><div class="credit_pic_phone_1" title="手机已认证"></div></a>
+							<a href="/index.php?user&amp;q=code/user/email_status"><div class="credit_pic_email_1" title="邮箱已认证"></div></a>
+							<a href="/index.php?user&amp;q=code/user/video_status"><div class="credit_pic_video_1" title="视频已认证"></div></a>
+							<a href="/vip/index.html"><div class="credit_pic_vip_1" title="VIP"></div></a>
+							<a href="/index.php?user&amp;q=code/user/scene_status"><div class="credit_pic_scene_0" title="未通过现场认证"></div></a>
+						</li>
+
+						<li>  <a href="/index.php?user&amp;q=code/account/recharge_new"><font color="#FF0000">账号充值</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=credit"><font color="#FF0000">申请信用额度</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=vouch"><font color="#FF0000">申请担保额度</font></a> </li>
+						<li><span>VIP 期限： <a href="/vip/index.html">2013-06-22 08:38:49 到 2014-06-22 08:38:49</a></span></li>
+						<li><span>系统告知：</span><a href="/index.php?user&amp;q=code/message"><font color="#FF0000">24</font> 封未读信息</a>&nbsp; &nbsp; <a href="/index.php?user&amp;q=code/user/request">0 个好友邀请</a></li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="user_right_li">
+				<div class="title"><span style="float:right; font-size:12px; font-weight:normal"> 上次登录IP：112.233.85.210 - 上次登录时间：2013-06-22 13:49 </span>账号详情 </div>
+				<div class="content">
+									<ul>
+						<li><span> 账户总额[?]：<font>￥0.10</font>  <a href="index.php?user&amp;q=code/account/log">资金记录查询</a>  | <a href="index.php?user&amp;q=code/account">账户资金详情</a> </span></li>
+						<li><span> 可用余额[?]：<font>￥0.10</font>   </span>&nbsp;<a href="index.php?user&amp;q=code/account/cash_new"><font style="font-size:12px;" color="#FF0000">[提现]</font></a> <a href="index.php?user&amp;q=code/account/recharge_new"><font style="font-size:12px;" color="#FF0000">[充值]</font>  </a> </li>
+						<li><span> 冻结总额[?]：<font>￥0.00</font>   </span></li>
+						<li><span> 待收总额[?]：<font>￥0.00</font></span></li>
+						<li><span> 待收利息[?]：<font>￥0</font>   </span></li>
+						<li><span> 最近待收金额[?]：<font>￥0</font></span></li>
+						<li><span> 最近待收时间[?]：<font></font> <a href="index.php?user&amp;q=code/borrow/gathering&amp;status=0">[待收明细]</a></span></li>
+						<li><span> 已赚利息[?]：<font>￥0</font>    </span></li>
+						<li><span> 已赚奖励[?]：<font>￥0</font>    </span></li>
+						<li><span> 借款总额[?]：<font>￥0</font>    </span></li>
+						<li><span> 待还总额[?]：<font>￥0</font>    </span></li>
+						<li><span> 最近待还金额[?]：<font>￥0</font></span></li>
+						<li><span> 最近待还时间[?]：<font>-</font> <a href="index.php?user&amp;q=code/borrow/repaymentplan">[还款明细]</a></span></li>
+						<li><span> 待扣会费[?]：<font>￥0</font>   </span></li>
+						<li><span> 信用额度[?]：<font>￥20000.00</font>    </span></li>
+						<li><span> 可用信用额度[?]：<font>￥20000.00</font>    </span></li>
+						<li><span> 借款担保额度[?]：<font>￥0.00</font>    </span></li>
+						<li><span> 可用借款担保额度[?]：<font>￥0.00</font>    </span></li>
+						<li><span> 投资担保额度[?]：<font>￥0.00</font>    </span></li>
+						<li><span> 可用投资担保额度[?]：<font>￥0.00</font>    </span></li>
+					</ul>
+								</div>
+			</div>
+
+
+<div class="t10">
+		  <div class="title">
+		      <table width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tbody><tr>
+    <td width="12" align="left"><img height="30" width="12" src="/themes/61dai/images/t_left.gif"></td>
+    <td background="/themes/61dai/images/t_bg.gif" align="left"><h1 class="dd">借入流程</h1></td>
+    <td width="12" align="right"><img height="30" width="12" src="/themes/61dai/images/t_right.gif"></td>
+  </tr>
+</tbody></table>
+          </div>
+		  <div class="m_l_bor">
+	  <div class="process">
+            <ul>
+                <li><a target="_blank" href="/?user&amp;q=code/userinfo">填写详细信息</a></li><li class="icon2">
+                </li>
+                <li><a target="_blank" href="/?user&amp;q=code/attestation">上传资料证明</a></li><li class="icon2">
+                </li>
+                <li><a target="_blank" href="/vip/index.html">申请VIP</a></li><li class="icon2">
+                </li>
+
+                <li><a target="_blank" href="/publish/index.html">发布借款信息</a></li><li class="icon2">
+                </li>
+                <li><a target="_blank" href="/?user&amp;q=code/borrow/repayment">借款成功</a></li>
+            </ul>
+        </div></div></div>			
+
+
+
+<div class="t10">
+		  <div class="title">
+		      <table width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tbody><tr>
+    <td width="12" align="left"><img height="30" width="12" src="/themes/61dai/images/t_left.gif"></td>
+    <td background="/themes/61dai/images/t_bg.gif" align="left"><h1 class="dd">投资者上手</h1></td>
+    <td width="12" align="right"><img height="30" width="12" src="/themes/61dai/images/t_right.gif"></td>
+  </tr>
+</tbody></table>
+          </div>
+		  <div class="m_l_bor">
+        <div class="process">
+            <ul>
+                <li><a target="_blank" href="/?user&amp;q=code/userinfo">填写详细信息</a></li><li class="icon2">
+                </li>
+                <li><a target="_blank" href="/?user&amp;q=code/user/realname">实名认证</a></li><li class="icon2">
+                </li>
+                <li><a target="_blank" href="/vip/index.html">申请VIP</a></li><li class="icon2">
+                </li>
+
+                <li><a target="_blank" href="/invest/index.html">投标借出</a></li><li class="icon2"></li>
+                <li><a target="_blank" href="/?user&amp;q=code/borrow/success">等待回收还款</a></li>
+            </ul>
+        </div></div></div>
+			
+			<div class="user_right_li">
+				<div class="title">好友动态</div>
+				<div class="content">
+					<ul>
+											</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="user_right_r">
+			<div class="user_right_info">
+				<div class="title"><strong>个人资料完成率</strong></div> 
+				<div>
+				<ul>
+									<li><span><a href="/index.php?user&amp;q=code/userinfo/building"><font color="#009900">已填写</font></a></span>房产资料</li>
+					<li><span><a href="/index.php?user&amp;q=code/userinfo/company"><font color="#FF0000">未填写</font></a></span>单位资料</li>
+					<li><span><a href="/index.php?user&amp;q=code/userinfo/firm"><font color="#FF0000">未填写</font></a></span>私营业主</li>
+					<li><span><a href="/index.php?user&amp;q=code/userinfo/finance"><font color="#FF0000">未填写</font></a></span>财务状况</li>
+					<li><span><a href="/index.php?user&amp;q=code/userinfo/contact"><font color="#FF0000">未填写</font></a></span>联系方式</li>
+					<li><span><a href="/index.php?user&amp;q=code/userinfo/edu"><font color="#FF0000">未填写</font></a></span>教育背景</li>
+					<!--<li><span>已填写</span><a href="/index.php?user&q=code/userinfo/building">工作经历</a></li>-->
+				</ul>
+								</div>
+			</div>
+			
+			<div class="user_right_li">
+				<div class="title">网站公告</div>
+				<div class="content">
+					<ul>
+												<li><a href="/gonggao/a183.html" target="_blank">公司工作人员及县级分公司理财师奖励</a></li>
+												<li><a href="/gonggao/a182.html" target="_blank">关于在线充值</a></li>
+												<li><a href="/gonggao/a173.html" target="_blank">众兴贷招商网站推广员（代办员）公告</a></li>
+												<li><a href="/gonggao/a149.html" target="_blank">资金是否安全</a></li>
+												<li><a href="/gonggao/a148.html" target="_blank">如何提高借款成功率</a></li>
+												<li><a href="/gonggao/a146.html" target="_blank">怎样找回密码及确保密码安全</a></li>
+											</ul>
+				</div>
+			</div>
+			
+			<div class="user_right_li">
+				<div class="title">新手入门</div>
+				<div class="content">
+					<ul>
+												<li><a href="/new/a181.html" target="_blank">借款流程</a></li>
+												<li><a href="/new/a180.html" target="_blank">投资流程</a></li>
+												<li><a href="/new/a179.html" target="_blank">还款流程</a></li>
+												<li><a href="/new/a174.html" target="_blank">平台术语</a></li>
+												<li><a href="/new/a125.html" target="_blank">测试信贷收费标准</a></li>
+												<li><a href="/new/a124.html" target="_blank">现场考察收费标准</a></li>
+											</ul>
+				</div>
+			</div>
+			
+			<div class="user_right_li">
+				<div class="title">论坛动态</div>
+				<div class="content">
+					<ul>
+												<li><a href="/bbs/index.html?q=view&amp;tid=1" target="_blank">P2P网贷投资客：从借款人到股东（网贷理财经历分享）</a></li>
+											</ul>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<!--右边的内容 结束-->
+</div>

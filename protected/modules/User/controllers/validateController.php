@@ -40,6 +40,11 @@ class ValidateController extends Controller
 	   //默认进入验证页面
 		$this->render('index');
 	}
+    //vip
+    public function actionVip()
+    {
+        $this->render('vip',array('model'=>$this->_model));
+    }
     //return $model  = user::mode();
     private function loadModel($id)
     {

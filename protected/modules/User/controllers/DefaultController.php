@@ -2,12 +2,17 @@
 
 class DefaultController extends Controller
 {
-    //用户唯一id
+    //用户
     private $_user;
-
+    private $_vip;
     public function init()
     {
-        Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . '/css/User/user.css');
+        $cs = Yii::app()->clientScript;
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/user_new.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/index.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/main_user.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/css.css');
         //Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/css/my.js');
     }
     /**
@@ -57,17 +62,31 @@ class DefaultController extends Controller
     public function actionIndex()
     {
 
-        
-    $this->_user=Yii::app()->user;
 
-       // if (isset($_GET['id'])) {
-//            $this->_userId = $_GET['id'];\
-//        }
+        $this->_user = Yii::app()->user;
+
+        // if (isset($_GET['id'])) {
+        //            $this->_userId = $_GET['id'];\
+        //        }
         //$this->_userId = $_GET['id'];
-       $userModel = $this->loadUserModel($this->_user->id);
-        $this->render('index',array('model'=>$userModel));
+        $userModel = $this->loadUserModel($this->_user->id);
+        $this->render('index', array('model' => $userModel));
     }
-    //获取用户所有数据
+    /**
+     * vip 查询
+     * @return vip status
+     */
+    private function checkVip()
+    {
+        $record = UserCache::model()->findAllByPk($this->_user->id);
+        if ($record === null || $record->vip_status = 0)
+            $this->_vip = "申请vip";
+        elseif ($record->vip_status = 1)
+            $this->_vip = ''; //返回vip期限
+
+
+    }
+    //加载用户模型
     private function loadUserModel($user_id)
     {
         //$value = User::model()->findByAttributes(array('user_id'=>$user_id));
