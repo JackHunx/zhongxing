@@ -62,16 +62,14 @@ class VipController extends Controller
 	 */
 	public function actionCreate()
 	{
-	   print_r($_POST);
-		exit();
-        $model=new UserCache;
+		$model=new Vip;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['UserCache']))
+		if(isset($_POST['Vip']))
 		{
-			$model->attributes=$_POST['UserCache'];
+			$model->attributes=$_POST['Vip'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->user_id));
 		}
@@ -93,9 +91,9 @@ class VipController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['UserCache']))
+		if(isset($_POST['Vip']))
 		{
-			$model->attributes=$_POST['UserCache'];
+			$model->attributes=$_POST['Vip'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->user_id));
 		}
@@ -124,7 +122,7 @@ class VipController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('UserCache');
+		$dataProvider=new CActiveDataProvider('Vip');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -135,10 +133,10 @@ class VipController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new UserCache('search');
+		$model=new Vip('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['UserCache']))
-			$model->attributes=$_GET['UserCache'];
+		if(isset($_GET['Vip']))
+			$model->attributes=$_GET['Vip'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -149,12 +147,12 @@ class VipController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return UserCache the loaded model
+	 * @return Vip the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=UserCache::model()->findByPk($id);
+		$model=Vip::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -162,11 +160,11 @@ class VipController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param UserCache $model the model to be validated
+	 * @param Vip $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='user-cache-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='vip-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
