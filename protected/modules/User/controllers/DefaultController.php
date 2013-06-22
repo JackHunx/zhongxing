@@ -14,6 +14,10 @@ class DefaultController extends Controller
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/main_user.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/css.css');
         //Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl.'/css/my.js');
+        //获取用户数据
+        $this->_user = Yii::app()->user;
+        //check vip status
+        $this->checkVip();
     }
     /**
      * @return array action filters
@@ -63,14 +67,14 @@ class DefaultController extends Controller
     {
 
 
-        $this->_user = Yii::app()->user;
+        //$this->_user = Yii::app()->user;
 
         // if (isset($_GET['id'])) {
         //            $this->_userId = $_GET['id'];\
         //        }
         //$this->_userId = $_GET['id'];
         $userModel = $this->loadUserModel($this->_user->id);
-        $this->render('index', array('model' => $userModel));
+        $this->render('index', array('model' => $userModel, 'vip' => $this->_vip,'baseUrl'=>Yii::app()->baseUrl));
     }
     /**
      * vip 查询
@@ -78,11 +82,14 @@ class DefaultController extends Controller
      */
     private function checkVip()
     {
-        $record = UserCache::model()->findAllByPk($this->_user->id);
-        if ($record === null || $record->vip_status = 0)
-            $this->_vip = "申请vip";
-        elseif ($record->vip_status = 1)
-            $this->_vip = ''; //返回vip期限
+        $record = UserCache::model()->findByPk($this->_user->id);
+        if ($record === null || $record->vip_status = 0) {
+            $this->_vip['status']='0';
+            $this->_vip['msg'] = "申请vip";
+        } elseif ($record->vip_status = 1) {
+            $this->_vip['status'] = '1';
+            $this->_vip['msg'] = ''; //返回vip期限
+        }
 
 
     }
