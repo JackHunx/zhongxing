@@ -1,13 +1,13 @@
 <div class="wrap950 list_1">
-	<div class="title"><img src="/themes/61dai/images/ico_4.gif" /> 您的vip信息：</div>
+	<div class="title"><img src="<?php echo Yii::app()->baseUrl;?>/images/ico_4.gif" /> 您的vip信息：</div>
 	<div class="content">
 				
 			<form action="/index.php?user&q=code/user/applyvip" method="post">
 			<ul class="ul_li_1">
 				<li>您的状态是：普通会员</li>
-				<li>用户名：testtest</li>
-				<li>姓 名 ：测试用</li>
-				<li>邮 箱 ：516012818@163.com</li>
+				<li>用户名：<?php echo $model->username; ?></li>
+				<li>姓 名 ：<?php echo $model->realname;?></li>
+				<li>邮 箱 ：<?php echo $model->email;?></li>
 				<li>选择客服 ：<select name="kefu_userid">
 								<option value="7">这一秒行动 下一秒收益(众兴为民)</option>
 								<option value="6">想，就立刻行动(众兴飞腾)</option>
