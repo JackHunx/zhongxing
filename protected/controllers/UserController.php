@@ -73,6 +73,8 @@ class UserController extends Controller
      */
     public function actionCreate()
     {   
+        $userid='6';
+        $this->render('msg',array('msg'=>'邮箱激活成功','msg_url'=>Yii::app()->baseUrl.'/index.php?r=User&id='.$userid,'msg_content'=>'进入用户中心'));
         exit();
         $code='2&159.mzod@163.com';
         $string = Yii::app()->authstring->authcode($code, 'ENCODE', $this->
@@ -262,10 +264,18 @@ class UserController extends Controller
         if($model->email == $email)
         {
             //验证成功 更改状态
-            //$model->email_status='1';
-            header('Content-type: text/html; charset=utf8');
-            echo "邮箱验证成功";
+            $model->email_status='1';
+            if($model->save())
+            {
+                //邮箱验证状态更改
+                $this->render('msg',array('msg'=>'邮箱激活成功','msg_url'=>Yii::app()->baseUrl.'/index.php?r=User&id='.$userid,'msg_content'=>'进入用户中心'));
+            }
+            
+        }else{
+            //邮箱验证失败，有可能是邮箱验证超出时间，有可能数据不对跳转到重新发送验证邮件
+            $this->render('msg',array('msg'=>'验证失败,进入用户中心重新验证','msg_url'=>'','msg_content'=>''));
         }
+        //
       //  print_r($email);
     }
     //send auth email
