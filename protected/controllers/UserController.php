@@ -171,6 +171,10 @@ class UserController extends SBaseController
     {
 
         $model = new User;
+        if(isset(Yii::app()->user->id))
+        {
+            $this->redirect(array('User/'));
+        }
         //print_r($model->attributes);
         if (isset($_POST['User'])) {
             $value = $_POST['User'];

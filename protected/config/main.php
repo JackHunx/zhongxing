@@ -29,7 +29,7 @@ return array(
             'userclass' => 'User',
             'userid' => 'user_id',
             'username' => 'username',
-            'debug' => false,
+            'debug' => true,
             'pageSize' => 10,
             'superUser' => 'Authority',
             'css' => 'srbac.css',
@@ -60,6 +60,7 @@ return array(
         'admin'=>array(
         //'defaultController'=>'system',
         ),
+        'bbs',
         //用户中心模块
         'User',
         'gii' => array(
