@@ -1,7 +1,8 @@
 <?php
 
-class SystemController extends Controller
+class SystemController extends SBaseController
 {
+    
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -122,10 +123,10 @@ class SystemController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('System');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		////$dataProvider=new CActiveDataProvider('System');
+//		//$this->render('index',array(
+//			'dataProvider'=>$dataProvider,
+//		));
 	}
 
 	/**

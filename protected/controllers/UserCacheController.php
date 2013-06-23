@@ -1,6 +1,6 @@
 <?php
 
-class UserCacheController extends Controller
+class UserCacheController extends SBaseController
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning

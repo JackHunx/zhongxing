@@ -1,6 +1,6 @@
 <?php
 
-class VipController extends Controller
+class VipController extends SBaseController
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning

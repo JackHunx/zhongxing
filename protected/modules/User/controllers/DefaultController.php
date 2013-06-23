@@ -39,7 +39,8 @@ class DefaultController extends SBaseController
     {
         return array(
             array(
-                'allow', // allow all users to perform 'index' and 'view' actions
+                'allow', // allow all users to perform 'index' and 'view' actions        
+                //'index',   
                 'actions' => array('view'),
                 'users' => array('*'),
                 ),

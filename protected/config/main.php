@@ -57,7 +57,9 @@ return array(
             'alwaysAllowedPath' => 'srbac.components',
             ),
         // uncomment the following to enable the Gii tool
-        'admin',
+        'admin'=>array(
+        //'defaultController'=>'system',
+        ),
         //用户中心模块
         'User',
         'gii' => array(

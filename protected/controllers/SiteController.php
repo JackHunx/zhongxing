@@ -1,6 +1,6 @@
 <?php
 
-class SiteController extends Controller
+class SiteController extends SBaseController
 {
 	/**
 	 * Declares class-based actions.
