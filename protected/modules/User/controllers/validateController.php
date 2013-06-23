@@ -1,6 +1,6 @@
 <?php
 
-class ValidateController extends Controller
+class ValidateController extends SBaseController
 {
     private $_user;
     private $_model;

@@ -1,6 +1,6 @@
 <?php
 
-class DefaultController extends Controller
+class DefaultController extends SBaseController
 {
     //用户
     private $_user;

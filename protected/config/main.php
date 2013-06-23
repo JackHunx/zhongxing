@@ -29,7 +29,7 @@ return array(
             'userclass' => 'User',
             'userid' => 'user_id',
             'username' => 'username',
-            'debug' => true,
+            'debug' => false,
             'pageSize' => 10,
             'superUser' => 'Authority',
             'css' => 'srbac.css',

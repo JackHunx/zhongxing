@@ -1,6 +1,6 @@
 <?php
 
-class EditController extends Controller
+class EditController extends SBaseController
 {
     //init some file like css js and so on.
     public function init()
