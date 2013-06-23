@@ -12,6 +12,9 @@ class SiteController extends SBaseController
 			'captcha'=>array(
 				'class'=>'CCaptchaAction',
 				'backColor'=>0xFFFFFF,
+                'maxLength'=>'5',
+                'minLength'=>'4',
+                'height'=>'40'
 			),
 			// page action renders "static" pages stored under 'protected/views/site/pages'
 			// They can be accessed via: index.php?r=site/page&view=FileName
@@ -78,7 +81,11 @@ class SiteController extends SBaseController
 	public function actionLogin()
 	{
 		$model=new LoginForm;
-
+        if(isset(Yii::app()->user->id))
+        {
+            echo '您已经登陆,请不要重复登陆';
+            exit();
+        }
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{

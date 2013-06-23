@@ -20,9 +20,10 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
-)); ?>
+)); 
+?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">带 <span class="required">*</span> 是必填项</p>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'username'); ?>
@@ -33,11 +34,13 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 	<div class="row">
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password'); ?>
-		<?php echo $form->error($model,'password'); ?>
-		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-		</p>
+		
 	</div>
+    <div class="row">
+         <?php echo $form->labelEx($model,'verifyCode') ?>
+         <?php echo $form->textField($model,'verifyCode');?>
+        <div><?php $this->widget('CCaptcha',array('showRefreshButton'=>false,'clickableImage'=>true,'imageOptions'=>array('alt'=>'点击换图','title'=>'点击换图','style'=>'cursor:pointer'))); ?></div>
+    </div>
 
 	<div class="row rememberMe">
 		<?php echo $form->checkBox($model,'rememberMe'); ?>
@@ -46,7 +49,7 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+		<?php echo CHtml::submitButton('登陆'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

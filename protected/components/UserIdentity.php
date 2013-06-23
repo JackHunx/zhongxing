@@ -7,6 +7,8 @@
  */
 class UserIdentity extends CUserIdentity
 {
+    //verify code
+    public $verifyCode;
     private $_id;
 	/**
 	 * Authenticates a user.
