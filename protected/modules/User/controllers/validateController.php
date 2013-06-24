@@ -4,6 +4,17 @@ class ValidateController extends SBaseController
 {
     private $_user;
     private $_model;
+    //actions
+    public function actions()
+    {
+        return array('captcha' => array(
+                'class' => 'CCaptchaAction',
+                'backColor' => 0xFFFFFF,
+                'maxLength' => '5',
+                'minLength' => '4',
+                'height' => '30'), //'page' => array('class' => 'CViewAction', ),
+                );
+    }
     /**
      * init 
      */
@@ -25,66 +36,83 @@ class ValidateController extends SBaseController
     public function actionAvatar()
     {
         //$model = $this->loadModel($this->_user->id);
-        $this->render('avatar',array('model'=>$this->_model));
+        $this->render('avatar', array('model' => $this->_model));
     }
     //validate emsil
     public function actionEmail()
     {
-        $this->render('email',array('model'=>$this->_model));
+        $this->render('email', array('model' => $this->_model));
     }
     //validate phone
     public function actionPhone()
     {
-        $this->render('phone',array('model'=>$this->_model));
+
+        $this->render('phone', array('model' => $this->_model));
     }
-    
-    
-	public function actionIndex()
-	{
-	  // print_r($this->_userid);
-       //exit();
-	   //默认进入验证页面
-		$this->render('index');
-	}
+
+
+    public function actionIndex()
+    {
+        // print_r($this->_userid);
+        //exit();
+        //默认进入验证页面
+        $this->render('index');
+    }
     //vip
     public function actionVip()
     {
-        $this->render('vip',array('model'=>$this->_model));
+        $model = new Vip;
+        //$record = 
+        if (isset($_POST['Vip'])) {
+            $vip = array(
+                'user_id' => $this->_user->id,
+                'vip_status' => '0',
+
+                );
+
+            //print_r(array_merge($vip, $_POST['Vip']));
+//            exit();
+            $model->attributes = array_merge($vip, $_POST['Vip']);
+            if ($model->save())
+                $this->redirect(array('validate/vip', 'id' => $model->user_id));
+        }
+        //$model = new User;
+        $this->render('vip', array('model' => $this->_model));
     }
     //return $model  = user::mode();
     private function loadModel($id)
     {
         $model = User::model()->findByPk($id);
-        if($model == null)
-            throw new CHttpException('400','您查找的页面不存在');
+        if ($model == null)
+            throw new CHttpException('400', '您查找的页面不存在');
         $this->_model = $model;
-        
+
     }
 
-	// Uncomment the following methods and override them if needed
-	/*
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
-		return array(
-			'inlineFilterName',
-			array(
-				'class'=>'path.to.FilterClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
+    // Uncomment the following methods and override them if needed
+    /*
+    public function filters()
+    {
+    // return the filter configuration for this controller, e.g.:
+    return array(
+    'inlineFilterName',
+    array(
+    'class'=>'path.to.FilterClass',
+    'propertyName'=>'propertyValue',
+    ),
+    );
+    }
 
-	public function actions()
-	{
-		// return external action classes, e.g.:
-		return array(
-			'action1'=>'path.to.ActionClass',
-			'action2'=>array(
-				'class'=>'path.to.AnotherActionClass',
-				'propertyName'=>'propertyValue',
-			),
-		);
-	}
-	*/
+    public function actions()
+    {
+    // return external action classes, e.g.:
+    return array(
+    'action1'=>'path.to.ActionClass',
+    'action2'=>array(
+    'class'=>'path.to.AnotherActionClass',
+    'propertyName'=>'propertyValue',
+    ),
+    );
+    }
+    */
 }

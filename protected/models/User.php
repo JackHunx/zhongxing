@@ -54,6 +54,7 @@
  */
 class User extends CActiveRecord
 {
+    public $verifyCode;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -80,6 +81,7 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+            array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 			array('type_id, order, islock, status, avatar_status, video_status, scene_status, logintime', 'numerical', 'integerOnly'=>true),
 			array('purview, wangwang, answer', 'length', 'max'=>100),
 			array('username, email', 'length', 'max'=>30),

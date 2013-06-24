@@ -31,7 +31,7 @@ private $_user;
         return array(
             array(
                 'allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view'),
+                'actions' => array('index', 'view','captcha'),
                 'users' => array('*'),
                 ),
             array(
@@ -72,7 +72,7 @@ private $_user;
      */
     public function actionCreate()
     {
-        $this->_user->checkAccess('dministrator');
+       // $this->_user->checkAccess('dministrator');
         $model = new UserCache;
 
         // Uncomment the following line if AJAX validation is needed
@@ -137,8 +137,8 @@ private $_user;
      */
     public function actionIndex()
     {
-        $dataProvider = new CActiveDataProvider('UserCache');
-        $this->render('index', array('dataProvider' => $dataProvider, ));
+        //$dataProvider = new CActiveDataProvider('UserCache');
+        //$this->render('index', array('dataProvider' => $dataProvider, ));
     }
 
     /**
