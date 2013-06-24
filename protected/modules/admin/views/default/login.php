@@ -67,7 +67,7 @@
 							<div class="clearfix"></div>
 
 							<div class="input-prepend">
-							<label class="remember" for="remember"><input type="checkbox" id="remember" />记住我</label>
+							<label class="remember" for="remember"><input type="checkbox" id="remember" />&nbsp;&nbsp;记住我</label>
 							</div>
 							<div class="clearfix"></div>
 
