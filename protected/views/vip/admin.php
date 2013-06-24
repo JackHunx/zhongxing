@@ -2,15 +2,7 @@
 /* @var $this VipController */
 /* @var $model Vip */
 
-$this->breadcrumbs=array(
-	'Vips'=>array('index'),
-	'Manage',
-);
 
-$this->menu=array(
-	array('label'=>'List Vip', 'url'=>array('index')),
-	array('label'=>'Create Vip', 'url'=>array('create')),
-);
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -46,9 +38,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'user_id',
-		'kefu_userid',
+      // 'User.username',
+       array(
+        'name'=>'user_search',
+        'value'=>'$data->user->username'
+       ),
+        //'user_name',
+		//'kefu_userid',
 		'kefu_username',
-		'kefu_addtime',
+		//'kefu_addtime',
 		'vip_status',
 		'vip_remark',
 		/*
@@ -78,6 +76,13 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		*/
 		array(
 			'class'=>'CButtonColumn',
+            'deleteButtonOptions'=>array('style'=>'display:none'),   
+            'updateButtonOptions'=>array('title'=>'审核'),
+            
+            'buttons'=>array('update'=>array('imageUrl'=>null,'label'=>'审核'),'view'=>array('imageUrl'=>null,'label'=>'查看/')
+            ),
+            'template'=>'{view}{update}{delete}',
+            
 		),
 	),
 )); ?>

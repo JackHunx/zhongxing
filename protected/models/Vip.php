@@ -37,6 +37,7 @@
 class Vip extends CActiveRecord
 {
     public $verifyCode;
+    public $user_search;
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -82,7 +83,7 @@ class Vip extends CActiveRecord
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array(
-                'user_id, kefu_userid, kefu_username, kefu_addtime, vip_status, vip_remark, vip_money, vip_verify_remark, vip_verify_time, bbs_topics_num, bbs_posts_num, credit, account, account_use, account_nouse, account_waitin, account_waitintrest, account_intrest, account_award, account_payment, account_expired, account_waitvip, borrow_amount, vouch_amount, borrow_loan, borrow_success, borrow_wait, borrow_paymeng, friends_apply',
+                'user_id, kefu_userid, kefu_username, kefu_addtime, vip_status, vip_remark, vip_money, vip_verify_remark, vip_verify_time, bbs_topics_num, bbs_posts_num, credit, account, account_use, account_nouse, account_waitin, account_waitintrest, account_intrest, account_award, account_payment, account_expired, account_waitvip, borrow_amount, vouch_amount, borrow_loan, borrow_success, borrow_wait, borrow_paymeng, friends_apply,user_search',
                 'safe',
                 'on' => 'search'),
             );
@@ -95,7 +96,9 @@ class Vip extends CActiveRecord
     {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array();
+        return array(
+            'user'=>array(self::HAS_ONE,'User','user_id'),
+        );
     }
 
     /**
@@ -146,7 +149,8 @@ class Vip extends CActiveRecord
         // should not be searched.
 
         $criteria = new CDbCriteria;
-
+        $criteria->with=array('user');
+        $criteria->compare('user.username',$this->user_search,true);
         $criteria->compare('user_id', $this->user_id);
         $criteria->compare('kefu_userid', $this->kefu_userid);
         $criteria->compare('kefu_username', $this->kefu_username);
