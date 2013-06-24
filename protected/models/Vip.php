@@ -152,8 +152,10 @@ class Vip extends CActiveRecord
 
         $criteria = new CDbCriteria;
         $criteria->with = array('user');
+        $criteria->alias="prefix";
         $criteria->compare('user.username', $this->user_search, true);
-        $criteria->compare('user_id', $this->user_id);
+        //$criteria->compare('user.user_id',$this->user_id);
+        $criteria->compare('prefix.user_id', $this->user_id);
         $criteria->compare('kefu_userid', $this->kefu_userid);
         $criteria->compare('kefu_username', $this->kefu_username);
         $criteria->compare('kefu_addtime', $this->kefu_addtime);
