@@ -17,6 +17,11 @@ class VerifyController extends SBaseController
         $this->render('vip', array('model' => $model, ));
         
     }
+    //return vip status 
+    public function vipStatus($data,$row,$c)
+    {
+        return $data->vip_status==1 ? '<font color=blue>已审核</font>':'<font color=red>未审核</font>';
+    }
     // Uncomment the following methods and override them if needed
     /*
     public function filters()

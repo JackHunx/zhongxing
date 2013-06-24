@@ -18,7 +18,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Vips</h1>
+<h1>Vip审核</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -36,6 +36,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'id'=>'vip-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+    //'htmlOptions'=>array('stytle'=>'textalgin:center'),
 	'columns'=>array(
 		'user_id',
       // 'User.username',
@@ -47,7 +48,13 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		//'kefu_userid',
 		'kefu_username',
 		//'kefu_addtime',
-		'vip_status',
+        //array(
+        array(
+        'name'=>'vip_status',
+        'type'=>'raw',
+        'value'=>array($this,'vipStatus'),
+        ),
+		//'vip_status',
 		'vip_remark',
 		/*
 		'vip_money',

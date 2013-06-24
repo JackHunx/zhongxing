@@ -96,9 +96,10 @@ class Vip extends CActiveRecord
     {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array(
-            'user'=>array(self::HAS_ONE,'User','user_id'),
-        );
+        return array('user' => array(
+                self::HAS_ONE,
+                'User',
+                'user_id'), );
     }
 
     /**
@@ -107,11 +108,12 @@ class Vip extends CActiveRecord
     public function attributeLabels()
     {
         return array(
-            'user_id' => 'User',
+            'user_search' => '用户名',
+            'user_id' => '用户ID',
             'kefu_userid' => 'Kefu Userid',
-            'kefu_username' => 'Kefu Username',
+            'kefu_username' => '客服',
             'kefu_addtime' => 'Kefu Addtime',
-            'vip_status' => 'Vip Status',
+            'vip_status' => '状态',
             'vip_remark' => 'Vip Remark',
             'vip_money' => 'Vip Money',
             'vip_verify_remark' => 'Vip Verify Remark',
@@ -149,8 +151,8 @@ class Vip extends CActiveRecord
         // should not be searched.
 
         $criteria = new CDbCriteria;
-        $criteria->with=array('user');
-        $criteria->compare('user.username',$this->user_search,true);
+        $criteria->with = array('user');
+        $criteria->compare('user.username', $this->user_search, true);
         $criteria->compare('user_id', $this->user_id);
         $criteria->compare('kefu_userid', $this->kefu_userid);
         $criteria->compare('kefu_username', $this->kefu_username);
@@ -181,6 +183,17 @@ class Vip extends CActiveRecord
         $criteria->compare('borrow_paymeng', $this->borrow_paymeng);
         $criteria->compare('friends_apply', $this->friends_apply);
 
-        return new CActiveDataProvider($this, array('criteria' => $criteria, ));
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+            'sort' => array(
+            'attributes' => array(
+            'user_search' => array(
+                        'asc' => 'user.username',
+                        'desc' => 'user.username DESC',
+                        ),'*' 
+                        ),
+                        ),
+            ));
     }
+
 }
