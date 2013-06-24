@@ -62,7 +62,17 @@ class ValidateController extends SBaseController
     public function actionVip()
     {
         $model = new Vip;
-        //$record = 
+        $record = $model->findByPk($this->_user->id);
+        
+        if ($record !== null) {
+            
+            if ($record->vip_status == 1) {
+                $this->render('vip', array('status' => 'Vip会员','model'=>$this->_model,'vip'=>$record));
+            } elseif ($record->vip_status == 0) {
+                $this->render('vip', array('status' => '<font color=red>Vip申请中</font>','model'=>$this->_model,'vip'=>$record));
+            }
+            //$this->render('vip');
+        }else{
         if (isset($_POST['Vip'])) {
             $vip = array(
                 'user_id' => $this->_user->id,
@@ -71,13 +81,14 @@ class ValidateController extends SBaseController
                 );
 
             //print_r(array_merge($vip, $_POST['Vip']));
-//            exit();
+            //            exit();
+           
             $model->attributes = array_merge($vip, $_POST['Vip']);
             if ($model->save())
                 $this->redirect(array('validate/vip', 'id' => $model->user_id));
         }
         //$model = new User;
-        $this->render('vip', array('model' => $this->_model));
+        $this->render('vip', array('model' => $this->_model,'status'=>'普通会员','vip'=>$record));}
     }
     //return $model  = user::mode();
     private function loadModel($id)
