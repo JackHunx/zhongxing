@@ -5,9 +5,9 @@
  * LoginForm is the data structure for keeping
  * user login form data. It is used by the 'login' action of 'SiteController'.
  */
-class LoginForm extends CFormModel
+class AdminLoginForm extends CFormModel
 {
-    public $verifyCode;
+   // public $verifyCode;
     public $username;
     public $password;
     public $rememberMe;
@@ -23,12 +23,12 @@ class LoginForm extends CFormModel
     {
         return array(
             // username and password are required
-            array('username, verifyCode, password', 'required'),
+            array('username,password', 'required'),
             // rememberMe needs to be a boolean
             array('rememberMe', 'boolean'),
             // password needs to be authenticated
             array('password', 'authenticate'),
-            array('verifyCode', 'captcha'),
+            //array('verifyCode', 'captcha'),
             );
     }
 
@@ -38,10 +38,10 @@ class LoginForm extends CFormModel
     public function attributeLabels()
     {
         return array(
-            'username' => '用户名',
-            'password' => '密码',
-            'rememberMe' => '下次自动登陆',
-            'verifyCode' => '验证码',
+            'username' => '�û���',
+            'password' => '����',
+            'rememberMe' => '�´��Զ���½',
+            'verifyCode' => '��֤��',
             );
     }
 

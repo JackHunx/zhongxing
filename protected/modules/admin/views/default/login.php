@@ -54,7 +54,7 @@
 					<div class="alert alert-info">
 						请输入用户名和密码
 					</div>
-					<form class="form-horizontal" action="" method="post">
+					<form class="form-horizontal" action="" id="login-form" method="post">
 						<fieldset>
 							<div class="input-prepend" title="Username" data-rel="tooltip">
 								<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="admin[username]" id="username" type="text" value="admin" />
@@ -67,7 +67,7 @@
 							<div class="clearfix"></div>
 
 							<div class="input-prepend">
-							<label class="remember" for="remember"><input type="checkbox" id="remember" />Remember me</label>
+							<label class="remember" for="remember"><input type="checkbox" id="remember" />记住我</label>
 							</div>
 							<div class="clearfix"></div>
 
