@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -105,7 +108,7 @@ background-position:0 -99px;
         window.open('http://localhost/Jquery-ui/zxUI/ieerror.html','_self','');
 </script><![endif]-->
 
-	<?php if(!isset($no_visible_elements) || !$no_visible_elements)	{ ?>
+	<?php if (!isset($no_visible_elements) || !$no_visible_elements) { ?>
 	<!-- topbar starts -->
 	<div class="navbar">
 		<div class="container-fluid">
@@ -118,14 +121,30 @@ background-position:0 -99px;
 			
 			<!--- end top view -->
 			<!-- user dropdown starts -->
-			<!---not login --->
+		
+            
+            <!---not login --->
 					  <div class="pull-right span3">
+                      
 					  	<ul class="dashboard-list">
+                        <?php
+    if (isset(Yii::app()->user->username)) {
+        $out = Yii::app()->baseUrl . "/index.php/?r=site/logout";
+        $username=Yii::app()->user->username;
+        echo <<< ETO
+    <li class="pull-left gray">欢迎{$username}</li>
+							<li class="pull-left"><a class="guid" href="{$out}" >登出</a>
+ETO;
+    } else {
+
+        echo <<< ETO
 							<li class="pull-left gray">游客</li>
 							<li class="pull-left"><a class="guid" href="#" >免费注册 </a></li>
 							<li class="pull-left"><a class="guid" href="#" >登录 </a></li>
 							<li class="pull-left"><a class="guid" href="#" >分享 </a></li>
-							
+ETO;
+    }
+?>	
 							
 						
 						</ul>
@@ -139,7 +158,7 @@ background-position:0 -99px;
 						
 					  </div>
 					<!---end login -->
-					 
+					
 			
 				<div class="btn-group pull-right" >
 					
@@ -167,7 +186,8 @@ background-position:0 -99px;
 		<div id="slide" class="row-fluid span7 show-grid">
 			<p class="btn-group green ">
 			<ul class="dashboard-list">
-			<li class="pull-left"><button class="btn btn-large btn-primary"><a class="white" href="<?php echo Yii::app()->baseUrl;?>">首页</a></button>
+			<li class="pull-left"><button class="btn btn-large btn-primary"><a class="white" href="<?php echo
+    Yii::app()->baseUrl; ?>">首页</a></button>
 				<p class="btn-group green">
 					<button class="btn btn-primary">test1</button>
 					<button class="btn">test2</button>
@@ -193,7 +213,7 @@ background-position:0 -99px;
 		<ul class="c">
 		
 			<li class="nav_lishw" id="">
-				<span class="v"><a class="white" href="<?php echo Yii::app()->baseUrl;?>"  class="sele">首页</a><span class="vertical pull-right"></span></span> 
+				<span class="v"><a class="white" href="<?php echo Yii::app()->baseUrl; ?>"  class="sele">首页</a><span class="vertical pull-right"></span></span> 
 				<div class="kind_menu" style=" display: block;">
 					<a href="">欢迎</a>
 					<a href="http://www.17sucai.com/">关于我们</a>
@@ -306,7 +326,7 @@ background-position:0 -99px;
 	<?php } ?>
 	<div>
 		<div class="row-fluid">
-		<?php if(!isset($no_visible_elements) || !$no_visible_elements) { ?>
+		<?php if (!isset($no_visible_elements) || !$no_visible_elements) { ?>
 		
 			
 			
@@ -362,7 +382,8 @@ echo $content;
 			<p class="pull-left"><a class="gray" href="http://usman.it" target="_blank">客服中心</a> </p>
 			<div class="pull-right">
 		
-				<p class="pull-right">&copy; <a href="http://usman.it" target="_blank">众兴投资</a> <?php echo date('Y') ?></p>
+				<p class="pull-right">&copy; <a href="http://usman.it" target="_blank">众兴投资</a> <?php echo
+date('Y') ?></p>
 				<p>ICP证:<a href="http://usman.it" target="_blank">鲁ICP备13008504号-1</a></p>
 				<p>统一客服热线:400-080-1891 公司地址:山东省临沂市新华路12号万阅城A座902</p>
 				</div>
@@ -538,7 +559,7 @@ echo $content;
 	
 	
 	<?php //Google Analytics code for tracking my demo site, you can remove this.
-		if($_SERVER['HTTP_HOST']=='usman.it') { ?>
+if ($_SERVER['HTTP_HOST'] == 'usman.it') { ?>
 		<script>
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-26532312-1']);
