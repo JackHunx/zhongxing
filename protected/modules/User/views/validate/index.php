@@ -1,1 +1,1 @@
-<font size=50 color=red>ั้ึคาณรๆ</font>
+<font size=50 color=red>้ช่ฏ้กต้ข</font>

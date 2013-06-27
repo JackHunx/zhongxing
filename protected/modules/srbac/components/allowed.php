@@ -1,5 +1,11 @@
 <?php 
  return array(
-	'UserRegister'
+	'SiteIndex',
+	'SiteError',
+	'SiteContact',
+	'SiteLogin',
+	'SiteLogout',
+	'UserRegister',
+	'admin-DefaultLogin'
 );
 ?>

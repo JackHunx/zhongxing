@@ -34,6 +34,7 @@
  */
 class Site extends CActiveRecord
 {
+   // public $verifyCode;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -60,6 +61,7 @@ class Site extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+           // array('verifyCode','captcha'),
 			array('pid, order, status', 'numerical', 'integerOnly'=>true),
 			array('code, nid, rank, litpic, addtime, addip', 'length', 'max'=>50),
 			array('name, url, aurl', 'length', 'max'=>255),
@@ -91,6 +93,7 @@ class Site extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
+            //'verifyCode',
 			'site_id' => 'Site',
 			'code' => 'Code',
 			'name' => 'Name',

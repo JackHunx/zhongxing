@@ -7,6 +7,8 @@
  */
 class UserIdentity extends CUserIdentity
 {
+    //verify code
+    public $verifyCode;
     private $_id;
 	/**
 	 * Authenticates a user.
@@ -26,7 +28,7 @@ class UserIdentity extends CUserIdentity
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
        else{
             $this->_id = $record->user_id;
-            //$this->setState('title', $record->title);
+            $this->setState('username', $record->username);
             $this->errorCode=self::ERROR_NONE;
             }
             

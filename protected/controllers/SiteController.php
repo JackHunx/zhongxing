@@ -12,6 +12,9 @@ class SiteController extends SBaseController
 			'captcha'=>array(
 				'class'=>'CCaptchaAction',
 				'backColor'=>0xFFFFFF,
+                'maxLength'=>'5',
+                'minLength'=>'4',
+                'height'=>'40'
 			),
 			// page action renders "static" pages stored under 'protected/views/site/pages'
 			// They can be accessed via: index.php?r=site/page&view=FileName
@@ -27,9 +30,10 @@ class SiteController extends SBaseController
 	 */
 	public function actionIndex()
 	{
+	   $scroll=$this->getScrolPic();
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$this->render('index',array('scroll'=>$scroll));
 	}
 
 	/**
@@ -78,7 +82,11 @@ class SiteController extends SBaseController
 	public function actionLogin()
 	{
 		$model=new LoginForm;
-
+        if(isset(Yii::app()->user->id))
+        {
+            echo '您已经登陆,请不要重复登陆';
+            exit();
+        }
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
@@ -97,7 +105,45 @@ class SiteController extends SBaseController
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
+    
+    //获取滚动图片
+    private function getScrolPic()
+    {
+        $record = Site::model()->find('nid=:nid',array(':nid'=>'scroll'))->content;
+        if($record !==null)
+        {
+           return json_decode($record,true);
+            //print_r($record);
+        }
+        return false;        
+    }
+    
+	public function actionLoginold()
+	{
+		$model=new LoginForm;
+        if(isset(Yii::app()->user->id))
+        {
+            echo '您已经登陆,请不要重复登陆';
+            exit();
+        }
+		// if it is ajax validation request
+		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
+		{
+			echo CActiveForm::validate($model);
+			Yii::app()->end();
+		}
 
+		// collect user input data
+		if(isset($_POST['LoginForm']))
+		{
+			$model->attributes=$_POST['LoginForm'];
+			// validate user input and redirect to the previous page if valid
+			if($model->validate() && $model->login())
+				$this->redirect(Yii::app()->user->returnUrl);
+		}
+		// display the login form
+		$this->render('login1',array('model'=>$model));
+	}
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */
