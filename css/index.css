@@ -5,7 +5,7 @@ body {
 	background:#fff !important;
 }
 
-body, div, ul, ol, li {
+div, ul, ol, li {
 	margin:0;
 	padding:0;
 }
@@ -37,7 +37,7 @@ a {
 	text-decoration:none;
 }
 a:hover {
-	text-decoration:underline;
+	
 	cursor:pointer;
 }
 .red {
@@ -105,11 +105,22 @@ a:hover {
 	margin-right:auto;
 	margin-top:5px;
 }
+.top10{
+    
+    margin-top:10px;
+}
 .topheadernav li {
 	margin-left:10px;
 	font-size:12px;
 	margin-top:10px;
 	color:#666666;
+}
+.index_topnav_loginnav {
+	width:315px;
+	height:202px;
+	margin-top:5px;
+	margin-left:12px;
+	border:1px solid #CCC
 }
 .topheadernav li a, .topheadernav li img {
 	border:none;
@@ -332,10 +343,45 @@ a:hover {
 	border:1px solid #CCC
 }
 .index_topnav_rightnav {
-	width:266px;
-	height:160px;
+	width:315px;
+	height:202px;
+	margin-top:5px;
 	margin-left:12px;
 	border:1px solid #CCC
+}
+
+
+.index_topnav_loginnav {
+	width:315px;
+	height:202px;
+	margin-top:5px;
+	margin-left:12px;
+	border:0px;
+}
+.index_topnav_loginnav .titleft {
+    background: url(http://static.ppdai.com/skin/images/index_img.png) 0 0 no-repeat;
+    width: 10px;
+    height: 32px;
+    display: block;
+}
+
+.index_topnav_loginnav .titcenter {
+    background: url(http://static.ppdai.com/skin/images/index_img.png) 0 -32px repeat-x;
+    width: 286px;
+    height: 32px;
+    display: block;
+    line-height: 34px;
+    font-size: 12px;
+    padding-left: 5px;
+    color: #444444;
+    padding-right: 5px;
+}
+
+.index_topnav_loginnav .titright {
+    background: url(http://static.ppdai.com/skin/images/index_img.png) -5px 0 no-repeat;
+    width: 9px;
+    height: 32px;
+    display: block;
 }
 .index_topnav_rightnav label {
 	color:#20a927;
@@ -343,6 +389,50 @@ a:hover {
 	margin:5px 20px 0;
 	display:block;
 }
+.index_login_nav{
+    border: 1px solid #CCC;
+    border-top: 1px solid #2a76d4;
+    width:313px;
+    margin-top:32px;
+}
+.index_topnav_rightnav .titleft {
+	background:url(http://static.ppdai.com/skin/images/index_img.png) 0 0 no-repeat;
+	width:10px;
+	height:32px;
+	display:block;
+}
+.index_topnav_rightnav .titcenter {
+	background:url(http://static.ppdai.com/skin/images/index_img.png) 0 -32px repeat-x;
+	width:286px;
+	height:32px;
+	display:block;
+	line-height:34px;
+	font-size:12px;
+	padding-left:5px;
+	color:#444444;
+	padding-right:5px;
+}
+.index_topnav_rightnav .titright {
+	background:url(http://static.ppdai.com/skin/images/index_img.png) -5px 0 no-repeat;
+	width:9px;
+	height:32px;
+	display:block;
+}
+.index_login_nav table tr{
+    height:30px;
+    vertical-align:top;
+    
+}
+.index_login_nav table tr td{
+    font-size:14px;
+}
+.index_login_nav input{
+    height:20px;
+    width:160px:
+    border-width:1px;
+    border-color:LightGray;
+}
+
 .index_topnav_rightnav a {
 	background:url(http://static.ppdai.com/skin/images/index_img.png) 0 -65px no-repeat;
 	margin-left:35px;
@@ -363,8 +453,10 @@ a:hover {
 	margin:0 auto;
 }
 .index_center_leftnav {
+    
 	width:702px;
-	margin-top:10px;
+	height:1092px;
+    margin-top:10px;
 }
 .index_center_leftnav .blue_fenge {
 	width:700px;
@@ -397,7 +489,7 @@ a:hover {
 }
 .index_center_leftnav .list_nav {
 	width:650px;
-	height: 228px;
+	
 	border:1px solid #CCC;
 	border-top:none;
 	overflow:hidden;
@@ -417,6 +509,16 @@ a:hover {
 	width:240px;
 	line-height:20px;
 	margin-top:3px;
+}
+.index_center_leftnav .nowlist_rightnva{
+    width:280px;
+    line-height: 20px;
+    margin-top: 3px;
+    
+}
+.index_center_leftnav .nowlist_rightnva li{
+    width:280px;
+    float:right;
 }
 .index_center_leftnav .nowinimg {
 	background:url(http://static.ppdai.com/skin/images/index_img.png) 0 -118.5px no-repeat;
@@ -620,15 +722,15 @@ a:hover {
 .index_bottom_rightnav .list_nav {
 	width:253px;
 	border:1px solid #CCC;
-	height:300px;
+	height:260px;
 *height:310px;
-	margin-bottom:30px;
+
 	border-top:none;
 	overflow:hidden;
 	font-size:12px;
 	padding:5px;
-	padding-top:30px;
-	padding-bottom:30px;
+	padding-top:15px;
+	
 	padding-left:8px;
 }
 .index_bottom_rightnav .list_nav .img_nav {
