@@ -23,6 +23,42 @@ class SiteController extends SBaseController
 			),
 		);
 	}
+    ///test upload
+    public function actionUpload()
+        {       
+            
+                $tempFolder=Yii::getPathOfAlias('webroot').'/upload/temp/';
+ 
+                mkdir($tempFolder, 0777, TRUE);
+                mkdir($tempFolder.'chunks', 0777, TRUE);
+ 
+                Yii::import("ext.EFineUploader.qqFileUploader");
+ 
+                $uploader = new qqFileUploader();
+                $uploader->allowedExtensions = array('jpg','jpeg');
+                $uploader->sizeLimit = 2 * 1024 * 1024;//maximum file size in bytes
+                $uploader->chunksFolder = $tempFolder.'chunks';
+ 
+                $result = $uploader->handleUpload($tempFolder);
+                $result['filename'] = $uploader->getUploadName();
+                $result['folder'] = $webFolder;
+ 
+                $uploadedFile=$tempFolder.$result['filename'];
+ 
+                header("Content-Type: text/plain");
+                $result=htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+                echo $result;
+                Yii::app()->end();
+        }
+        public function actionTestUpload()
+        {
+           if(isset($_POST['ajax']) && $_POST['ajax']=='FineUploader' )
+           {
+            print_r($_POST);
+            exit();
+           }
+           $this->render('upload');
+        }
 
 	/**
 	 * This is the default 'index' action that is invoked
@@ -84,7 +120,7 @@ class SiteController extends SBaseController
 		$model=new LoginForm;
         if(isset(Yii::app()->user->id))
         {
-            echo 'ÄúÒÑ¾­µÇÂ½,Çë²»ÒªÖØ¸´µÇÂ½';
+            echo 'æ‚¨å·²ç»ç™»é™†,è¯·ä¸è¦é‡å¤ç™»é™†';
             exit();
         }
 		// if it is ajax validation request
@@ -106,7 +142,7 @@ class SiteController extends SBaseController
 		$this->render('login',array('model'=>$model));
 	}
     
-    //»ñÈ¡¹ö¶¯Í¼Æ¬
+    //è·å–æ»šåŠ¨å›¾ç‰‡
     private function getScrolPic()
     {
         $record = Site::model()->find('nid=:nid',array(':nid'=>'scroll'))->content;
@@ -123,7 +159,7 @@ class SiteController extends SBaseController
 		$model=new LoginForm;
         if(isset(Yii::app()->user->id))
         {
-            echo 'ÄúÒÑ¾­µÇÂ½,Çë²»ÒªÖØ¸´µÇÂ½';
+            echo 'æ‚¨å·²ç»ç™»é™†,è¯·ä¸è¦é‡å¤ç™»é™†';
             exit();
         }
 		// if it is ajax validation request
