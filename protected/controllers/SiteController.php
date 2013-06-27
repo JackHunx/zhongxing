@@ -30,9 +30,10 @@ class SiteController extends SBaseController
 	 */
 	public function actionIndex()
 	{
+	   $scroll=$this->getScrolPic();
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$this->render('index',array('scroll'=>$scroll));
 	}
 
 	/**
@@ -104,7 +105,19 @@ class SiteController extends SBaseController
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
-
+    
+    //»ñÈ¡¹ö¶¯Í¼Æ¬
+    private function getScrolPic()
+    {
+        $record = Site::model()->find('nid=:nid',array(':nid'=>'scroll'))->content;
+        if($record !==null)
+        {
+           return json_decode($record,true);
+            //print_r($record);
+        }
+        return false;        
+    }
+    
 	public function actionLoginold()
 	{
 		$model=new LoginForm;

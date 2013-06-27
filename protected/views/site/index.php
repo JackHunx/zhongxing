@@ -5,11 +5,21 @@
 	<div>
 	<div id="slider_nav" class="slider_nav pull-left">
 			<div class="conbox">
-				<div><a href="http://www.17sucai.com/" title="jquery 3D图片滚动一个漂亮的手机软件网站图片展示"><img width="620" height="340" alt="jquery 3D图片滚动一个漂亮的手机软件网站图片展示" src="images/c9cfb68c13cbe925d3c9a03912f3b1de.jpg"></a></div>
-				<div><a href="hhttp://www.17sucai.com/" title="jquery 分类搜索框防谷歌网站搜索页面"><img width="620" height="340" alt="jquery 分类搜索框防谷歌网站搜索页面" src="images/310772035582a551c3afd8f6cc071409.jpg"></a></div>
-				<div><a href="http://www.17sucai.com/" title="jquery 文本框提示顶部弹跳框使用jQuery和CSS3的插件"><img width="620" height="340" alt="jquery 文本框提示顶部弹跳框使用jQuery和CSS3的插件" src="images/f4fe9dd611bd459c0244159163109bc4.jpg"></a></div>
-				<div><a href="http://www.17sucai.com/" title="jquery 图片特效用CSS3和HTML5制作仿动画头条报纸缩小到放大翻转图片展示"><img width="620" height="340" alt="jquery 图片特效用CSS3和HTML5制作仿动画头条报纸缩小到放大翻转图片展示" src="images/323ce4b13f72648e096bd1a86cba762a.jpg"></a></div>
-				<div><a href="http://www.17sucai.com/" title="jquery评论星星打分特效、鼠标滑过星星显示评论信息"><img width="620" height="340" alt="jquery评论星星打分特效、鼠标滑过星星显示评论信息" src="images/9fae30738c94fb8e47dd2ba3e6003290.jpg"></a></div>
+            <?php 
+               
+                $count = count($scroll);
+                for($i=0;$i<$count;$i++)
+                {
+     
+
+                    echo <<<ETO
+                    <div><a href="{$scroll[$i]['url']}" title="{$scroll[$i]['title']}"><img width="620" height="340" alt="{$scroll[$i]['title']}" src="{$scroll[$i]['src']}"></a></div>
+                    
+ETO;
+                    
+                } 
+            ?>
+				
 			</div>
 
 			<div class="switcher">

@@ -15,7 +15,7 @@
 		http://twitter.com/halalit_usman
 	-->
 	<meta charset="utf-8">
-	<title>Free HTML5 Bootstrap Admin Template</title>
+	<title>众兴投资</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
 	<meta name="author" content="Muhammad Usman">
@@ -214,7 +214,7 @@ ETO;
 		
 			<li class="nav_lishw" id="">
 				<span class="v"><a class="white" href="<?php echo Yii::app()->baseUrl; ?>"  class="sele">首页</a><span class="vertical pull-right"></span></span> 
-				<div class="kind_menu" style=" display: block;">
+				<div class="kind_menu" >
 					<a href="">欢迎</a>
 					<a href="http://www.17sucai.com/">关于我们</a>
 					<a href="http://www.17sucai.com/">法律政策</a>
@@ -474,10 +474,10 @@ date('Y') ?></p>
     var site_url = window.location.href.toLowerCase();	
    
 	switch (true) {
-		case site_url.indexOf("/jsfoot") > 0 || site_url.indexOf("/fafds") > 0 || site_url.indexOf("/js") > 0 : 
+		case site_url.indexOf("ruser") > 0 || site_url.indexOf("/fafds") > 0 || site_url.indexOf("r=user") > 0 : 
 		//判断当前频道属于哪个根目录模块就设置频道标签高亮
 			$("#nav li").attr("class","");
-			$("#nav li").eq(1).attr("class","nav_lishw"); //设置当前频道标签高亮
+			$("#nav li").eq(3).attr("class","nav_lishw"); //设置当前频道标签高亮
 			$(".nav_lishw .v a").attr("class","sele");
 			$(".nav_lishw .kind_menu").show();
 			break;
