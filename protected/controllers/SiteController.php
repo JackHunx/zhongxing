@@ -42,6 +42,7 @@ class SiteController extends SBaseController
  
                 $result = $uploader->handleUpload($tempFolder);
                 $result['filename'] = $uploader->getUploadName();
+                $result['url']=Yii::app()->getBaseUrl().'/upload/temp/'.$uploader->getUploadName();
                 //$resuslt['response'] = "test";
                // $result['folder'] = $webFolder;
  

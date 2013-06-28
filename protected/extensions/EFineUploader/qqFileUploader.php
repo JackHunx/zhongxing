@@ -91,7 +91,7 @@ class qqFileUploader {
         // Validate file size
 
         if ($size == 0){
-            return array('error' => '文件时空的.');
+            return array('error' => '文件是空的.');
         }
 
         if ($size > $this->sizeLimit){
