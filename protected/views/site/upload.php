@@ -15,9 +15,9 @@ $this->widget('ext.EFineUploader.EFineUploader',
                                         'onError'=>"js:function(id, name, errorReason){ }",
                                          ),
                        'validation'=>array(
-                                 'allowedExtensions'=>array('jpg','jpeg'),
+                                 'allowedExtensions'=>array('jpg','jpeg','doc'),
                                  'sizeLimit'=>2 * 1024 * 1024,//maximum file size in bytes
-                                 'minSizeLimit'=>20*1024,// minimum file size in bytes
+                                 'minSizeLimit'=>5*1024,// minimum file size in bytes
                                           ),
                       )
       ));

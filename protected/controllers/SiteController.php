@@ -29,19 +29,19 @@ class SiteController extends SBaseController
             
                 $tempFolder=Yii::getPathOfAlias('webroot').'/upload/temp/';
  
-                mkdir($tempFolder, 0777, TRUE);
-                mkdir($tempFolder.'chunks', 0777, TRUE);
- 
+               // mkdir($tempFolder, 0777, TRUE);
+//                mkdir($tempFolder.'chunks', 0777, TRUE);
+// 
                 Yii::import("ext.EFineUploader.qqFileUploader");
  
                 $uploader = new qqFileUploader();
-                $uploader->allowedExtensions = array('jpg','jpeg');
+                $uploader->allowedExtensions = array('jpg','jpeg','doc');
                 $uploader->sizeLimit = 2 * 1024 * 1024;//maximum file size in bytes
                 $uploader->chunksFolder = $tempFolder.'chunks';
  
                 $result = $uploader->handleUpload($tempFolder);
                 $result['filename'] = $uploader->getUploadName();
-                $result['folder'] = $webFolder;
+               // $result['folder'] = $webFolder;
  
                 $uploadedFile=$tempFolder.$result['filename'];
  
