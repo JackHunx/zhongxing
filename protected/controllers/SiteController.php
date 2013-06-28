@@ -27,6 +27,7 @@ class SiteController extends SBaseController
     public function actionUpload()
         {       
             
+                //设定上传目录
                 $tempFolder=Yii::getPathOfAlias('webroot').'/upload/temp/';
  
                // mkdir($tempFolder, 0777, TRUE);
@@ -41,6 +42,7 @@ class SiteController extends SBaseController
  
                 $result = $uploader->handleUpload($tempFolder);
                 $result['filename'] = $uploader->getUploadName();
+                //$resuslt['response'] = "test";
                // $result['folder'] = $webFolder;
  
                 $uploadedFile=$tempFolder.$result['filename'];
@@ -48,6 +50,7 @@ class SiteController extends SBaseController
                 header("Content-Type: text/plain");
                 $result=htmlspecialchars(json_encode($result), ENT_NOQUOTES);
                 echo $result;
+                //echo "haha";
                 Yii::app()->end();
         }
         public function actionTestUpload()

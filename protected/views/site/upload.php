@@ -11,8 +11,8 @@ $this->widget('ext.EFineUploader.EFineUploader',
                        'retry'=>array('enableAuto'=>true,'preventRetryResponseProperty'=>true),
                        'chunking'=>array('enable'=>true,'partSize'=>100),//bytes
                        'callbacks'=>array(
-                                        'onComplete'=>"js:function(id, name, response){  }",
-                                        'onError'=>"js:function(id, name, errorReason){ }",
+                                        'onComplete'=>"js:function(id, name, response){}",
+                                        'onError'=>"js:function(id, name, errorReason){  }",
                                          ),
                        'validation'=>array(
                                  'allowedExtensions'=>array('jpg','jpeg','doc'),

@@ -53,7 +53,7 @@ class qqFileUploader {
         if ($this->toBytes(ini_get('post_max_size')) < $this->sizeLimit ||
             $this->toBytes(ini_get('upload_max_filesize')) < $this->sizeLimit){
             $size = max(1, $this->sizeLimit / 1024 / 1024) . 'M';
-            return array('error'=>"Server error. Increase post_max_size and upload_max_filesize to ".$size);
+            return array('error'=>"Notice:上传文件最大限定为:".$size);
         }
 
 		// is_writable() is not reliable on Windows (http://www.php.net/manual/en/function.is-executable.php#111146)
@@ -64,7 +64,7 @@ class qqFileUploader {
         $folderInaccessible = ($isWin) ? !is_writable($uploadDirectory) : ( !is_writable($uploadDirectory) && !is_executable($uploadDirectory) );
 
         if ($folderInaccessible){
-            return array('error' => "Server error. Uploads directory isn't writable" . (!$isWin) ? " or executable." : ".");
+            return array('error' => "Server error: Uploads directory isn't writable" . (!$isWin) ? " or executable." : ".");
         }
 
         if(!isset($_SERVER['CONTENT_TYPE'])) {
@@ -85,17 +85,17 @@ class qqFileUploader {
         // Validate name
 
         if ($name === null || $name === ''){
-            return array('error' => 'File name empty.');
+            return array('error' => '文件太小.');
         }
 
         // Validate file size
 
         if ($size == 0){
-            return array('error' => 'File is empty.');
+            return array('error' => '文件时空的.');
         }
 
         if ($size > $this->sizeLimit){
-            return array('error' => 'File is too large.');
+            return array('error' => '文件太大.');
         }
 
         // Validate file extension
@@ -105,7 +105,7 @@ class qqFileUploader {
 
         if($this->allowedExtensions && !in_array(strtolower($ext), array_map("strtolower", $this->allowedExtensions))){
             $these = implode(', ', $this->allowedExtensions);
-            return array('error' => 'File has an invalid extension, it should be one of '. $these . '.');
+            return array('error' => '只能上传这些格式的文件'. $these . '.');
         }
 
         // Save a chunk
