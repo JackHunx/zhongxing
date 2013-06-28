@@ -47,7 +47,7 @@ class SiteController extends SBaseController
  
                 $uploadedFile=$tempFolder.$result['filename'];
  
-                header("Content-Type: text/plain");
+                header("Content-Type: text/html");
                 $result=htmlspecialchars(json_encode($result), ENT_NOQUOTES);
                 echo $result;
                 //echo "haha";

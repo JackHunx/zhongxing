@@ -1,4 +1,6 @@
 <?php 
+
+echo Yii::app()->user->id;
 $this->widget('ext.EFineUploader.EFineUploader',
  array(
        'id'=>'FineUploader',
@@ -11,7 +13,7 @@ $this->widget('ext.EFineUploader.EFineUploader',
                        'retry'=>array('enableAuto'=>true,'preventRetryResponseProperty'=>true),
                        'chunking'=>array('enable'=>true,'partSize'=>100),//bytes
                        'callbacks'=>array(
-                                        'onComplete'=>"js:function(id, name, response){}",
+                                       'onComplete'=>"js:function(id, name, response){alert(response.filename);}",
                                         'onError'=>"js:function(id, name, errorReason){  }",
                                          ),
                        'validation'=>array(
