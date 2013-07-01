@@ -61,13 +61,16 @@ class SiteController extends SBaseController
     }
     public function actionUploads()
     {
+        if (!isset(Yii::app()->user->id)) {
+            throw new CException('No user id');
+        }
         /**
          * Created by JetBrains PhpStorm.
          * User: taoqili
          * Date: 12-7-26
          * Time: 上午10:32
          */
-         $saveFolder = Yii::getPathOfAlias('webroot') . '/upload/test/';
+        $saveFolder = Yii::getPathOfAlias('webroot') . '/upload/credit/';
         header("Content-Type: text/html; charset=utf-8");
         error_reporting(E_ERROR | E_WARNING);
         //include "Uploader.class.php";
@@ -87,7 +90,7 @@ class SiteController extends SBaseController
             "maxSize" => 100000 //文件大小限制，单位KB
                 );
         //生成上传实例对象并完成上传
-         Yii::import("ext.FilesUpload.php.Uploader");
+        Yii::import("ext.FilesUpload.php.Uploader");
         $up = new Uploader("upfile", $config);
 
         /**
@@ -101,26 +104,58 @@ class SiteController extends SBaseController
          *     "state" => ""           //上传状态，上传成功时必须返回"SUCCESS"
          * )
          */
-        $info = $up->getFileInfo();
 
-        /**
-         * 向浏览器返回数据json数据
-         * {
-         *   'url'      :'a.rar',        //保存后的文件路径
-         *   'fileType' :'.rar',         //文件描述，对图片来说在前端会添加到title属性上
-         *   'original' :'编辑器.jpg',   //原始文件名
-         *   'state'    :'SUCCESS'       //上传状态，成功时返回SUCCESS,其他任何值将原样返回至图片上传框中
-         * }
-         */
-        echo '{"url":"' . $info["url"] . '","fileType":"' . $info["type"] .
-            '","original":"' . $info["originalName"] . '","state":"' . $info["state"] . '"}';
-
+        $upinfo = $up->getFileInfo();
+        $patterns = Yii::getPathOfAlias('webroot');
+        $replace = Yii::app()->getBaseUrl();
+        $url = str_replace($patterns, $replace, $upinfo['url']);
+        //save to database
+        $model = new Upfiles;
+        //$value['name']= htmlspecialchars($_POST['pictitle'], ENT_QUOTES);
+        //         $value['user_id']=Yii::app()->user->id;
+        //         $value['filetype']=$upinfo['type'];
+        //         $value['filename']=$upinfo['originalName'];
+        //         $value['filesize']=filesize($upinfo['url']);
+        //
+        $value = array(
+            'name' => htmlspecialchars($_POST['pictitle'], ENT_QUOTES),
+            'user_id' => Yii::app()->user->id,
+            'aid' => '0',
+            'status' => '0',
+            'filetype' => $upinfo['type'],
+            'filename' => $upinfo['originalName'],
+            'filesize' => filesize($upinfo['url']),
+            'fileurl' => $url,
+            'if_cover' => '0',
+            'order' => '0',
+            'hits' => '0',
+            'addtime' => time(),
+            'addip' => Yii::app()->request->getUserHostAddress(),
+            );
+        $value['updatetime'] = $value['addtime'];
+        $value['updateip'] = $value['addip'];
+        $model->attributes = $value;
+        if ($model->save()) {
+            /**
+             * 向浏览器返回数据json数据
+             * {
+             *   'url'      :'a.rar',        //保存后的文件路径
+             *   'fileType' :'.rar',         //文件描述，对图片来说在前端会添加到title属性上
+             *   'original' :'编辑器.jpg',   //原始文件名
+             *   'state'    :'SUCCESS'       //上传状态，成功时返回SUCCESS,其他任何值将原样返回至图片上传框中
+             * }
+             */
+            echo '{"url":"' . $url . '","fileType":"' . $upinfo['type'] . '","original":"' .
+                $upinfo["originalName"] . '","state":"' . $upinfo["state"] . '"}';
+        } else {
+        throw new CException("Save to data base error!");
+        }
 
     }
     public function actionTestUpload()
     {
 
-    $this->render('uploads');
+        $this->render('uploads');
         // if(isset($_POST['ajax']) && $_POST['ajax']=='FineUploader' )
         //           {
         //            print_r($_POST);
