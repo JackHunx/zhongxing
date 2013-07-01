@@ -3,11 +3,13 @@
 class DefaultController extends SBaseController
 {
     //用户
+    public $layout ="/layouts/user";
     private $_user;
     private $_vip;
     public function init()
     {
         $cs = Yii::app()->clientScript;
+        $cs->registerCoreScript('jquery');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user_new.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/index.css');
