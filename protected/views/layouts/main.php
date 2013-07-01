@@ -333,7 +333,7 @@ ETO;
 			<noscript>
 				<div class="alert alert-block span10">
 					<h4 class="alert-heading">Warning!</h4>
-					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+					<p>你的浏览器需要 <a href="http://jingyan.baidu.com/article/6f2f55a1e1b78db5b93e6cc5.html" target="_blank">JavaScript</a> 运行才能正常浏览.</p>
 				</div>
 			</noscript>
 			
