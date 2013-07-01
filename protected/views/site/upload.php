@@ -1,4 +1,6 @@
 <?php 
+
+echo Yii::app()->user->id;
 $this->widget('ext.EFineUploader.EFineUploader',
  array(
        'id'=>'FineUploader',
@@ -11,8 +13,8 @@ $this->widget('ext.EFineUploader.EFineUploader',
                        'retry'=>array('enableAuto'=>true,'preventRetryResponseProperty'=>true),
                        'chunking'=>array('enable'=>true,'partSize'=>100),//bytes
                        'callbacks'=>array(
-                                        'onComplete'=>"js:function(id, name, response){  }",
-                                        'onError'=>"js:function(id, name, errorReason){ }",
+                                       'onComplete'=>"js:function(id, name, response){ $('.qq-upload-status-text').html(function(){return '文件上传成<a target=_black href='+response.url+'>查看</a>';});}",
+                                        'onError'=>"js:function(id, name, errorReason){  }",
                                          ),
                        'validation'=>array(
                                  'allowedExtensions'=>array('jpg','jpeg','doc'),

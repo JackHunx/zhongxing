@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>百度Flash图片上传!!</title>
+    <style type="text/css">  
+        #flash{ margin:5px;}  
+        #upload{width: 100px;height: 30px;float:left; background: url("images/upload.png"); margin:3px 6px 0 5px;cursor: pointer;}
+       
+        #txt{ width:100%; float:left; clear:both; margin:5px; line-height:25px; font-size:14px; font-family:微软雅黑;} 
+        #txt span{ color:Green;}
+        #txt strong{ color:blue;}
+        
+    </style>
+    <script src="./JS/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <script language="javascript" type="text/javascript">
+        /**
+        * 检查flash状态
+        * @private
+        * @param {Object} target flash对象
+        * @return {Boolean}
+        */
+        function _checkReady(target) {
+            if (typeof target !== 'undefined' && typeof target.flashInit !== 'undefined' && target.flashInit()) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+        /**
+        * 创建一个随机的字符串
+        * @private
+        * @return {String}
+        */
+        function _createString() {
+            var prefix = 'bd__flash__';
+            return prefix + Math.floor(Math.random() * 2147483648).toString(36);
+        };
+
+        /**
+        * 为传入的匿名函数创建函数名
+        * @private
+        * @param {String|Function} fun 传入的匿名函数或者函数名
+        * @return {String}
+        */
+        function _createFunName(fun) {
+            var name = '';
+            name = _createString();
+            window[name] = function () {
+                fun.apply(window, arguments);
+            };
+            return name;
+        }
+        /***
+        反复判断Flash是欧加载完成,完成后为Flash添加回调函数..
+        */
+        var interval = setInterval(function () {
+            try {
+                var flash = thisMovie("flash");
+                if (_checkReady(flash)) { //轮询flash的某个方法即可
+
+                    var callBack = [];
+                    callBack[0] = _createFunName(selectFileCallback);
+                    callBack[1] = _createFunName(exceedFileCallback);
+                    callBack[2] = _createFunName(deleteFileCallback);
+                    callBack[3] = _createFunName(StartUploadCallback);
+                    callBack[4] = _createFunName(uploadCompleteCallback);
+                    callBack[5] = _createFunName(uploadErrorCallback);
+                    callBack[6] = _createFunName(allCompleteCallback);
+                    callBack[7] = _createFunName(changeHeightCallback);
+                    thisMovie("flash").call('setJSFuncName', [callBack]);
+                             
+                    clearInterval(interval);
+                }
+            }
+            catch (ex) {
+            }
+        }, 20);
+
+        //获得Flash对象
+        function thisMovie(movieName) {
+            if (navigator.appName.indexOf("Misrosoft") != -1) {
+                return window[movieName];
+            }
+            else {
+                return document[movieName];
+            }
+        }
+        //事件
+        $(function () {
+            $("#upload").live("click", function () { return upload(); });
+        });
+        // 通过添加文件按钮新增的需要上传文件
+        function selectFileCallback(selectFiles) {
+           
+
+        }
+        // 文件超出限制的最大体积时的回调
+        function exceedFileCallback(selectFiles) {
+
+        }
+        //被删除的文件: 用于控制上传按钮是否显示...
+        function deleteFileCallback(delFiles) {
+
+        }
+        //开始上传前执行的JS函数.
+        function StartUploadCallback(data) {
+
+        }
+        //上传成功一个文件后执行的JS函数.
+        //data.filename： "1_121029084117_2.png"
+        //data.info: "{'url':'Upload//3e9a8006-c7a9-4b26-a015-f0bac4435613.png','title':'1_121029084117_2.png','original':'1_121029084117_2.png','state':'SUCCESS'}"
+        //data.filetype :".png"
+        //data.filesize :864163
+        function uploadCompleteCallback(data) {
+
+        }
+        //上传失败后执行的JS函数.
+        function uploadErrorCallback(data) {
+
+        }
+        //全部完成上传后执行
+        function allCompleteCallback(data) {
+
+        }
+        //改变Flash高度时执行
+        function changeHeightCallback(data) {
+
+        }
+        //开始上传
+        function upload() {
+            thisMovie("flash").upload();
+        } 
+
+ 
+</script>
+<div id="tabBodys" class="tabbody">
+    <div style="z-index: 200;" id="local" class="panel">
+        <div id="flashContainer">
+     <object id="flash" name="flash" codeBase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="793" align="middle" height="272">
+                <param name="_cx" value="16086">
+                <param name="_cy" value="7196">
+                <param name="flashvars" value="container=flashcontainer&amp;url=uploadimage.ashx&amp;ext=%7b%22param1%22%3a%22value1%22%2c%20%22param2%22%3a%22value2%22%7d&amp;filetype=%7b%22description%22%3a%22%e5%9b%be%e7%89%87%22%2c%20%22extension%22%3a%22*.gif%3b*.jpeg%3b*.png%3b*.jpg%22%7d&amp;flashurl=imageuploader.swf&amp;width=608&amp;height=272&amp;gridwidth=121&amp;gridheight=120&amp;picwidth=100&amp;picheight=100&amp;uploaddatafieldname=upfile&amp;picdescfieldname=pictitle&amp;maxsize=4&amp;compresssize=2&amp;maxnum=32&amp;compressside=0&amp;compresslength=900">
+                <param name="movie" value="imageuploader.swf">
+                <param name="src" value="imageuploader.swf">
+                <param name="wmode" value="window">
+                <param name="play" value="0">
+                <param name="loop" value="-1">
+                <param name="quality" value="high">
+                <param name="salign" value="lt">
+                <param name="menu" value="-1">
+                <param name="base" value="">
+                <param name="allowscriptaccess" value="">
+                <param name="scale" value="noscale">
+                <param name="devicefont" value="0">
+                <param name="embedmovie" value="0">
+                <param name="bgcolor" value="">
+                <param name="swremote" value="">
+                <param name="moviedata" value="">
+                <param name="seamlesstabbing" value="1">
+                <param name="profile" value="0">
+                <param name="profileaddress" value="">
+                <param name="profileport" value="0">
+                <param name="allownetworking" value="all">
+                <param name="allowfullscreen" value="false">
+                <param name="allowfullscreeninteractive" value="">
+                <param name="isdependent" value="0">
+                <param name="wmode" value="window">
+                <param name="movie" value="imageUploader.swf">
+                <param name="flashvars" value="container=flashContainer&amp;url=UploadImage.ashx&amp;ext=%7B%22param1%22%3A%22value1%22%2C%20%22param2%22%3A%22value2%22%7D&amp;fileType=%7B%22description%22%3A%22%E5%9B%BE%E7%89%87%22%2C%20%22extension%22%3A%22*.gif%3B*.jpeg%3B*.png%3B*.jpg%22%7D&amp;flashUrl=imageUploader.swf&amp;width=608&amp;height=272&amp;gridWidth=121&amp;gridHeight=120&amp;picWidth=100&amp;picHeight=100&amp;uploadDataFieldName=upfile&amp;picDescFieldName=pictitle&amp;maxSize=4&amp;compressSize=2&amp;maxNum=32&amp;compressSide=0&amp;compressLength=900">
+                <embed height="272" name="flash" type="application/x-shockwave-flash" align="middle" pluginspage="http://www.macromedia.com/go/getflashplayer" width="608" src="imageUploader.swf" flashvars="container=flashContainer&amp;url=.%2Fphp%2FimageUp.php&amp;ext=%7B%22param1%22%3A%22value1%22%2C%20%22param2%22%3A%22value2%22%7D&amp;fileType=%7B%22description%22%3A%22%E5%9B%BE%E7%89%87%22%2C%20%22extension%22%3A%22*.gif%3B*.jpeg%3B*.png%3B*.jpg%22%7D&amp;flashUrl=imageUploader.swf&amp;width=608&amp;height=272&amp;gridWidth=121&amp;gridHeight=120&amp;picWidth=100&amp;picHeight=100&amp;uploadDataFieldName=upfile&amp;picDescFieldName=pictitle&amp;maxSize=4&amp;compressSize=2&amp;maxNum=32&amp;compressSide=0&amp;compressLength=900" ver="10.0.0" wmode="window" errorMessage="Flash插件初始化失败，请更新您的FlashPlayer版本之后重试！">
+           </object>
+        </div>
+        <div><div style='float:left; margin-left:5px; background: url("images/upload.png");' id="upload"></div></div>
+    </div>
+    <iframe style="display: none; z-index: 1;" id="maskIframe" src="about:blank" frameBorder="no" scrolling="no"></iframe>
+</div>
+
+    </form>
+</body>
+</html>
+
