@@ -1,6 +1,6 @@
 <?php 
 
-echo Yii::app()->user->id;
+
 $this->widget('ext.FilesUpload.FilesUpload',
  array(
        'id'=>'filesUpload',
