@@ -41,8 +41,8 @@
 			content+='flashvars="type='+post_type;
 			content+='&photoUrl='+pic_path;
 			content+='&photoId='+pic_id;
-			content+='&postUrl='+cameraPostUrl+'?&radom=1';
-			content+='&saveUrl='+saveUrl+'?radom=1"';
+			content+='&postUrl='+cameraPostUrl+'&radom=1';
+			content+='&saveUrl='+saveUrl+'&radom=1"';
 			content+=' pluginspage="http://www.macromedia.com/go/getflashplayer"';
 			content+=' type="application/x-shockwave-flash"';
 			content+=' allowscriptaccess="always" quality="high" src="'+editorFlaPath+'"/>';
