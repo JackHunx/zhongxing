@@ -22,6 +22,12 @@
         <?php 
         $this->widget('ext.avatar.AvatarUpload',array(
         'id'=>'avatarUpload',
+        'config'=>array(
+            'extensions'=>'jpg,jpeg,gif,png',
+            'saveUrl'=>Yii::app()->getBaseUrl().'/index.php?r=User/avatar/saveAvatar',
+            'cameraPostUrl'=>Yii::app()->getBaseUrl().'/index.php?r=User/avatar/camera',
+            'editorFlaPath'=>Yii::app()->getBaseUrl().'/images/AvatarEditor.swf'
+        ),
         
         ));
 
