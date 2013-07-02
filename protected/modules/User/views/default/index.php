@@ -5,7 +5,7 @@
 		<div class="user_right_l ">
 						<div class="user_right_lmain">
 				<div class="user_right_img">
-					<img src="/data/avatar/30_avatar_middle.jpg" height="90" class="picborder"><br>
+					<img src="<?php echo $info['avatar'];?>" height="90" class="picborder"><br>
 					<a href="index.php?r=User/avatar"><font color="#FF0000">[更换头像]</font></a>
 				</div>
 				<div class="user_right_txt">

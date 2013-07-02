@@ -3,9 +3,10 @@
 class DefaultController extends SBaseController
 {
     //用户
-    public $layout ="/layouts/user";
+    public $layout = "/layouts/user";
     private $_user;
     private $_vip;
+    private $info = array();
     public function init()
     {
         $cs = Yii::app()->clientScript;
@@ -41,8 +42,8 @@ class DefaultController extends SBaseController
     {
         return array(
             array(
-                'allow', // allow all users to perform 'index' and 'view' actions        
-                //'index',   
+                'allow', // allow all users to perform 'index' and 'view' actions
+                //'index',
                 'actions' => array('view'),
                 'users' => array('*'),
                 ),
@@ -76,8 +77,15 @@ class DefaultController extends SBaseController
         //            $this->_userId = $_GET['id'];\
         //        }
         //$this->_userId = $_GET['id'];
+
         $userModel = $this->loadUserModel($this->_user->id);
-        $this->render('index', array('model' => $userModel, 'vip' => $this->_vip,'baseUrl'=>Yii::app()->baseUrl));
+        //get avatar
+        $this->getAvatar('small');
+        $this->render('index', array(
+            'model' => $userModel,
+            'info' => $this->info,
+            'vip' => $this->_vip,
+            'baseUrl' => Yii::app()->baseUrl));
     }
     /**
      * vip 查询
@@ -87,7 +95,7 @@ class DefaultController extends SBaseController
     {
         $record = UserCache::model()->findByPk($this->_user->id);
         if ($record === null || $record->vip_status = 0) {
-            $this->_vip['status']='0';
+            $this->_vip['status'] = '0';
             $this->_vip['msg'] = "申请vip";
         } elseif ($record->vip_status = 1) {
             $this->_vip['status'] = '1';
@@ -96,12 +104,25 @@ class DefaultController extends SBaseController
 
 
     }
+    /**
+     * get user avatar 
+     * @return $info['avatar']
+     */
+    private function getAvatar($type)
+    {
+        $record = Userinfo::model()->findByAttributes(array('user_id' => $this->_user->
+                id));
+
+        $this->info['avatar'] = (($record != null && is_file(Yii::getPathOfAlias('webroot') .
+            '/upload/avatar/avatar_' . $type . '/' . $record->litpic . '_' . $type . '.jpg')) ?
+            Yii::app()->baseUrl . '/upload/avatar/avatar_' . $type . '/' . $record->litpic .
+            '_' . $type . '.jpg' : Yii::app()->baseUrl . '/images/default_avatar.jpg');
+    }
     //加载用户模型
     private function loadUserModel($user_id)
     {
         //$value = User::model()->findByAttributes(array('user_id'=>$user_id));
         $model = User::model()->findByPk($user_id);
-
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;
