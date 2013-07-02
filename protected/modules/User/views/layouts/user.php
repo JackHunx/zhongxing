@@ -262,7 +262,7 @@ ETO;
 					</div>
 			</li>
 			<li class="" id="">
-				<span class="v"> <a class="whiete" href="http://www.17sucai.com/" class="">我的账户</a><span class="vertical pull-right"></span></span> 
+				<span class="v"> <a class="whiete" href="<?php echo Yii::app()->baseUrl.'/index.php?r=User';?>" class="">我的账户</a><span class="vertical pull-right"></span></span> 
 				<div class="kind_menu" style=" display: none;">
 				<!--- before login -->
 				<div>欢迎来到众兴投资</div>
