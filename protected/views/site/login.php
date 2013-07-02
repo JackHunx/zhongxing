@@ -16,7 +16,7 @@
             Something<br>
             <br>
             <div>
-                <a href="/register.htm" onclick="addtrack(&quot;/login/google&quot;);">
+                <a href="<?php echo Yii::app()->baseUrl.'/index.php?r=site/register'; ?>" onclick="addtrack(&quot;/login/google&quot;);">
                     <img src="http://static.ppdai.com/skin/images/register_n_button.gif" height="30" border="0" alt=""></a>
             </div>
         </div>
@@ -35,7 +35,7 @@
                     <table align="center" cellpadding="3" cellspacing="3" style="width: 481px">
                         <tbody><tr style="height: 56px; vertical-align: top">
                             <td class="style1" align="right">
-                                用户名或邮箱：
+                                用户名：
                             </td>
                             <td class="style2">
                                 <input name="txtUserName" type="text" value="test3" id="txtUserName" class="lsls" onfocus="changeborder(this)" onblur="changeborder2(this)" style="height:26px;width:280px;border-width:1px; border-color:LightGray;">
@@ -48,7 +48,7 @@
                             </td>
                             <td class="style2">
                                 <input name="txtPassword" type="password" maxlength="50" id="txtPassword" onfocus="changeborder(this)" onblur="changeborder2(this)" style="height: 26px; width: 280px; border-width: 1px; border-color: rgb(204, 204, 204);">
-                                <span id="_txtPassword" class="red" style="line-height: 10px"><a href="forgetpassword.aspx" onclick="addtrack(&quot;/login/forgetpassword&quot;);">忘记密码？</a></span>
+                                <span id="_txtPassword" class="red" style="line-height: 10px"><a href="#" onclick="addtrack(&quot;/login/forgetpassword&quot;);">忘记密码？</a></span>
                             </td>
                         </tr>
                         
