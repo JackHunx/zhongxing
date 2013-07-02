@@ -155,13 +155,13 @@ class SiteController extends SBaseController
     public function actionTestUpload()
     {
 
-        $this->render('uploads');
+        //$this->render('uploads');
         // if(isset($_POST['ajax']) && $_POST['ajax']=='FineUploader' )
         //           {
         //            print_r($_POST);
         //            exit();
         //           }
-        //           $this->render('upload');
+                 $this->render('upload');
     }
 
     /**
