@@ -26,10 +26,13 @@ class ValidateController extends SBaseController
         //$this->_model= User::model();
         //init css and javascript
         $cs = Yii::app()->clientScript;
+        $cs->registerCoreScript('jquery');
+        $cs->registerScriptFile(Yii::app()->baseUrl.'/js/base.js');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user_new.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/index.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/main_user.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/css.css');
         //Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/validate/user.css');
     }

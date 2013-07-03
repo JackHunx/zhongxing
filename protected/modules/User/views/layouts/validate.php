@@ -4,14 +4,14 @@
 <div class="user_right">
 		<div class="user_right_menu">
 						<ul>
-				<li class="title"><a href="index.php?user&amp;q=code/user">修改个人信息 </a></li>
-				<li><a href="index.php?user&amp;q=code/user/realname">实名认证</a></li>
-				<li><a href="index.php?user&amp;q=code/user/email_status">邮箱认证</a></li>
-				<li><a href="index.php?user&amp;q=code/user/phone_status">手机认证</a></li>
-				<li><a href="index.php?user&amp;q=code/user/video_status">视频认证</a></li>
-				<li><a href="index.php?user&amp;q=code/user/scene_status">现场认证</a></li>
-				<li class="current"><a href="index.php?user&amp;q=code/user/avatar">头像信息</a></li>
-				<li><a href="index.php?user&amp;q=code/user/privacy">设置隐私</a></li>
+				<li class="title"><a href="index.php?r=User/validate">修改个人信息 </a></li>
+				<li><a href="index.php?r=User/validate/avatar">实名认证</a></li>
+				<li><a href="index.php?r=User/validate/email">邮箱认证</a></li>
+				<li><a href="index.php?r=User/validate/phone">手机认证</a></li>
+				<li><a href="index.php?r=User/validate/video">视频认证</a></li>
+				<li><a href="index.php?r=User/validate/scene">现场认证</a></li>
+				<li><a href="index.php?r=User/avatar">头像信息</a></li>
+				<li><a href="index.php?r=User/validate/privacy">设置隐私</a></li>
 			</ul>
 					</div>
 		
