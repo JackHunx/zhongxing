@@ -61,9 +61,9 @@
 		  <div class="title">
 		      <table width="100%" cellspacing="0" cellpadding="0" border="0">
   <tbody><tr>
-    <td width="12" align="left"><img height="30" width="12" src="/themes/61dai/images/t_left.gif"></td>
-    <td background="/themes/61dai/images/t_bg.gif" align="left"><h1 class="dd">借入流程</h1></td>
-    <td width="12" align="right"><img height="30" width="12" src="/themes/61dai/images/t_right.gif"></td>
+    <td width="12" align="left"><img height="30" width="12" src="<?php echo Yii::app()->baseUrl;?>/images/t_left.gif"></td>
+    <td background="<?php echo Yii::app()->baseUrl;?>/images/t_bg.gif" align="left"><h1 class="dd">借入流程</h1></td>
+    <td width="12" align="right"><img height="30" width="12" src="<?php echo Yii::app()->baseUrl;?>/images/t_right.gif"></td>
   </tr>
 </tbody></table>
           </div>
@@ -89,9 +89,9 @@
 		  <div class="title">
 		      <table width="100%" cellspacing="0" cellpadding="0" border="0">
   <tbody><tr>
-    <td width="12" align="left"><img height="30" width="12" src="/themes/61dai/images/t_left.gif"></td>
-    <td background="/themes/61dai/images/t_bg.gif" align="left"><h1 class="dd">投资者上手</h1></td>
-    <td width="12" align="right"><img height="30" width="12" src="/themes/61dai/images/t_right.gif"></td>
+    <td width="12" align="left"><img height="30" width="12" src="<?php echo Yii::app()->baseUrl;?>/images/t_left.gif"></td>
+    <td background="<?php echo Yii::app()->baseUrl;?>/images/t_bg.gif" align="left"><h1 class="dd">投资者上手</h1></td>
+    <td width="12" align="right"><img height="30" width="12" src="<?php echo Yii::app()->baseUrl;?>/images/t_right.gif"></td>
   </tr>
 </tbody></table>
           </div>

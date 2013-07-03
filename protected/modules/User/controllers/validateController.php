@@ -4,6 +4,7 @@ class ValidateController extends SBaseController
 {
     private $_user;
     private $_model;
+    public $layout = "/layouts/validate";
     //actions
     public function actions()
     {
