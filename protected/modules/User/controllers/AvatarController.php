@@ -2,7 +2,7 @@
 
 class AvatarController extends SBaseController
 {
-    public $layout = '/layouts/user';
+    public $layout = '/layouts/validate';
     public function init()
     {
         //注册jquery
