@@ -56,7 +56,11 @@ class EmailController extends SBaseController
 
     public function actionIndex()
     {
-        $this->render('index');
+        if(!isset($_GET['email']))
+        {
+            $this->redirect(array('/User/'));
+        }
+        $this->render('index',array('email'=>$_GET['email']));
     }
     public function actionTest()
     {
