@@ -204,7 +204,7 @@ class UserController extends SBaseController
                 if ($identity->authenticate()) {
                     Yii::app()->user->login($identity);
                     //进入用户中心
-                    $this->redirect(array('User/email','email'=>$value['email']));
+                    $this->redirect(array('User/email','email'=>$value['email'],'realname'=>$value['realname']));
                 } else {
                     //进入用户中心
                     $this->redirect(array('User/'));
@@ -224,7 +224,16 @@ class UserController extends SBaseController
      */
     public function actionEmail()
     {
-        echo "send email";
+        $id=Yii::app()->user->id;
+        if($id==null || !isset($_POST['email'])||!isset($_POST['realname']))
+        {
+            echo "邮箱发送失败,请过1分钟后重新发送";
+        }else{
+        if($this->sendEmail($_POST['email'],$_POST['realname'],$id))
+            echo "邮件发送成功,请查收邮箱";
+        else
+            echo "邮件发送失败,请跳过后重新发送";
+        }
     }
 //    
     //check email
@@ -314,7 +323,10 @@ class UserController extends SBaseController
         if ($model->save()) {
             return Yii::app()->sendemail->send($this->userInfo['email'], '众兴投资有限公司', '邮件验证',
                 $this->getEmailBody());
-        }
+                return true;
+        }else{
+            return false;
+            }
     }
     //encypt password by md5
     private function encypt($value)

@@ -7,7 +7,7 @@
 		<div class="user_action_reg_submit">
 			<div class="user_action_reg_a1"></div>
 			<div class="user_action_reg_form" style="width:86%">
-			<strong id="email"><?php echo $email;?></strong> 将收到一封认证邮件，请查收。
+			你好,<?php echo '<strong id="realname" >'.$realname.'</strong>您的邮箱<strong id="email">'.$email;?></strong> 将收到一封认证邮件，请查收。
 成功认证后，你就可以畅快使用站内所有功能。<br><br>
 
 <a href="" id="toemail" target="_blank"><img src="<?php echo Yii::app()->baseUrl?>/images/renzheng.png" align="absmiddle"></a><br><br>

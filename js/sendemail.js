@@ -33,11 +33,13 @@ $("#toemail").attr("href", hash[url]);
 
 function ajaxSendEmail()
 {
+    
+    data="&realname="+$("#realname").text()+"&eamil="+$("#email").text();
     url =window.location.pathname+"?r=user/email";
     $.ajax({
         type:"POST",
         url:url,
-        data:'',
+        data:data,
         success:function(data){
             alert(data);
         }
