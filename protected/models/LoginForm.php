@@ -7,7 +7,7 @@
  */
 class LoginForm extends CFormModel
 {
-    public $verifyCode;
+    //public $verifyCode;
     public $username;
     public $password;
     public $rememberMe;
@@ -23,12 +23,12 @@ class LoginForm extends CFormModel
     {
         return array(
             // username and password are required
-            array('username, verifyCode, password', 'required'),
+            array('username, password', 'required'),
             // rememberMe needs to be a boolean
             array('rememberMe', 'boolean'),
             // password needs to be authenticated
             array('password', 'authenticate'),
-            array('verifyCode', 'captcha'),
+            //array('captcha'),
             );
     }
 
@@ -41,7 +41,7 @@ class LoginForm extends CFormModel
             'username' => '用户名',
             'password' => '密码',
             'rememberMe' => '下次自动登陆',
-            'verifyCode' => '验证码',
+            //'verifyCode' => '验证码',
             );
     }
 

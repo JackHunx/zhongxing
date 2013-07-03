@@ -36,11 +36,7 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 		<?php echo $form->passwordField($model,'password'); ?>
 		
 	</div>
-    <div class="row">
-         <?php echo $form->labelEx($model,'verifyCode') ?>
-         <?php echo $form->textField($model,'verifyCode');?>
-        <div><?php $this->widget('CCaptcha',array('showRefreshButton'=>false,'clickableImage'=>true,'imageOptions'=>array('alt'=>'点击换图','title'=>'点击换图','style'=>'cursor:pointer'))); ?></div>
-    </div>
+    
 
 	<div class="row rememberMe">
 		<?php echo $form->checkBox($model,'rememberMe'); ?>

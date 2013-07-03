@@ -264,8 +264,22 @@ ETO;
 			<li class="" id="">
 				<span class="v"> <a class="whiete" href="<?php echo Yii::app()->baseUrl.'/index.php?r=User';?>" class="">我的账户</a><span class="vertical pull-right"></span></span> 
 				<div class="kind_menu" style=" display: none;">
-				<!--- before login -->
-				<div>欢迎来到众兴投资</div>
+                <?php
+                if(Yii::app()->user->id)
+                {
+                    $username = Yii::app()->user->username;
+                    $out = Yii::app()->baseUrl.'/index.php?r=site/logout';
+                    //afeter login
+                    echo <<<ETO
+                    <div>
+                    <a>欢迎你, $username</a><a class="guid" href="{$out}" >[登出]</a>
+                    <div>
+ETO;
+                }else{
+				//<!--- before login -->
+				echo '<div>欢迎来到众兴投资</div>';
+                }
+                ?>
 				<!-- after login--
 				<p class="btn-group">
 					<a href="http://www.17sucai.com/">我是借入者</a>

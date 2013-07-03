@@ -2,6 +2,7 @@
 
 class SiteController extends SBaseController
 {
+    private $info = array(); //user info
     public function init()
     {
         Yii::app()->clientScript->registerCoreScript('jquery');
@@ -148,7 +149,7 @@ class SiteController extends SBaseController
             echo '{"url":"' . $url . '","fileType":"' . $upinfo['type'] . '","original":"' .
                 $upinfo["originalName"] . '","state":"' . $upinfo["state"] . '"}';
         } else {
-        throw new CException("Save to data base error!");
+            throw new CException("Save to data base error!");
         }
 
     }
@@ -161,7 +162,7 @@ class SiteController extends SBaseController
         //            print_r($_POST);
         //            exit();
         //           }
-                 $this->render('upload');
+        $this->render('upload');
     }
 
     /**
@@ -170,10 +171,13 @@ class SiteController extends SBaseController
      */
     public function actionIndex()
     {
+        // get scrolPic
         $scroll = $this->getScrolPic();
+        //get user info
+        $this->getUserInfo('small');
         // renders the view file 'protected/views/site/index.php'
         // using the default layout 'protected/views/layouts/main.php'
-        $this->render('index', array('scroll' => $scroll));
+        $this->render('index', array('scroll' => $scroll, 'userInfo' => $this->info));
     }
 
     /**
@@ -219,8 +223,9 @@ class SiteController extends SBaseController
     {
         $model = new LoginForm;
         if (isset(Yii::app()->user->id)) {
-            echo '您已经登陆,请不要重复登陆';
-            exit();
+            $this->redirect('index.php?r=User');
+            //echo '您已经登陆,请不要重复登陆';
+
         }
         // if it is ajax validation request
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
@@ -230,7 +235,11 @@ class SiteController extends SBaseController
 
         // collect user input data
         if (isset($_POST['LoginForm'])) {
+
             $model->attributes = $_POST['LoginForm'];
+            // echo "<pre>";
+            //            print_r($model->attributes);
+            //            exit();
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login())
                 $this->redirect(Yii::app()->user->returnUrl);
@@ -238,7 +247,18 @@ class SiteController extends SBaseController
         // display the login form
         $this->render('login', array('model' => $model));
     }
+    //获取用户信息
+    private function getUserInfo($type)
+    {
+        $record = Userinfo::model()->findByAttributes(array('user_id' => Yii::app()->
+                user->id));
+        //print_r($record->litpic)
+        $this->info['avatar'] = (($record != null && is_file(Yii::getPathOfAlias('webroot') .
+            '/upload/avatar/avatar_' . $type . '/' . $record->litpic . '_' . $type . '.jpg')) ?
+            Yii::app()->baseUrl . '/upload/avatar/avatar_' . $type . '/' . $record->litpic .
+            '_' . $type . '.jpg' : Yii::app()->baseUrl . '/images/default_avatar.jpg');
 
+    }
     //获取滚动图片
     private function getScrolPic()
     {

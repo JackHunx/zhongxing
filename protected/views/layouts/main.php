@@ -136,11 +136,13 @@ background-position:0 -99px;
 							<li class="pull-left"><a class="guid" href="{$out}" >登出</a>
 ETO;
     } else {
-
+        $baseUrl=Yii::app()->baseUrl;
+        $register = $baseUrl.'/index.php?r=user/register';
+        $login = $baseUrl.'/index.php?r=site/login';
         echo <<< ETO
 							<li class="pull-left gray">游客</li>
-							<li class="pull-left"><a class="guid" href="#" >免费注册 </a></li>
-							<li class="pull-left"><a class="guid" href="#" >登录 </a></li>
+							<li class="pull-left"><a class="guid" href="{$register}" >免费注册 </a></li>
+							<li class="pull-left"><a class="guid" href="{$login}" >登录 </a></li>
 							<li class="pull-left"><a class="guid" href="#" >分享 </a></li>
 ETO;
     }

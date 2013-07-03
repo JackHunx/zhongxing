@@ -31,98 +31,101 @@ ETO;
 			</div>
 		</div><!--slider end-->
 	<!--- end slide -->
-	<!-- login begin --
+	<!-- login begin -->
 	
-	<div class="l index_topnav_rightnav">
+	<?php 
+    if(Yii::app()->user->id)
+    {
+        $logout = Yii::app()->baseUrl.'/index.php?r=site/logout';
+        $userCenter = Yii::app()->baseUrl.'/index.php?r=User';
+        $username = Yii::app()->user->username;
+        
+        //after login
+        echo <<<ETO
+        <div class="l index_topnav_loginnav">
                  <ul>
                 <li class="l titleft"></li>
-                <li class="l titcenter"><span class="bold l">用户登录</span></li>
-                <li class="l titright"></li>
-            </ul>
-			<div class="index_login_nav">
-                  
-				<div style="padding: 5px 0 0; margin-left: 10px;">
-                    <table align="center" cellpadding="3" cellspacing="3" style="width:280px;">
-                 
-						<tbody><tr>
-                            <td style="width:30px;" align="right">
-                                用户名：
-                            </td>
-                            <td class="style2">
-                                <input name="txtUserName" type="text" value="test3" id="txtUserName" class="lsls" onfocus="changeborder(this)" onblur="changeborder2(this)" >
-                                <span id="_txtUserName" class="red"></span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width:30px;"  align="right">
-                                密 码：
-                            </td>
-                            <td class="style2">
-                                <input name="txtPassword" type="password" maxlength="50" id="txtPassword" onfocus="changeborder(this)" onblur="changeborder2(this)" >
-                               
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>
-                                &nbsp;
-                            </td>
-                            <td>
-                                <div id="palError" class="ErrorMsg" style="display: none;
-                                    margin-left: 0px; margin-bottom: 0px; width: 280px">
-	
-                                    <span style="margin: 6px 0 6px 35px;">
-                                        
-                                    </span>
-                                
-</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="style1">
-                            </td>
-                            <td class="style2">
-                                <input class="center" type="image" name="btnLogin" id="btnLogin" src="http://static.ppdai.com/skin/images/login_n_button.gif" alt="登录" style="border-width:0px;width:85px;height:28px;">&nbsp;
-                            </td>
-                        </tr>
-                        
-                    </tbody></table>
-                </div>
-            </div>
-        </div>
-	<!---->
-	<div class="l index_topnav_loginnav">
-                 <ul>
-                <li class="l titleft"></li>
-                <li class="l titcenter"><span class="bold l">用户登录</span><a class="pull-right gray" style="color:#666666" href="#">>>免费注册</a></li>
+                <li class="l titcenter"><span class="bold l">账户信息</span></li>
                 <li class="l titright"></li>
             </ul>
 	<div class="login-box index_login_nav">
 				<div class="center top10">
 					
-					<form class="form-horizontal" action="index.html" method="post">
+					<!----->
+                    
+                    <ul class="index_log_ul1" style="height:160px">
+			<li style="text-align:center">
+				
+                <table style="margin-top:12px" width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tbody style="text-align:center"><tr style="text-align:center">
+                    <td><img src="{$userInfo['avatar']}" width="80px" height="80px" class="picborder"/></td>
+                    <td align="left" width="100px" ><br><span style="font-family:'微软雅黑';">欢迎你：$username</span><br><br><a href="$userCenter"><font color="#0000FF">[用户中心]</font></a><a href="$logout"><font color="#FF0000">[退出]</font></a></td>
+                  </tr>
+                </tbody></table>
+
+			</li>
+
+			<li class="index_log_li1" style="line-height:15px">
+				<a href="">资金记录</a>&nbsp;&nbsp;&nbsp;
+				<a href="">帐户详情</a>&nbsp;&nbsp;&nbsp;
+				<a href="">我要收款</a><br>
+				<a href="">我要充值</a>&nbsp;&nbsp;&nbsp;
+				<a href="">我要提现</a>&nbsp;&nbsp;&nbsp;
+				<a href="">我要还款</a>
+			</li>
+		</ul>
+                    
+                    
+                    <!----->
+                    
+					</div>
+				
+				</div>
+	<!-- login end --->
+        
+ETO;
+    }else{
+    $action = Yii::app()->baseUrl.'/index.php?r=site/login';
+    $register = Yii::app()->baseUrl.'/index.php?r=user/register';
+    //before login
+    echo <<<ETO
+	<!--before login-->
+	<div class="l index_topnav_loginnav">
+                 <ul>
+                <li class="l titleft"></li>
+                <li class="l titcenter"><span class="bold l">用户登录</span><a class="pull-right gray" style="color:#666666" href="$register">>>免费注册</a></li>
+                <li class="l titright"></li>
+            </ul>
+	<div class="login-box index_login_nav">
+				<div class="center login_top">
+					
+					<form class="form-horizontal" action="$action" method="post">
 						<fieldset>
 							<div class="input-prepend" data-rel="tooltip" data-original-title="用户名">
-								<span class="add-on"><i class="icon-user"></i></span><input autofocus="" class="input-large span10" name="username" id="username" type="text" value="用户名">
+								<span class="add-on"><i class="icon-user"></i></span><input autofocus="" class="input-large span10" name="LoginForm[username]" id="username" type="text" value="用户名">
 							</div>
-							<div class="clearfix"></div>
+						
 
 							<div class="input-prepend" data-rel="tooltip" data-original-title="密码">
-								<span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10" name="password" id="password" type="password" value="admin123456">
+								<span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10" name="LoginForm[password]" id="password" type="password" value="admin123456">
 							</div>
-							<div class="clearfix"></div>
-
-							<p class="center span5">
+								<div class="clearfix"></div>
+                            <div class="center">
+							<p class="center span5 login_button" >
 							<button type="submit" class="btn btn-primary">登录</button>
 							
 							</p>
-							
+                            <div>
+						
 						</fieldset>
 					</form>
 					</div>
 				
 				</div>
 	<!-- login end --->
+ETO;
+}
+    ?>
 </div>
 </div>
 
