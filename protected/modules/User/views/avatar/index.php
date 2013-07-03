@@ -17,7 +17,7 @@
 		
 				<!--头像 开始-->
 		<div class="user_help">请上传你网站的头像</div>
-		<div><img id="avatar" src=""></div>
+		
 		
         <?php 
         $this->widget('ext.avatar.AvatarUpload',array(
