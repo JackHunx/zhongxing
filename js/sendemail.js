@@ -34,7 +34,7 @@ $("#toemail").attr("href", hash[url]);
 function ajaxSendEmail()
 {
     
-    data="&realname="+$("#realname").text()+"&eamil="+$("#email").text();
+    data="&realname="+$("#realname").text()+"&email="+$("#email").text();
     url =window.location.pathname+"?r=user/email";
     $.ajax({
         type:"POST",

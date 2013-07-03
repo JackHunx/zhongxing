@@ -228,12 +228,11 @@ class UserController extends SBaseController
         if($id==null || !isset($_POST['email'])||!isset($_POST['realname']))
         {
             echo "邮箱发送失败,请过1分钟后重新发送";
-        }else{
-        if($this->sendEmail($_POST['email'],$_POST['realname'],$id))
+        }elseif($this->sendEmail($_POST['email'],$_POST['realname'],$id))
             echo "邮件发送成功,请查收邮箱";
         else
             echo "邮件发送失败,请跳过后重新发送";
-        }
+        
     }
 //    
     //check email
@@ -321,8 +320,7 @@ class UserController extends SBaseController
             'addip' => Yii::app()->request->getUserHostAddress(),
             );
         if ($model->save()) {
-            return Yii::app()->sendemail->send($this->userInfo['email'], '众兴投资有限公司', '邮件验证',
-                $this->getEmailBody());
+            Yii::app()->sendemail->send($this->userInfo['email'], '众兴投资有限公司', '邮件验证',$this->getEmailBody());
                 return true;
         }else{
             return false;
