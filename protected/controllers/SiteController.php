@@ -28,9 +28,7 @@ class SiteController extends SBaseController
     ///test upload
     public function actionUpload()
     {
-		print_r($_POST);
-		exit();
-
+		
         //设定上传目录
         $tempFolder = Yii::getPathOfAlias('webroot') . '/upload/temp/';
 
@@ -44,7 +42,7 @@ class SiteController extends SBaseController
             'jpg',
             'jpeg',
             'doc');
-        $uploader->sizeLimit = 2 * 1024 * 1024; //maximum file size in bytes
+        $uploader->sizeLimit = 500 * 1024; //maximum file size in bytes
         $uploader->chunksFolder = $tempFolder . 'chunks';
 
         $result = $uploader->handleUpload($tempFolder);

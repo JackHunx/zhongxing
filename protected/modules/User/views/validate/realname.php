@@ -85,17 +85,18 @@ $this->widget('ext.EFineUploader.EFineUploader',
                        'retry'=>array('enableAuto'=>true,'preventRetryResponseProperty'=>true),
                        'chunking'=>array('enable'=>true,'partSize'=>100),//bytes
                        'callbacks'=>array(
-                                       'onComplete'=>"js:function(id, name, response){ $('#card1').val(response.saveUrl); $('.qq-upload-status-text').html(function(){
-                                          
-                                        return '文件上传成功<a target=_black href='+response.url+'>查看</a>';
-                                     
-                                       });}",
+                                       'onComplete'=>"js:function(id, name, response){ if(respone.success==true)
+                                        {
+                                          $('.qq-upload-status-text').html(function(){return '文件上传成功<a target=_black href='+response.url+'>查看</a>';});  
+                                        }else{
+                                            $('.qq-upload-status-text').html(response.error);
+                                        }}",
                                         'onError'=>"js:function(id, name, errorReason){  }",
                                          ),
                        'validation'=>array(
                                  'allowedExtensions'=>array('jpg','jpeg','doc'),
-                                 'sizeLimit'=>2 * 1024 * 1024,//maximum file size in bytes
-                                 'minSizeLimit'=>5*1024,// minimum file size in bytes
+                                 'sizeLimit'=>500 * 1024,//maximum file size in bytes
+                                 'minSizeLimit'=>1*1024,// minimum file size in bytes
                                           ),
                       )
       ));
@@ -125,15 +126,19 @@ $this->widget('ext.EFineUploader.EFineUploader',
                        'retry'=>array('enableAuto'=>true,'preventRetryResponseProperty'=>true),
                        'chunking'=>array('enable'=>true,'partSize'=>100),//bytes
                        'callbacks'=>array(
-                                       'onComplete'=>"js:function(id, name, response){   $('#card2').val(response.saveUrl); $('.qq-upload-status-text').html(function(){return '文件上传成功<a target=_black href='+response.url+'>查看</a>';
-                                     
-                                       });}",
-                                        'onError'=>"js:function(id, name, errorReason){  }",
+                                       'onComplete'=>"js:function(id, name, response){   
+                                        if(respone.success==true)
+                                        {
+                                          $('.qq-upload-status-text').html(function(){return '文件上传成功<a target=_black href='+response.url+'>查看</a>';});  
+                                        }else{
+                                            $('.qq-upload-status-text').html(response.error);
+                                        }}",
+                                        'onError'=>"js:function(id, name, errorReason){alert(errorReason);}",
                                          ),
                        'validation'=>array(
                                  'allowedExtensions'=>array('jpg','jpeg','doc'),
-                                 'sizeLimit'=>2 * 1024 * 1024,//maximum file size in bytes
-                                 'minSizeLimit'=>5*1024,// minimum file size in bytes
+                                 'sizeLimit'=>500 * 1024,//maximum file size in bytes
+                                 'minSizeLimit'=>1*1024,// minimum file size in bytes
                                           ),
                       )
       ));
