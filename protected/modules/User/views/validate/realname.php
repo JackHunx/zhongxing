@@ -2,6 +2,7 @@
 //no验证
 if($model->avatar_status==0)
 {
+$baseUrl =Yii::app()->baseUrl;
 echo <<<ETO
 <div class="user_right_main">
 		
@@ -26,21 +27,21 @@ echo <<<ETO
 		<div class="user_right_border">
 			<div class="l">性 别 ：</div>
 			<div class="c">
-				<input type="radio" name="sex" value="1" checked="checked">男 <input type="radio" name="sex" value="2">女 <font color="#FF0000">*</font> 
+				<input type="radio" name="sex" value="1">男 <input type="radio" name="sex" value="2">女 <font color="#FF0000">*</font> 
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">民 族：</div>
 			<div class="c">
-				<script src="/plugins/index.php?q=linkage&amp;nid=nation&amp;name=nation&amp;value="></script><select name="nation" id="nation"><option value="329">汉族</option><option value="330">蒙古族</option><option value="331">满族</option><option value="332">朝鲜族</option><option value="333">赫哲族</option><option value="334">达斡尔族</option><option value="335">鄂温克族</option><option value="336">鄂伦春族</option><option value="337">回族</option><option value="338">东乡族</option><option value="339">土族</option><option value="340">撒拉族</option><option value="341">保安族</option><option value="342">裕固族</option><option value="343">维吾尔族</option><option value="344">哈萨克族</option><option value="345">柯尔克孜族</option><option value="346">锡伯族</option><option value="347">塔吉克族</option><option value="348">乌孜别克族</option><option value="349">俄罗斯族</option><option value="350">塔塔尔族</option><option value="351">藏族</option><option value="352">门巴族</option><option value="353">珞巴族</option><option value="354">羌族</option><option value="355">彝族</option><option value="356">白族</option><option value="357">哈尼族</option><option value="358">傣族</option><option value="359">傈僳族</option><option value="360">佤族</option><option value="361">拉祜族</option><option value="362">纳西族</option><option value="363">景颇族</option><option value="364">布朗族</option><option value="365">阿昌族</option><option value="366">普米族</option><option value="367">怒族</option><option value="368">德昂族</option><option value="369">独龙族</option><option value="370">基诺族</option><option value="371">苗族</option><option value="372">布依族</option><option value="373">侗族</option><option value="374">水族</option><option value="375">仡佬族</option><option value="376">壮族</option><option value="377">瑶族</option><option value="378">仫佬族</option><option value="379">毛南族</option><option value="380">京族</option><option value="381">土家族</option><option value="382">黎族</option><option value="383">畲族</option><option value="384">高山族</option></select> <font color="#FF0000">*</font> 
+				<script src="{$baseUrl}/index.php?r=getDropValue/nation"></script> <font color="#FF0000">*</font> 
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">出生日期：</div>
 			<div class="c">
-				<input type="text" name="birthday" value="" onclick="change_picktime()">  <font color="#FF0000">*</font> 
+				<input type="text" name="birthday" value="" onclick="WdatePicker()">  <font color="#FF0000">*</font> 
 			</div>
 		</div>
 		

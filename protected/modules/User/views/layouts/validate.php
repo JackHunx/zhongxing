@@ -5,7 +5,7 @@
 		<div class="user_right_menu">
 						<ul id="validate_tab">
 				<li class="title"><a href="index.php?r=User/validate">修改个人信息 </a></li>
-				<li><a href="index.php?r=User/validate/avatar">实名认证</a></li>
+				<li><a href="index.php?r=User/validate/realName">实名认证</a></li>
 				<li><a href="index.php?r=User/validate/email">邮箱认证</a></li>
 				<li><a href="index.php?r=User/validate/phone">手机认证</a></li>
 				<li><a href="index.php?r=User/validate/video">视频认证</a></li>

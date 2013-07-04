@@ -449,7 +449,7 @@ date('Y') ?></p>
 
 	<!-- select or dropdown enhancer -->
 	<script src="js/jquery.chosen.min.js"></script>
-	<!-- checkbox, radio, and file input styler -->
+	<!-- checkbox, radio, and file input styler --
 	<script src="js/jquery.uniform.min.js"></script>
 	<!-- plugin for gallery image view -->
 	<script src="js/jquery.colorbox.min.js"></script>
@@ -469,8 +469,9 @@ date('Y') ?></p>
 	<script src="js/jquery.uploadify-3.1.min.js"></script>
 	<!-- history.js for cross-browser state change on ajax -->
 	<script src="js/jquery.history.js"></script>
-	<!-- application script for Charisma demo -->
+	<!-- application script for Charisma demo --
 	<script src="js/charisma.js"></script>
+    -->
 	<script src="js/jquery.Xslider.js"></script>
 	<script type="text/javascript">
     var site_url = window.location.href.toLowerCase();	

@@ -17,7 +17,7 @@ class ValidateController extends SBaseController
                 );
     }
     /**
-     * init 
+     * init $cs->registerScriptFile(Yii::app()->baseUrl.'/js/validate_tab.js');
      */
     public function init()
     {
@@ -29,6 +29,7 @@ class ValidateController extends SBaseController
         $cs->registerCoreScript('jquery');
         $cs->registerScriptFile(Yii::app()->baseUrl.'/js/base.js');
         $cs->registerScriptFile(Yii::app()->baseUrl.'/js/validate_tab.js');
+        $cs->registerScriptFile(Yii::app()->baseUrl.'/js/My97DatePicker/WdatePicker.js');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user_new.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/index.css');
@@ -38,10 +39,10 @@ class ValidateController extends SBaseController
         //Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/validate/user.css');
     }
     //实名认证
-    public function actionAvatar()
+    public function actionRealName()
     {
         //$model = $this->loadModel($this->_user->id);
-        $this->render('avatar', array('model' => $this->_model));
+        $this->render('realname', array('model' => $this->_model));
     }
     //validate emsil
     public function actionEmail()
