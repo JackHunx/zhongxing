@@ -19,7 +19,7 @@ class GetDropValueController extends SBaseController
         }
         //升序排序 arsort
         ksort($value);
-        $nation = 'document.write("<select name=nation id=nation >';
+        $nation = 'document.write("<select name=user[nation] id=nation >';
         foreach ($value as $key => $val) {
             $nation .= "<option value='" . $key . "'>" . $val . "</option>";
         }
@@ -39,7 +39,7 @@ class GetDropValueController extends SBaseController
         }
         //升序排序 arsort
         ksort($value);
-        $card = 'document.write("<select name=cart_type id=card_type >';
+        $card = 'document.write("<select name=user[cart_type] id=card_type >';
         foreach ($value as $key => $val) {
             $card .= "<option value='" . $key . "'>" . $val . "</option>";
         }
@@ -59,11 +59,11 @@ class GetDropValueController extends SBaseController
             }
             //升序排序 arsort
             ksort($value);
-            $area = '<select id="province" name="province"><option>请选择</option>';
+            $area = '<select id="province" name="user[province]"><option>请选择</option>';
             foreach ($value as $key => $val) {
                 $area .= '<option value="' . $key . '">' . $val . '</option>';
             }
-            $area .= '<select id="province" name="province"><select id="city" name="city"><option value="">请选择</option></select>&nbsp;<select id="area" name="area"><option value="">请选择</option></select>&nbsp;';
+            $area .= '<select id="province" name="province"><select id="city" name="user[city]"><option value="">请选择</option></select>&nbsp;<select id="area" name="user[area]"><option value="">请选择</option></select>&nbsp;';
             // echo $area;
             header('Content-Type:application/x-javascript');
             $this->areaValue($area);

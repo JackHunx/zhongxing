@@ -4,6 +4,7 @@ class ValidateController extends SBaseController
 {
     private $_user;
     private $_model;
+    private $info;
     public $layout = "/layouts/validate";
     //actions
     public function actions()
@@ -41,8 +42,31 @@ class ValidateController extends SBaseController
     //实名认证
     public function actionRealName()
     {
+        
+        if(isset($_POST['user']))
+        {
+            
+            $value=$_POST['user'];
+            $value['real_status']='0';
+           // echo "<pre>";
+//            print_r($value);
+//            exit();
+            $model = new User;
+            $model->attributes=$value;
+            if($model->update())
+            {
+                $this->render('realname',array('model'=>$this->_model,'info'=>$this->info));
+            }
+        }else{
+            $this->info['nation']=Linkage::model()->findByPk($this->_model->nation)->name;
+            $this->info['card_type']=Linkage::model()->findByAttributes(array('type_id'=>'32','value'=>$this->_model->card_type))->name;
+            $this->info['province']=Area::model()->findByPk($this->_model->province)->name;
+            $this->info['city']=Area::model()->findByPk($this->_model->city)->name;
+            $this->info['area']=Area::model()->findByPk($this->_model->area)->name;
+            $this->render('realname',array('model'=>$this->_model,'info'=>$this->info));
+        }
         //$model = $this->loadModel($this->_user->id);
-        $this->render('realname', array('model' => $this->_model));
+        //$this->render('realname', array('model' => $this->_model));
     }
     //validate emsil
     public function actionEmail()
