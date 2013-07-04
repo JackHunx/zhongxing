@@ -51,11 +51,11 @@ class ValidateController extends SBaseController
            // echo "<pre>";
 //            print_r($value);
 //            exit();
-            $model = new User;
+            $model =User::model()->findByPk(Yii::app()->user->id);
             $model->attributes=$value;
             if($model->update())
             {
-                $this->render('realname',array('model'=>$this->_model,'info'=>$this->info));
+                $this->render('realname',array('model'=>$model,'info'=>$this->info));
             }
         }else{
             $this->info['nation']=Linkage::model()->findByPk($this->_model->nation)->name;
