@@ -46,7 +46,7 @@ class ValidateController extends SBaseController
         if(isset($_POST['user']))
         {
             
-            $value=$_POST['user'];
+            $value=array_filter($_POST['user']);
             $value['real_status']='0';
            // echo "<pre>";
 //            print_r($value);
@@ -55,16 +55,18 @@ class ValidateController extends SBaseController
             $model->attributes=$value;
             if($model->update())
             {
-                $this->render('realname',array('model'=>$model,'info'=>$this->info));
+                $this->_model=$model;
+               // $this->render('realname',array('model'=>$model));
             }
-        }else{
+        }
             $this->info['nation']=Linkage::model()->findByPk($this->_model->nation)->name;
             $this->info['card_type']=Linkage::model()->findByAttributes(array('type_id'=>'32','value'=>$this->_model->card_type))->name;
+            
             $this->info['province']=Area::model()->findByPk($this->_model->province)->name;
             $this->info['city']=Area::model()->findByPk($this->_model->city)->name;
             $this->info['area']=Area::model()->findByPk($this->_model->area)->name;
             $this->render('realname',array('model'=>$this->_model,'info'=>$this->info));
-        }
+        
         //$model = $this->loadModel($this->_user->id);
         //$this->render('realname', array('model' => $this->_model));
     }
@@ -76,8 +78,17 @@ class ValidateController extends SBaseController
     //validate phone
     public function actionPhone()
     {
-
-        $this->render('phone', array('model' => $this->_model));
+        if(isset($_POST['phone']))
+        {
+            //$value['phone']=$_POST['phone'];
+            //$value['phone_status']='0';
+            $model = User::model()->findByPk(Yii::app()->user->id);
+            $model->attributes=array('phone'=>$_POST['phone']);
+            if($model->update())
+                $this->render('phone',array('model'=>$model));
+            
+        }else
+            $this->render('phone', array('model' => $this->_model));
     }
 
 

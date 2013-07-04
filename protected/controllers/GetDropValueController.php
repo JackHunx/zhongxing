@@ -39,7 +39,7 @@ class GetDropValueController extends SBaseController
         }
         //升序排序 arsort
         ksort($value);
-        $card = 'document.write("<select name=user[cart_type] id=card_type >';
+        $card = 'document.write("<select name=user[card_type] id=card_type >';
         foreach ($value as $key => $val) {
             $card .= "<option value='" . $key . "'>" . $val . "</option>";
         }
