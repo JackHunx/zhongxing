@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Karla|Ubuntu);
+
 /*!
  * Bootstrap v2.0.4
  *
@@ -756,7 +756,7 @@ input[type="file"] {
   line-height: 28px;
 }
 select {
-  width: 220px;
+  
   border: 1px solid #bbb;
 }
 select[multiple],

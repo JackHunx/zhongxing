@@ -1,7 +1,7 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
 	<!--
@@ -14,7 +14,8 @@
 		http://usman.it
 		http://twitter.com/halalit_usman
 	-->
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="content-script-type" content="text/javascript"> 
 	<title>众兴投资</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
@@ -136,11 +137,13 @@ background-position:0 -99px;
 							<li class="pull-left"><a class="guid" href="{$out}" >登出</a>
 ETO;
     } else {
-
+        $baseUrl=Yii::app()->baseUrl;
+        $register = $baseUrl.'/index.php?r=user/register';
+        $login = $baseUrl.'/index.php?r=site/login';
         echo <<< ETO
 							<li class="pull-left gray">游客</li>
-							<li class="pull-left"><a class="guid" href="#" >免费注册 </a></li>
-							<li class="pull-left"><a class="guid" href="#" >登录 </a></li>
+							<li class="pull-left"><a class="guid" href="{$register}" >免费注册 </a></li>
+							<li class="pull-left"><a class="guid" href="{$login}" >登录 </a></li>
 							<li class="pull-left"><a class="guid" href="#" >分享 </a></li>
 ETO;
     }
@@ -262,7 +265,7 @@ ETO;
 					</div>
 			</li>
 			<li class="" id="">
-				<span class="v"> <a class="whiete" href="http://www.17sucai.com/" class="">我的账户</a><span class="vertical pull-right"></span></span> 
+				<span class="v"> <a class="whiete" href="<?php echo Yii::app()->baseUrl.'/index.php?r=User';?>" class="">我的账户</a><span class="vertical pull-right"></span></span> 
 				<div class="kind_menu" style=" display: none;">
 				<!--- before login -->
 				<div>欢迎来到众兴投资</div>
@@ -333,7 +336,7 @@ ETO;
 			<noscript>
 				<div class="alert alert-block span10">
 					<h4 class="alert-heading">Warning!</h4>
-					<p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+					<p>你的浏览器需要 <a href="http://jingyan.baidu.com/article/6f2f55a1e1b78db5b93e6cc5.html" target="_blank">JavaScript</a> 运行才能正常浏览.</p>
 				</div>
 			</noscript>
 			
@@ -401,7 +404,7 @@ date('Y') ?></p>
 	<!-- Placed at the end of the document so the pages load faster -->
 
 	<!-- jQuery -->
-	<script src="js/jquery-1.7.2.min.js"></script>
+
 	<!-- jQuery UI -->
 	<script src="js/jquery-ui-1.8.21.custom.min.js"></script>
 	<!-- transition / effect library -->
@@ -447,7 +450,7 @@ date('Y') ?></p>
 
 	<!-- select or dropdown enhancer -->
 	<script src="js/jquery.chosen.min.js"></script>
-	<!-- checkbox, radio, and file input styler -->
+	<!-- checkbox, radio, and file input styler --
 	<script src="js/jquery.uniform.min.js"></script>
 	<!-- plugin for gallery image view -->
 	<script src="js/jquery.colorbox.min.js"></script>
@@ -467,14 +470,22 @@ date('Y') ?></p>
 	<script src="js/jquery.uploadify-3.1.min.js"></script>
 	<!-- history.js for cross-browser state change on ajax -->
 	<script src="js/jquery.history.js"></script>
-	<!-- application script for Charisma demo -->
+	<!-- application script for Charisma demo --
 	<script src="js/charisma.js"></script>
+    -->
 	<script src="js/jquery.Xslider.js"></script>
 	<script type="text/javascript">
     var site_url = window.location.href.toLowerCase();	
-   
+    //alert(site_url);
 	switch (true) {
-		case site_url.indexOf("ruser") > 0 || site_url.indexOf("/fafds") > 0 || site_url.indexOf("r=user") > 0 : 
+		case site_url.indexOf("dfg") > 0 || site_url.indexOf("/fafds") > 0 : 
+		//判断当前频道属于哪个根目录模块就设置频道标签高亮
+			$("#nav li").attr("class","");
+			$("#nav li").eq(1).attr("class","nav_lishw"); //设置当前频道标签高亮
+			$(".nav_lishw .v a").attr("class","sele");
+			$(".nav_lishw .kind_menu").show();
+			break;
+            case  site_url.indexOf("index.php?r=user") > 0 : 
 		//判断当前频道属于哪个根目录模块就设置频道标签高亮
 			$("#nav li").attr("class","");
 			$("#nav li").eq(3).attr("class","nav_lishw"); //设置当前频道标签高亮

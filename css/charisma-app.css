@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Shojumaru);
+
 
 select{
 background-color:#fff;
@@ -494,7 +494,7 @@ height:168px;
 
 }
 .login-box .input-prepend{
-margin-bottom: 10px;
+	padding-bottom:10px;
 }
 .login-box .btn{
 margin-top:15px;
