@@ -69,7 +69,41 @@ echo <<<ETO
 		<div class="user_right_border">
 			<div class="l">身份证正面上传：</div>
 			<div class="c">
-				<input type="file" name="card_pic1" size="20" class="input_border">   <font color="#FF0000">*</font> 
+			
+                
+ETO;
+ 
+$this->widget('ext.EFineUploader.EFineUploader',
+ array(
+       'id'=>'card1Uploader',
+       'config'=>array(
+                       'autoUpload'=>true,
+                       'request'=>array(
+                          'endpoint'=>'/zhongxing/index.php?r=upload/card',// OR $this->createUrl('files/upload'),
+                          'params'=>array('YII_CSRF_TOKEN'=>Yii::app()->request->csrfToken,'code'=>'card_pic1'),
+                                       ),
+                       'retry'=>array('enableAuto'=>true,'preventRetryResponseProperty'=>true),
+                       'chunking'=>array('enable'=>true,'partSize'=>100),//bytes
+                       'callbacks'=>array(
+                                       'onComplete'=>"js:function(id, name, response){ $('#card1').val(response.saveUrl); $('.qq-upload-status-text').html(function(){
+                                          
+                                        return '文件上传成功<a target=_black href='+response.url+'>查看</a>';
+                                     
+                                       });}",
+                                        'onError'=>"js:function(id, name, errorReason){  }",
+                                         ),
+                       'validation'=>array(
+                                 'allowedExtensions'=>array('jpg','jpeg','doc'),
+                                 'sizeLimit'=>2 * 1024 * 1024,//maximum file size in bytes
+                                 'minSizeLimit'=>5*1024,// minimum file size in bytes
+                                          ),
+                      )
+      ));
+ 
+
+ echo <<<ETO
+ 	<input id="card1" name="card_pic1" type="hidden" value="" >
+                  <font color="#FF0000">*</font> 
 			</div>
 		</div>
 		
@@ -77,7 +111,36 @@ echo <<<ETO
 	<div class="user_right_border">
 			<div class="l">身份证背面上传：</div>
 			<div class="c">
-				<input type="file" name="card_pic2" size="20" class="input_border">   <font color="#FF0000">*</font> 
+ETO;
+ 
+$this->widget('ext.EFineUploader.EFineUploader',
+ array(
+       'id'=>'card2Uploader',
+       'config'=>array(
+                       'autoUpload'=>true,
+                       'request'=>array(
+                          'endpoint'=>'/zhongxing/index.php?r=upload/card',// OR $this->createUrl('files/upload'),
+                          'params'=>array('YII_CSRF_TOKEN'=>Yii::app()->request->csrfToken,'code'=>'card_pic2'),
+                                       ),
+                       'retry'=>array('enableAuto'=>true,'preventRetryResponseProperty'=>true),
+                       'chunking'=>array('enable'=>true,'partSize'=>100),//bytes
+                       'callbacks'=>array(
+                                       'onComplete'=>"js:function(id, name, response){   $('#card2').val(response.saveUrl); $('.qq-upload-status-text').html(function(){return '文件上传成功<a target=_black href='+response.url+'>查看</a>';
+                                     
+                                       });}",
+                                        'onError'=>"js:function(id, name, errorReason){  }",
+                                         ),
+                       'validation'=>array(
+                                 'allowedExtensions'=>array('jpg','jpeg','doc'),
+                                 'sizeLimit'=>2 * 1024 * 1024,//maximum file size in bytes
+                                 'minSizeLimit'=>5*1024,// minimum file size in bytes
+                                          ),
+                      )
+      ));
+ 
+
+ echo <<<ETO
+				<input type="hidden" id="card2" name="card_pic2" >   <font color="#FF0000">*</font> 
 			</div>
 		</div>
 		

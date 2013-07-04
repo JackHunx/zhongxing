@@ -59,29 +59,57 @@ class UploadController extends SBaseController
             'png',
             'gif');
         //the max size
-        $uploader->sizeLimit = 100 * 1024; //100kb
+        $uploader->sizeLimit = 500 * 1024; //100kb
         $uploader->chunksFolder = $tempFolder . 'chunks';
         $result = $uploader->handleUpload($tempFolder);
         //save to db
-        
+
         $result['filename'] = $uploader->getUploadName();
-        $result['url'] = Yii::app()->getBaseUrl() . '/upload/card/' . $uploader->getUploadName();
+        $result['url'] = Yii::app()->getBaseUrl() . '/upload/card/' .$uploader->getUploadName();
+        $result['saveUrl']=$url= '/upload/card/' . $uploader->getUploadName();
         //$resuslt['response'] = "test";
         // $result['folder'] = $webFolder;
 
-        $uploadedFile = $tempFolder . $result['filename'];
+        $model = new Upfiles;
+        $value = array(
+            'name' => $result['filename'],
+            'user_id' => Yii::app()->user->id,
+            'code' => $_POST['code'],
+            'aid' => '0',
+            'status' => '0',
+            'filetype' => $this->extend($result['filename']),
+            'filename' => $result['filename'],
+            'filesize' => $_POST['qqtotalfilesize'],
+            'fileurl' => $url,
+            'if_cover' => '0',
+            'order' => '0',
+            'hits' => '0',
+            'addtime' => time(),
+            'addip' => Yii::app()->request->getUserHostAddress(),
+            );
+        $value['updatetime'] = $value['addtime'];
+        $value['updateip'] = $value['addip'];
+        $model->attributes = $value;
+            
+        if ($model->save()) {
+            $uploadedFile = $tempFolder . $result['filename'];
 
-        header("Content-Type: text/html");
-        $result = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
-        echo $result;
-        //echo "haha";
-        Yii::app()->end();
+            header("Content-Type: text/html");
+            $result = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+            echo $result;
+            //echo "haha";
+            Yii::app()->end();
+        }
+
+    }
+    private function extend($filename)
+    {
+        $extend = explode('.', $filename);
+        $val = count($extend) - 1;
+        return $extend[$val];
     }
     //return model
-    private function loadModel()
-    {
-        
-    }
+
     // Uncomment the following methods and override them if needed
     /*
     public function filters()

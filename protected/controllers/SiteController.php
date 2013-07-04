@@ -28,7 +28,8 @@ class SiteController extends SBaseController
     ///test upload
     public function actionUpload()
     {
-		
+		print_r($_POST);
+		exit();
 
         //设定上传目录
         $tempFolder = Yii::getPathOfAlias('webroot') . '/upload/temp/';
