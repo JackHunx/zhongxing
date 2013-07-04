@@ -28,6 +28,7 @@ class SiteController extends SBaseController
     ///test upload
     public function actionUpload()
     {
+		
 
         //设定上传目录
         $tempFolder = Yii::getPathOfAlias('webroot') . '/upload/temp/';
@@ -47,8 +48,7 @@ class SiteController extends SBaseController
 
         $result = $uploader->handleUpload($tempFolder);
         $result['filename'] = $uploader->getUploadName();
-        $result['url'] = Yii::app()->getBaseUrl() . '/upload/temp/' . $uploader->
-            getUploadName();
+        $result['url'] = Yii::app()->getBaseUrl() . '/upload/temp/' . $uploader->getUploadName();
         //$resuslt['response'] = "test";
         // $result['folder'] = $webFolder;
 

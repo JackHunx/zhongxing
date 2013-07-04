@@ -1,6 +1,5 @@
 <?php 
 
-echo Yii::app()->user->id;
 $this->widget('ext.EFineUploader.EFineUploader',
  array(
        'id'=>'FineUploader',
@@ -8,12 +7,12 @@ $this->widget('ext.EFineUploader.EFineUploader',
                        'autoUpload'=>true,
                        'request'=>array(
                           'endpoint'=>'/zhongxing/index.php?r=site/upload',// OR $this->createUrl('files/upload'),
-                          'params'=>array('YII_CSRF_TOKEN'=>Yii::app()->request->csrfToken),
+                          'params'=>array('YII_CSRF_TOKEN'=>Yii::app()->request->csrfToken,'code'=>'card_pic1'),
                                        ),
                        'retry'=>array('enableAuto'=>true,'preventRetryResponseProperty'=>true),
                        'chunking'=>array('enable'=>true,'partSize'=>100),//bytes
                        'callbacks'=>array(
-                                       'onComplete'=>"js:function(id, name, response){ $('.qq-upload-status-text').html(function(){return '文件上传成<a target=_black href='+response.url+'>查看</a>';});}",
+                                       'onComplete'=>"js:function(id, name, response){ $('.qq-upload-status-text').html(function(){return '文件上传成功<a target=_black href='+response.url+'>查看</a>';});}",
                                         'onError'=>"js:function(id, name, errorReason){  }",
                                          ),
                        'validation'=>array(

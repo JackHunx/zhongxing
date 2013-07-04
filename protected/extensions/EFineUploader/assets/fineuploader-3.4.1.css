@@ -10,14 +10,14 @@
 .qq-upload-button {
     display: block;
     width: 105px;
-    padding: 7px 0;
+    padding: 5px 0;
     text-align: center;
-    background: #880000;
+    background: #666666;
     border-bottom: 1px solid #DDD;
     color: #FFF;
 }
 .qq-upload-button-hover {
-    background: #CC0000;
+    background: #555666;
 }
 .qq-upload-button-focus {
     outline: 1px dotted #000000;
@@ -56,6 +56,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+   
 }
 .qq-upload-list li {
     margin: 0;
