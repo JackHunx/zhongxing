@@ -48,7 +48,7 @@ echo <<<ETO
 		<div class="user_right_border">
 			<div class="l">证件类别：</div>
 			<div class="c">
-				<script src="/plugins/index.php?q=linkage&amp;nid=card_type&amp;name=card_type&amp;isid=false&amp;value="></script><select name="card_type" id="card_type"><option value="1">身份证</option><option value="2">军官证</option><option value="3">台胞证</option></select> <font color="#FF0000">*</font> 
+				<script src="{$baseUrl}/index.php?r=getDropValue/card"></script> <font color="#FF0000">*</font> 
 			</div>
 		</div>
 		
@@ -62,7 +62,7 @@ echo <<<ETO
 		<div class="user_right_border">
 			<div class="l">籍贯：</div>
 			<div class="c">
-				<script src="/plugins/index.php?q=area&amp;area="></script><select id="province" name="province"><option value="">请选择</option><option value="1">北京</option><option value="21">天津</option><option value="40">上海</option><option value="61">重庆</option><option value="102">河北省</option><option value="297">山西省</option><option value="439">内蒙古区</option><option value="561">辽宁省</option><option value="690">吉林省</option><option value="768">黑龙江省</option><option value="924">江苏省</option><option value="1057">浙江省</option><option value="1170">安徽省</option><option value="1310">福建省</option><option value="1414">江西省</option><option value="1536">山东省</option><option value="1711">河南省</option><option value="1905">湖北省</option><option value="2034">湖南省</option><option value="2184">广东省</option><option value="2403">广西区</option><option value="2541">海南省</option><option value="2570">四川省</option><option value="2791">贵州省</option><option value="2892">云南省</option><option value="3046">西藏区</option><option value="3128">陕西省</option><option value="3256">甘肃省</option><option value="3369">青海省</option><option value="3422">宁夏区</option><option value="3454">新疆区</option><option value="3571">台湾省</option><option value="3573">香港特区</option><option value="3575">澳门特区</option></select>&nbsp;<select id="city" name="city"><option value="">请选择</option></select>&nbsp;<select id="area" name="area"><option value="">请选择</option></select>&nbsp; <font color="#FF0000">*</font> 
+			<script  src="{$baseUrl}/index.php?r=getDropValue/area"></script> <font color="#FF0000">*</font> 
 			</div>
 		</div>
 		
