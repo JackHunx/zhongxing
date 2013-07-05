@@ -10,3 +10,4 @@ zhongxing project
   
   under project there has a directory named:{assets},this directory must need 
   so you must create this directory first
+update
