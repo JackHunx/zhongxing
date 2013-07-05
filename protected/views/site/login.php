@@ -2,7 +2,7 @@
 
 			<div id="centernav" class="sitewrapper" style="background-color: white; border: 1px solid #D8D8D8;">
         <div class="login_top" style="text-align: left; height: 40px; padding-left: 20px;
-            font-weight: bold; color: Black; font-size: 15px; line-height: 20px;">
+            font-weight: bold; color: Black; font-size: 15px; line-height: 20px;padding-top:0">
             用户登录
         </div>
         <div class="login_right" style="color: #808080; line-height: 20px; margin-top: 15px;">
@@ -38,7 +38,7 @@
                                 用户名：
                             </td>
                             <td class="style2">
-                                <input name="LoginForm[username]" type="text" value="test3" id="txtUserName" class="lsls" onfocus="changeborder(this)" onblur="changeborder2(this)" style="height:26px;width:280px;border-width:1px; border-color:LightGray;">
+                                <input name="LoginForm[username]" type="text" value="" id="txtUserName" class="lsls" onfocus="changeborder(this)" onblur="changeborder2(this)" style="height:26px;width:280px;border-width:1px; border-color:LightGray;">
                                 <span id="_txtUserName" class="red"></span>
                             </td>
                         </tr>
