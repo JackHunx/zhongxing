@@ -1,23 +1,23 @@
 <form action="" name="form1" method="post" >
 
-<div class="user_help">ÇëÌîĞ´Äú¹¤×÷¾­Àú</div>
+<div class="user_help">è¯·å¡«å†™æ‚¨å·¥ä½œç»å†</div>
 		<form action="" method="post">
 		<div class="user_right_border">
-			<div class="l">¸öÈËÄÜÁ¦£º</div>
+			<div class="l">ä¸ªäººèƒ½åŠ›ï¼š</div>
 			<div class="c">
-				<textarea rows="7" cols="50" name="ability">{$_U.userinfo_result.ability}</textarea><br />£¨ÈçµçÄÔÄÜÁ¦¡¢×éÖ¯Ğ­µ÷ÄÜÁ¦»òÆäËû£© 
+				<textarea rows="7" cols="50" name="ability">{$_U.userinfo_result.ability}</textarea><br />ï¼ˆå¦‚ç”µè„‘èƒ½åŠ›ã€ç»„ç»‡åè°ƒèƒ½åŠ›æˆ–å…¶ä»–ï¼‰ 
 			</div>
 		</div>
 		
 		<div class="user_right_border">
-			<div class="l">¸öÈË°®ºÃ£º</div>
+			<div class="l">ä¸ªäººçˆ±å¥½ï¼š</div>
 			<div class="c">
-				<textarea rows="7" cols="50" name="interest">{$_U.userinfo_result.interest}</textarea><br />£¨Í»³ö×Ô¼ºµÄ¸öĞÔ£¬¹¤×÷Ì¬¶È»òËûÈË¶Ô×Ô¼ºµÄÆÀ¼ÛµÈ£©
+				<textarea rows="7" cols="50" name="interest">{$_U.userinfo_result.interest}</textarea><br />ï¼ˆçªå‡ºè‡ªå·±çš„ä¸ªæ€§ï¼Œå·¥ä½œæ€åº¦æˆ–ä»–äººå¯¹è‡ªå·±çš„è¯„ä»·ç­‰ï¼‰
 			</div>
 		</div>
 		
 		<div class="user_right_border">
-			<div class="l">ÆäËûËµÃ÷£º</div>
+			<div class="l">å…¶ä»–è¯´æ˜ï¼š</div>
 			<div class="c">
 				<textarea rows="7" cols="50" name="others">{$_U.userinfo_result.others}</textarea><br />
 				
@@ -26,12 +26,12 @@
 		<div class="user_right_border">
 			<div class="l"></div>
 			<div class="c">
-				<input type="submit" name="name"  value="È·ÈÏÌá½»" size="30" /> 
+				<input type="submit" name="name"  value="ç¡®è®¤æäº¤" size="30" /> 
 			</div>
 		</div>
 		
 		<div class="user_right_foot">
-		 * ÎÂÜ°ÌáÊ¾£ºÎÒÃÇ½«¶ÔËùÓĞµÄĞÅÏ¢½øĞĞ±£ÃÜ
+		 * æ¸©é¦¨æç¤ºï¼šæˆ‘ä»¬å°†å¯¹æ‰€æœ‰çš„ä¿¡æ¯è¿›è¡Œä¿å¯†
 		</div>
 
 

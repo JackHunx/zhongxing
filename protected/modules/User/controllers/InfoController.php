@@ -3,17 +3,17 @@
 class InfoController extends SBaseController
 {
     //private $_user;
-//    private $loadModel;
+    //    private $loadModel;
     //init()
-    public $layout ="/layouts/info";
+    public $layout = "/layouts/info";
     /**
      * init $cs->registerScriptFile(Yii::app()->baseUrl.'/js/validate_tab.js');
      */
     public function init()
-    {//
-//        $this->_user = Yii::app()->user;
-//        $this->loadModel($this->_user->id);
-//        
+    { //
+        //        $this->_user = Yii::app()->user;
+        //        $this->loadModel($this->_user->id);
+        //
         //init css and javascript
         $cs = Yii::app()->clientScript;
         $cs->registerCoreScript('jquery');
@@ -33,8 +33,40 @@ class InfoController extends SBaseController
     {
         $this->render('index');
     }
-    
-    public function 
+    // building information
+    public function actionBuilding()
+    {
+        $this->render('building');
+    }
+    // company information
+    public function actionCompany()
+    {
+        $this->render('company');
+    }
+    public function actionEdu()
+    {
+        $this->render('edu');
+    }
+    public function actionFirm()
+    {
+        $this->render('firm');
+    }
+    public function actionFinance()
+    {
+        $this->render('finance');
+    }
+    public function actionContact()
+    {
+        $this->render('contact');
+    }
+    public function actionMate()
+    {
+        $this->render('mate');
+    }
+    public function actionJob()
+    {
+        $this->render('job');
+    }
     // Uncomment the following methods and override them if needed
     /*
     public function filters()
