@@ -28,9 +28,10 @@ class ValidateController extends SBaseController
         //init css and javascript
         $cs = Yii::app()->clientScript;
         $cs->registerCoreScript('jquery');
-        $cs->registerScriptFile(Yii::app()->baseUrl.'/js/base.js');
-        $cs->registerScriptFile(Yii::app()->baseUrl.'/js/validate_tab.js');
-        $cs->registerScriptFile(Yii::app()->baseUrl.'/js/My97DatePicker/WdatePicker.js');
+        $cs->registerScriptFile(Yii::app()->baseUrl . '/js/base.js');
+        $cs->registerScriptFile(Yii::app()->baseUrl . '/js/validate_tab.js');
+        $cs->registerScriptFile(Yii::app()->baseUrl .
+            '/js/My97DatePicker/WdatePicker.js');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user_new.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/index.css');
@@ -42,36 +43,35 @@ class ValidateController extends SBaseController
     //实名认证
     public function actionRealName()
     {
-        
-        if(isset($_POST['user']))
-        {
-            
-            $value=array_filter($_POST['user']);
-            $value['real_status']='0';
-           // echo "<pre>";
-//            print_r($value);
-//            exit();
-            $model =User::model()->findByPk(Yii::app()->user->id);
-            $model->attributes=$value;
-            if($model->update())
-            {
-                $this->_model=$model;
-               // $this->render('realname',array('model'=>$model));
+
+        if (isset($_POST['user'])) {
+
+            $value = array_filter($_POST['user']);
+            $value['real_status'] = '0';
+            // echo "<pre>";
+            //            print_r($value);
+            //            exit();
+            $model = User::model()->findByPk(Yii::app()->user->id);
+            $model->attributes = $value;
+            if ($model->update()) {
+                $this->_model = $model;
+                // $this->render('realname',array('model'=>$model));
             }
-        }elseif($this->_model->real_status == null)
-        {
-            $this->render('realname',array('model'=>$this->_model));
-        }
-            $this->info['nation']=Linkage::model()->findByPk($this->_model->nation)->name;
-            $this->info['card_type']=Linkage::model()->findByAttributes(array('type_id'=>'32','value'=>$this->_model->card_type))->name;
-            
-            $this->info['province']=Area::model()->findByPk($this->_model->province)->name;
-            $this->info['city']=Area::model()->findByPk($this->_model->city)->name;
-            $this->info['area']=Area::model()->findByPk($this->_model->area)->name;
-            $this->render('realname',array('model'=>$this->_model,'info'=>$this->info));
-        
-        //$model = $this->loadModel($this->_user->id);
-        //$this->render('realname', array('model' => $this->_model));
+        } elseif ($this->_model->real_status == null) {
+            $this->render('realname', array('model' => $this->_model));
+        } else
+            {$this->info['nation'] = Linkage::model()->findByPk($this->_model->nation)->
+                name;
+        $this->info['card_type'] = Linkage::model()->findByAttributes(array('type_id' =>
+                '32', 'value' => $this->_model->card_type))->name;
+
+        $this->info['province'] = Area::model()->findByPk($this->_model->province)->
+            name;
+        $this->info['city'] = Area::model()->findByPk($this->_model->city)->name;
+        $this->info['area'] = Area::model()->findByPk($this->_model->area)->name;
+        $this->render('realname', array('model' => $this->_model, 'info' => $this->info));
+        } //$model = $this->loadModel($this->_user->id);
+            //$this->render('realname', array('model' => $this->_model));
     }
     //validate emsil
     public function actionEmail()
@@ -81,16 +81,15 @@ class ValidateController extends SBaseController
     //validate phone
     public function actionPhone()
     {
-        if(isset($_POST['phone']))
-        {
+        if (isset($_POST['phone'])) {
             //$value['phone']=$_POST['phone'];
             //$value['phone_status']='0';
             $model = User::model()->findByPk(Yii::app()->user->id);
-            $model->attributes=array('phone'=>$_POST['phone']);
-            if($model->update())
-                $this->render('phone',array('model'=>$model));
-            
-        }else
+            $model->attributes = array('phone' => $_POST['phone']);
+            if ($model->update())
+                $this->render('phone', array('model' => $model));
+
+        } else
             $this->render('phone', array('model' => $this->_model));
     }
 
@@ -107,32 +106,42 @@ class ValidateController extends SBaseController
     {
         $model = new Vip;
         $record = $model->findByPk($this->_user->id);
-        
+
         if ($record !== null) {
-            
+
             if ($record->vip_status == 1) {
-                $this->render('vip', array('status' => 'Vip会员','model'=>$this->_model,'vip'=>$record));
+                $this->render('vip', array(
+                    'status' => 'Vip会员',
+                    'model' => $this->_model,
+                    'vip' => $record));
             } elseif ($record->vip_status == 0) {
-                $this->render('vip', array('status' => '<font color=red>Vip申请中</font>','model'=>$this->_model,'vip'=>$record));
+                $this->render('vip', array(
+                    'status' => '<font color=red>Vip申请中</font>',
+                    'model' => $this->_model,
+                    'vip' => $record));
             }
             //$this->render('vip');
-        }else{
-        if (isset($_POST['Vip'])) {
-            $vip = array(
-                'user_id' => $this->_user->id,
-                'vip_status' => '0',
+        } else {
+            if (isset($_POST['Vip'])) {
+                $vip = array(
+                    'user_id' => $this->_user->id,
+                    'vip_status' => '0',
 
-                );
+                    );
 
-            //print_r(array_merge($vip, $_POST['Vip']));
-            //            exit();
-           
-            $model->attributes = array_merge($vip, $_POST['Vip']);
-            if ($model->save())
-                $this->redirect(array('validate/vip', 'id' => $model->user_id));
+                //print_r(array_merge($vip, $_POST['Vip']));
+                //            exit();
+
+                $model->attributes = array_merge($vip, $_POST['Vip']);
+                if ($model->save())
+                    $this->redirect(array('validate/vip', 'id' => $model->user_id));
+            }
+            //$model = new User;
+            $this->render('vip', array(
+                'model' => $this->_model,
+                'status' => '普通会员',
+                'vip' => $record));
         }
-        //$model = new User;
-        $this->render('vip', array('model' => $this->_model,'status'=>'普通会员','vip'=>$record));}
     }
     //return $model  = user::mode();
     private function loadModel($id)
