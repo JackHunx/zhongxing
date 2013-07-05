@@ -46,3 +46,31 @@ function ajaxSendEmail()
 
 })
 }
+$(function(){
+    
+    $("#submitemail").click(function(){
+   // alert("tet");
+      data='&realname='+$('#realname').val()+"&email="+$("#email").val();
+      url =window.location.pathname+"?r=user/changeemail";
+      $.ajax({
+        type:"POST",
+        url:url,
+        data:data,
+        success:function(data){
+            $("#newemail").html($("#email").val());
+            var url = $("#email").val().split('@')[1]; 
+            for (var j in hash){ 
+            $("#checkemail").attr("href", hash[url]); 
+            }
+            $("#checkemail").show();  
+            $("#emailform").hide();
+            alert(data);
+        }
+
+});
+return false;
+});
+
+    
+});
+

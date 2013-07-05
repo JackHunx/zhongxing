@@ -47,8 +47,8 @@ class UserController extends SBaseController
                     'create',
                     'update',
                     'setquestion',
-                    'email'
-                    ),
+                    'email',
+                    'changeemail'),
                 'users' => array('@'),
                 ),
             array(
@@ -204,7 +204,10 @@ class UserController extends SBaseController
                 if ($identity->authenticate()) {
                     Yii::app()->user->login($identity);
                     //进入用户中心
-                    $this->redirect(array('User/email','email'=>$value['email'],'realname'=>$value['realname']));
+                    $this->redirect(array(
+                        'User/email',
+                        'email' => $value['email'],
+                        'realname' => $value['realname']));
                 } else {
                     //进入用户中心
                     $this->redirect(array('User/'));
@@ -224,17 +227,29 @@ class UserController extends SBaseController
      */
     public function actionEmail()
     {
-        $id=Yii::app()->user->id;
-        if($id==null || !isset($_POST['email'])||!isset($_POST['realname']))
-        {
+        $id = Yii::app()->user->id;
+        if ($id == null || !isset($_POST['email']) || !isset($_POST['realname'])) {
             echo "邮箱发送失败,请过1分钟后重新发送";
-        }elseif($this->sendEmail($_POST['email'],$_POST['realname'],$id))
+        } elseif ($this->sendEmail($_POST['email'], $_POST['realname'], $id))
             echo "邮件发送成功,请查收邮箱";
         else
             echo "邮件发送失败,请跳过后重新发送";
-        
+
     }
-//    
+    //
+    //change email
+    public function actionChangeEmail()
+    {
+        $id = Yii::app()->user->id;
+        if ($id == null || !isset($_POST['email']) || !isset($_POST['realname'])) {
+            echo "邮箱发送失败,请过1分钟后重新发送";
+        } elseif ($this->sendEmail($_POST['email'], $_POST['realname'], $id)&&User::model()->updateByPk($id,array('email'=>$_POST['email'])))
+            echo "邮件发送成功,请查收邮箱";
+        else
+            echo "邮件发送失败,请跳过后重新发送";
+    }
+
+
     //check email
 
     public function actionCheck_email()
@@ -320,11 +335,12 @@ class UserController extends SBaseController
             'addip' => Yii::app()->request->getUserHostAddress(),
             );
         if ($model->save()) {
-            Yii::app()->sendemail->send($this->userInfo['email'], '众兴投资有限公司', '邮件验证',$this->getEmailBody());
-                return true;
-        }else{
+            Yii::app()->sendemail->send($this->userInfo['email'], '众兴投资有限公司', '邮件验证', $this->
+                getEmailBody());
+            return true;
+        } else {
             return false;
-            }
+        }
     }
     //encypt password by md5
     private function encypt($value)
