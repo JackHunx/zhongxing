@@ -102,17 +102,17 @@ ETO;
 					<form class="form-horizontal" action="$action" method="post">
 						<fieldset>
 							<div class="input-prepend" data-rel="tooltip" data-original-title="用户名">
-								<span class="add-on"><i class="icon-user"></i></span><input autofocus="" class="input-large span10" name="LoginForm[username]" id="username" type="text" value="用户名">
+								<span class="add-on"><i class="icon-user"></i></span><input autofocus="" class="input-large span10" name="LoginForm[username]" id="username" type="text" value="" style="width:191px;min-height:18px\9;">
 							</div>
 						
-
+                                <div class="clearfix" style="zoom:0"></div>
 							<div class="input-prepend" data-rel="tooltip" data-original-title="密码">
-								<span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10" name="LoginForm[password]" id="password" type="password" value="admin123456">
+								<span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10" name="LoginForm[password]" id="password" type="password" value="" style="width:191px;min-height:18px\9;">
 							</div>
-								<div class="clearfix"></div>
+								<div class="clearfix" style="zoom:0"></div>
                             <div class="center">
 							<p class="center span5 login_button" >
-							<button type="submit" class="btn btn-primary">登录</button>
+							<button type="submit" class="btn btn-primary" style="width:50%">登录</button>
 							
 							</p>
                             <div>

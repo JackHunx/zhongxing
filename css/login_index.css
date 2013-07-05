@@ -168,7 +168,7 @@ a:active{color:#0063dc;text-decoration:none;}
 .login_left li.top{background:url(http://static.ppdai.com/skin/images/login_box_top.gif) no-repeat left bottom;height:15px;}
 .login_left li.bottom{background:url(http://static.ppdai.com/skin/images/login_box_bottom.gif) no-repeat left top;height:15px;}
 .right{float:right;}
-.login_top{ background: url("http://static.ppdai.com/skin/images/bg.png") repeat-x scroll 0 -246px transparent;
+.login_top{ 
     color: #808080;
     height: 20px;
     line-height: 10px;
@@ -185,7 +185,7 @@ a:active{color:#0063dc;text-decoration:none;}
 .ErrorMsg{border:1px solid orange;width:330px;margin:0 auto 10px;background:url(http://static.ppdai.com/skin/images/zs1.gif) no-repeat 3px 50%;}
 .ErrorMsg SPAN{margin:10px 0 10px 35px;display:block;}
 .login_form{line-height:28px;padding-left:150px;padding-bottom:15px;}
-.login_button{display:block;background:url(http://static.ppdai.com/app_themes/images/openid/user.png) no-repeat 10px 50% #F5F5F5;border-color:#eee #DEDEDE #DEDEDE #eee;border-style:solid;border-width:1px;padding:4px 0 4px 23px;line-height:17px;margin:0.8em 0.5em 0.7em 0;color:#529214;font-weight:bold;width:120px;}
+.login_button{display:block;border-color:#eee #DEDEDE #DEDEDE #eee;border-style:solid;border-width:1px;padding:4px 0 4px 23px;line-height:17px;margin:0.8em 0.5em 0.7em 0;color:#529214;font-weight:bold;width:120px;}
 .login_button[type]{padding:5px 0 5px 23px;}
 .login_h1{color:#494949;font-size:25px;font-weight:bold;}
 .login_openid{padding:2px;padding-left:20px;height:17px;width:250px;background:url(http://static.ppdai.com/skin/images/openid.ico) no-repeat 2px 50%;border:1px solid #666;}
