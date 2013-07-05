@@ -13,7 +13,8 @@ $this->widget('ext.EFineUploader.EFineUploader',
                        'chunking'=>array('enable'=>true,'partSize'=>100),//bytes
                        'callbacks'=>array(
                                        'onComplete'=>"js:function(id, name, response){
-                                        if(respone.success==true)
+                                        
+                                        if(response.success=true)
                                         {
                                           $('.qq-upload-status-text').html(function(){return '文件上传成功<a target=_black href='+response.url+'>查看</a>';});  
                                         }else{
