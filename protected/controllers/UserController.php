@@ -81,7 +81,7 @@ class UserController extends SBaseController
         $userid = '6';
         $this->render('msg', array(
             'msg' => '邮箱激活成功',
-            'msg_url' => Yii::app()->baseUrl . '/index.php?r=User&id=' . $userid,
+            'msg_url' => Yii::app()->baseUrl . '/index.php?r=User',
             'msg_content' => '进入用户中心'));
         exit();
         $code = '2&159.mzod@163.com';
