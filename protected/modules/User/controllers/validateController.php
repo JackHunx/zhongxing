@@ -58,6 +58,9 @@ class ValidateController extends SBaseController
                 $this->_model=$model;
                // $this->render('realname',array('model'=>$model));
             }
+        }elseif($this->_model->real_status == null)
+        {
+            $this->render('realname',array('model'=>$this->_model));
         }
             $this->info['nation']=Linkage::model()->findByPk($this->_model->nation)->name;
             $this->info['card_type']=Linkage::model()->findByAttributes(array('type_id'=>'32','value'=>$this->_model->card_type))->name;
