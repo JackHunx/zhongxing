@@ -33,7 +33,8 @@ class InfoController extends SBaseController
     {
         $this->render('index');
     }
-
+    
+    public function 
     // Uncomment the following methods and override them if needed
     /*
     public function filters()
