@@ -8,14 +8,20 @@ class GetDropValueController extends SBaseController
             throw new CException('type of area not set');
         $record = $this->model($_GET['type']);
 
-        //获取数组 并重新排序 以汉族为首选
+        //获取数组 并重新排序 
         $value = array();
         for ($i = 0; $i < count($record); $i++) {
             $value[$record[$i]->id] = $record[$i]->value;
         }
         //升序排序 arsort
         ksort($value);
-        $reback = 'document.write("<select name=user[nation] id=nation >';
+        $reback = 'document.write("<select name='.$_GET['name'].' id=nation >';
+        if($_GET['value']!=null)
+        {
+            $reback.="<option value='".$_GET['value']."'>".$value[$_GET['value']].'</option>';
+            //unset this key =>value from $value
+            unset($value[$_GET['value']]);
+        }
         foreach ($value as $key => $val) {
             $reback .= "<option value='" . $key . "'>" . $val . "</option>";
         }

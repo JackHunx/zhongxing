@@ -31,23 +31,40 @@ class InfoController extends SBaseController
     }
     public function actionIndex()
     {
-        $user=User::model()->findByPk($this->user->id);
-        $area = Area::model()->findByPk($user->province)->name."-".Area::model()->findByPk($user->city)->name."-".Area::model()->findByPk($user->area)->name; 
-        if($user==null)
-        {
-            throw new CException("select form table User error not found ");
+        //$this->layout="//layouts/main";
+        //        $this->render('//user/msg',array('msg'=>'tset','msg_url'=>Yii::app()->request->urlReferrer,'msg_content'=>'back'));
+        //        exit();
+        if (isset($_POST['info']))
+            $this->update(); //update to the db user info table
+        else {
+            $user = User::model()->findByPk($this->user->id);
+            $area = Area::model()->findByPk($user->province)->name . "-" . Area::model()->
+                findByPk($user->city)->name . "-" . Area::model()->findByPk($user->area)->name;
+            if ($user == null) {
+                throw new CException("select form table User error not found ");
+            }
+            $this->render('index', array(
+                'user' => $user,
+                'info' => $this->loadModel($this->user->id),
+                'area' => $area));
         }
-        $this->render('index',array('user'=>$user,'info'=>$this->loadModel($this->user->id),'area'=>$area));
     }
     // building information
     public function actionBuilding()
     {
-        $this->render('building');
+        if (isset($_POST['info'])) 
+            $this->update();
+         else
+            $this->render('building', array('info' => $this->loadModel($this->user->id)));
     }
     // company information
     public function actionCompany()
     {
-        $this->render('company');
+        if (isset($_POST['info'])) 
+            $this->update();
+         else
+            $this->render('company', array('info' => $this->loadModel($this->user->id)));
+        //$this->render('company');
     }
     public function actionEdu()
     {
@@ -80,20 +97,40 @@ class InfoController extends SBaseController
         $model = Userinfo::model()->findByAttributes(array('user_id' => $this->user->id));
         if ($model == null) {
             $value = array(
-            'site_id'=>'1',
-            'user_id'=>$this->user->id,
-            'status'=>'0',
-            'addtime'=>time(),
-            'addip'=>Yii::app()->request->getUserHostAddress(),
-            );
-            $value['updatetime']=$value['addtime'];
-            $value['updateip']=$value['addip'];
-            $model->attributes=$value;
-            if(!$model->save())
-                throw new CException('create userinfo by <'.$this->user->id.'> fail');
+                'site_id' => '1',
+                'user_id' => $this->user->id,
+                'status' => '0',
+                'addtime' => time(),
+                'addip' => Yii::app()->request->getUserHostAddress(),
+                );
+            $value['updatetime'] = $value['addtime'];
+            $value['updateip'] = $value['addip'];
+            $model->attributes = $value;
+            if (!$model->save())
+                throw new CException('create userinfo by <' . $this->user->id . '> fail');
         }
         return $model;
-        
+
+    }
+    private function update()
+    {
+        $model = $this->loadModel($this->user->id);
+        if ($model == null)
+            throw new CException('select userinfo by <' . $this->user->id . '> fail');
+        $value = array(
+            'updatetime' => time(),
+            'updateip' => Yii::app()->request->getUserHostAddress(),
+            );
+        $value = array_merge($value, $_POST['info']);
+        $model->attributes = $_POST['info'];
+        if (!$model->update())
+            throw new CException('update userinfo by<' . $this->user->id . '>fail');
+        $this->layout = '//layouts/main';
+        $this->render('//user/msg', array(
+            'msg' => "信息已更新",
+            'msg_url' => Yii::app()->request->urlReferrer,
+            'msg_content' => "点此返回"));
+
     }
     // Uncomment the following methods and override them if needed
     /*

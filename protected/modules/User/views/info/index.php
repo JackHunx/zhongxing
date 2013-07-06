@@ -45,63 +45,63 @@
 			<div class="user_right_border">
 				<div class="l">婚姻状况：</div>
 				<div class="c">
-					<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&type=1"></script>
+					<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[marry]&type=1&value=<?php echo $info->marry;?>"></script>
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">子 女：</div>
 				<div class="c">
-					<script src="/plugins/index.php?q=linkage&name=child&nid=user_child&value={$_U.userinfo_result.child}"></script>
+					<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[child]&type=2&value=<?php echo $info->child;?>"></script>
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">学 历：</div>
 				<div class="c">
-					<script src="/plugins/index.php?q=linkage&name=education&nid=user_education&value={$_U.userinfo_result.education}"></script>
+					<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[education]&type=3&value=<?php echo $info->education;?>"></script>
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">月收入：</div>
 				<div class="c">
-					<script src="/plugins/index.php?q=linkage&name=income&nid=user_income&value={$_U.userinfo_result.income}"></script>
+					<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[income]&type=4&value=<?php echo $info->income;?>"></script>
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">社 保：</div>
 				<div class="c">
-					<script src="/plugins/index.php?q=linkage&name=shebao&nid=user_shebao&value={$_U.userinfo_result.shebao}"></script>
+						<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[shebao]&type=5&value=<?php echo $info->shebao;?>"></script>
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">社保电脑号：</div>
 				<div class="c">
-					<input type="text" size="30" name="shebaoid" value="{$_U.userinfo_result.shebaoid}" /> 
+					<input type="text" size="30" name="info[shebaoid]" value="<?php echo $info->shebaoid;?>" /> 
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">住房条件：</div>
 				<div class="c">
-					<script src="/plugins/index.php?q=linkage&name=housing&nid=user_housing&value={$_U.userinfo_result.housing}"></script>
+						<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[housing]&type=6&value=<?php echo $info->housing;?>"></script>
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">是否购车：</div>
 				<div class="c">
-					<script src="/plugins/index.php?q=linkage&name=car&nid=user_car&value={$_U.userinfo_result.car}"></script>
+						<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[car]&type=7&value=<?php echo $info->car;?>"></script>
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">逾期记录：</div>
 				<div class="c">
-					<script src="/plugins/index.php?q=linkage&name=late&nid=user_late&value={$_U.userinfo_result.late}"></script>
+						<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[late]&type=8&value=<?php echo $info->late;?>"></script>
 				</div>
 			</div>
 			
