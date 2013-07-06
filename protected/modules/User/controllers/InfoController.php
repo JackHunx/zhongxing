@@ -52,17 +52,17 @@ class InfoController extends SBaseController
     // building information
     public function actionBuilding()
     {
-        if (isset($_POST['info'])) 
+        if (isset($_POST['info']))
             $this->update();
-         else
+        else
             $this->render('building', array('info' => $this->loadModel($this->user->id)));
     }
     // company information
     public function actionCompany()
     {
-        if (isset($_POST['info'])) 
+        if (isset($_POST['info']))
             $this->update();
-         else
+        else
             $this->render('company', array('info' => $this->loadModel($this->user->id)));
         //$this->render('company');
     }
@@ -72,11 +72,18 @@ class InfoController extends SBaseController
     }
     public function actionFirm()
     {
-        $this->render('firm');
+
+        if (isset($_POST['info']))
+            $this->update();
+        else
+            $this->render('firm', array('info' => $this->loadModel($this->user->id)));
     }
     public function actionFinance()
     {
-        $this->render('finance');
+        if (isset($_POST['info']))
+            $this->update();
+        else
+            $this->render('finance', array('info' => $this->loadModel($this->user->id)));
     }
     public function actionContact()
     {

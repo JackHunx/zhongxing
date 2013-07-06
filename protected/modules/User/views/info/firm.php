@@ -1,69 +1,69 @@
 <form action="" name="form1" method="post" >
 
 <!--私营业主资料  开始-->
-		{elseif $_U.query_type=="firm"}
+		
 		<div class="user_help">请填写您个人业主资料</div>
 		 <form action="" method="post">
 			 <div class="user_right_border">
 				<div class="l">私营企业类型：</div>
-				<div class="c">
-					<script src="/plugins/index.php?q=linkage&name=private_type&nid=user_company_industry&value="></script> 
-				</div>
+				<div class="c"> 
+				<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[private_type]&type=11&value=<?php echo $info->private_type;?>"></script>
+                </div>
 			</div>
 			
 			 <div class="user_right_border">
 				<div class="l">成立日期：</div>
 				<div class="c">
-					<input type="text" size="25" name="private_date" value="{$_U.userinfo_result.private_date}" onclick="change_picktime()"/> 
+					<input type="text" size="25" name="info[private_date]" value="<?php echo $info->private_date;?>" onclick="WdatePicker()"/> 
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">经营场所：</div>
 				<div class="c">
-					<input type="text" size="25" name="private_place" value="{$_U.userinfo_result.private_place}" /> 
+					<input type="text" size="25" name="info[private_place]" value="<?php echo $info->private_place;?>" /> 
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">租金：</div>
 				<div class="c">
-					<input type="text" size="25" name="private_rent" value="{$_U.userinfo_result.private_rent}" /> 元
+					<input type="text" size="25" name="info[private_rent]" value="<?php echo $info->private_rent;?>" /> 元
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">租期：</div>
 				<div class="c">
-					<input type="text" size="25" name="private_term" value="{$_U.userinfo_result.private_term}" /> 月
+					<input type="text" size="25" name="info[private_term]" value="<?php echo $info->private_term;?>" /> 月
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">税务编号：</div>
 				<div class="c">
-					<input type="text" size="25" name="private_taxid" value="{$_U.userinfo_result.private_commerceid}" /> 
+					<input type="text" size="25" name="info[private_taxid]" value="<?php echo $info->private_taxid;?>" /> 
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">工商登记号：</div>
 				<div class="c">
-					<input type="text" size="25" name="private_commerceid" value="{$_U.userinfo_result.private_commerceid}" /> 
+					<input type="text" size="25" name="info[private_commerceid]" value="<?php echo $info->private_commerceid;?>" /> 
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">全年盈利/亏损额：</div>
 				<div class="c">
-					<input type="text" size="25" name="private_income" value="{$_U.userinfo_result.private_income}" /> 元（年度）
+					<input type="text" size="25" name="info[private_income]" value="<?php echo $info->private_income;?>" /> 元（年度）
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">雇员人数：</div>
 				<div class="c">
-					<input type="text" size="25" name="private_employee" value="{$_U.userinfo_result.private_employee}" /> 人
+					<input type="text" size="25" name="info[private_employee]" value="<?php echo $info->private_employee;?>" /> 人
 				</div>
 			</div>
 		 

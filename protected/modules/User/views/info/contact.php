@@ -5,7 +5,7 @@
 		<div class="user_right_border">
 			<div class="l">居住地电话：</div>
 			<div class="c">
-				<input type="text" size="25" name="tel" value="{$_U.userinfo_result.tel}" />
+				<input type="text" size="25" name="info[tel]" value="<?php echo $info->tel;?>" />
 			</div>
 		</div>
 		
@@ -19,7 +19,7 @@
 		<div class="user_right_border">
 			<div class="l">居住所在省市：</div>
 			<div class="c">
-				<script src="/plugins/index.php?q=area&area={$_U.userinfo_result.area}"></script> 
+				<script  src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/areaDone&area=4<?php echo $info->area;?>"></script>
 			</div>
 		</div>
 		
