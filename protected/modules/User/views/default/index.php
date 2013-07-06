@@ -13,12 +13,12 @@
 						<li><span>信用等级：</span><img src="<?php echo $baseUrl?>/images/credit/credit_s15.gif" title="67"><a href="/index.php?user&amp;q=code/user/credit"><font color="#FF0000">积分查看</font></a></li>
 						<li style="overflow:hidden">
 							<div class="floatl"><span> 认&nbsp;&nbsp;&nbsp;   证：</span></div> 
-							<a href="/index.php?user&amp;q=code/user/realname"><div class="credit_pic_card_1" title="实名已认证"></div></a>
-							<a href="/index.php?user&amp;q=code/user/phone_status"><div class="credit_pic_phone_<?php echo $model->phone_status;?>" title="手机已认证"></div></a>
-							<a href="/index.php?user&amp;q=code/user/email_status"><div class="credit_pic_email_<?php echo $model->email_status;?>" title="邮箱已认证"></div></a>
-							<a href="/index.php?user&amp;q=code/user/video_status"><div class="credit_pic_video_<?php echo $model->video_status;?>" title="视频已认证"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/realname"><div class="credit_pic_card_<?php echo ($model->real_status==null)?'0':$model->real_status;?>" title="实名认证"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/phone"><div class="credit_pic_phone_<?php echo $model->phone_status;?>" title="手机认证"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/email"><div class="credit_pic_email_<?php echo $model->email_status;?>" title="邮箱认证"></div></a>
+							<a href="/<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/video"><div class="credit_pic_video_<?php echo $model->video_status;?>" title="视频认证"></div></a>
 							<a href="/vip/index.html"><div class="credit_pic_vip_<?php echo $vip['status'];?>" title="VIP"></div></a>
-							<a href="/index.php?user&amp;q=code/user/scene_status"><div class="credit_pic_scene_0" title="未通过现场认证"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/scene"><div class="credit_pic_scene_0" title="现场认证"></div></a>
 						</li>
 
 						<li>  <a href="/index.php?user&amp;q=code/account/recharge_new"><font color="#FF0000">账号充值</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=credit"><font color="#FF0000">申请信用额度</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=vouch"><font color="#FF0000">申请担保额度</font></a> </li>

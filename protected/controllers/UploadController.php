@@ -79,7 +79,7 @@ class UploadController extends SBaseController
             'status' => '0',
             'filetype' => $this->extend($result['filename']),
             'filename' => $result['filename'],
-            'filesize' => $_POST['qqtotalfilesize'],
+            'filesize' => filesize($tempFolder.$result['filename']),
             'fileurl' => $url,
             'if_cover' => '0',
             'order' => '0',
@@ -95,7 +95,7 @@ class UploadController extends SBaseController
             $uploadedFile = $tempFolder . $result['filename'];
 
             header("Content-Type: text/html");
-            $result = htmlspecialchars(json_encode($result), ENT_NOQUOTES);
+            $result =json_encode($result);
             echo $result;
             //echo "haha";
             Yii::app()->end();

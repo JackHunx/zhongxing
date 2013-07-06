@@ -378,17 +378,17 @@ echo $content;
 	<div class="indexbottom"></div>
 		<footer>
 			
-		<div>
-			<p class="pull-left"><a class="gray" href="http://usman.it" target="_blank">首页</a> </p>
-			<p class="pull-left"><a class="gray" href="http://usman.it" target="_blank">关于我们</a> </p>
-			<p class="pull-left"><a class="gray" href="http://usman.it" target="_blank">联系我们</a> </p>
-			<p class="pull-left"><a class="gray" href="http://usman.it" target="_blank">客服中心</a> </p>
+		<div class="footercontent">
+			<p class="pull-left footerp"><a class="gray" href="http://usman.it" target="_blank">首页</a> </p>
+			<p class="pull-left footerp"><a class="gray" href="http://usman.it" target="_blank">关于我们</a> </p>
+			<p class="pull-left footerp"><a class="gray" href="http://usman.it" target="_blank">联系我们</a> </p>
+			<p class="pull-left footerp"><a class="gray" href="http://usman.it" target="_blank">客服中心</a> </p>
 			<div class="pull-right">
 		
-				<p class="pull-right">&copy; <a href="http://usman.it" target="_blank">众兴投资</a> <?php echo
+				<p class="pull-right footerp">&copy; <a href="http://usman.it" target="_blank">众兴投资</a> <?php echo
 date('Y') ?></p>
-				<p>ICP证:<a href="http://usman.it" target="_blank">鲁ICP备13008504号-1</a></p>
-				<p>统一客服热线:400-080-1891 公司地址:山东省临沂市新华路12号万阅城A座902</p>
+				<p class="footerp">ICP证:<a href="http://usman.it" target="_blank">鲁ICP备13008504号-1</a></p>
+				<p class="footerp">统一客服热线:400-080-1891 公司地址:山东省临沂市新华路12号万阅城A座902</p>
 				</div>
 			</div>
 				

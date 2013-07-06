@@ -2,6 +2,34 @@
 
 class GetDropValueController extends SBaseController
 {
+    public function actionDrop()
+    {
+        if (!isset($_GET['type']))
+            throw new CException('type of area not set');
+        $record = $this->model($_GET['type']);
+
+        //获取数组 并重新排序
+        $value = array();
+        for ($i = 0; $i < count($record); $i++) {
+            $value[$record[$i]->id] = $record[$i]->value;
+        }
+        //升序排序 arsort
+        ksort($value);
+        $reback = 'document.write("<select name=' . $_GET['name'] . ' id=nation >';
+        if ($_GET['value'] != null) {
+            $reback .= "<option value='" . $_GET['value'] . "'>" . $value[$_GET['value']] .
+                '</option>';
+            //unset this key =>value from $value
+            unset($value[$_GET['value']]);
+        }
+        foreach ($value as $key => $val) {
+            $reback .= "<option value='" . $key . "'>" . $val . "</option>";
+        }
+        $reback .= '</select>");';
+        //
+        header('Content-Type:application/x-javascript');
+        echo $reback;
+    }
     /**
      * 获取数据参数类 无view层
      * 
@@ -63,31 +91,67 @@ class GetDropValueController extends SBaseController
             foreach ($value as $key => $val) {
                 $area .= '<option value="' . $key . '">' . $val . '</option>';
             }
-            $area .= '<select id="province" name="province"><select id="city" name="user[city]"><option value="">请选择</option></select>&nbsp;<select id="area" name="user[area]"><option value="">请选择</option></select>&nbsp;';
+            $area .= '</select><select id="city" name="user[city]"><option value="">请选择</option></select>&nbsp;<select id="area" name="user[area]"><option value="">请选择</option></select>&nbsp;';
             // echo $area;
             header('Content-Type:application/x-javascript');
             $this->areaValue($area);
         } else {
             //echo $_POST['area'];
             $record = $this->areaModel($_POST['area']);
-            $value[] = array('id'=>'','name'=>"请选择");
+            $value[] = array('id' => '', 'name' => "请选择");
             for ($i = 0; $i < count($record); $i++) {
-                $value[] =array('id'=>$record[$i]->id,'name'=>$record[$i]->name);
+                $value[] = array('id' => $record[$i]->id, 'name' => $record[$i]->name);
             }
             echo json_encode($value);
             //升序排序 arsort
             //ksort($value);
-//            $area = '[{id:,name:请选择}';
-//            foreach($value as $key=>$val)
-//            {
-//               $area.=',{id:'.$key.',name:'.$val.'}'; 
-//            }
-//            $area.=']';
+            //            $area = '[{id:,name:请选择}';
+            //            foreach($value as $key=>$val)
+            //            {
+            //               $area.=',{id:'.$key.',name:'.$val.'}';
+            //            }
+            //            $area.=']';
             //header('Content-Type:application/x-javascript');
             //echo $area;
         }
 
 
+    }
+    //area load set
+    public function actionAreaDone()
+    {
+        if ($_GET['area'] == null)
+            $this->actionArea();
+        else {
+            $areaRecord = Area::model()->findByPk($_GET['area']);
+            $area = '<select id="area" name="user[area]"><option value="">' . $areaRecord->
+                name . '</option></select>';
+            $cityRecord = Area::model()->findByPk($areaRecord->pid);
+            $city = '<select id="city" name="user[city]"><option value="">' . $cityRecord->
+                name . '</option></select>';
+            //province
+            
+            //exit();
+            $proId=Area::model()->findByPk($cityRecord->pid);
+            $record = $this->areaModel($proId->pid);
+            $value = array();
+            for ($i = 0; $i < count($record); $i++) {
+                $value[$record[$i]->id] = $record[$i]->name;
+            }
+            //升序排序 arsort
+            ksort($value);
+            $province = '<select id="province" name="user[province]"><option>请选择</option>';
+            foreach ($value as $key => $val) {
+                if($key == $cityRecord->pid)
+                    $province .= '<option value="' . $key . '" selected>' . $val . '</option>';
+                else
+                    $province .= '<option value="' . $key . '">' . $val . '</option>';
+            }
+            $province .= '</select>&nbsp;';
+            $reback=$province.$city.$area;
+             header('Content-Type:application/x-javascript');
+            $this->areaValue($reback);
+        }
     }
     private function areaValue($area)
     {

@@ -78,10 +78,11 @@ $this->widget('ext.EFineUploader.EFineUploader',
        'id'=>'card1Uploader',
        'config'=>array(
                        'autoUpload'=>true,
+                       'debug'=>true,
                        'request'=>array(
+                        
                           'endpoint'=>'/zhongxing/index.php?r=upload/card',// OR $this->createUrl('files/upload'),
-                          'params'=>array('YII_CSRF_TOKEN'=>Yii::app()->request->csrfToken,'code'=>'card_pic1'),
-                                       ),
+                          'params'=>array('YII_CSRF_TOKEN'=>Yii::app()->request->csrfToken,'code'=>'card_pic1')),
                        'retry'=>array('enableAuto'=>true,'preventRetryResponseProperty'=>true),
                        'chunking'=>array('enable'=>true,'partSize'=>100),//bytes
                        'callbacks'=>array(
@@ -91,7 +92,7 @@ $this->widget('ext.EFineUploader.EFineUploader',
                                           $('#card1').val(response.saveUrl);
                                           $('.qq-upload-status-text').html(function(){return '文件上传成功<a target=_black href='+response.url+'>查看</a>';});  
                                         }else{
-                                            $('.qq-upload-status-text').html(response.error);
+                                            $('.qq-upload-status-text').html('上传失败');
                                         }}",
                                         'onError'=>"js:function(id, name, errorReason){  }",
                                          ),
@@ -128,13 +129,13 @@ $this->widget('ext.EFineUploader.EFineUploader',
                        'retry'=>array('enableAuto'=>true,'preventRetryResponseProperty'=>true),
                        'chunking'=>array('enable'=>true,'partSize'=>100),//bytes
                        'callbacks'=>array(
-                                       'onComplete'=>"js:function(id, name, response){   
+                                       'onComplete'=>"js:function(id, name, response){ 
                                         if(response.success==true)
                                         {
                                            $('#card2').val(response.saveUrl);
                                           $('.qq-upload-status-text').html(function(){return '文件上传成功<a target=_black href='+response.url+'>查看</a>';});  
                                         }else{
-                                            $('.qq-upload-status-text').html(response.error);
+                                            $('.qq-upload-status-text').html('上传失败');
                                         }}",
                                         'onError'=>"js:function(id, name, errorReason){}",
                                          ),
