@@ -2,6 +2,28 @@
 
 class GetDropValueController extends SBaseController
 {
+    public function actionDrop()
+    {
+        if (!isset($_GET['type']))
+            throw new CException('type of area not set');
+        $record = $this->model($_GET['type']);
+
+        //获取数组 并重新排序 以汉族为首选
+        $value = array();
+        for ($i = 0; $i < count($record); $i++) {
+            $value[$record[$i]->id] = $record[$i]->value;
+        }
+        //升序排序 arsort
+        ksort($value);
+        $reback = 'document.write("<select name=user[nation] id=nation >';
+        foreach ($value as $key => $val) {
+            $reback .= "<option value='" . $key . "'>" . $val . "</option>";
+        }
+        $reback .= '</select>");';
+        //
+        header('Content-Type:application/x-javascript');
+        echo $reback;
+    }
     /**
      * 获取数据参数类 无view层
      * 
@@ -70,19 +92,19 @@ class GetDropValueController extends SBaseController
         } else {
             //echo $_POST['area'];
             $record = $this->areaModel($_POST['area']);
-            $value[] = array('id'=>'','name'=>"请选择");
+            $value[] = array('id' => '', 'name' => "请选择");
             for ($i = 0; $i < count($record); $i++) {
-                $value[] =array('id'=>$record[$i]->id,'name'=>$record[$i]->name);
+                $value[] = array('id' => $record[$i]->id, 'name' => $record[$i]->name);
             }
             echo json_encode($value);
             //升序排序 arsort
             //ksort($value);
-//            $area = '[{id:,name:请选择}';
-//            foreach($value as $key=>$val)
-//            {
-//               $area.=',{id:'.$key.',name:'.$val.'}'; 
-//            }
-//            $area.=']';
+            //            $area = '[{id:,name:请选择}';
+            //            foreach($value as $key=>$val)
+            //            {
+            //               $area.=',{id:'.$key.',name:'.$val.'}';
+            //            }
+            //            $area.=']';
             //header('Content-Type:application/x-javascript');
             //echo $area;
         }

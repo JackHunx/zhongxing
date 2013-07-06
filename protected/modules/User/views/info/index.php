@@ -1,10 +1,9 @@
 <form action="" name="form1" method="post" >
-		{if $_U.query_type=="list"}
 		<!--个人资料 开始-->
 			<div class="user_right_border">
 				<div class="l">帐户：</div>
 				<div class="c">
-					{$_G.user_result.email}
+				<?php echo $user->email ?>
 				</div>
 			</div>
 			
@@ -18,35 +17,35 @@
 			<div class="user_right_border">
 				<div class="l">昵 称：</div>
 				<div class="c">
-					{$_G.user_result.username}
+					<?php echo $user->username ;?>
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">性 别：</div>
 				<div class="c">
-					{if $_G.user_result.sex==1}男{else}女{/if}
+					<?php echo ($user->sex==1)?'男':'女';?>
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">手机号码：</div>
 				<div class="c">
-					{$_G.user_result.phone}
+					<?php echo $user->phone;?>
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">籍贯：</div>
 				<div class="c">
-					{$_G.user_result.area|area}
+					<?php echo $area;?>
 				</div>
 			</div>
 			
 			<div class="user_right_border">
 				<div class="l">婚姻状况：</div>
 				<div class="c">
-					<script src="/plugins/index.php?q=linkage&name=marry&nid=user_marry&value={$_U.userinfo_result.marry}"></script>
+					<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&type=1"></script>
 				</div>
 			</div>
 			

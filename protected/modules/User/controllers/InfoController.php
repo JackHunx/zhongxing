@@ -2,8 +2,8 @@
 
 class InfoController extends SBaseController
 {
-    //private $_user;
-    //    private $loadModel;
+    private $user;
+    //private $model;
     //init()
     public $layout = "/layouts/info";
     /**
@@ -11,8 +11,8 @@ class InfoController extends SBaseController
      */
     public function init()
     { //
-        //        $this->_user = Yii::app()->user;
-        //        $this->loadModel($this->_user->id);
+        $this->user = Yii::app()->user;
+        //$this->loadModel($this->user->id);
         //
         //init css and javascript
         $cs = Yii::app()->clientScript;
@@ -31,7 +31,13 @@ class InfoController extends SBaseController
     }
     public function actionIndex()
     {
-        $this->render('index');
+        $user=User::model()->findByPk($this->user->id);
+        $area = Area::model()->findByPk($user->province)->name."-".Area::model()->findByPk($user->city)->name."-".Area::model()->findByPk($user->area)->name; 
+        if($user==null)
+        {
+            throw new CException("select form table User error not found ");
+        }
+        $this->render('index',array('user'=>$user,'info'=>$this->loadModel($this->user->id),'area'=>$area));
     }
     // building information
     public function actionBuilding()
@@ -66,6 +72,28 @@ class InfoController extends SBaseController
     public function actionJob()
     {
         $this->render('job');
+    }
+
+
+    private function loadModel($id)
+    {
+        $model = Userinfo::model()->findByAttributes(array('user_id' => $this->user->id));
+        if ($model == null) {
+            $value = array(
+            'site_id'=>'1',
+            'user_id'=>$this->user->id,
+            'status'=>'0',
+            'addtime'=>time(),
+            'addip'=>Yii::app()->request->getUserHostAddress(),
+            );
+            $value['updatetime']=$value['addtime'];
+            $value['updateip']=$value['addip'];
+            $model->attributes=$value;
+            if(!$model->save())
+                throw new CException('create userinfo by <'.$this->user->id.'> fail');
+        }
+        return $model;
+        
     }
     // Uncomment the following methods and override them if needed
     /*
