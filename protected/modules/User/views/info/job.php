@@ -5,21 +5,21 @@
 		<div class="user_right_border">
 			<div class="l">个人能力：</div>
 			<div class="c">
-				<textarea rows="7" cols="50" name="ability">{$_U.userinfo_result.ability}</textarea><br />（如电脑能力、组织协调能力或其他） 
+				<textarea rows="7" cols="50" name="info[ability]"><?php echo $info->ability;?></textarea><br />（如电脑能力、组织协调能力或其他） 
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">个人爱好：</div>
 			<div class="c">
-				<textarea rows="7" cols="50" name="interest">{$_U.userinfo_result.interest}</textarea><br />（突出自己的个性，工作态度或他人对自己的评价等）
+				<textarea rows="7" cols="50" name="info[interest]"><?php echo $info->interest;?></textarea><br />（突出自己的个性，工作态度或他人对自己的评价等）
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">其他说明：</div>
 			<div class="c">
-				<textarea rows="7" cols="50" name="others">{$_U.userinfo_result.others}</textarea><br />
+				<textarea rows="7" cols="50" name="info[others]"><?php echo $info->others;?></textarea><br />
 				
 			</div>
 		</div>

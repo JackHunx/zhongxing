@@ -1,7 +1,7 @@
 <form action="" name="form1" method="post" >
 
 <!--单位资料 开始-->
-		{elseif $_U.query_type=="company"}
+		
 		<div class="user_help">请填写你个人的最近的单位资料</div>
 		 <form action="" method="post">
 		<div class="user_right_border">

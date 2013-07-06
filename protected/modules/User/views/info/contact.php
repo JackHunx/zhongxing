@@ -12,133 +12,133 @@
 		<div class="user_right_border">
 			<div class="l">手机号码：</div>
 			<div class="c">
-				<input type="text" size="25" name="phone" value="{$_U.userinfo_result.phone}" />
+				<input type="text" size="25" name="info[phone]" value="<?php echo $info->phone;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">居住所在省市：</div>
 			<div class="c">
-				<script  src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/areaDone&area=4<?php echo $info->area;?>"></script>
+				<script  src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/areaDone&area=<?php echo $info->area;?>"></script>
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">居住地邮编：</div>
 			<div class="c">
-				<input type="text" size="25" name="post" value="{$_U.userinfo_result.post}" />
+				<input type="text" size="25" name="info[post]" value="<?php echo $info->post;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">现居住地址：</div>
 			<div class="c">
-				<input type="text" size="25" name="address" value="{$_U.userinfo_result.address}" /> 
+				<input type="text" size="25" name="info[address]" value="<?php echo $info->address;?>" /> 
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第二联系人姓名：</div>
 			<div class="c">
-				<input type="text" size="25" name="linkman1" value="{$_U.userinfo_result.linkman1}" />
+				<input type="text" size="25" name="info[linkman1]" value="<?php echo $info->linkman1;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第二联系人关系：</div>
 			<div class="c">
-				<script src="/plugins/index.php?q=linkage&name=relation1&nid=user_relation&value={$_U.userinfo_result.relation1}"></script> 
+                <script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[relation1]&type=18&value=<?php echo $info->relation1;?>"></script>
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第二联系人电话：</div>
 			<div class="c">
-				<input type="text" size="25" name="tel1" value="{$_U.userinfo_result.tel1}" />
+				<input type="text" size="25" name="info[tel1]" value="<?php echo $info->tel1;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第二联系人手机：</div>
 			<div class="c">
-				<input type="text" size="25" name="phone1" value="{$_U.userinfo_result.phone1}" />
+				<input type="text" size="25" name="info[phone1]" value="<?php echo $info->phone1;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第三联系人姓名：</div>
 			<div class="c">
-				<input type="text" size="25" name="linkman2" value="{$_U.userinfo_result.linkman2}" />
+				<input type="text" size="25" name="info[linkman2]" value="<?php echo $info->linkman2;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第三联系人关系：</div>
 			<div class="c">
-				<script src="/plugins/index.php?q=linkage&name=relation2&nid=user_relation&value={$_U.userinfo_result.relation2}"></script> 
+                <script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[relation2]&type=18&value=<?php echo $info->relation2;?>"></script>
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第三联系人电话：</div>
 			<div class="c">
-				<input type="text" size="25" name="tel2" value="{$_U.userinfo_result.tel2}" />
+				<input type="text" size="25" name="info[tel2]" value="<?php echo $info->tel2;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第三联系人手机：</div>
 			<div class="c">
-				<input type="text" size="25" name="phone2" value="{$_U.userinfo_result.phone2}" />
+				<input type="text" size="25" name="info[phone2]" value="<?php echo $info->phone2;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第四联系人姓名：</div>
 			<div class="c">
-				<input type="text" size="25" name="linkman3" value="{$_U.userinfo_result.linkman3}" />
+				<input type="text" size="25" name="info[linkman3]" value="<?php echo $info->linkman3;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第四联系人关系：</div>
 			<div class="c">
-				<script src="/plugins/index.php?q=linkage&name=relation3&nid=user_relation&value={$_U.userinfo_result.relation3}"></script> 
+				<script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[relation3]&type=18&value=<?php echo $info->relation3;?>"></script> 
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第四联系人电话：</div>
 			<div class="c">
-				<input type="text" size="25" name="tel3" value="{$_U.userinfo_result.tel3}" />
+				<input type="text" size="25" name="info[tel3]" value="<?php echo $info->tel3;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">第四联系人手机：</div>
 			<div class="c">
-				<input type="text" size="25" name="phone3" value="{$_U.userinfo_result.phone3}" />
+				<input type="text" size="25" name="info[phone3]" value="<?php echo $info->phone3;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">MSN：</div>
 			<div class="c">
-				<input type="text" size="25" name="msn" value="{$_U.userinfo_result.msn}" />
+				<input type="text" size="25" name="info[msn]" value="<?php echo $info->msn;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">QQ：</div>
 			<div class="c">
-				<input type="text" size="25" name="qq" value="{$_U.userinfo_result.qq}" />
+				<input type="text" size="25" name="info[qq]" value="<?php echo $info->qq;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">旺旺：</div>
 			<div class="c">
-				<input type="text" size="25" name="wangwang" value="{$_U.userinfo_result.wangwang}" />
+				<input type="text" size="25" name="info[wangwang]" value="<?php echo $info->wangwang;?>" />
 			</div>
 		</div>
 		

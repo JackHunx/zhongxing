@@ -6,35 +6,35 @@
 		<div class="user_right_border">
 			<div class="l">配偶姓名：</div>
 			<div class="c">
-				<input type="text" size="25" name="mate_name" value="{$_U.userinfo_result.mate_name}" />
+				<input type="text" size="25" name="info[mate_name]" value="<?php echo $info->mate_name;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">每月薪金：</div>
 			<div class="c">
-				<input type="text" size="25" name="mate_salary" value="{$_U.userinfo_result.mate_salary}" />
+				<input type="text" size="25" name="info[mate_salary]" value="<?php echo $info->mate_salary;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">移动电话：</div>
 			<div class="c">
-				<input type="text" size="25" name="mate_phone" value="{$_U.userinfo_result.mate_phone}" />
+				<input type="text" size="25" name="info[mate_phone]" value="<?php echo $info->mate_phone;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">单位电话：</div>
 			<div class="c">
-				<input type="text" size="25" name="mate_tel" value="{$_U.userinfo_result.mate_tel}" />
+				<input type="text" size="25" name="info[mate_tel]" value="<?php echo $info->mate_tel;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">工作单位：</div>
 			<div class="c">
-				<script src="/plugins/index.php?q=linkage&name=mate_type&nid=user_company_industry&value={$_U.userinfo_result.mate_type}"></script> 
+                <script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[mate_type]&type=11&value=<?php echo $info->mate_type;?>"></script>
 			</div>
 		</div>
 		
@@ -42,21 +42,21 @@
 		<div class="user_right_border">
 			<div class="l">职位：</div>
 			<div class="c">
-				<script src="/plugins/index.php?q=linkage&name=mate_office&nid=user_company_office&value={$_U.userinfo_result.mate_office}"></script> 
+                <script src="<?php echo Yii::app()->baseUrl;?>/index.php?r=getDropValue/drop&name=info[mate_office]&type=13&value=<?php echo $info->mate_office;?>"></script>
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">单位地址：</div>
 			<div class="c">
-				<input type="text" size="25" name="mate_address" value="{$_U.userinfo_result.mate_address}" />
+				<input type="text" size="25" name="info[mate_address]" value="<?php echo $info->mate_address;?>" />
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">月收入：</div>
 			<div class="c">
-				<input type="text" size="25" name="mate_income" value="{$_U.userinfo_result.mate_income}" />
+				<input type="text" size="25" name="info[mate_income]" value="<?php echo $info->mate_income;?>" />
 			</div>
 		</div>
 			

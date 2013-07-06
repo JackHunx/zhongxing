@@ -35,7 +35,7 @@ class InfoController extends SBaseController
         //        $this->render('//user/msg',array('msg'=>'tset','msg_url'=>Yii::app()->request->urlReferrer,'msg_content'=>'back'));
         //        exit();
         if (isset($_POST['info']))
-            $this->update(); //update to the db user info table
+            $this->update($_POST['info']); //update to the db user info table
         else {
             $user = User::model()->findByPk($this->user->id);
             $area = Area::model()->findByPk($user->province)->name . "-" . Area::model()->
@@ -53,7 +53,7 @@ class InfoController extends SBaseController
     public function actionBuilding()
     {
         if (isset($_POST['info']))
-            $this->update();
+            $this->update($_POST['info']);
         else
             $this->render('building', array('info' => $this->loadModel($this->user->id)));
     }
@@ -61,41 +61,55 @@ class InfoController extends SBaseController
     public function actionCompany()
     {
         if (isset($_POST['info']))
-            $this->update();
+            $this->update($_POST['info']);
         else
             $this->render('company', array('info' => $this->loadModel($this->user->id)));
         //$this->render('company');
     }
     public function actionEdu()
     {
-        $this->render('edu');
+        if (isset($_POST['info']))
+            $this->update($_POST['info']);
+        else
+            $this->render('edu',array('info'=>$this->loadModel($this->user->id)));
     }
     public function actionFirm()
     {
 
         if (isset($_POST['info']))
-            $this->update();
+            $this->update($_POST['info']);
         else
             $this->render('firm', array('info' => $this->loadModel($this->user->id)));
     }
     public function actionFinance()
     {
         if (isset($_POST['info']))
-            $this->update();
+            $this->update($_POST['info']);
         else
             $this->render('finance', array('info' => $this->loadModel($this->user->id)));
     }
     public function actionContact()
     {
-        $this->render('contact');
+        if (isset($_POST['info'])) {
+            $params = array_merge($_POST['info'], $_POST['user']);
+            $this->update($params);
+        } else {
+            $this->render('contact', array('info' => $this->loadModel($this->user->id)));
+        }
     }
     public function actionMate()
     {
-        $this->render('mate');
+        if (isset($_POST['info']))
+            $this->update($_POST['info']);
+        else
+            $this->render('mate', array('info' => $this->loadModel($this->user->id)));
     }
     public function actionJob()
     {
-        $this->render('job');
+        if (isset($_POST['info']))
+            $this->update($_POST['info']);
+        else
+            $this->render('job', array('info' => $this->loadModel($this->user->id)));
     }
 
 
@@ -119,7 +133,7 @@ class InfoController extends SBaseController
         return $model;
 
     }
-    private function update()
+    private function update($params)
     {
         $model = $this->loadModel($this->user->id);
         if ($model == null)
@@ -128,8 +142,8 @@ class InfoController extends SBaseController
             'updatetime' => time(),
             'updateip' => Yii::app()->request->getUserHostAddress(),
             );
-        $value = array_merge($value, $_POST['info']);
-        $model->attributes = $_POST['info'];
+        $value = array_merge($value, $params);
+        $model->attributes = $value;
         if (!$model->update())
             throw new CException('update userinfo by<' . $this->user->id . '>fail');
         $this->layout = '//layouts/main';
