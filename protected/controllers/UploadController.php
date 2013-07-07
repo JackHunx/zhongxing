@@ -107,6 +107,12 @@ class UploadController extends SBaseController
     public function actionAttestation()
     {
         $tempFolder = Yii::getPathOfAlias('webroot') . '/upload/attestation/';
+        $tempFolder.=date("Ymd",time());
+        if(!is_dir($tempFolder))
+        {
+            mkdir($tempFolder,0777);
+        }
+        $tempFolder.='/';
         Yii::import("ext.EFineUploader.qqFileUploader");
         $uploader = new qqFileUploader();
         $uploader->allowedExtensions = array(
