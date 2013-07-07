@@ -147,6 +147,14 @@ class ValidateController extends SBaseController
                 'vip' => $record));
         }
     }
+    /**
+     * 视频认证
+     * 认证之前需检查vip状态，只有vip审核通过之后才能进行视频认证
+     */
+     public function actionVideo()
+     {
+        $this->render('video');
+     }
     //return $model  = user::mode();
     private function loadModel($id)
     {
