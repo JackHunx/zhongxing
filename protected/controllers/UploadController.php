@@ -29,7 +29,7 @@ class UploadController extends SBaseController
                 ),
             array(
                 'allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('card'),
+                'actions' => array('card','attestation'),
                 'users' => array('@'),
                 ),
             array(
@@ -101,6 +101,60 @@ class UploadController extends SBaseController
             Yii::app()->end();
         }
 
+    }
+    //资料上传单个文件处理函数
+    public function actionAttestation()
+    {
+        $tempFolder = Yii::getPathOfAlias('webroot') . '/upload/attestation/';
+        Yii::import("ext.EFineUploader.qqFileUploader");
+        $uploader = new qqFileUploader();
+        $uploader->allowedExtensions = array(
+            'jpg',
+            'jpeg',
+            'png',
+            'gif');
+        //the max size
+        $uploader->sizeLimit = 500 * 1024; //100kb
+        $uploader->chunksFolder = $tempFolder . 'chunks';
+        $result = $uploader->handleUpload($tempFolder);
+        //save to db
+
+        $result['filename'] = $uploader->getUploadName();
+        $result['url'] = Yii::app()->getBaseUrl() . '/upload/attestation/' .$uploader->getUploadName();
+        $result['saveUrl']=$url= '/upload/attestation/' . $uploader->getUploadName();
+        //$resuslt['response'] = "test";
+        // $result['folder'] = $webFolder;
+
+        $model = new Upfiles;
+        $value = array(
+            'name' => $result['filename'],
+            'user_id' => Yii::app()->user->id,
+            'code' => $_POST['code'],
+            'aid' => '0',
+            'status' => '0',
+            'filetype' => $this->extend($result['filename']),
+            'filename' => $result['filename'],
+            'filesize' => filesize($tempFolder.$result['filename']),
+            'fileurl' => $url,
+            'if_cover' => '0',
+            'order' => '0',
+            'hits' => '0',
+            'addtime' => time(),
+            'addip' => Yii::app()->request->getUserHostAddress(),
+            );
+        $value['updatetime'] = $value['addtime'];
+        $value['updateip'] = $value['addip'];
+        $model->attributes = $value;
+            
+        if ($model->save()) {
+            $uploadedFile = $tempFolder . $result['filename'];
+
+            header("Content-Type: text/html");
+            $result =json_encode($result);
+            echo $result;
+            //echo "haha";
+            Yii::app()->end();
+        }
     }
     private function extend($filename)
     {

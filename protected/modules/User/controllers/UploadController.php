@@ -27,6 +27,11 @@ class UploadController extends SBaseController
     //upload one by one
     public function actionOne()
     {
+        if(isset($_POST['attestation']))
+        {
+            print_r($_POST['attestation']);
+            exit();
+        }
         $this->render('one');
     }
     //upload once by more
