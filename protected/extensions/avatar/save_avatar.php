@@ -18,8 +18,8 @@ $len = file_put_contents(SD_ROOT.'./'.$new_avatar_path,file_get_contents("php://
 
 //原始图片比较大，压缩一下. 效果还是很明显的, 使用80%的压缩率肉眼基本没有什么区别
 //小图片 不压缩约6K, 压缩后 2K, 大图片约 50K, 压缩后 10K
-$avtar_img = imagecreatefromjpeg(SD_ROOT.'./'.$new_avatar_path);
-imagejpeg($avtar_img,SD_ROOT.'./'.$new_avatar_path,80);
+//$avtar_img = imagecreatefromjpeg(SD_ROOT.'./'.$new_avatar_path);
+//imagejpeg($avtar_img,SD_ROOT.'./'.$new_avatar_path,80);
 //nix系统下有必要时可以使用 chmod($filename,$permissions);
 
 //log_result('图片大小: '.$len);

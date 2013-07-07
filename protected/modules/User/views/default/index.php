@@ -71,7 +71,7 @@
             <ul>
                 <li><a target="_blank" href="/?user&amp;q=code/userinfo">填写详细信息</a></li><li class="icon2">
                 </li>
-                <li><a target="_blank" href="/?user&amp;q=code/attestation">上传资料证明</a></li><li class="icon2">
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/upload">上传资料证明</a></li><li class="icon2">
                 </li>
                 <li><a target="_blank" href="/vip/index.html">申请VIP</a></li><li class="icon2">
                 </li>

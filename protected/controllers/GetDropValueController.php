@@ -130,9 +130,9 @@ class GetDropValueController extends SBaseController
             $city = '<select id="city" name="user[city]"><option value="">' . $cityRecord->
                 name . '</option></select>';
             //province
-            
+
             //exit();
-            $proId=Area::model()->findByPk($cityRecord->pid);
+            $proId = Area::model()->findByPk($cityRecord->pid);
             $record = $this->areaModel($proId->pid);
             $value = array();
             for ($i = 0; $i < count($record); $i++) {
@@ -142,14 +142,14 @@ class GetDropValueController extends SBaseController
             ksort($value);
             $province = '<select id="province" name="user[province]"><option>请选择</option>';
             foreach ($value as $key => $val) {
-                if($key == $cityRecord->pid)
+                if ($key == $cityRecord->pid)
                     $province .= '<option value="' . $key . '" selected>' . $val . '</option>';
                 else
                     $province .= '<option value="' . $key . '">' . $val . '</option>';
             }
             $province .= '</select>&nbsp;';
-            $reback=$province.$city.$area;
-             header('Content-Type:application/x-javascript');
+            $reback = $province . $city . $area;
+            header('Content-Type:application/x-javascript');
             $this->areaValue($reback);
         }
     }
@@ -209,6 +209,26 @@ $(document).ready(function (){
 	});
 });
 document.write(\'' . $area . '\');';
+    }
+    //get attension table value
+    public function actionAttestation()
+    {
+        //查询整个table
+        $record = AttestationType::model()->findAllBySql("select * from zx_attestation_type");
+        $value = array();
+        for ($i = 0; $i < count($record); $i++) {
+            $value[$record[$i]->type_id] = $record[$i]->name;
+        }
+        //升序排序 arsort
+        krsort($value);
+        $attestation = 'document.write("';
+        foreach ($value as $key => $val) {
+            $attestation .= "<option value='" . $key . "'>" . $val . "</option>";
+        }
+        $attestation .= '");';
+        header('Content-Type:application/x-javascript');
+        echo $attestation;
+
     }
     //area table
     private function areaModel($type)

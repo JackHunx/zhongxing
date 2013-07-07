@@ -107,9 +107,10 @@ class SiteController extends SBaseController
 
         $upinfo = $up->getFileInfo();
         $patterns = Yii::getPathOfAlias('webroot');
-        $replace = Yii::app()->getBaseUrl();
-        $url = str_replace($patterns, $replace, $upinfo['url']);
+        //$replace = Yii::app()->basePath;
+        $url = str_replace($patterns, "", $upinfo['url']);
         //save to database
+        
         $model = new Upfiles;
         //$value['name']= htmlspecialchars($_POST['pictitle'], ENT_QUOTES);
         //         $value['user_id']=Yii::app()->user->id;
