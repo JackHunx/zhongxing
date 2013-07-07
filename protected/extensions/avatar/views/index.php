@@ -3,7 +3,8 @@
 	<div>
 		<h3 style="font-size:16px;padding:5px;border-bottom:solid 1px #ccc;">头像上传</h3>
 		<div style="padding:10px 0;color:#666;">
-		上传一张照片作为你的头像,例如上传你身份证上的照片  <a style="color:#cc3300;" href="javascript:void(0);" onclick="useCamera()">您也可以使用摄像头</a>
+		上传一张照片作为你的头像,例如上传你身份证上的照片  <!--<a style="color:#cc3300;" href="javascript:void(0);" onclick="useCamera()">您也可以使用摄像头</a>
+        -->
 		</div>
 		<form enctype="multipart/form-data" method="post" name="upform" target="upload_target" action="index.php?r=User/avatar/upload">
 		<input type="file" name="Filedata" id="Filedata"/>

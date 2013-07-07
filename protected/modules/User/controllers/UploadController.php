@@ -27,12 +27,31 @@ class UploadController extends SBaseController
     //upload one by one
     public function actionOne()
     {
-        if(isset($_POST['attestation']))
-        {
-            print_r($_POST['attestation']);
-            exit();
-        }
-        $this->render('one');
+        if (isset($_POST['attestation'])) {
+            $value = array(
+                'user_id' => Yii::app()->user->id,
+                'status' => '0',
+                'addtime' => time(),
+                'addip' => Yii::app()->request->getUserHostAddress(),
+
+                );
+            $model = new Attestation;
+            $model->attributes = array_merge($value, $_POST['attestation']);
+            if ($model->save()) {
+                $this->layout = "//layouts/main";
+                $this->render('//user/msg', array(
+                    'msg' => '上传成功',
+                    'msg_url' => Yii::app()->request->urlReferrer,
+                    'msg_content' => '返回继续上传'));
+            } else {
+                unlink(Yii::app()->basePath . $_POST['litpic']);
+                $this->render('//user/msg', array(
+                    'msg' => '上传保存数据库失败',
+                    'msg_usr' => Yii::app()->request->urlReferrer,
+                    'msg_content' => '返回重新上传'));
+            }
+        } else
+            $this->render('one');
     }
     //upload once by more
     public function actionMore()
