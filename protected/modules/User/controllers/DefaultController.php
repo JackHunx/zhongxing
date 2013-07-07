@@ -80,7 +80,12 @@ class DefaultController extends SBaseController
 
         $userModel = $this->loadUserModel($this->_user->id);
         //get avatar
+        
         $this->getAvatar('small');
+        $this->getInfo();
+        //echo "<pre>";
+//        print_r($this->info);
+//        exit();
         $this->render('index', array(
             'model' => $userModel,
             'info' => $this->info,
@@ -127,4 +132,27 @@ class DefaultController extends SBaseController
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;
     }
+    /**
+     * 
+     * 
+     */
+    private function getInfo()
+    {
+        $record = Userinfo::model()->findByAttributes(array('user_id' => $this->_user->
+                id));
+        $this->info['house'] = (($record->house_address != null) ?
+            '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
+        $this->info['company'] = (($record->company_name != null) ?
+            '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
+        $this->info['firm'] = (($record->private_type != null) ?
+            '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
+        $this->info['finance'] = (($record->finance_car != null) ?
+            '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
+        $this->info['contact'] = (($record->area != null) ?
+            '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
+        $this->info['edu'] = (($record->education_record != null) ?
+            '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
+    }
+    //加载用户信息模型
+
 }

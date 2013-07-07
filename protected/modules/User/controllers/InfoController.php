@@ -126,6 +126,7 @@ class InfoController extends SBaseController
                 );
             $value['updatetime'] = $value['addtime'];
             $value['updateip'] = $value['addip'];
+            $model=new Userinfo;
             $model->attributes = $value;
             if (!$model->save())
                 throw new CException('create userinfo by <' . $this->user->id . '> fail');

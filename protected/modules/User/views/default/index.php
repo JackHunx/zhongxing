@@ -1,5 +1,4 @@
 
-	
 	<!--右边的内容 开始-->
 	<div class="user_right ">
 		<div class="user_right_l ">
@@ -124,12 +123,12 @@
 				<div class="title"><strong>个人资料完成率</strong></div> 
 				<div>
 				<ul>
-									<li><span><a href="/index.php?user&amp;q=code/userinfo/building"><font color="#009900">已填写</font></a></span>房产资料</li>
-					<li><span><a href="/index.php?user&amp;q=code/userinfo/company"><font color="#FF0000">未填写</font></a></span>单位资料</li>
-					<li><span><a href="/index.php?user&amp;q=code/userinfo/firm"><font color="#FF0000">未填写</font></a></span>私营业主</li>
-					<li><span><a href="/index.php?user&amp;q=code/userinfo/finance"><font color="#FF0000">未填写</font></a></span>财务状况</li>
-					<li><span><a href="/index.php?user&amp;q=code/userinfo/contact"><font color="#FF0000">未填写</font></a></span>联系方式</li>
-					<li><span><a href="/index.php?user&amp;q=code/userinfo/edu"><font color="#FF0000">未填写</font></a></span>教育背景</li>
+									<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/building"><?php echo $info['house'];?></a></span>房产资料</li>
+					<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/company"><?php echo $info['company'];?></a></span>单位资料</li>
+					<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/firm"><?php echo $info['firm'];?></a></span>私营业主</li>
+					<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/finance"><?php echo $info['finance'];?></a></span>财务状况</li>
+					<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/contact"><?php echo $info['contact'];?></a></span>联系方式</li>
+					<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/edu"><?php echo $info['edu'];?></a></span>教育背景</li>
 					<!--<li><span>已填写</span><a href="/index.php?user&q=code/userinfo/building">工作经历</a></li>-->
 				</ul>
 								</div>

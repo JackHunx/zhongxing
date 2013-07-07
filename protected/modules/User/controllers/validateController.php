@@ -110,11 +110,13 @@ class ValidateController extends SBaseController
         if ($record !== null) {
 
             if ($record->vip_status == 1) {
+                $this->layout='//layouts/main';
                 $this->render('vip', array(
                     'status' => 'Vip会员',
                     'model' => $this->_model,
                     'vip' => $record));
             } elseif ($record->vip_status == 0) {
+                $this->layout='//layouts/main';
                 $this->render('vip', array(
                     'status' => '<font color=red>Vip申请中</font>',
                     'model' => $this->_model,
@@ -134,9 +136,11 @@ class ValidateController extends SBaseController
 
                 $model->attributes = array_merge($vip, $_POST['Vip']);
                 if ($model->save())
+                //$this->layout='//layoust/main';
                     $this->redirect(array('validate/vip', 'id' => $model->user_id));
             }
             //$model = new User;
+            $this->layout='//layouts/main';
             $this->render('vip', array(
                 'model' => $this->_model,
                 'status' => '普通会员',
