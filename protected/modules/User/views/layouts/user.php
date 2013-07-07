@@ -105,7 +105,7 @@
 			<li><a href="/index.php?user&amp;q=code/user/phone_status">手机认证</a></li>
 			<li><a href="/index.php?user&amp;q=code/user/video_status">视频认证</a></li>
 			<li><a href="/index.php?user&amp;q=code/user/scene_status">现场认证</a></li>
-			<li><a href="/index.php?user&amp;q=code/attestation">资料证明</a></li>
+			<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/upload">资料证明</a></li>
 		</ul>
 	</div>
 </div>

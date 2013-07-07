@@ -114,7 +114,7 @@ background-position:0 -99px;
 	<div class="navbar">
 		<div class="container-fluid">
 			<a href="#" class="pull-left logo">
-			<img class="logo" src="http://www.1891d.com/themes/61dai/images/logo.gif" alt="log"/>
+			<img class="logo" src="<?php echo Yii::app()->baseUrl;?>/images/logo.gif" alt="log"/>
 			</a>
 			<!-- top view info
 			
