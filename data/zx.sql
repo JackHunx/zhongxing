@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2013 年 07 月 08 日 22:23
+-- 生成日期: 2013 年 07 月 08 日 22:25
 -- 服务器版本: 5.5.27
 -- PHP 版本: 5.4.7
 
@@ -5756,7 +5756,7 @@ INSERT INTO `zx_linkage` (`id`, `status`, `order`, `type_id`, `pid`, `name`, `va
 CREATE TABLE IF NOT EXISTS `zx_linkage_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order` smallint(6) DEFAULT '0',
-  `name` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
   `nid` varchar(50) DEFAULT NULL,
   `addtime` int(10) DEFAULT '0',
   `addip` varchar(20) DEFAULT NULL,
