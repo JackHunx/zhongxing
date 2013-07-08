@@ -9,7 +9,7 @@ $this->widget('ext.EFineUploader.EFineUploader', array('id' => 'oneUploader',
         'config' => array(
         'autoUpload' => true,
         'debug' => true,
-        'request' => array('endpoint' => '/zhongxing/index.php?r=upload/attestation',
+        'request' => array('endpoint' => Yii::app()->baseUrl.'/index.php?r=upload/attestation',
                 // OR $this->createUrl('files/upload'),
                 'params' => array('YII_CSRF_TOKEN' => Yii::app()->request->csrfToken, 'code' =>
                     'attestation')),

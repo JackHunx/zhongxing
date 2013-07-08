@@ -6,7 +6,7 @@
 $this->widget('ext.FilesUpload.FilesUpload', array('id' => 'filesUpload',
         'config' => array(
         //'autoUpload'=>true,
-        'request' => array('endpoint' => '/zhongxing/index.php?r=upload/moreAttestation',
+        'request' => array('endpoint' => Yii::app()->baseUrl.'/index.php?r=upload/moreAttestation',
                 // OR $this->createUrl('files/upload'),
                 //'params'=>array('YII_CSRF_TOKEN'=>Yii::app()->request->csrfToken),
             ),
