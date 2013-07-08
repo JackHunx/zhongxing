@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2013 年 07 月 08 日 02:26
+-- 生成日期: 2013 年 07 月 08 日 21:54
 -- 服务器版本: 5.5.27
 -- PHP 版本: 5.4.7
 
@@ -5214,7 +5214,8 @@ INSERT INTO `zx_items` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
 ('UserIndex', 0, NULL, NULL, 'N;'),
 ('UserUpdate', 0, NULL, NULL, 'N;'),
 ('UserView', 0, NULL, NULL, 'N;'),
-('UserViewing', 1, NULL, NULL, 'N;');
+('UserViewing', 1, NULL, NULL, 'N;'),
+('客服', 2, '客服', '客服', 's:0:"";');
 
 -- --------------------------------------------------------
 
@@ -6733,7 +6734,7 @@ CREATE TABLE IF NOT EXISTS `zx_user_cache` (
 --
 
 INSERT INTO `zx_user_cache` (`user_id`, `kefu_userid`, `kefu_username`, `kefu_addtime`, `vip_status`, `vip_remark`, `vip_money`, `vip_verify_remark`, `vip_verify_time`, `bbs_topics_num`, `bbs_posts_num`, `credit`, `account`, `account_use`, `account_nouse`, `account_waitin`, `account_waitintrest`, `account_intrest`, `account_award`, `account_payment`, `account_expired`, `account_waitvip`, `borrow_amount`, `vouch_amount`, `borrow_loan`, `borrow_success`, `borrow_wait`, `borrow_paymeng`, `friends_apply`) VALUES
-(56, 7, NULL, NULL, 1, '这是一个申请测试', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3000, 0, 0, 0, 0, 0, 0),
+(56, 7, NULL, NULL, 0, '测试验证', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3000, 0, 0, 0, 0, 0, 0),
 (58, 7, NULL, NULL, 1, 'dasfas', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3000, 0, 0, 0, 0, 0, 0),
 (57, 7, NULL, NULL, 0, '我要申请成为会员', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3000, 0, 0, 0, 0, 0, 0);
 
@@ -7004,8 +7005,8 @@ ALTER TABLE `zx_assignments`
 -- 限制表 `zx_itemchildren`
 --
 ALTER TABLE `zx_itemchildren`
-  ADD CONSTRAINT `zx_itemchildren_ibfk_2` FOREIGN KEY (`child`) REFERENCES `zx_items` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `zx_itemchildren_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `zx_items` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `zx_itemchildren_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `zx_items` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `zx_itemchildren_ibfk_2` FOREIGN KEY (`child`) REFERENCES `zx_items` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
