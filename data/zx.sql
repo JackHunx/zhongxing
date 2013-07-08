@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2013 年 07 月 08 日 21:54
+-- 生成日期: 2013 年 07 月 08 日 22:23
 -- 服务器版本: 5.5.27
 -- PHP 版本: 5.4.7
 
@@ -5255,7 +5255,7 @@ CREATE TABLE IF NOT EXISTS `zx_linkage` (
   `name` varchar(250) DEFAULT NULL,
   `value` varchar(250) DEFAULT NULL,
   `addtime` int(10) DEFAULT '0',
-  `addip` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `addip` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `type_id` (`type_id`),
   KEY `type_ida` (`type_id`,`value`)
