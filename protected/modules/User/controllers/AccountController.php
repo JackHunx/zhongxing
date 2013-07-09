@@ -3,7 +3,7 @@
 class AccountController extends SBaseController
 {
     public $layout = "/layouts/account";
-    //init
+    //init sdaf
     public function init()
     {
         //init css and javascript
