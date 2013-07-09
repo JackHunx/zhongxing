@@ -32,18 +32,21 @@ class AccountController extends SBaseController
     public function accessRules()
     {
         return array(
-            array(
-                'allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array(
-                   // 'index',
-                   ),
-                'users' => array('*'),
-                ),
+            //array(
+//                'allow', // allow all users to perform 'index' and 'view' actions
+//                'actions' => array(
+//                    'index',
+//                   ),
+//                'users' => array('*'),
+//                ),
             array(
                 'allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array(
                 'index',
-                    'recharge'),
+                'recharge',
+                'bank',
+                'captcha'
+                ),
                 'users' => array('@'),
                 ),
             array(
@@ -138,6 +141,7 @@ class AccountController extends SBaseController
     }
     public function actionRecharge()
     {
+        
         $this->render('recharge');
     }
     public function actionRechargeLog()
