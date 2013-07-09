@@ -1,18 +1,18 @@
 <!--账号充值 开始-->
 		{elseif $_U.query_type=="recharge_new"}
-		<div class="user_help">{$_G.system.con_webname}禁止信用卡套现、虚假交易等行为,一经发现将予以处罚,包括但不限于：限制收款、冻结账户、永久停止服务,并有可能影响相关信用记录。
+		<div class="user_help"><?php echo $webname;?>禁止信用卡套现、虚假交易等行为,一经发现将予以处罚,包括但不限于：限制收款、冻结账户、永久停止服务,并有可能影响相关信用记录。
 </div>
 		<div class="user_right_border">
 			<div class="l">真实姓名：</div>
 			<div class="c">
-				{$_G.user_result.realname}
+				<?php echo $user->username;?>
 			</div>
 		</div>
 		
 		<div class="user_right_border">
 			<div class="l">账号：</div>
 			<div class="c">
-				{$_G.user_result.email}
+				<?php echo $user->email;?>
 			</div>
 		</div>
 		<form action="" method="post" name="form1"  onsubmit = "return check();" >
@@ -20,13 +20,13 @@
 		<div class="user_right_border">
 			<div class="l">充值方式：</div>
 			<div class="c">
-				<input type="radio" name="type"  id="type"  class="input_border" checked="checked" onclick="change_type(1)" value="1"  /> 网上充值 <input type="radio" name="type"  id="type" class="input_border"  value="2"  onclick="change_type(2)" /> 线下充值 
+				<input type="radio" name="recharge[type]"  id="type"  class="input_border" checked="checked" onclick="change_type(1)" value="1"  /> 网上充值 <input type="recharge[radio]" name="type"  id="type" class="input_border"  value="2"  onclick="change_type(2)" /> 线下充值 
 			</div>
 		</div>
 		<div class="user_right_border">
 			<div class="l">充值金额：</div>
 			<div class="c">
-				<input type="text" name="money"  class="input_border" value="" size="10" onkeyup="commit(this);" maxlength="9" /> 元 <span id="realacc">实际入账：，<font color="#FF0000" id="real_money">0</font> 元</span>
+				<input type="text" name="recharge[money]"  class="input_border" value="" size="10" onkeyup="commit(this);" maxlength="9" /> 元 <span id="realacc">实际入账：，<font color="#FF0000" id="real_money">0</font> 元</span>
 			</div>
 		</div>
 		<div id="type_net">

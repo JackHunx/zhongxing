@@ -139,6 +139,14 @@ class AccountController extends SBaseController
         }
 
     }
+    /**
+     * recharge to account 
+     * -审核成功后记录入account账户,account为一个用户一条记录
+     * -每次充值都写入account_recharge 表 不论充值成功与否
+     * -
+     * 
+     * 
+     */
     public function actionRecharge()
     {
         
