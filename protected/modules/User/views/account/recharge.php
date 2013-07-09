@@ -64,7 +64,7 @@
 		<div class="user_right_border">
 			<div class="l">验证码：</div>
 			<div class="c">
-				<input name="valicode" type="text" size="11" maxlength="4"  tabindex="3"/>&nbsp;<?php  $this->widget('CCaptcha',array('showRefreshButton'=>false,'clickableImage'=>true,'imageOptions'=>array('alt'=>'点击换图','title'=>'点击换图','style'=>'cursor:pointer'))); ?>
+				<input name="recharge[verifyCode]" type="text" size="11" maxlength="4"  tabindex="3"/>&nbsp;<?php  $this->widget('CCaptcha',array('showRefreshButton'=>false,'clickableImage'=>true,'imageOptions'=>array('alt'=>'点击换图','title'=>'点击换图','style'=>'cursor:pointer'))); ?>
 			</div>
 		</div>
 		<div class="user_right_border">
