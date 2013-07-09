@@ -29,7 +29,10 @@ class UploadController extends SBaseController
                 ),
             array(
                 'allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('card', 'attestation','moreAttestation'),
+                'actions' => array(
+                    'card',
+                    'attestation',
+                    'moreAttestation'),
                 'users' => array('@'),
                 ),
             array(
@@ -107,12 +110,11 @@ class UploadController extends SBaseController
     public function actionAttestation()
     {
         $tempFolder = Yii::getPathOfAlias('webroot') . '/upload/attestation/';
-        $tempFolder.=date("Ymd",time());
-        if(!is_dir($tempFolder))
-        {
-            mkdir($tempFolder,0777);
+        $tempFolder .= date("Ymd", time());
+        if (!is_dir($tempFolder)) {
+            mkdir($tempFolder, 0777);
         }
-        $tempFolder.='/';
+        $tempFolder .= '/';
         Yii::import("ext.EFineUploader.qqFileUploader");
         $uploader = new qqFileUploader();
         $uploader->allowedExtensions = array(
@@ -121,13 +123,14 @@ class UploadController extends SBaseController
             'png',
             'gif');
         //the max size
-        $uploader->sizeLimit = 500 * 1024; //100kb
+        $uploader->sizeLimit = 10*1024* 1024; //限制文件大小10mb
         $uploader->chunksFolder = $tempFolder . 'chunks';
         $result = $uploader->handleUpload($tempFolder);
         //save to db
 
         $result['filename'] = $uploader->getUploadName();
-        $result['url'] = Yii::app()->getBaseUrl() . str_replace(Yii::getPathOfAlias('webroot'),"",$tempFolder) . $uploader->getUploadName();
+        $result['url'] = Yii::app()->getBaseUrl() . str_replace(Yii::getPathOfAlias('webroot'),
+            "", $tempFolder) . $uploader->getUploadName();
         $result['saveUrl'] = $url = '/upload/attestation/' . $uploader->getUploadName();
         //$resuslt['response'] = "test";
         // $result['folder'] = $webFolder;
@@ -186,7 +189,7 @@ class UploadController extends SBaseController
                 ".swf",
                 ".wmv",
                 ".jpg"), //文件允许格式
-            "maxSize" => 100000 //文件大小限制，单位KB
+            "maxSize" => 10*1024 //文件大小限制，单位KB
                 );
         //生成上传实例对象并完成上传
         Yii::import("ext.FilesUpload.php.Uploader");

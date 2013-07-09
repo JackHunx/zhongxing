@@ -8,7 +8,7 @@
 		</div>
 		<form enctype="multipart/form-data" method="post" name="upform" target="upload_target" action="index.php?r=User/avatar/upload">
 		<input type="file" name="Filedata" id="Filedata"/>
-		<input style="margin-right:20px;" type="submit" name="" value="上传形象照" onclick="return checkFile();" /><span style="visibility:hidden;" id="loading_gif"><img src="<?php echo $baseUrl; ?>./loading.gif" align="absmiddle" />上传中，请稍侯......</span>
+		<input style="margin-right:20px;" type="submit" name="" value="上传形象照" onclick="return checkFile();" /><span style="visibility:hidden;" id="loading_gif"><img src="<?php echo $baseUrl; ?>/loading.gif" align="absmiddle" />上传中，请稍侯......</span>
 		</form>
 		<iframe src="about:blank" name="upload_target" style="display:none;"></iframe>
 		<div id="avatar_editor"></div>

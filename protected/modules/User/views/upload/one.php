@@ -31,8 +31,8 @@ $this->widget('ext.EFineUploader.EFineUploader', array('id' => 'oneUploader',
                 'jpg',
                 'jpeg',
                 'doc'),
-            'sizeLimit' => 500 * 1024, //maximum file size in bytes
-            'minSizeLimit' => 1 * 1024, // minimum file size in bytes
+            'sizeLimit' => 10 * 1024 * 1024, //maximum file size in bytes
+            'minSizeLimit' => 500, // minimum file size in bytes
             ),
         )));
 
