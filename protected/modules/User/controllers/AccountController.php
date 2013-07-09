@@ -149,6 +149,10 @@ class AccountController extends SBaseController
      */
     public function actionRecharge()
     {
+        if(isset($_POST['recharge']))
+        {
+            
+        }
         
         $this->render('recharge');
     }

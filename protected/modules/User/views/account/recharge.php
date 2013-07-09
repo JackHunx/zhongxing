@@ -20,7 +20,7 @@
 		<div class="user_right_border">
 			<div class="l">充值方式：</div>
 			<div class="c">
-				<input type="radio" name="recharge[type]"  id="type"  class="input_border" checked="checked" onclick="change_type(1)" value="1"  /> 网上充值 <input type="recharge[radio]" name="type"  id="type" class="input_border"  value="2"  onclick="change_type(2)" /> 线下充值 
+				<input type="radio" name="recharge[type]"  id="type"  class="input_border" checked="checked" onclick="change_type(1)" value="1"  /> 网上充值 <input type="radio" name="recharge[type]"  id="type" class="input_border"  value="2"  onclick="change_type(2)" /> 线下充值 
 			</div>
 		</div>
 		<div class="user_right_border">
