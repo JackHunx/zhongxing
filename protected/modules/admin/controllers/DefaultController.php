@@ -42,6 +42,15 @@ class DefaultController extends SBaseController
 
         // collect user input data
         if (isset($_POST['admin'])) {
+             //验证码验证
+            if (!$this->createAction('captcha')->validate($_POST['verifyCode'], false)) {
+                $this->layout = "//layouts/main";
+                $this->render("//site/msg", array(
+                    'msg' => "验证码输入错误",
+                    'msg_url' => Yii::app()->request->urlReferrer,
+                    'msg_content' => '点击返回'));
+                Yii::app()->end();
+            }
             $model->attributes = $_POST['admin'];
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login())

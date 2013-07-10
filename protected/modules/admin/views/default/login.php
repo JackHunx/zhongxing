@@ -109,20 +109,20 @@ window.attachEvent("onload", correctPNG);
               <td>&nbsp;</td>
               <td height="21"><table cellSpacing="0" cellPadding="0" width="100%" border="0" id="table211" height="328">
                   <tr>
-                    <td height="164" colspan="2" align="middle"><form name="myform" action="index.html" method="post">
+                    <td height="164" colspan="2" align="middle"><form name="myform" action="" method="post">
                         <table cellSpacing="0" cellPadding="0" width="100%" border="0" height="143" id="table212">
                           <tr>
                             <td width="13%" height="38" class="top_hui_text"><span class="login_txt">管理员：&nbsp;&nbsp; </span></td>
-                            <td height="38" colspan="2" class="top_hui_text"><input name="username" class="editbox4" value="" size="20">                            </td>
+                            <td height="38" colspan="2" class="top_hui_text"><input name="admin[username]" class="editbox4" value="" size="20">                            </td>
                           </tr>
                           <tr>
                             <td width="13%" height="35" class="top_hui_text"><span class="login_txt"> 密 码： &nbsp;&nbsp; </span></td>
-                            <td height="35" colspan="2" class="top_hui_text"><input class="editbox4" type="password" size="20" name="password">
+                            <td height="35" colspan="2" class="top_hui_text"><input class="editbox4" type="password" size="20" name="admin[password]">
                               <img src="images/admin/luck.gif" width="19" height="18"> </td>
                           </tr>
                           <tr>
                             <td width="13%" height="35" ><span class="login_txt">验证码：</span></td>
-                            <td height="35" colspan="2" class="top_hui_text"><input class=wenbenkuang name=verifycode type=text value="" maxLength=4 size=10><?php  $this->widget('CCaptcha',array('showRefreshButton'=>false,'clickableImage'=>true,'imageOptions'=>array('alt'=>'点击换图','title'=>'点击换图','style'=>'cursor:pointer'))); ?>
+                            <td height="35" colspan="2" class="top_hui_text"><input class=wenbenkuang name="verifyCode" type=text value="" maxLength=5 size=10><?php  $this->widget('CCaptcha',array('showRefreshButton'=>false,'clickableImage'=>true,'imageOptions'=>array('alt'=>'点击换图','title'=>'点击换图','style'=>'cursor:pointer'))); ?>
                               </td>
                           </tr>
                           <tr>
