@@ -658,7 +658,7 @@
 
 .user_list_table tr { height:22px; font-size:12px;}
 
-.user_list_table td {margin:0px;padding:3px;text-align: center;color:#575757;background: url(../images/point.gif) repeat-x;height:30px; *height:20px; }
+.user_list_table td {margin:0px;padding:3px;text-align: center;color:#575757;height:30px; *height:20px; }
 
 .user_list_table td a{color: #333;}
 
@@ -666,7 +666,7 @@
 
 .user_list_table .head td{background-color: #F3F3F3;border-bottom:1px solid #CCCCCC;border-right:1px solid  #FFFFFF;border-top:1px solid  #FFFFFF; font-weight:bold; height:30px; *height:20px;}
 
-.user_list_table .tr1 td{background-color: #F7F7F7;height:30px; *height:20px;border-right:1px solid  #FFFFFF;}
+.user_list_table .tr1 td{background-color: #F7F7C0;height:30px; *height:20px;border-right:1px solid  #FFFFFF;}
 
 .user_list_table .no_bg td{background:none;}
 

@@ -1,5 +1,4 @@
 <!--充值记录列表 开始-->
-		{elseif $_U.query_type=="recharge"}
 		<div class="user_help">成功充值{$_U.account_log.recharge_success|default:0}元，线上成功充值{$_U.account_log.recharge_online|default:0}元，线下成功充值{$_U.account_log.recharge_downline|default:0}元,，手动成功充值{$_U.account_log.recharge_shoudong|default:0}元
 </div>
 		<table  border="0"  cellspacing="1" class="user_list_table">

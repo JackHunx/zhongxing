@@ -46,7 +46,8 @@ class AccountController extends SBaseController
                     'recharge',
                     'bank',
                     'captcha',
-                    'rechargelog'),
+                    'rechargelog',
+                    'log'),
                 'users' => array('@'),
                 ),
             array(
