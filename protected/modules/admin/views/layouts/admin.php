@@ -185,8 +185,24 @@
 					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
 					Open Modal
 				</span></a></li>
+                <li><a class="shortcut-button" href="#messages" rel="modal"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
+					Open Modal
+				</span></a></li>
+                <li><a class="shortcut-button" href="#messages" rel="modal"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
+					Open Modal
+				</span></a></li>
+                <li><a class="shortcut-button" href="#messages" rel="modal"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
+					Open Modal
+				</span></a></li>
 				
-			</ul><!-- End .shortcut-buttons-set -->
+			</ul>
+            	
+            
+            
+            <!-- End .shortcut-buttons-set -->
 			
 			<div class="clear"></div> <!-- End .clear -->
 			
