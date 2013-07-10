@@ -25,15 +25,17 @@ You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&g
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
 </p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<?php //echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
-)); ?>
+));
+ ?>
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'vip-grid',
+    'cssFile'=>Yii::app()->baseUrl.'/css/grid_view.css',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
     //'htmlOptions'=>array('stytle'=>'textalgin:center'),
@@ -44,43 +46,17 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
         'name'=>'user_search',
         'value'=>'$data->user->username'
        ),
-        //'user_name',
-		//'kefu_userid',
+        
 		'kefu_username',
-		//'kefu_addtime',
-        //array(
+		
         array(
         'name'=>'vip_status',
         'type'=>'raw',
         'value'=>array($this,'vipStatus'),
         ),
-		//'vip_status',
+		
 		'vip_remark',
-		/*
-		'vip_money',
-		'vip_verify_remark',
-		'vip_verify_time',
-		'bbs_topics_num',
-		'bbs_posts_num',
-		'credit',
-		'account',
-		'account_use',
-		'account_nouse',
-		'account_waitin',
-		'account_waitintrest',
-		'account_intrest',
-		'account_award',
-		'account_payment',
-		'account_expired',
-		'account_waitvip',
-		'borrow_amount',
-		'vouch_amount',
-		'borrow_loan',
-		'borrow_success',
-		'borrow_wait',
-		'borrow_paymeng',
-		'friends_apply',
-		*/
+		
 		array(
 			'class'=>'CButtonColumn',
             'deleteButtonOptions'=>array('style'=>'display:none'),   

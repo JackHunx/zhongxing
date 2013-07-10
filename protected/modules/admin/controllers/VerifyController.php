@@ -14,7 +14,7 @@ class VerifyController extends SBaseController
         if (isset($_GET['Vip']))
             $model->attributes = $_GET['Vip'];
       
-        $this->render('vip', array('model' => $model, ));
+        $this->render('vip', array('model' => $model));
         
     }
     //return vip status 

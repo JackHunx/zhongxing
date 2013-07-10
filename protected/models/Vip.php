@@ -114,7 +114,7 @@ class Vip extends CActiveRecord
             'kefu_username' => '客服',
             'kefu_addtime' => 'Kefu Addtime',
             'vip_status' => '状态',
-            'vip_remark' => 'Vip Remark',
+            'vip_remark' => '说明',
             'vip_money' => 'Vip Money',
             'vip_verify_remark' => 'Vip Verify Remark',
             'vip_verify_time' => 'Vip Verify Time',
