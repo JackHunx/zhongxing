@@ -7,22 +7,23 @@ class DefaultController extends SBaseController
     {
 
 
-        Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl .
-            '/css/admin/bootstrap-classic.css');
+       // Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl .
+           // '/css/admin/bootstrap-classic.css');
 
         //Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/admin/noty_theme_default.css');
-        Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl .
-            '/css/admin/charisma-app.css');
+        //Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl .
+           // '/css/admin/charisma-app.css');
 
     }
     public function actionIndex()
     {
         $model = new AdminLoginForm;
         if (isset(Yii::app()->user->id)) {
+            //$this->layout='/layouts/admin';
             $this->render('index');
             Yii::app()->end();
         }
-        $this->render('login');
+       // $this->render('login');
         // if it is ajax validation request
         //if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
 //            echo CActiveForm::validate($model);
@@ -34,8 +35,9 @@ class DefaultController extends SBaseController
             $model->attributes = $_POST['admin'];
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login())
-                $this->redirect(Yii::app()->user->returnUrl);
+                $this->render('index');//$this->redirect(Yii::app()->user->returnUrl);
         }
+        $this->layout='/layouts/adminlogin';
         // display the login form
         $this->render('login', array('model' => $model));
         //if (isset($_POST['admin'])) {
