@@ -19,9 +19,10 @@ class DefaultController extends SBaseController
     {
         $model = new AdminLoginForm;
         if (isset(Yii::app()->user->id)) {
-            echo '您已经登陆,请不要重复登陆';
-            exit();
+            $this->render('index');
+            Yii::app()->end();
         }
+        $this->render('login');
         // if it is ajax validation request
         //if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
 //            echo CActiveForm::validate($model);
