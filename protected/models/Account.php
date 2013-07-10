@@ -39,6 +39,11 @@ class Account extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+            array(
+                'verifyCode',
+                'captcha',
+                'on'=>'bank',
+                'allowEmpty' => !CCaptcha::checkRequirements()),
 			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('total, use_money, no_use_money, collection', 'length', 'max'=>11),
 			// The following rule is used by search().

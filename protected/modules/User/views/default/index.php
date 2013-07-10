@@ -20,7 +20,7 @@
 							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/scene"><div class="credit_pic_scene_0" title="现场认证"></div></a>
 						</li>
 
-						<li>  <a href="/index.php?user&amp;q=code/account/recharge_new"><font color="#FF0000">账号充值</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=credit"><font color="#FF0000">申请信用额度</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=vouch"><font color="#FF0000">申请担保额度</font></a> </li>
+						<li>  <a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/account/recharge"><font color="#FF0000">账号充值</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=credit"><font color="#FF0000">申请信用额度</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=vouch"><font color="#FF0000">申请担保额度</font></a> </li>
 						<li><span>VIP 期限： <a href="<?php echo $baseUrl; ?>/index.php?r=User/validate/vip"><?php echo $vip['msg']; ?></a></span></li>
 						<li><span>系统告知：</span><a href="/index.php?user&amp;q=code/message"><font color="#FF0000">24</font> 封未读信息</a>&nbsp; &nbsp; <a href="/index.php?user&amp;q=code/user/request">0 个好友邀请</a></li>
 					</ul>
