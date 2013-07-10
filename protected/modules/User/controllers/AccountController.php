@@ -33,20 +33,19 @@ class AccountController extends SBaseController
     {
         return array(
             //array(
-//                'allow', // allow all users to perform 'index' and 'view' actions
-//                'actions' => array(
-//                    'index',
-//                   ),
-//                'users' => array('*'),
-//                ),
+            //                'allow', // allow all users to perform 'index' and 'view' actions
+            //                'actions' => array(
+            //                    'index',
+            //                   ),
+            //                'users' => array('*'),
+            //                ),
             array(
                 'allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array(
-                'index',
-                'recharge',
-                'bank',
-                'captcha'
-                ),
+                    'index',
+                    'recharge',
+                    'bank',
+                    'captcha'),
                 'users' => array('@'),
                 ),
             array(
@@ -60,7 +59,7 @@ class AccountController extends SBaseController
                 ),
             );
     }
-    
+
     //init sdaf
     public function init()
     {
@@ -90,12 +89,10 @@ class AccountController extends SBaseController
      */
     public function actionBank()
     {
-        $webname = System::model()->find('nid=:nid', array(':nid' => 'con_webname'))->
-            value;
+        $webname = $this->getWebName();
         $bank = AccountBank::model()->find('user_id=:user_id', array(':user_id' => Yii::
                 app()->user->id));
-        if ($webname == null)
-            $webname = '网站名称未设置';
+
         if (isset($_POST['bank'])) {
             if ($bank == null) {
                 $bank = new AccountBank;
@@ -144,17 +141,57 @@ class AccountController extends SBaseController
      * -审核成功后记录入account账户,account为一个用户一条记录
      * -每次充值都写入account_recharge 表 不论充值成功与否
      * -
-     * 
+     * @important 功能只能实现线下充值
      * 
      */
     public function actionRecharge()
     {
-        if(isset($_POST['recharge']))
-        {
-            
+        //throw new CHttpException('505');
+        //$value = $this->getPaymentType('3');
+        //        header("Content-Type:text/html;charset=utf-8");
+        //        echo "<pre>";
+        //        print_r($value);
+        //        exit();
+        $offline = $this->getPaymentType('1');
+        $online = $this->getPaymentType('2');
+        $webname = $this->getWebName();
+        $user = User::model()->findByPk(Yii::app()->user->id);
+        if (isset($_POST['recharge'])) {
+            //记录入数据库等待审核 线下充值
+            $model = new AccountRecharge;
+            $value = array(
+                'trade_no' => time() . Yii::app()->user->id . rand(1, 999),
+                'user_id' => Yii::app()->user->id,
+                'status' => '0',
+                'addtime' => time(),
+                'addip' => Yii::app()->request->getUserHostAddress(),
+                );
+            $model->attributes = array_merge($value, $_POST['recharge']);
+            //验证码验证
+            if (!$this->createAction('captcha')->validate($_POST['verifyCode'], false)) {
+                $this->layout="//layouts/main";
+                $this->render("//site/msg", array(
+                    'msg' => "验证码输入错误",
+                    'msg_url' => Yii::app()->request->urlReferrer,
+                    'msg_content' => '点击返回'));
+                    Yii::app()->end();
+            }
+
+            if (!$model->save())
+                throw new CHttpException('505');
+            $this->layout = "//layouts/main";
+            $this->render("//site/msg", array(
+                'msg' => "充值完成等待审核",
+                'msg_url' => Yii::app()->baseUrl . '/index.php?r=User',
+                'msg_content' => '回到用户中心'));
+            Yii::app()->end();
         }
-        
-        $this->render('recharge');
+
+        $this->render('recharge', array(
+            'webname' => $webname,
+            'user' => $user,
+            'offline' => $offline,
+            'online' => $online));
     }
     public function actionRechargeLog()
     {
@@ -171,6 +208,41 @@ class AccountController extends SBaseController
     public function actionLog()
     {
         $this->render('log');
+    }
+    //@returen webname;;
+    private function getWebName()
+    {
+        $webname = System::model()->find('nid=:nid', array(':nid' => 'con_webname'))->
+            value;
+        if ($webname == null)
+            $webname = '网站名称未设置';
+        return $webname;
+    }
+    /**
+     * payment type nid=1为线上充值online，nid=1为线下充值offline
+     * @return array sort by order
+     */
+
+    private function getPaymentType($type)
+    {
+        $record = PaymentType::model()->findAll('type=:type', array(':type' => $type));
+        if ($record != null) {
+            $value = array();
+            for ($i = 0; $i < count($record); $i++) {
+                $value[$record[$i]->order] = array(
+                    'id' => $record[$i]->id,
+                    'name' => $record[$i]->name,
+                    'description' => $record[$i]->description);
+            }
+            //对结果根据 key 升序排序
+            ksort($value);
+        } else
+            $value = array('0' => array(
+                    'id' => '0',
+                    'name' => '账户未设置',
+                    'description' => '000000'));
+        return $value;
+
     }
     // Uncomment the following methods and override them if needed
     /*

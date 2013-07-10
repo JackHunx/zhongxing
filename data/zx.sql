@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- ‰∏ªÊú∫: 127.0.0.1
--- ÁîüÊàêÊó•Êúü: 2013 Âπ¥ 07 Êúà 09 Êó• 10:07
+-- ÁîüÊàêÊó•Êúü: 2013 Âπ¥ 07 Êúà 10 Êó• 04:12
 -- ÊúçÂä°Âô®ÁâàÊú¨: 5.5.27
 -- PHP ÁâàÊú¨: 5.4.7
 
@@ -145,20 +145,20 @@ CREATE TABLE IF NOT EXISTS `zx_account_payment` (
 
 CREATE TABLE IF NOT EXISTS `zx_account_recharge` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `trade_no` varchar(20) CHARACTER SET gbk DEFAULT NULL COMMENT '∂©µ•∫≈',
-  `user_id` int(11) DEFAULT '0' COMMENT '”√ªßID',
+  `trade_no` varchar(20) DEFAULT NULL,
+  `user_id` int(11) DEFAULT '0',
   `status` int(2) DEFAULT '0' COMMENT '◊¥Ã¨',
-  `money` decimal(10,2) DEFAULT '0.00' COMMENT 'Ω∂Ó',
-  `payment` varchar(100) CHARACTER SET gbk DEFAULT NULL COMMENT 'À˘ Ù“¯––',
-  `return` text CHARACTER SET gbk,
-  `type` varchar(10) CHARACTER SET gbk DEFAULT '0' COMMENT '¿‡–Õ',
-  `remark` varchar(250) CHARACTER SET gbk DEFAULT '0' COMMENT '±∏◊¢',
-  `fee` varchar(10) CHARACTER SET gbk DEFAULT NULL,
-  `verify_userid` int(11) DEFAULT '0' COMMENT '…Û∫À»À',
-  `verify_time` varchar(11) CHARACTER SET gbk DEFAULT NULL COMMENT '…Û∫À ±º‰',
-  `verify_remark` varchar(250) CHARACTER SET gbk DEFAULT '' COMMENT '…Û∫À±∏◊¢',
-  `addtime` varchar(11) CHARACTER SET gbk DEFAULT NULL,
-  `addip` varchar(15) CHARACTER SET gbk DEFAULT NULL,
+  `money` decimal(10,2) DEFAULT '0.00',
+  `payment` varchar(100) DEFAULT NULL,
+  `return` text,
+  `type` varchar(10) DEFAULT '0',
+  `remark` varchar(250) DEFAULT '0',
+  `fee` varchar(10) DEFAULT NULL,
+  `verify_userid` int(11) DEFAULT '0',
+  `verify_time` varchar(11) DEFAULT NULL,
+  `verify_remark` varchar(250) DEFAULT NULL,
+  `addtime` varchar(11) DEFAULT NULL,
+  `addip` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `user_ids` (`user_id`,`status`),
@@ -5993,13 +5993,21 @@ CREATE TABLE IF NOT EXISTS `zx_payment` (
 
 CREATE TABLE IF NOT EXISTS `zx_payment_type` (
   `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) CHARACTER SET gbk DEFAULT NULL,
-  `nid` varchar(100) CHARACTER SET gbk DEFAULT NULL,
-  `type` varchar(30) CHARACTER SET gbk DEFAULT NULL,
-  `description` longtext CHARACTER SET gbk,
+  `name` varchar(100) DEFAULT NULL,
+  `nid` varchar(100) DEFAULT NULL COMMENT 'offline or online',
+  `type` varchar(30) DEFAULT NULL COMMENT '1.offline 2.online',
+  `description` longtext,
   `order` smallint(3) unsigned DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- ËΩ¨Â≠òË°®‰∏≠ÁöÑÊï∞ÊçÆ `zx_payment_type`
+--
+
+INSERT INTO `zx_payment_type` (`id`, `name`, `nid`, `type`, `description`, `order`) VALUES
+(1, '‰∏≠ÂõΩÂ∑•ÂïÜÈì∂Ë°å‰∏¥Ê≤ÇÂÖ∞Â±±Âå∫Ëß£ÊîæË∑ØÊîØË°å Êù®Âπ≥000000000000123456789123456987', 'offline', '1', '2008132119900065132161654651651651', 1),
+(2, 'ÂÜú‰∏öÈì∂Ë°å', 'offline', '1', '33333331111111222552', 0);
 
 -- --------------------------------------------------------
 
@@ -6031,10 +6039,10 @@ CREATE TABLE IF NOT EXISTS `zx_remind` (
 CREATE TABLE IF NOT EXISTS `zx_remind_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order` smallint(6) DEFAULT '0',
-  `name` varchar(50) CHARACTER SET gbk DEFAULT NULL,
-  `nid` varchar(50) CHARACTER SET gbk DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `nid` varchar(50) DEFAULT NULL,
   `addtime` int(10) DEFAULT '0',
-  `addip` varchar(20) CHARACTER SET gbk DEFAULT NULL,
+  `addip` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
