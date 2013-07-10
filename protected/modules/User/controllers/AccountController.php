@@ -45,7 +45,8 @@ class AccountController extends SBaseController
                     'index',
                     'recharge',
                     'bank',
-                    'captcha'),
+                    'captcha',
+                    'rechargelog'),
                 'users' => array('@'),
                 ),
             array(
@@ -169,12 +170,12 @@ class AccountController extends SBaseController
             $model->attributes = array_merge($value, $_POST['recharge']);
             //验证码验证
             if (!$this->createAction('captcha')->validate($_POST['verifyCode'], false)) {
-                $this->layout="//layouts/main";
+                $this->layout = "//layouts/main";
                 $this->render("//site/msg", array(
                     'msg' => "验证码输入错误",
                     'msg_url' => Yii::app()->request->urlReferrer,
                     'msg_content' => '点击返回'));
-                    Yii::app()->end();
+                Yii::app()->end();
             }
 
             if (!$model->save())
@@ -195,7 +196,29 @@ class AccountController extends SBaseController
     }
     public function actionRechargeLog()
     {
-        $this->render('rechargelog');
+        $criteria = new CDbCriteria;
+        $count = AccountRecharge::model()->count('user_id=:user_id', array(':user_id' =>
+                Yii::app()->user->id));
+        $user_id = Yii::app()->user->id;
+        $criteria->addCondition("user_id={$user_id}");
+        $criteria->order = 'addtime DESC';
+
+        // $record = AccountRecharge::model()->findAll("user_id=:userid",array(':user_id'=>Yii::app()->user->id),array('order'=>'addtime desc','limit'=>,'offset'=>$pages));
+        // $record = AccountRecharge::model()->findAll()
+        //('user_id=:user_id',array(':user_id'=>Yii::app()->user->id));
+        //$value = $record->getAttributes();
+        $pages = new CPagination($count);
+        $pages->pageSize = 10;
+        $pages->applyLimit($criteria);
+        $criteria->limit = $pages->pageSize;
+        $criteria->offset = $pages->currentPage * $pages->pageSize;
+        $record=AccountRecharge::model()->findAll($criteria);
+
+        // print_r();
+        //$criteria = new CDbCriteria();
+        //$model->unsetAttributes();
+
+        $this->render('rechargelog', array('posts' => $record, 'pages' => $pages));
     }
     public function actionCash()
     {
