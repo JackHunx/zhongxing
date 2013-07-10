@@ -15,6 +15,16 @@ class DefaultController extends SBaseController
            // '/css/admin/charisma-app.css');
 
     }
+     public function actions()
+    {
+        return array('captcha' => array(
+                'class' => 'CCaptchaAction',
+                'backColor' => 0xFFFFFF,
+                'maxLength' => '5',
+                'minLength' => '4',
+                'height' => '30'), //'page' => array('class' => 'CViewAction', ),
+                );
+    }
     public function actionIndex()
     {
         $model = new AdminLoginForm;
