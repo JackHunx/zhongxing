@@ -25,6 +25,11 @@ class SiteController extends SBaseController
             'page' => array('class' => 'CViewAction', ),
             );
     }
+    //test 
+    public function actionTest()
+    {
+        echo Yii::app()->credit->getRank('123');
+    }
     ///test upload
     public function actionUpload()
     {
