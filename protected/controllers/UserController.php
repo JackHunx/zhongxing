@@ -203,7 +203,7 @@ class UserController extends SBaseController
                 $identity = new UserIdentity($username, $password);
                 if ($identity->authenticate()) {
                     Yii::app()->user->login($identity);
-                    //进入用户中心
+                    //进入用户中心邮箱
                     $this->redirect(array(
                         'User/email',
                         'email' => $value['email'],

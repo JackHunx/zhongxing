@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl;?>/css/admin/reset.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl;?>/css/admin/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl;?>/css/admin/invalid.css" type="text/css" media="screen" />	
-<script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/simpla.jquery.configuration.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/facebox.js"></script>
-<script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/admin/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/admin/simpla.jquery.configuration.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/admin/facebox.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/admin/jquery.wysiwyg.js"></script>
 
 </head>
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
@@ -24,26 +24,26 @@
 		  
 			<!-- Sidebar Profile links -->
 			<div id="profile-links">
-				Hello, <a href="#" title="Edit your profile">John Doe</a>, you have <a href="#messages" rel="modal" title="3 Messages">3 Messages</a><br />
+				Hello, <a href="#" title="Edit your profile"><?php echo Yii::app()->user->username;?></a>, 你有 <a href="#messages" rel="modal" title="3 Messages">x 条未读信息</a><br />
 				<br />
-				<a href="#" title="View the Site">View the Site</a> | <a href="#" title="Sign Out">Sign Out</a>
+				<a href="<?php echo Yii::app()->baseUrl;?>/index.php" target="_blank" title="View the Site">查看首页</a> | <a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=site/logout" title="Sign Out">退出</a>
 			</div>        
 			
 			<ul id="main-nav">  <!-- Accordion Menu -->
 				
 				<li>
-					<a href="http://www.google.com/" class="nav-top-item no-submenu"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
-						Dashboard
+					<a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin" class="nav-top-item no-submenu current"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
+						管理首页
 					</a>       
 				</li>
 				
 				<li> 
-					<a href="#" class="nav-top-item current"> <!-- Add the class "current" to current menu item -->
-					Articles
+					<a href="#" class="nav-top-item"> <!-- Add the class "current" to current menu item -->
+					认证管理
 					</a>
 					<ul>
-						<li><a href="#">Write a new Article</a></li>
-						<li><a class="current" href="#">Manage Articles</a></li> <!-- Add class "current" to sub menu items also -->
+						<li><a href="#"></a></li>
+						<li><a class="" href="#">Manage Articles</a></li> <!-- Add class "current" to sub menu items also -->
 						<li><a href="#">Manage Comments</a></li>
 						<li><a href="#">Manage Categories</a></li>
 					</ul>
@@ -51,7 +51,7 @@
 				
 				<li>
 					<a href="#" class="nav-top-item">
-						Pages
+						审核管理
 					</a>
 					<ul>
 						<li><a href="#">信贷审核</a></li>
@@ -59,38 +59,62 @@
 					</ul>
 				</li>
 				
+				
+				
 				<li>
 					<a href="#" class="nav-top-item">
-						Image Gallery
+						用户管理
 					</a>
 					<ul>
-						<li><a href="#">Upload Images</a></li>
-						<li><a href="#">Manage Galleries</a></li>
+						<li><a href="#">用户列表</a></li>
+                        <li><a href="#">VIP用户</a></li>
+						<li><a href="#">用户组</a></li>
+						<li><a href="#">权限分配</a></li>
+					</ul>
+				</li>
+                <li>
+					<a href="#" class="nav-top-item">
+						文章管理
+					</a>
+					<ul>
+						<li><a href="#">文章列表</a></li>
+						<li><a href="#">文章分类</a></li>
 						<li><a href="#">Manage Albums</a></li>
 						<li><a href="#">Gallery Settings</a></li>
 					</ul>
 				</li>
-				
-				<li>
+                
+                <li>
 					<a href="#" class="nav-top-item">
-						Events Calendar
+						论坛管理
 					</a>
 					<ul>
-						<li><a href="#">Calendar Overview</a></li>
-						<li><a href="#">Add a new Event</a></li>
-						<li><a href="#">Calendar Settings</a></li>
+						<li><a href="#">论坛参数</a></li>
+						<li><a href="#">版块管理</a></li>
+						<li><a href="#">帖子管理</a></li>
+						<li><a href="#">主题管理</a></li>
 					</ul>
-				</li>
-				
+				</li>      
 				<li>
 					<a href="#" class="nav-top-item">
-						Settings
+						网站管理
 					</a>
 					<ul>
-						<li><a href="#">General</a></li>
-						<li><a href="#">Design</a></li>
-						<li><a href="#">Your Profile</a></li>
-						<li><a href="#">Users and Permissions</a></li>
+						<li><a href="#">滚动图片</a></li>
+						<li><a href="#">站内公告</a></li>
+						<li><a href="#">帖子管理</a></li>
+						<li><a href="#">主题管理</a></li>
+					</ul>
+				</li> 
+				<li>
+					<a href="#" class="nav-top-item">
+						系统设置
+					</a>
+					<ul>
+						<li><a href="#">系统参数</a></li>
+						<li><a href="#">邮箱设置</a></li>
+						<li><a href="#">数据库管理</a></li>
+						
 					</ul>
 				</li>      
 				
@@ -155,10 +179,22 @@
 				</div>
 			</noscript>
 			
-			<!-- Page Head -->
+			<!-- Page Head --
 			<h2>Welcome John</h2>
 			<p id="page-intro">What would you like to do?</p>
-			
+			<!----end page head-->
+            <!-- attenstion  -->
+            
+            	
+			<div class="notification attention png_bg">
+				<a href="#" class="close"><img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
+				<div>
+					有xx条申请等待审核<a href="">点击审核</a>
+				</div>
+			</div>
+            
+            <!--- attestion end-->
+            
 			<ul class="shortcut-buttons-set">
 				
 				<li><a class="shortcut-button" href="#"><span>
@@ -167,7 +203,7 @@
 				</span></a></li>
 				
 				<li><a class="shortcut-button" href="#"><span>
-					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/paper_content_pencil_48.png" alt="icon" /><br />
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/xindaishenhe.png" alt="icon" /><br />
 					信贷审核
 				</span></a></li>
 				
@@ -193,10 +229,7 @@
 					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
 					Open Modal
 				</span></a></li>
-                <li><a class="shortcut-button" href="#messages" rel="modal"><span>
-					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
-					Open Modal
-				</span></a></li>
+               
 				
 			</ul>
             	
