@@ -9,7 +9,7 @@
 				</div>
 				<div class="user_right_txt">
 					<ul>
-						<li><span>信用等级：</span><img src="<?php $credit=Yii::app()->credit; echo $baseUrl.'/images/credit/'.$credit->getRank($credit->get(Yii::app()->user->id));?>" title="<?php echo Yii::app()->credit->get(Yii::app()->user->id);?>"><a href="/index.php?user&amp;q=code/user/credit"><font color="#FF0000">积分查看</font></a></li>
+						<li><span>信用等级：</span><img src="<?php $credit=Yii::app()->credit; echo $baseUrl.'/images/credit/'.$credit->getRank($credit->get(Yii::app()->user->id));?>" title="<?php echo Yii::app()->credit->get(Yii::app()->user->id);?>"><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/credit"><font color="#FF0000">积分查看</font></a></li>
 						<li style="overflow:hidden">
 							<div class="floatl"><span> 认&nbsp;&nbsp;&nbsp;   证：</span></div> 
 							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/realname"><div class="credit_pic_card_<?php echo ($model->real_status==null)?'0':$model->real_status;?>" title="实名认证"></div></a>

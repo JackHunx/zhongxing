@@ -22,8 +22,24 @@ class CreditController extends SBaseController
     }
     public function actionIndex()
     {
-        //获取用户积分记录
-        $record=Yii::app()->credit->getLog(Yii::app()->user->id);
+        //分页获取用户积分记录
+        $criteria=new CDbCriteria;
+        $count = Yii::app()->credit->count(Yii::app()->user->id);
+        //设置分页
+        $pages = new CPagination($count);
+        $pages->pageSize=10;
+        $pages->applyLimit($criteria);
+        //数据库查询条件
+        $criteria->addCondition('user_id=:user_id');
+        $criteria->params[':user_id']=Yii::app()->user->id;
+        $criteria->order='addtime DESC';
+        $criteria->limit=$pages->pageSize;
+        $criteria->offset=$pages->currentPage*$pages->pageSize;
+        $record=Yii::app()->credit->getLog($criteria);
+        
+        
+        
+        //s$record=Yii::app()->credit->getLog(Yii::app()->user->id);
         $log=array();
         for($i=0;$i<count($record);$i++)
         {
@@ -35,7 +51,7 @@ class CreditController extends SBaseController
         }
         krsort($log);
         
-        $this->render('index',array('log'=>$log));
+        $this->render('index',array('log'=>$log,'pages'=>$pages));
     }
     
     // Uncomment the following methods and override them if needed
