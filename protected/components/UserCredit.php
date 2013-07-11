@@ -103,4 +103,14 @@ class UserCredit
      {
         return CreditLog::model()->findAll('user_id=:user_id',array(':user_id'=>$userid));
      }
+     //get type
+     public function getTypeName($type)
+     {
+        $record = CreditType::model()->findByPk($type);
+        if($record!=null)
+             return $record->name;
+        else
+            return "系统积分";
+        
+     }
 }
