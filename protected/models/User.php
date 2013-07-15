@@ -132,7 +132,7 @@ class User extends CActiveRecord
 			'card_id' => 'Card',
 			'card_pic1' => 'Card Pic1',
 			'card_pic2' => 'Card Pic2',
-			'nation' => 'Nation',
+			'nation' => '民族',
 			'realname' => '真实姓名',
 			'integral' => 'Integral',
 			'status' => 'Status',
@@ -193,7 +193,7 @@ class User extends CActiveRecord
 		$criteria->compare('card_id',$this->card_id,true);
 		$criteria->compare('card_pic1',$this->card_pic1,true);
 		$criteria->compare('card_pic2',$this->card_pic2,true);
-		$criteria->compare('nation',$this->nation,true);
+		//$criteria->compare('nation',$this->nation,true);
 		$criteria->compare('realname',$this->realname,true);
 		$criteria->compare('integral',$this->integral,true);
 		$criteria->compare('status',$this->status);
@@ -227,6 +227,8 @@ class User extends CActiveRecord
 		$criteria->compare('lastip',$this->lastip,true);
 
 		return new CActiveDataProvider($this, array(
+            'pagination'=>array('pageSize'=>20,),
+            'sort'=>array('defaultOrder'=>'addtime DESC',),
 			'criteria'=>$criteria,
 		));
 	}

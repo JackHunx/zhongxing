@@ -343,7 +343,7 @@ ul.content-box-tabs li a.current {
                 
 #main-content table thead th {
                 font-weight: bold;
-                font-size: 15px;
+                
                 border-bottom: 1px solid #ddd;
                 }
                 
@@ -351,17 +351,11 @@ ul.content-box-tabs li a.current {
                 border-bottom: 1px solid #ddd;
                 }
                 
-#main-content tbody tr {
-                background: #fff;
-                }
-              
-#main-content tbody tr.alt-row {
-                background: rgb(223, 223, 223);
-                }
+
                 
 #main-content table td,
 #main-content table th {
-                padding: 10px;
+                
                 line-height: 1.3em;
                 }        
 				
