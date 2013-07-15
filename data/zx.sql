@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- ä¸»æœº: 127.0.0.1
--- ç”Ÿæˆæ—¥æœŸ: 2013 å¹´ 07 æœˆ 11 æ—¥ 04:36
+-- ç”Ÿæˆæ—¥æœŸ: 2013 å¹´ 07 æœˆ 11 æ—¥ 09:13
 -- æœåŠ¡å™¨ç‰ˆæœ¬: 5.5.27
 -- PHP ç‰ˆæœ¬: 5.4.7
 
@@ -4635,9 +4635,9 @@ CREATE TABLE IF NOT EXISTS `zx_credit` (
   `value` int(11) DEFAULT '0' COMMENT '»ı·ÖÊıÖµ',
   `op_user` int(11) DEFAULT NULL COMMENT '²Ù×÷Õß',
   `addtime` int(11) DEFAULT NULL COMMENT 'Ìí¼ÓÊ±¼ä',
-  `addip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT 'Ìí¼ÓIP',
-  `updatetime` varchar(11) CHARACTER SET gbk DEFAULT NULL COMMENT '×îºó¸üĞÂÊ±¼ä',
-  `updateip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT '×îºó¸üĞÂID',
+  `addip` varchar(30) DEFAULT NULL,
+  `updatetime` int(11) DEFAULT NULL,
+  `updateip` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='»áÔ±»ı·Ö';
 
@@ -4651,7 +4651,7 @@ CREATE TABLE IF NOT EXISTS `zx_credit_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL COMMENT '»áÔ±ID',
   `type_id` int(11) DEFAULT '0' COMMENT '»ı·ÖÀàĞÍID',
-  `op` tinyint(1) DEFAULT '1' COMMENT '±ä¶¯ÀàĞÍ,1:Ôö¼Ó,2:¼õÉÙ',
+  `op` tinyint(1) DEFAULT '1' COMMENT '1.å¢åŠ  2.å‡å°‘',
   `value` int(11) DEFAULT '0' COMMENT '±ä¶¯»ı·ÖÊıÖµ',
   `remark` text CHARACTER SET gbk COMMENT '±¸×¢',
   `op_user` int(11) DEFAULT NULL COMMENT '²Ù×÷Õß',
@@ -4713,21 +4713,21 @@ INSERT INTO `zx_credit_rank` (`id`, `name`, `rank`, `point1`, `point2`, `pic`, `
 
 CREATE TABLE IF NOT EXISTS `zx_credit_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET gbk DEFAULT NULL COMMENT '»ı·ÖÃû³Æ',
-  `nid` varchar(50) CHARACTER SET gbk DEFAULT NULL COMMENT '»ı·Ö´úÂë',
-  `value` int(11) DEFAULT '0' COMMENT '»ı·ÖÊıÖµ',
-  `cycle` tinyint(1) DEFAULT '2' COMMENT '»ı·ÖÖÜÆÚ£¬1:Ò»´Î,2:Ã¿Ìì,3:¼ä¸ô·ÖÖÓ,4:²»ÏŞ',
-  `award_times` tinyint(4) DEFAULT NULL COMMENT '½±Àø´ÎÊı,0:²»ÏŞ',
-  `interval` int(11) DEFAULT '1' COMMENT 'Ê±¼ä¼ä¸ô£¬µ¥Î»·ÖÖÓ',
-  `remark` text CHARACTER SET gbk COMMENT '±¸×¢',
-  `op_user` int(11) DEFAULT NULL COMMENT '²Ù×÷Õß',
-  `addtime` int(11) DEFAULT NULL COMMENT 'Ìí¼ÓÊ±¼ä',
-  `addip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT 'Ìí¼ÓIP',
-  `updatetime` int(11) DEFAULT NULL COMMENT '×îºó¸üĞÂÊ±¼ä',
-  `updateip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT '×îºó¸üĞÂID',
+  `name` varchar(50) DEFAULT NULL COMMENT 'ç§¯åˆ†åç§°',
+  `nid` varchar(50) DEFAULT NULL COMMENT 'ç§¯åˆ†ä»£ç ',
+  `value` int(11) DEFAULT '0' COMMENT 'ç§¯åˆ†æ•°å€¼',
+  `cycle` tinyint(1) DEFAULT '2' COMMENT 'ç§¯åˆ†å‘¨æœŸï¼Œ1:ä¸€æ¬¡,2:æ¯å¤©,3:é—´éš”åˆ†é’Ÿ,4:ä¸é™',
+  `award_times` tinyint(4) DEFAULT NULL COMMENT 'å¥–åŠ±æ¬¡æ•°,0:ä¸é™',
+  `interval` int(11) DEFAULT '1' COMMENT 'æ—¶é—´é—´éš”ï¼Œå•ä½åˆ†é’Ÿ',
+  `remark` text COMMENT 'å¤‡æ³¨',
+  `op_user` int(11) DEFAULT NULL COMMENT 'æ“ä½œè€…',
+  `addtime` int(11) DEFAULT NULL COMMENT 'æ·»åŠ æ—¶é—´',
+  `addip` varchar(30) DEFAULT NULL COMMENT 'æ·»åŠ IP',
+  `updatetime` int(11) DEFAULT NULL COMMENT 'æœ€åæ›´æ–°æ—¶é—´',
+  `updateip` varchar(30) DEFAULT NULL COMMENT 'æœ€åæ›´æ–°ID',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_ct_nid` (`nid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='»ı·ÖÀàĞÍ' AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='ç§¯åˆ†ç±»å‹' AUTO_INCREMENT=15 ;
 
 --
 -- è½¬å­˜è¡¨ä¸­çš„æ•°æ® `zx_credit_type`

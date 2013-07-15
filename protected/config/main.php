@@ -89,6 +89,8 @@ return array(
         'authstring'=>array('class'=>'AuthString',),
         //send email to user 邮箱验证等
         'sendemail'=>array('class'=>'SendEmail'),
+        //credit 积分管理
+        'credit'=>array('class'=>'UserCredit'),
         
         // uncomment the following to enable URLs in path-format
         /*
@@ -112,6 +114,7 @@ return array(
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',
+            'tablePrefix'=>'zx_',
             ),
 
         'errorHandler' => array( // use 'site/error' action to display errors
