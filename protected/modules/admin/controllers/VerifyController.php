@@ -11,8 +11,13 @@ class VerifyController extends SBaseController
     {
         $this->render('index');
     }
+    //verify admin
+    public function actionRealname()
+    {
+        $this->render("realname");
+    } 
     //verify vip
-    public function actionVerifyVip()
+    public function actionVip()
     {
         $model = new Vip('search');
         $model->unsetAttributes(); // clear any default values

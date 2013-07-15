@@ -33,20 +33,24 @@
 			<ul id="main-nav">  <!-- Accordion Menu -->
 				
 				<li>
-					<a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin" class="nav-top-item no-submenu"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
+					<a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin" class="nav-top-item"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
 						管理首页
-					</a>       
+					</a>  
+                    <ul>
+						
+						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin">首页</a></li> <!-- Add class "current" to sub menu items also -->
+						
+					</ul>     
 				</li>
 				
 				<li> 
-					<a href="#" class="nav-top-item"> <!-- Add the class "current" to current menu item -->
+					<a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/verify" class="nav-top-item"> <!-- Add the class "current" to current menu item -->
 					认证管理
 					</a>
 					<ul>
-						<li><a href="#"></a></li>
-						<li><a class="" href="#">认证列表</a></li> <!-- Add class "current" to sub menu items also -->
-						<li><a href="#">实名认证</a></li>
-						<li><a href="#"></a></li>
+						
+						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/verify">认证列表</a></li> <!-- Add class "current" to sub menu items also -->
+						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/verify/realname">实名认证</a></li>
 					</ul>
 				</li>
 				
@@ -68,7 +72,7 @@
 					</a>
 					<ul>
 						<li><a class="" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user">用户列表</a></li>
-                        <li><a href="#">VIP用户</a></li>
+                        <li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user/vip">VIP用户</a></li>
 						<li><a href="#">用户组</a></li>
 						<li><a href="#">权限分配</a></li>
 					</ul>
