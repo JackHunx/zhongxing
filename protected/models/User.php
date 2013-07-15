@@ -133,7 +133,7 @@ class User extends CActiveRecord
 			'card_pic1' => 'Card Pic1',
 			'card_pic2' => 'Card Pic2',
 			'nation' => '民族',
-			'realname' => '真实姓名',
+			'realname' => '姓名',
 			'integral' => 'Integral',
 			'status' => 'Status',
 			'avatar_status' => 'Avatar Status',

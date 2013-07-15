@@ -11,25 +11,6 @@
 	'method'=>'get',
 )); ?>
 
-	<div class="row">
-		<?php echo $form->label($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'kefu_userid'); ?>
-		<?php echo $form->textField($model,'kefu_userid'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'kefu_username'); ?>
-		<?php echo $form->textField($model,'kefu_username'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'kefu_addtime'); ?>
-		<?php echo $form->textField($model,'kefu_addtime'); ?>
-	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'vip_status'); ?>

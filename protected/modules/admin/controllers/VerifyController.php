@@ -13,12 +13,13 @@ class VerifyController extends SBaseController
     }
     //verify admin
     public function actionRealname()
-    {
+    {   
+        $count = User::model()->count('real_status=:real_status',array(':real_status'=>'0'));
         $model = new User('search');
         $model->unsetAttributes();
         if(isset($_GET['User']))
             $model->attributes=$_GET['User'];
-		$this->render('realname',array('model'=>$model));
+		$this->render('realname',array('model'=>$model,'count'=>$count));
     } 
     //verify vip
     public function actionVip()
@@ -80,6 +81,15 @@ class VerifyController extends SBaseController
     public function realStatus($data,$row,$c)
     {
         return $data->real_status==null?'':($data->real_status == 0 ?  '<font color=red>未审核</font>':'<font color=green>通过</font>');        
+    }
+    //update
+    public function actionupdate($id)
+    {
+        
+    }
+    public function verify($data,$row,$c)
+    {
+       return  '<a href="#messages" rel="modal">审核</a>';
     }
     // Uncomment the following methods and override them if needed
     /*

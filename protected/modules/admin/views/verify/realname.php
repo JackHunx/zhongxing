@@ -1,3 +1,10 @@
+	<div class="notification attention png_bg">
+				<div>
+					有<font color = "red"><?php echo $count;?></font>条申请等待审核--<a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/verify/realname&User[real_status]=0">点击审核</a>
+				</div>
+			</div>  
+            
+<!--- user list -->
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-list',
     'cssFile'=>Yii::app()->baseUrl.'/css/grid_view.css',
@@ -8,8 +15,7 @@
 
         'username',
         'realname',
-        
-        //'email',
+       
         //'sex',
         array(
             'header'=>'性别',
@@ -33,7 +39,7 @@
         ),
         array(
             'header'=>'证件号码',
-            'name'=>'card_id',
+            //'name'=>'card_id',
             'value'=>'$data->card_id',
             'type'=>'raw',
         ),
@@ -50,8 +56,26 @@
         ),
         array(
             'header'=>'状态',
+            //'name'=>'real_status',
             'value'=>array($this,'realStatus'),
             'type'=>'raw',
+        ),
+       // array(
+//            'header'=>'操作',
+//             'value'=>array($this,'verify'),
+//             'type'=>'raw',
+//        ),
+        array(
+            'class'=>'CButtonColumn',
+            'template'=>'{verify}',
+            'buttons'=>array(
+                    'view'=>array(
+                            'label'=>'审核',
+                            'url'=>'test',
+                            'imageUrl'=>false,
+                        ),
+                    
+                ),
         ),
       // 'User.username',
        //array(
@@ -68,16 +92,18 @@
 //        ),
 //		
 //		'vip_remark',
-		
-		array(
-			'class'=>'CButtonColumn',
-            'deleteButtonOptions'=>array('title'=>'删除'),   
-            'updateButtonOptions'=>array('title'=>'修改'),
-            
-            'buttons'=>array('update'=>array('imageUrl'=>null,'label'=>'审核')
-            ),
-            'template'=>'{update}',
-            
-		),
+   
+	//	array(
+//            'header'=>'操作',
+//			'class'=>'CButtonColumn',
+//            'deleteButtonOptions'=>array('title'=>'删除'),   
+//            'updateButtonOptions'=>array('title'=>'修改'),
+//            
+//            'buttons'=>array('update'=>array('imageUrl'=>null,'label'=>'审核'),
+//            'url'=>'test',
+//            ),
+//            'template'=>'{update}',
+//            
+//		),
 	),
 )); ?>
