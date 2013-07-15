@@ -74,7 +74,7 @@
                 
                 'verify'=>array(
                     'label'=>'审核',
-                    'url'=>'Yii::app()->createUrl("#message",array("id"=>$data->user_id))',
+                    'url'=>array($this,'verify'),
                 ),
                 ),
         ),
