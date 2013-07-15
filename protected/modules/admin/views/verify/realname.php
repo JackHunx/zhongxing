@@ -60,24 +60,24 @@
             'value'=>array($this,'realStatus'),
             'type'=>'raw',
         ),
-        array(
-            'header'=>'操作',
-             'value'=>array($this,'verify'),
-             'type'=>'raw',
-        ),
         //array(
-//            'header'=>'审核',
-//            'class'=>'CButtonColumn',
-//            'template'=>'{verify}',
-//            'buttons'=>array(
-//                    
-//                
-//                'verify'=>array(
-//                    'label'=>'审核',
-//                    'url'=>'Yii::app()->createUrl("#message",array("id"=>$data->user_id))',
-//                ),
-//                ),
+//            'header'=>'操作',
+//             'value'=>array($this,'verify'),
+//             'type'=>'raw',
 //        ),
+        array(
+            'header'=>'审核',
+            'class'=>'CButtonColumn',
+            'template'=>'{verify}',
+            'buttons'=>array(
+                    
+                
+                'verify'=>array(
+                    'label'=>'审核',
+                    'url'=>'Yii::app()->createUrl("#message",array("id"=>$data->user_id))',
+                ),
+                ),
+        ),
       // 'User.username',
        //array(
 //        'username'=>'user_search',
