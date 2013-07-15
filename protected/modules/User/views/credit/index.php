@@ -2,7 +2,7 @@
 <div class="user_right">
 		<div class="user_right_menu">
 		<ul>
-				<li class="title" ><a href="{$_U.query_url}/credit">信用积分记录</a></li>
+				<li class="title" ><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/credit">信用积分记录</a></li>
 			</ul>
 		</div>
 		

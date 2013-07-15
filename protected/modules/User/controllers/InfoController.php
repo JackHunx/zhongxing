@@ -38,8 +38,13 @@ class InfoController extends SBaseController
             $this->update($_POST['info']); //update to the db user info table
         else {
             $user = User::model()->findByPk($this->user->id);
+            if($user->area==null)
+            {
+                $area='未填写';
+            }else{
             $area = Area::model()->findByPk($user->province)->name . "-" . Area::model()->
-                findByPk($user->city)->name . "-" . Area::model()->findByPk($user->area)->name;
+                findByPk($user->city)->name . "-" . Area::model()->findByPk($user->area)->name;}
+            
             if ($user == null) {
                 throw new CException("select form table User error not found ");
             }

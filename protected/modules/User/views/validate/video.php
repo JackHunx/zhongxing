@@ -1,9 +1,8 @@
-{if $_G.user_result.vip_status!=1}
 <?php if($info['vip_status']!=1)
 {   ?>
 		<div class="user_help">你还不是VIP会员不能做视频认证。</a>
 		<div class="c">
-			如要申请成为VIP会员，请点按钮提交到VIP申请页。<input type="button" onclick="javacript:location.href='/vip/index.html'" value="申请VIP会员"  /><br /><br /></form>
+			如要申请成为VIP会员，请点按钮提交到VIP申请页。<input type="button" onclick="javacript:location.href='<?php echo Yii::app()->baseUrl;?>/index.php?r=User/validate/vip'" value="申请VIP会员"  /><br /><br /></form>
 
 			</div>
 		</div>

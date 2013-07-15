@@ -7,10 +7,11 @@
 <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl;?>/css/admin/reset.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl;?>/css/admin/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl;?>/css/admin/invalid.css" type="text/css" media="screen" />	
-
+<script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/admin/tab.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/admin/simpla.jquery.configuration.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/admin/facebox.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->baseUrl;?>/js/admin/jquery.wysiwyg.js"></script>
+
 
 </head>
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
@@ -32,7 +33,7 @@
 			<ul id="main-nav">  <!-- Accordion Menu -->
 				
 				<li>
-					<a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin" class="nav-top-item no-submenu current"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
+					<a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin" class="nav-top-item no-submenu"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
 						管理首页
 					</a>       
 				</li>
@@ -43,9 +44,9 @@
 					</a>
 					<ul>
 						<li><a href="#"></a></li>
-						<li><a class="" href="#">Manage Articles</a></li> <!-- Add class "current" to sub menu items also -->
-						<li><a href="#">Manage Comments</a></li>
-						<li><a href="#">Manage Categories</a></li>
+						<li><a class="" href="#">认证列表</a></li> <!-- Add class "current" to sub menu items also -->
+						<li><a href="#">实名认证</a></li>
+						<li><a href="#"></a></li>
 					</ul>
 				</li>
 				
@@ -55,18 +56,18 @@
 					</a>
 					<ul>
 						<li><a href="#">信贷审核</a></li>
-						<li><a href="#">Manage Pages</a></li>
+						<li><a href="#"></a></li>
 					</ul>
 				</li>
 				
 				
 				
 				<li>
-					<a href="#" class="nav-top-item">
+					<a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user" class="nav-top-item">
 						用户管理
 					</a>
 					<ul>
-						<li><a href="#">用户列表</a></li>
+						<li><a class="" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user">用户列表</a></li>
                         <li><a href="#">VIP用户</a></li>
 						<li><a href="#">用户组</a></li>
 						<li><a href="#">权限分配</a></li>
@@ -79,8 +80,6 @@
 					<ul>
 						<li><a href="#">文章列表</a></li>
 						<li><a href="#">文章分类</a></li>
-						<li><a href="#">Manage Albums</a></li>
-						<li><a href="#">Gallery Settings</a></li>
 					</ul>
 				</li>
                 

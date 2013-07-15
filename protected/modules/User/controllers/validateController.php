@@ -153,8 +153,30 @@ class ValidateController extends SBaseController
      */
      public function actionVideo()
      {
-        $this->render('video');
+        //$info = User::model()->findByPk(Yii::app()->user->id);
+        $userCache = UserCache::model()->findByPk(Yii::app()->user->id);
+        $video_status=User::model()->findByPk(Yii::app()->user->id);
+        if($userCache==null)
+        {
+            $vip_status='0';
+        }else
+            $vip_status=$userCache->vip_status;
+        $info=array(
+        'vip_status'=>$vip_status,
+        'video_status'=>$video_status,
+        );
+        $this->render('video',array('info'=>$info));
      }
+    //scene validate
+    public function actionScene()
+    {
+        $this->render('scene');
+    } 
+    //csrect setting
+    public function actionSecret()
+    {
+        $this->render('secret');
+    }
     //return $model  = user::mode();
     private function loadModel($id)
     {

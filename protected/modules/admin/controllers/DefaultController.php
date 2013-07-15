@@ -6,7 +6,7 @@ class DefaultController extends SBaseController
     public function init()
     {
 
-
+        Yii::app()->clientScript->registerCoreScript('jquery');
         // Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl .
         // '/css/admin/bootstrap-classic.css');
 

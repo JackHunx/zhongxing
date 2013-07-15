@@ -1,5 +1,5 @@
 <div class="notification attention png_bg">
-				<a href="#" class="close"><img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
+				
 				<div>
 					有xx条申请等待审核<a href="">点击审核</a>
 				</div>

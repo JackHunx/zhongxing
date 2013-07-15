@@ -69,11 +69,11 @@
 		  <div class="m_l_bor">
 	  <div class="process">
             <ul>
-                <li><a target="_blank" href="/?user&amp;q=code/userinfo">填写详细信息</a></li><li class="icon2">
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info">填写详细信息</a></li><li class="icon2">
                 </li>
                 <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/upload">上传资料证明</a></li><li class="icon2">
                 </li>
-                <li><a target="_blank" href="/vip/index.html">申请VIP</a></li><li class="icon2">
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/validate/vip">申请VIP</a></li><li class="icon2">
                 </li>
 
                 <li><a target="_blank" href="/publish/index.html">发布借款信息</a></li><li class="icon2">
@@ -97,14 +97,14 @@
 		  <div class="m_l_bor">
         <div class="process">
             <ul>
-                <li><a target="_blank" href="/?user&amp;q=code/userinfo">填写详细信息</a></li><li class="icon2">
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl; ?>/index.php?r=User/info">填写详细信息</a></li><li class="icon2">
+                </li> 
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/validate/realname">实名认证</a></li><li class="icon2">
                 </li>
-                <li><a target="_blank" href="/?user&amp;q=code/user/realname">实名认证</a></li><li class="icon2">
-                </li>
-                <li><a target="_blank" href="/vip/index.html">申请VIP</a></li><li class="icon2">
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/validate/vip">申请VIP</a></li><li class="icon2">
                 </li>
 
-                <li><a target="_blank" href="/invest/index.html">投标借出</a></li><li class="icon2"></li>
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=user/invest">投标借出</a></li><li class="icon2"></li>
                 <li><a target="_blank" href="/?user&amp;q=code/borrow/success">等待回收还款</a></li>
             </ul>
         </div></div></div>
