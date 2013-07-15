@@ -140,17 +140,17 @@ class DefaultController extends SBaseController
     {
         $record = Userinfo::model()->findByAttributes(array('user_id' => $this->_user->
                 id));
-        $this->info['house'] = (($record->house_address != null) ?
+        $this->info['house'] = (($record!=null&&$record->house_address != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
-        $this->info['company'] = (($record->company_name != null) ?
+        $this->info['company'] = (($record!=null&&$record->company_name != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
-        $this->info['firm'] = (($record->private_type != null) ?
+        $this->info['firm'] = (($record!=null&&$record->private_type != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
-        $this->info['finance'] = (($record->finance_car != null) ?
+        $this->info['finance'] = (($record!=null&&$record->finance_car != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
-        $this->info['contact'] = (($record->area != null) ?
+        $this->info['contact'] = (($record!=null&&$record->area != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
-        $this->info['edu'] = (($record->education_record != null) ?
+        $this->info['edu'] = (($record!=null&&$record->education_record != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
     }
     //加载用户信息模型

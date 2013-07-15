@@ -2,6 +2,11 @@
 
 class VerifyController extends SBaseController
 {
+    public $layout = '/layouts/admin';
+    public function init()
+    {
+        Yii::app()->clientScript->registerCoreScript('jquery');
+    }
     public function actionIndex()
     {
         $this->render('index');

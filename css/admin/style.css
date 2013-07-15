@@ -356,7 +356,7 @@ ul.content-box-tabs li a.current {
                 }
               
 #main-content tbody tr.alt-row {
-                background: #f3f3f3;
+                background: rgb(223, 223, 223);
                 }
                 
 #main-content table td,
