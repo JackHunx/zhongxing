@@ -14,17 +14,49 @@ class VerifyController extends SBaseController
     //verify admin
     public function actionRealname()
     {
-        if (isset($_GET['id'])) {
-            $this->render('_realname');
-        } else {
-            $count = User::model()->count('real_status=:real_status', array(':real_status' =>
-                    '0'));
-            $model = new User('search');
-            $model->unsetAttributes();
-            if (isset($_GET['User']))
-                $model->attributes = $_GET['User'];
-            $this->render('realname', array('model' => $model, 'count' => $count));
+        if (isset($_GET['id']) || isset($_POST['User'])) {
+            //添加记录并积分
+            if (isset($_GET['id']) && isset($_POST['User'])) {
+                //更新积分并通过认证
+                $user = $_POST['User'];
+                $userModel = User::model()->findByPk($_GET['id']);
+                if ($user['status'] == 1) // $this->render()
+                    {
+
+                    $userModel->attributes = array('real_status' => '1');
+                    $val = array(
+                        'user_id' => $_GET['id'],
+                        'type_id' => '2', //积分类型 在此处固定
+                        'value' => $user['value'],
+                        'remark' => $user['remark'],
+                        'op' => '1', //增加积分
+                        'op_user' => Yii::app()->user->id,
+                        );
+                    Yii::app()->credit->set($_GET['id'], $val);
+                    if (!$userModel->update())
+                        throw new CException('real name save to table {User} error');
+
+                    // echo "<pre>";
+                    //                    print_r($val);
+                } else {
+                    $userModel->attributes = array('real_status' => null);
+                    if (!$userModel->update())
+                        throw new CException('real name save to table {User} error');
+                }
+            } else {
+                $this->render('_realname');
+                Yii::app()->end();
+            }
+
         }
+        $count = User::model()->count('real_status=:real_status', array(':real_status' =>
+                '0'));
+        $model = new User('search');
+        $model->unsetAttributes();
+        if (isset($_GET['User']))
+            $model->attributes = $_GET['User'];
+        $this->render('realname', array('model' => $model, 'count' => $count));
+
     }
     //verify vip
     public function actionVip()
@@ -98,7 +130,7 @@ class VerifyController extends SBaseController
     public function verify($data, $row, $c)
     {
         return $data->real_status == 0 ? Yii::app()->createUrl("/admin/verify/realname",
-            array("id" => $data->user_id)) : Yii::app()->request->url;
+            array("id" => $data->user_id)) : '#';
     }
     // Uncomment the following methods and override them if needed
     /*

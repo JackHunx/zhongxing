@@ -47,11 +47,31 @@ class UserCredit
     }
     /**
      * set credit and log 
-     * @param user_id
+     * @param $id
+     * @param $val use for log function
      * @param credit_value
      */
-    public function set()
+    public function set($id, $val)
     {
+        //获取当前用户积分
+        $creditModel = Credit::model()->findByPk($id);
+        $credit = $creditModel->value + $val['value'];
+        $creditModel->attributes= array(
+            // 'user_id'=>$id,
+            'value' => $credit,
+            //'op_user'=>$val['op_user'],
+            'updatetime' => time(),
+            'updateip' => Yii::app()->request->userHostAddress,
+            );
+        //$model = new Credit;
+        //echo "<pre>";
+//        print_r($creditModel->attributes);
+//        exit();
+        if ($this->log($val)) {
+            if(!$creditModel->update())
+                throw new CException('test');
+            }
+
 
     }
     /**
@@ -86,7 +106,7 @@ class UserCredit
      * 'type_id',
      * 'op',//1 增加 2减少
      * 'value',
-     * 'ramarl',
+     * 'ramark',
      * 'op_user',//操作人员
      * )
      */
@@ -100,7 +120,8 @@ class UserCredit
             );
         $model->attributes = array_merge($value, $val);
         if (!$model->save())
-            throw new CException("save to db error check db {credit_log}");
+            return false; //throw new CException("save to db error check db {credit_log}");
+        return true;
     }
     /**
      * get user credit log 
@@ -111,7 +132,7 @@ class UserCredit
     {
         return CreditLog::model()->findAll($criteria);
     }
-    
+
     /**
      * 返回记录条数
      * @param $userid
@@ -119,8 +140,8 @@ class UserCredit
      */
     public function count($userid)
     {
-        return CreditLog::model()->count('user_id=:user_id',array(':user_id'=>$userid)); 
-        
+        return CreditLog::model()->count('user_id=:user_id', array(':user_id' => $userid));
+
         //count(CreditLog::model()->findAll('user_id=:user_id',array(':user_id'=>$userid)));
     }
     //get type

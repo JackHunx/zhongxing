@@ -53,25 +53,29 @@ class ValidateController extends SBaseController
             //            exit();
             $model = User::model()->findByPk(Yii::app()->user->id);
             $model->attributes = $value;
-            if ($model->update()) {
-                $this->_model = $model;
-                // $this->render('realname',array('model'=>$model));
+            if ($model->update()) {                {
+                    //$this->_model = $model;
+                    $this->layout='//layouts/main';
+                   $this->render('//user/msg', array(
+            'msg' => "信息已更新,请等待审核",
+            'msg_url' => Yii::app()->request->urlReferrer,
+            'msg_content' => "点此返回"));;
+                }
             }
         } elseif ($this->_model->real_status == null) {
             $this->render('realname', array('model' => $this->_model));
-        } else
-            {$this->info['nation'] = Linkage::model()->findByPk($this->_model->nation)->
-                name;
-        $this->info['card_type'] = Linkage::model()->findByAttributes(array('type_id' =>
-                '32', 'value' => $this->_model->card_type))->name;
+        } else {
+            $this->info['nation'] = Linkage::model()->findByPk($this->_model->nation)->name;
+            $this->info['card_type'] = Linkage::model()->findByAttributes(array('type_id' =>
+                    '32', 'value' => $this->_model->card_type))->name;
 
-        $this->info['province'] = Area::model()->findByPk($this->_model->province)->
-            name;
-        $this->info['city'] = Area::model()->findByPk($this->_model->city)->name;
-        $this->info['area'] = Area::model()->findByPk($this->_model->area)->name;
-        $this->render('realname', array('model' => $this->_model, 'info' => $this->info));
+            $this->info['province'] = Area::model()->findByPk($this->_model->province)->
+                name;
+            $this->info['city'] = Area::model()->findByPk($this->_model->city)->name;
+            $this->info['area'] = Area::model()->findByPk($this->_model->area)->name;
+            $this->render('realname', array('model' => $this->_model, 'info' => $this->info));
         } //$model = $this->loadModel($this->_user->id);
-            //$this->render('realname', array('model' => $this->_model));
+        //$this->render('realname', array('model' => $this->_model));
     }
     //validate emsil
     public function actionEmail()
@@ -110,13 +114,13 @@ class ValidateController extends SBaseController
         if ($record !== null) {
 
             if ($record->vip_status == 1) {
-                $this->layout='//layouts/main';
+                $this->layout = '//layouts/main';
                 $this->render('vip', array(
                     'status' => 'Vip会员',
                     'model' => $this->_model,
                     'vip' => $record));
             } elseif ($record->vip_status == 0) {
-                $this->layout='//layouts/main';
+                $this->layout = '//layouts/main';
                 $this->render('vip', array(
                     'status' => '<font color=red>Vip申请中</font>',
                     'model' => $this->_model,
@@ -135,12 +139,12 @@ class ValidateController extends SBaseController
                 //            exit();
 
                 $model->attributes = array_merge($vip, $_POST['Vip']);
-                if ($model->save())
-                //$this->layout='//layoust/main';
+                if ($model->save()) //$this->layout='//layoust/main';
+
                     $this->redirect(array('validate/vip', 'id' => $model->user_id));
             }
             //$model = new User;
-            $this->layout='//layouts/main';
+            $this->layout = '//layouts/main';
             $this->render('vip', array(
                 'model' => $this->_model,
                 'status' => '普通会员',
@@ -151,27 +155,26 @@ class ValidateController extends SBaseController
      * 视频认证
      * 认证之前需检查vip状态，只有vip审核通过之后才能进行视频认证
      */
-     public function actionVideo()
-     {
+    public function actionVideo()
+    {
         //$info = User::model()->findByPk(Yii::app()->user->id);
         $userCache = UserCache::model()->findByPk(Yii::app()->user->id);
-        $video_status=User::model()->findByPk(Yii::app()->user->id);
-        if($userCache==null)
-        {
-            $vip_status='0';
-        }else
-            $vip_status=$userCache->vip_status;
-        $info=array(
-        'vip_status'=>$vip_status,
-        'video_status'=>$video_status,
-        );
-        $this->render('video',array('info'=>$info));
-     }
+        $video_status = User::model()->findByPk(Yii::app()->user->id);
+        if ($userCache == null) {
+            $vip_status = '0';
+        } else
+            $vip_status = $userCache->vip_status;
+        $info = array(
+            'vip_status' => $vip_status,
+            'video_status' => $video_status,
+            );
+        $this->render('video', array('info' => $info));
+    }
     //scene validate
     public function actionScene()
     {
         $this->render('scene');
-    } 
+    }
     //csrect setting
     public function actionSecret()
     {
