@@ -55,11 +55,11 @@
 				</li>
 				
 				<li>
-					<a href="#" class="nav-top-item">
+					<a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/audit" class="nav-top-item">
 						审核管理
 					</a>
 					<ul>
-						<li><a href="#">信贷审核</a></li>
+						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/audit/upload">上传资料</a></li>
 						<li><a href="#"></a></li>
 					</ul>
 				</li>
@@ -71,7 +71,8 @@
 						用户管理
 					</a>
 					<ul>
-						<li><a class="" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user">用户列表</a></li>
+						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user">用户列表</a></li>
+                        <li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user/info">用户信息</a></li>
                         <li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user/vip">VIP用户</a></li>
 						<li><a href="#">用户组</a></li>
 						<li><a href="#">权限分配</a></li>
