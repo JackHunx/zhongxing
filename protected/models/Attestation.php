@@ -143,8 +143,8 @@ class Attestation extends CActiveRecord
         $criteria->compare('user_id', $this->user_id);
         $criteria->compare('type_id', $this->type_id);
         $criteria->compare('name', $this->name, true);
-        $criteria->compare('status', $this->status);
-        $criteria->compare('litpic', $this->litpic, true);
+        $criteria->compare('prefix.status', $this->status);
+        $criteria->compare('prefix.litpic', $this->litpic, true);
         $criteria->compare('content', $this->content, true);
         $criteria->compare('jifen', $this->jifen);
         $criteria->compare('pic', $this->pic, true);
@@ -157,7 +157,7 @@ class Attestation extends CActiveRecord
         $criteria->compare('addip', $this->addip, true);
 
         return new CActiveDataProvider($this, array(
-            'pagination' => array('pageSize' => 15, ),
+            'pagination' => array('pageSize' => 10, ),
             'sort' => array(
                 'defaultOrder' => 'prefix.status ASC',
                 'attributes' => array(

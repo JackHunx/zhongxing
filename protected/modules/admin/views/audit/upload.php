@@ -1,7 +1,9 @@
 <div class="notification attention png_bg">
 				<div>
-					有<font color = "red"><?php //echo $count; ?></font>条申请等待审核--<a href="<?php // echo
-Yii::app()->baseUrl; ?>/index.php?r=admin/verify/realname&User[real_status]=0">点击审核</a>
+			有[<font color = "red"><?php echo $count['wait']; ?></font>]条申请等待审核--<a href="<?php echo
+Yii::app()->baseUrl; ?>/index.php?r=admin/audit/upload&Attestation[status]=0">点击审核</a>&nbsp;&nbsp;	已有[<font color = "blue"><?php echo $count['success']; ?></font>]条通过审核--<a href="<?php echo
+Yii::app()->baseUrl; ?>/index.php?r=admin/audit/upload&Attestation[status]=1">点击查看</a>&nbsp;&nbsp;有[<font color = "grey"><?php echo $count['fail']; ?></font>]条未通过审核--<a href="<?php echo
+Yii::app()->baseUrl; ?>/index.php?r=admin/audit/upload&Attestation[status]=2">点击查看</a>
 				</div>
 			</div>  
 <!--- user list -->
