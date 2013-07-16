@@ -51,6 +51,7 @@
 						
 						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/verify">认证列表</a></li> <!-- Add class "current" to sub menu items also -->
 						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/verify/realname">实名认证</a></li>
+                        <li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/verify/vip">VIP认证</a></li>
 					</ul>
 				</li>
 				

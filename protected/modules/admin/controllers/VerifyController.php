@@ -75,6 +75,16 @@ class VerifyController extends SBaseController
         return $data->vip_status == 1 ? '<font color=blue>已审核</font>' :
             '<font color=red>未审核</font>';
     }
+    //return vip add time formate
+    public function vipAddTime($data,$row,$c)
+    {
+        return date("Y-m-d H:i:s",$data->kefu_addtime);
+    }
+    //vip 是否缴费
+    public function vipMoney($data,$row,$c)
+    {
+        return $data->vip_money == null ? '<font color="red">否</font>':'<font color="green">已缴费</font>';
+    }
     //get sex
     public function Sex($data, $row, $c)
     {

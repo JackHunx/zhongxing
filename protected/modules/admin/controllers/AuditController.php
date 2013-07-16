@@ -118,7 +118,10 @@ class AuditController extends SBaseController
             '/index.php?r=admin/audit/upload&id=' . $data->id .
             '"><font color="green">审核</font></a>';
     }
-
+    /**
+     * VIP 审核
+     */
+     //public function a
     // Uncomment the following methods and override them if needed
     /*
     public function filters()
