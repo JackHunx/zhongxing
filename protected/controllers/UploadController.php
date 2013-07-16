@@ -131,7 +131,7 @@ class UploadController extends SBaseController
         $result['filename'] = $uploader->getUploadName();
         $result['url'] = Yii::app()->getBaseUrl() . str_replace(Yii::getPathOfAlias('webroot'),
             "", $tempFolder) . $uploader->getUploadName();
-        $result['saveUrl'] = $url = '/upload/attestation/' . $uploader->getUploadName();
+        $result['saveUrl'] = $url = '/upload/attestation/'.date("Ymd", time()).'/'. $uploader->getUploadName();
         //$resuslt['response'] = "test";
         // $result['folder'] = $webFolder;
 
