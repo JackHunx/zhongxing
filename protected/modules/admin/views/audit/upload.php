@@ -23,13 +23,17 @@ Yii::app()->baseUrl; ?>/index.php?r=admin/verify/realname&User[real_status]=0">�
             'name' => 'user_search',
             'value' => '$data->user->username'),
 
-      //  array(
-//            'header' => '真实姓名',
-//            'name' => 'user_search',
-//            'value' => '$data->user->realname'),
+        array(
+            'header' => '真实姓名',
+            'name' => 'user_realname',
+            'value' => '$data->user->realname'),
         array(
             'header' => "认证类型",
             'value' => array($this, 'verifyType'),
+            'type' => 'raw'),
+        array(
+            'header' => "说明",
+            'value' => '$data->content',
             'type' => 'raw'),
         array(
             'header' => '认证图片',

@@ -237,6 +237,7 @@ class UploadController extends SBaseController
             $attestation = new Attestation;
             $attarray = array(
                 'user_id' => Yii::app()->user->id,
+                'type_id'=>'28',
                 'status' => '0',
                 'content' => $value['name'],
                 'litpic' => $url,

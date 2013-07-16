@@ -24,6 +24,7 @@
 class Attestation extends CActiveRecord
 {
     public $user_search;
+    public $user_realname;
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -78,7 +79,7 @@ class Attestation extends CActiveRecord
             // The following rule is used by search().
             // Please remove those attributes that should not be searched.
             array(
-                'id, user_id, type_id, name, status, litpic, content, jifen, pic, pic2, pic3, verify_time, verify_user, verify_remark, addtime, addip,user_search',
+                'id, user_id, type_id, name, status, litpic, content, jifen, pic, pic2, pic3, verify_time, verify_user, verify_remark, addtime, addip,user_search,user_realname',
                 'safe',
                 'on' => 'search'),
             );
@@ -104,6 +105,7 @@ class Attestation extends CActiveRecord
     {
         return array(
             'user_search',
+            'user_realname',
             'id' => 'ID',
             'user_id' => 'User',
             'type_id' => 'Type',
@@ -136,7 +138,7 @@ class Attestation extends CActiveRecord
         $criteria->with = array('user');
         $criteria->alias = "prefix";
         $criteria->compare('user.username', $this->user_search, true);
-        //  $criteria->compare('user.realname', $this->user_search, true);
+        $criteria->compare('user.realname', $this->user_realname, true);
         $criteria->compare('id', $this->id, true);
         $criteria->compare('user_id', $this->user_id);
         $criteria->compare('type_id', $this->type_id);
@@ -158,10 +160,16 @@ class Attestation extends CActiveRecord
             'pagination' => array('pageSize' => 15, ),
             'sort' => array(
                 'defaultOrder' => 'prefix.status ASC',
-                'attributes' => array('user_search' => array(
+                'attributes' => array(
+                    'user_search' => array(
                         'asc' => 'user.username',
                         'desc' => 'user.username DESC',
-                        ), '*'),
+                        ),
+                    'user_realname' => array(
+                        'asc' => 'user.realname',
+                        'desc' => 'user.realname DESC',
+                        ),
+                    '*'),
                 ),
             'criteria' => $criteria,
 

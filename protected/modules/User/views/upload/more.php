@@ -1,5 +1,5 @@
 			<div class="user_help"><font color="#FF0000">*</font> 必须是本人的相关资料<br />
-					<font color="#FF0000">*</font> 真实 有效<br />
+					<font color="#FF0000">*</font> 真实 有效 <font color="red">务必填写上传文件描述,以便加快审核进度</font></font><br />
 			</div>
 			
 		<?php
