@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2013 年 07 月 17 日 04:37
+-- 生成日期: 2013 年 07 月 17 日 08:50
 -- 服务器版本: 5.5.27
 -- PHP 版本: 5.4.7
 
@@ -4658,8 +4658,8 @@ CREATE TABLE IF NOT EXISTS `zx_credit` (
 
 INSERT INTO `zx_credit` (`user_id`, `value`, `op_user`, `addtime`, `addip`, `updatetime`, `updateip`) VALUES
 (0, 0, NULL, 1373527346, '127.0.0.1', 1373527346, '127.0.0.1'),
-(63, 234162, 63, 1373527957, '127.0.0.1', 1373940897, '127.0.0.1'),
-(64, 333, 64, 1373941155, '192.168.0.12', 1373964560, '127.0.0.1');
+(63, 234267, 63, 1373527957, '127.0.0.1', 1374042819, '127.0.0.1'),
+(64, 408, 64, 1373941155, '192.168.0.12', 1374042505, '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -4678,7 +4678,7 @@ CREATE TABLE IF NOT EXISTS `zx_credit_log` (
   `addtime` int(11) DEFAULT NULL COMMENT '����ʱ��',
   `addip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT '����IP',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='��Ա������־' AUTO_INCREMENT=386 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='��Ա������־' AUTO_INCREMENT=398 ;
 
 --
 -- 转存表中的数据 `zx_credit_log`
@@ -4708,7 +4708,19 @@ INSERT INTO `zx_credit_log` (`id`, `user_id`, `type_id`, `op`, `value`, `remark`
 (382, 64, 6, 1, 15, '审核通过', 63, 1373963722, '127.0.0.1'),
 (383, 64, 6, 1, 15, '审核通过', 63, 1373963729, '127.0.0.1'),
 (384, 64, 6, 1, 15, '审核通过', 63, 1373963775, '127.0.0.1'),
-(385, 64, 6, 1, 15, '审核通过', 63, 1373964560, '127.0.0.1');
+(385, 64, 6, 1, 15, '审核通过', 63, 1373964560, '127.0.0.1'),
+(386, 63, 2, 1, 15, 'vip认证', 63, 1374030911, '127.0.0.1'),
+(387, 63, 2, 1, 15, 'vip认证', 63, 1374031514, '127.0.0.1'),
+(388, 63, 2, 1, 15, 'vip认证', 63, 1374032685, '127.0.0.1'),
+(389, 64, 2, 1, 15, 'vip认证', 63, 1374033580, '127.0.0.1'),
+(390, 63, 3, 1, 15, '手机认证', 63, 1374041327, '127.0.0.1'),
+(391, 63, 3, 1, 15, '手机认证', 63, 1374041332, '127.0.0.1'),
+(392, 63, 3, 1, 15, '手机认证', 63, 1374041382, '127.0.0.1'),
+(393, 64, 3, 1, 15, '手机认证', 63, 1374041717, '127.0.0.1'),
+(394, 64, 3, 1, 15, '手机认证', 63, 1374041960, '127.0.0.1'),
+(395, 64, 5, 1, 15, '现场认证', 63, 1374042501, '127.0.0.1'),
+(396, 64, 4, 1, 15, '视频认证', 63, 1374042505, '127.0.0.1'),
+(397, 63, 15, 1, 15, 'vip认证', 63, 1374042819, '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -4777,7 +4789,7 @@ CREATE TABLE IF NOT EXISTS `zx_credit_type` (
   `updateip` varchar(30) DEFAULT NULL COMMENT '最后更新ID',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_ct_nid` (`nid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='积分类型' AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='积分类型' AUTO_INCREMENT=16 ;
 
 --
 -- 转存表中的数据 `zx_credit_type`
@@ -4797,7 +4809,8 @@ INSERT INTO `zx_credit_type` (`id`, `name`, `nid`, `value`, `cycle`, `award_time
 (11, '逾期还款', 'borrow_paymentover', -5, 4, 0, 0, '', 0, 1287677063, '192.168.7.253', 0, '192.168.7.253'),
 (12, '提前3天以上还款', 'advance_3day', 5, 4, 0, 0, '', 0, 1291940289, '192.168.7.253', 0, '192.168.7.253'),
 (13, '提前1到3天还款', 'advance_1day', 2, 4, 0, 0, '', 0, 1291940336, '192.168.7.253', 0, '192.168.7.253'),
-(14, '正常还款', 'advance_day', 1, 4, 0, 0, '', 0, 1291940391, '192.168.7.253', 0, '192.168.7.253');
+(14, '正常还款', 'advance_day', 1, 4, 0, 0, '', 0, 1291940391, '192.168.7.253', 0, '192.168.7.253'),
+(15, '其他积分', NULL, 0, 2, NULL, 1, '其他积分,用于其他情况', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6611,8 +6624,8 @@ INSERT INTO `zx_user` (`user_id`, `type_id`, `order`, `purview`, `username`, `pa
 (57, 3, 0, '', '778026260', 'e10adc3949ba59abbe56e057f20f883e', '', 0, 0, '0', 0, '', '', '', '', '', '赵', '', 1, 0, 0, 0, 0, 0, '2899510822@qq.com', '0', '', '', '', '778026260', '', '', '', '1990-10-01', '1536', '1654', '1656', '', '', '', 10, '1376884155', '27.197.132.134', '1376893656', '27.197.132.134', '1376893733', '27.197.132.134'),
 (58, NULL, NULL, NULL, 'aaaddd', 'e10adc3949ba59abbe56e057f20f883e', NULL, 0, NULL, '0', NULL, '387', NULL, NULL, NULL, NULL, '杨平', NULL, 0, 0, NULL, 0, 0, 0, '1719256705@qq.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '1372054186', '192.168.0.104', '1372054186', '192.168.0.104', NULL, NULL),
 (59, NULL, NULL, NULL, 'hunaixin', 'e10adc3949ba59abbe56e057f20f883e', NULL, 0, NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, '我去', NULL, 0, 0, 1, 0, 0, 0, '159.mzod@163.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, '1372778340', '127.0.0.1', '1372778340', '127.0.0.1', NULL, NULL),
-(63, NULL, NULL, NULL, 'admin1', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, NULL, '0', NULL, '1', '371328199004232035', '/upload/card/1373869486624.jpg', '/upload/card/1373869488895.jpg', '329', '测试', NULL, 0, 0, NULL, 0, 0, 0, '43555@152822.com', NULL, NULL, NULL, '1332564789', NULL, NULL, NULL, NULL, '2013-07-09', '102', '153', '154', NULL, NULL, NULL, 0, '1373527954', '127.0.0.1', '1373527954', '127.0.0.1', NULL, NULL),
-(64, NULL, NULL, NULL, 'my123456', 'e10adc3949ba59abbe56e057f20f883e', NULL, 0, NULL, '0', 1, '1', '371328199005085058', '/upload/card/1373941258220.jpg', '/upload/card/137394126088.jpg', '329', '码号', NULL, 0, 0, NULL, 0, 0, 0, '2633549701@qq.com', '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2013-07-17', '1711', '1881', '1882', NULL, NULL, NULL, 0, '1373941153', '192.168.0.12', '1373941153', '192.168.0.12', NULL, NULL);
+(63, NULL, NULL, NULL, 'admin1', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, NULL, '0', NULL, '1', '371328199004232035', '/upload/card/1373869486624.jpg', '/upload/card/1373869488895.jpg', '329', '测试', NULL, 0, 0, NULL, 1, 0, 0, '43555@152822.com', NULL, NULL, NULL, '1332564789', NULL, NULL, NULL, NULL, '2013-07-09', '102', '153', '154', NULL, NULL, NULL, 0, '1373527954', '127.0.0.1', '1373527954', '127.0.0.1', NULL, NULL),
+(64, NULL, NULL, NULL, 'my123456', 'e10adc3949ba59abbe56e057f20f883e', NULL, 0, NULL, '0', 1, '1', '371328199005085058', '/upload/card/1373941258220.jpg', '/upload/card/137394126088.jpg', '329', '码号', NULL, 0, 0, NULL, 1, 1, 1, '2633549701@qq.com', '1', NULL, NULL, '18660976305', NULL, NULL, NULL, NULL, '2013-07-17', '1711', '1881', '1882', NULL, NULL, NULL, 0, '1373941153', '192.168.0.12', '1373941153', '192.168.0.12', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -6958,6 +6971,13 @@ CREATE TABLE IF NOT EXISTS `zx_user_cache` (
   `friends_apply` int(11) DEFAULT '0',
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `zx_user_cache`
+--
+
+INSERT INTO `zx_user_cache` (`user_id`, `kefu_userid`, `kefu_username`, `kefu_addtime`, `vip_status`, `vip_remark`, `vip_money`, `vip_verify_remark`, `vip_verify_time`, `bbs_topics_num`, `bbs_posts_num`, `credit`, `account`, `account_use`, `account_nouse`, `account_waitin`, `account_waitintrest`, `account_intrest`, `account_award`, `account_payment`, `account_expired`, `account_waitvip`, `borrow_amount`, `vouch_amount`, `borrow_loan`, `borrow_success`, `borrow_wait`, `borrow_paymeng`, `friends_apply`) VALUES
+(63, 57, '赵', 1374036255, 1, '杨平', NULL, 'VIP认证', '1374042819', 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3000, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 

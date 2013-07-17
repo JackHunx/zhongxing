@@ -10,7 +10,7 @@ class VerifyController extends SBaseController
     public function actionIndex()
     {
         //添加记录并积分
-        if (isset($_POST['validate'])&&isset($_POST['cate'])) {
+        if (isset($_POST['validate']) && isset($_POST['cate'])) {
             //更新积分并通过认证
             $user = $_POST['validate'];
             $userModel = User::model()->findByPk($user['id']);
@@ -111,7 +111,7 @@ class VerifyController extends SBaseController
                         );
                     $val = array(
                         'user_id' => $_GET['id'],
-                        'type_id' => '2', //积分类型 在此处固定
+                        'type_id' => '15', //积分类型 在此处固定
                         'value' => $vip['credit'],
                         'remark' => 'vip认证',
                         'op' => '1', //增加积分
@@ -241,15 +241,15 @@ class VerifyController extends SBaseController
     public function validatePhone($data, $row, $c)
     {
         return $data->phone == null ? '<font color="grey">未申请</font>' : ($data->
-            phone_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::app
-            ()->baseUrl . '/index.php?r=admin/verify/phone&id=' . $data->user_id .
+            phone_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::
+            app()->baseUrl . '/index.php?r=admin/verify/phone&id=' . $data->user_id .
             '"><font color="red">等待审核</font></a>');
     }
     public function validateVideo($data, $row, $c)
     {
         return $data->video_status == null ? '<font color="grey">未申请</font>' : ($data->
-            video_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::app
-            ()->baseUrl . '/index.php?r=admin/verify/video&id=' . $data->user_id .
+            video_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::
+            app()->baseUrl . '/index.php?r=admin/verify/video&id=' . $data->user_id .
             '"><font color="red">等待审核</font></a>');
     }
     public function validateEmail($data, $row, $c)
@@ -262,8 +262,8 @@ class VerifyController extends SBaseController
     public function validateScene($data, $row, $c)
     {
         return $data->scene_status == null ? '<font color="grey">未申请</font>' : ($data->
-            scene_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::app
-            ()->baseUrl . '/index.php?r=admin/verify/scene&id=' . $data->user_id .
+            scene_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::
+            app()->baseUrl . '/index.php?r=admin/verify/scene&id=' . $data->user_id .
             '"><font color="red">等待审核</font></a>');
     }
     //phone
@@ -271,7 +271,41 @@ class VerifyController extends SBaseController
     {
         $this->render('_phone');
     }
+    public function actionVideo()
+    {
+        $this->render('_video');
+    }
+    public function actionScene()
+    {
+        $this->render('_scene');
+    }
+    /**
+     * 积分修改
+     */
+    //get credit
+    public function getCredit($data,$row,$c)
+    {
+        $model = Credit::model()->findByPk($data->user_id);
+        return $model==null ? '0':($model->value>=30?'<font color="green">'.$model->value.'</font>':'<font color="red">'.$model->value.'</font>');
+    }
+    //url
+    public function creditUrl($data, $row, $c)
+    {
+        return Yii::app()->baseUrl . '/index.php?r=admin/verify/credit&id=' . $data->
+            user_id;
+    }
+    public function actionCredit()
+    {
+        if (isset($_GET['id'])) {
+            if (isset($_POST['credit'])) {
 
+                Yii::app()->credit->set($_GET['id'], $_POST['credit']);
+                $this->redirect(Yii::app()->createUrl('admin/verify'));
+                Yii::app()->end();
+            }
+            $this->render('credit');
+        }
+    }
     // Uncomment the following methods and override them if needed
     /*
     public function filters()

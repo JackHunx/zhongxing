@@ -1,9 +1,10 @@
-	<div class="notification attention png_bg">
+<!-- notice begin -->
+<div class="notification information png_bg">
+				<a href="#" class="close"><img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/cross_grey_small.png" title="关闭提示" alt="close" /></a>
 				<div>
-					有<font color = "red"><?php //echo $count; ?></font>条申请等待审核--<a href="<?php echo
-Yii::app()->baseUrl; ?>/index.php?r=admin/verify/realname&User[real_status]=0">点击审核</a>
+					审核提示
 				</div>
-			</div>  
+			</div>
             
 <!--- user list -->
 <?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -43,6 +44,12 @@ Yii::app()->baseUrl; ?>/index.php?r=admin/verify/realname&User[real_status]=0">�
             'value' => array($this, 'validateScene'),
             'type' => 'raw',
             ),
+         array(
+            'header' => '总积分',
+            //'name'=>'card_id',
+            'value' => array($this, 'getCredit'),
+            'type' => 'raw',
+            ),
 
         //array(
         //            'header'=>'操作',
@@ -55,7 +62,7 @@ Yii::app()->baseUrl; ?>/index.php?r=admin/verify/realname&User[real_status]=0">�
             'template' => '{verify}',
             'buttons' => array('verify' => array(
                     'label' => '积分修改',
-                    'url' => array($this, 'verify'),
+                    'url' => array($this, 'creditUrl'),
                     ), ),
             ),
         // 'User.username',
