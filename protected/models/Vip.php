@@ -69,11 +69,11 @@ class Vip extends CActiveRecord
                 'captcha',
                 'allowEmpty' => !CCaptcha::checkRequirements()),
             array(
-                'user_id, kefu_userid, kefu_username, kefu_addtime, vip_status, bbs_topics_num, bbs_posts_num, credit, account, account_use, account_nouse, account_waitin, account_waitintrest, account_intrest, account_award, account_payment, account_expired, account_waitvip, borrow_amount, vouch_amount, borrow_loan, borrow_success, borrow_wait, borrow_paymeng, friends_apply',
+                'user_id, kefu_userid,kefu_addtime, vip_status, bbs_topics_num, bbs_posts_num, credit, account, account_use, account_nouse, account_waitin, account_waitintrest, account_intrest, account_award, account_payment, account_expired, account_waitvip, borrow_amount, vouch_amount, borrow_loan, borrow_success, borrow_wait, borrow_paymeng, friends_apply',
                 'numerical',
                 'integerOnly' => true),
             array(
-                'vip_remark',
+                'vip_remark,kefu_username',
                 'length',
                 'max' => 250),
             array(

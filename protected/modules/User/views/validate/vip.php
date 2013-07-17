@@ -11,10 +11,10 @@
 				<li>邮 箱 ：<?php echo $model->email;?></li>
                 <?php
                 if($vip==null)
-                {echo <<<ETO
+                {                    
+                    echo <<<ETO
 				<li>选择客服 ：<select name="Vip[kefu_userid]">
-								<option value="7">这一秒行动 下一秒收益(众兴为民)</option>
-								<option value="6">想，就立刻行动(众兴飞腾)</option>
+								$service
 								</select></li>
 				<li>备 注 ：<textarea rows="5" cols="50" name="Vip[vip_remark]"></textarea></li>
                 
@@ -35,14 +35,14 @@ ETO;
 }elseif($vip->vip_status==0)
 {
     echo <<<ETO
-    <li>客服  {$vip->kefu_username}</li>
+    <li>客服：{$vip->kefu_username}</li>
 				<li>备注 ：{$vip->vip_remark}</li>
                
 ETO;
 }elseif($vip->vip_status==1)
 {
     echo <<<ETO
-    <li>客服  {$vip->kefu_username}</li>
+    <li>客服： {$vip->kefu_username}</li>
 				<li>备注 ：{$vip->vip_remark}</li>
 ETO;
 }

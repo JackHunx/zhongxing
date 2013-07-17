@@ -55,11 +55,12 @@ class ValidateController extends SBaseController
             $model->attributes = $value;
             if ($model->update()) {                {
                     //$this->_model = $model;
-                    $this->layout='//layouts/main';
-                   $this->render('//user/msg', array(
-            'msg' => "信息已更新,请等待审核",
-            'msg_url' => Yii::app()->request->urlReferrer,
-            'msg_content' => "点此返回"));;
+                    $this->layout = '//layouts/main';
+                    $this->render('//user/msg', array(
+                        'msg' => "信息已更新,请等待审核",
+                        'msg_url' => Yii::app()->request->urlReferrer,
+                        'msg_content' => "点此返回"));
+                    ;
                 }
             }
         } elseif ($this->_model->real_status == null) {
@@ -111,7 +112,7 @@ class ValidateController extends SBaseController
         $model = new Vip;
         $record = $model->findByPk($this->_user->id);
 
-        if ($record !== null) {
+        if ($record != null) {
 
             if ($record->vip_status == 1) {
                 $this->layout = '//layouts/main';
@@ -132,23 +133,43 @@ class ValidateController extends SBaseController
                 $vip = array(
                     'user_id' => $this->_user->id,
                     'vip_status' => '0',
-
+                    'kefu_username' => ($_POST['Vip']['kefu_userid'] == 0 ? '0000' : User::model()->
+                        findByPk($_POST['Vip']['kefu_userid'])->realname),
+                    'kefu_addtime' => time(),
                     );
-
-                //print_r(array_merge($vip, $_POST['Vip']));
-                //            exit();
-
+          
+                //
                 $model->attributes = array_merge($vip, $_POST['Vip']);
+                //return $model->save();
                 if ($model->save()) //$this->layout='//layoust/main';
 
+                {
                     $this->redirect(array('validate/vip', 'id' => $model->user_id));
+                    Yii::app()->end();
+                }else
+                    throw new CException('save to table {vip} error');
+               
             }
             //$model = new User;
+            $custom = Assignments::model()->findAll('itemname=:itemname', array(':itemname' =>
+                    '客服'));
+            $service = '';
+            if ($custom != null) {
+                for ($i = 0; $i < count($custom); $i++) {
+                    //echo $custom->userid;
+
+                    $service .= '<option value="' . $custom[$i]->userid . '">' . User::model()->
+                        findByPk($custom[$i]->userid)->realname . '</option>';
+                }
+            } else
+                $service = '<option value="0">0000</option>';
+
             $this->layout = '//layouts/main';
             $this->render('vip', array(
                 'model' => $this->_model,
                 'status' => '普通会员',
-                'vip' => $record));
+                'vip' => $record,
+                'service' => $service));
         }
     }
     /**

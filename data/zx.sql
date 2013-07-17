@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- 主机: 127.0.0.1
--- 生成日期: 2013 年 07 月 16 日 09:53
+-- 生成日期: 2013 年 07 月 17 日 04:37
 -- 服务器版本: 5.5.27
 -- PHP 版本: 5.4.7
 
@@ -3859,6 +3859,13 @@ CREATE TABLE IF NOT EXISTS `zx_assignments` (
   PRIMARY KEY (`itemname`,`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- 转存表中的数据 `zx_assignments`
+--
+
+INSERT INTO `zx_assignments` (`itemname`, `userid`, `bizrule`, `data`) VALUES
+('客服', '57', '', 's:0:"";');
+
 -- --------------------------------------------------------
 
 --
@@ -3884,20 +3891,32 @@ CREATE TABLE IF NOT EXISTS `zx_attestation` (
   `addip` varchar(50) CHARACTER SET gbk DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `type_id` (`type_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=360 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=372 ;
 
 --
 -- 转存表中的数据 `zx_attestation`
 --
 
 INSERT INTO `zx_attestation` (`id`, `user_id`, `type_id`, `name`, `status`, `litpic`, `content`, `jifen`, `pic`, `pic2`, `pic3`, `verify_time`, `verify_user`, `verify_remark`, `addtime`, `addip`) VALUES
+(367, 64, 28, NULL, 1, '/upload/attestation/20130716/13739644891014.jpg', '无标题-7.jpg', 15, NULL, NULL, NULL, '1373964560', 63, '审核通过', '1373964489', '127.0.0.1'),
+(366, 64, 28, NULL, 0, '/upload/attestation/20130716/13739644895246.jpg', '无标题-6.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373964489', '127.0.0.1'),
+(363, 64, 28, NULL, 0, '/upload/attestation/20130716/13739644887495.jpg', '阿达', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373964488', '127.0.0.1'),
+(364, 64, 28, NULL, 0, '/upload/attestation/20130716/1373964489982.jpg', '无标题-4.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373964489', '127.0.0.1'),
+(365, 64, 28, NULL, 2, '/upload/attestation/20130716/13739644892118.jpg', '无标题-5.jpg', 0, NULL, NULL, NULL, NULL, NULL, '资料不清楚', '1373964489', '127.0.0.1'),
 (353, 64, 28, NULL, 1, '/upload/attestation/20130716/13739585518890.jpg', '1213', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373958551', '127.0.0.1'),
-(354, 64, 28, NULL, 0, '/upload/attestation/20130716/13739585511436.jpg', '阿达', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373958551', '127.0.0.1'),
-(355, 64, 28, NULL, 0, '/upload/attestation/20130716/13739585511370.jpg', '313131', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373958551', '127.0.0.1'),
-(356, 64, 28, NULL, 0, '/upload/attestation/20130716/13739585519553.jpg', '13131', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373958551', '127.0.0.1'),
-(357, 64, 28, NULL, 0, '/upload/attestation/20130716/13739585527692.jpg', '13131', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373958552', '127.0.0.1'),
-(358, 64, 28, NULL, 0, '/upload/attestation/20130716/13739585529033.jpg', '1315', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373958552', '127.0.0.1'),
-(359, 64, 28, NULL, 0, '/upload/attestation/20130716/13739585525006.jpg', '11adf', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373958552', '127.0.0.1');
+(354, 64, 28, NULL, 1, '/upload/attestation/20130716/13739585511436.jpg', '阿达', 15, NULL, NULL, NULL, '1373963775', 63, '审核通过', '1373958551', '127.0.0.1'),
+(355, 64, 28, NULL, 1, '/upload/attestation/20130716/13739585511370.jpg', '313131', 23, NULL, NULL, NULL, NULL, NULL, NULL, '1373958551', '127.0.0.1'),
+(356, 64, 28, NULL, 1, '/upload/attestation/20130716/13739585519553.jpg', '13131', 23, NULL, NULL, NULL, NULL, NULL, NULL, '1373958551', '127.0.0.1'),
+(357, 64, 28, NULL, 1, '/upload/attestation/20130716/13739585527692.jpg', '13131', 200, NULL, NULL, NULL, NULL, NULL, NULL, '1373958552', '127.0.0.1'),
+(358, 64, 28, NULL, 2, '/upload/attestation/20130716/13739585529033.jpg', '1315', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373958552', '127.0.0.1'),
+(359, 64, 28, NULL, 1, '/upload/attestation/20130716/13739585525006.jpg', '11adf', 12, NULL, NULL, NULL, NULL, NULL, NULL, '1373958552', '127.0.0.1'),
+(360, 64, 19, NULL, 1, '/upload/attestation/20130716/1373963303267.jpg', '测试', 15, NULL, NULL, NULL, '1373963729', 63, NULL, '1373963315', '127.0.0.1'),
+(361, 64, 28, NULL, 0, '/upload/attestation/20130716/13739644888746.jpg', '身份证', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373964488', '127.0.0.1'),
+(362, 64, 28, NULL, 0, '/upload/attestation/20130716/13739644889486.jpg', '户口被', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373964488', '127.0.0.1'),
+(368, 64, 28, NULL, 0, '/upload/attestation/20130716/13739644897709.jpg', '无标题-8.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373964489', '127.0.0.1'),
+(369, 64, 28, NULL, 0, '/upload/attestation/20130716/13739644896019.jpg', '无标题-9.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373964489', '127.0.0.1'),
+(370, 64, 28, NULL, 0, '/upload/attestation/20130716/13739644898487.jpg', '无标题-10.jpg', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373964489', '127.0.0.1'),
+(371, 64, 28, NULL, 0, '/upload/attestation/20130716/1373964818967.jpg', 'adf', 0, NULL, NULL, NULL, NULL, NULL, NULL, '1373964823', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -4640,7 +4659,7 @@ CREATE TABLE IF NOT EXISTS `zx_credit` (
 INSERT INTO `zx_credit` (`user_id`, `value`, `op_user`, `addtime`, `addip`, `updatetime`, `updateip`) VALUES
 (0, 0, NULL, 1373527346, '127.0.0.1', 1373527346, '127.0.0.1'),
 (63, 234162, 63, 1373527957, '127.0.0.1', 1373940897, '127.0.0.1'),
-(64, 15, 64, 1373941155, '192.168.0.12', 1373941281, '127.0.0.1');
+(64, 333, 64, 1373941155, '192.168.0.12', 1373964560, '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -4659,7 +4678,7 @@ CREATE TABLE IF NOT EXISTS `zx_credit_log` (
   `addtime` int(11) DEFAULT NULL COMMENT '����ʱ��',
   `addip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT '����IP',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='��Ա������־' AUTO_INCREMENT=378 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='��Ա������־' AUTO_INCREMENT=386 ;
 
 --
 -- 转存表中的数据 `zx_credit_log`
@@ -4681,7 +4700,15 @@ INSERT INTO `zx_credit_log` (`id`, `user_id`, `type_id`, `op`, `value`, `remark`
 (374, 63, 2, 1, 134132, '实名认证', 63, 1373940856, '127.0.0.1'),
 (375, 63, 2, 1, 15, '实名认证', 63, 1373940897, '127.0.0.1'),
 (376, 64, 0, 1, 0, '注册初始化', 64, 1373941155, '192.168.0.12'),
-(377, 64, 2, 1, 15, '实名认证', 63, 1373941281, '127.0.0.1');
+(377, 64, 2, 1, 15, '实名认证', 63, 1373941281, '127.0.0.1'),
+(378, 355, 6, 1, 23, '审核通过', 63, 1373962569, '127.0.0.1'),
+(379, 356, 6, 1, 23, '审核通过', 63, 1373962575, '127.0.0.1'),
+(380, 359, 6, 1, 12, '审核通过', 63, 1373962762, '127.0.0.1'),
+(381, 64, 6, 1, 200, '审核通过', 63, 1373962827, '127.0.0.1'),
+(382, 64, 6, 1, 15, '审核通过', 63, 1373963722, '127.0.0.1'),
+(383, 64, 6, 1, 15, '审核通过', 63, 1373963729, '127.0.0.1'),
+(384, 64, 6, 1, 15, '审核通过', 63, 1373963775, '127.0.0.1'),
+(385, 64, 6, 1, 15, '审核通过', 63, 1373964560, '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -5290,7 +5317,8 @@ INSERT INTO `zx_items` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
 ('UserIndex', 0, NULL, NULL, 'N;'),
 ('UserUpdate', 0, NULL, NULL, 'N;'),
 ('UserView', 0, NULL, NULL, 'N;'),
-('UserViewing', 1, NULL, NULL, 'N;');
+('UserViewing', 1, NULL, NULL, 'N;'),
+('客服', 2, '客户服务人员', '', 's:0:"";');
 
 -- --------------------------------------------------------
 
@@ -6388,7 +6416,7 @@ CREATE TABLE IF NOT EXISTS `zx_upfiles` (
   `updatetime` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT '�޸�ʱ��',
   `updateip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT '�޸�ip',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=528 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=540 ;
 
 --
 -- 转存表中的数据 `zx_upfiles`
@@ -6467,7 +6495,19 @@ INSERT INTO `zx_upfiles` (`id`, `name`, `code`, `aid`, `status`, `user_id`, `fil
 (524, '13131', NULL, '0', 0, 64, '.jpg', '无标题-7.jpg', 77242, '/upload/attestation/20130716/13739585519553.jpg', 0, 0, 0, '1373958551', '127.0.0.1', '1373958551', '127.0.0.1'),
 (525, '13131', NULL, '0', 0, 64, '.jpg', '无标题-8.jpg', 90132, '/upload/attestation/20130716/13739585527692.jpg', 0, 0, 0, '1373958552', '127.0.0.1', '1373958552', '127.0.0.1'),
 (526, '1315', NULL, '0', 0, 64, '.jpg', '无标题-9.jpg', 95745, '/upload/attestation/20130716/13739585529033.jpg', 0, 0, 0, '1373958552', '127.0.0.1', '1373958552', '127.0.0.1'),
-(527, '11adf', NULL, '0', 0, 64, '.jpg', '无标题-10.jpg', 88263, '/upload/attestation/20130716/13739585525006.jpg', 0, 0, 0, '1373958552', '127.0.0.1', '1373958552', '127.0.0.1');
+(527, '11adf', NULL, '0', 0, 64, '.jpg', '无标题-10.jpg', 88263, '/upload/attestation/20130716/13739585525006.jpg', 0, 0, 0, '1373958552', '127.0.0.1', '1373958552', '127.0.0.1'),
+(528, '1373963303267.jpg', 'attestation', '0', 0, 64, 'jpg', '1373963303267.jpg', 70261, '/upload/attestation/20130716/1373963303267.jpg', 0, 0, 0, '1373963303', '127.0.0.1', '1373963303', '127.0.0.1'),
+(529, '身份证', NULL, '0', 0, 64, '.jpg', '无标题-1.jpg', 56122, '/upload/attestation/20130716/13739644888746.jpg', 0, 0, 0, '1373964488', '127.0.0.1', '1373964488', '127.0.0.1'),
+(530, '户口被', NULL, '0', 0, 64, '.jpg', '无标题-2.jpg', 94327, '/upload/attestation/20130716/13739644889486.jpg', 0, 0, 0, '1373964488', '127.0.0.1', '1373964488', '127.0.0.1'),
+(531, '阿达', NULL, '0', 0, 64, '.jpg', '无标题-3.jpg', 90083, '/upload/attestation/20130716/13739644887495.jpg', 0, 0, 0, '1373964488', '127.0.0.1', '1373964488', '127.0.0.1'),
+(532, '无标题-4.jpg', NULL, '0', 0, 64, '.jpg', '无标题-4.jpg', 80778, '/upload/attestation/20130716/1373964489982.jpg', 0, 0, 0, '1373964489', '127.0.0.1', '1373964489', '127.0.0.1'),
+(533, '无标题-5.jpg', NULL, '0', 0, 64, '.jpg', '无标题-5.jpg', 70263, '/upload/attestation/20130716/13739644892118.jpg', 0, 0, 0, '1373964489', '127.0.0.1', '1373964489', '127.0.0.1'),
+(534, '无标题-6.jpg', NULL, '0', 0, 64, '.jpg', '无标题-6.jpg', 68288, '/upload/attestation/20130716/13739644895246.jpg', 0, 0, 0, '1373964489', '127.0.0.1', '1373964489', '127.0.0.1'),
+(535, '无标题-7.jpg', NULL, '0', 0, 64, '.jpg', '无标题-7.jpg', 77242, '/upload/attestation/20130716/13739644891014.jpg', 0, 0, 0, '1373964489', '127.0.0.1', '1373964489', '127.0.0.1'),
+(536, '无标题-8.jpg', NULL, '0', 0, 64, '.jpg', '无标题-8.jpg', 90132, '/upload/attestation/20130716/13739644897709.jpg', 0, 0, 0, '1373964489', '127.0.0.1', '1373964489', '127.0.0.1'),
+(537, '无标题-9.jpg', NULL, '0', 0, 64, '.jpg', '无标题-9.jpg', 95745, '/upload/attestation/20130716/13739644896019.jpg', 0, 0, 0, '1373964489', '127.0.0.1', '1373964489', '127.0.0.1'),
+(538, '无标题-10.jpg', NULL, '0', 0, 64, '.jpg', '无标题-10.jpg', 88263, '/upload/attestation/20130716/13739644898487.jpg', 0, 0, 0, '1373964489', '127.0.0.1', '1373964489', '127.0.0.1'),
+(539, '1373964818967.jpg', 'attestation', '0', 0, 64, 'jpg', '1373964818967.jpg', 1016641, '/upload/attestation/20130716/1373964818967.jpg', 0, 0, 0, '1373964818', '127.0.0.1', '1373964818', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -6695,7 +6735,7 @@ INSERT INTO `zx_userinfo` (`id`, `site_id`, `user_id`, `name`, `status`, `order`
 (66, 1, 56, NULL, 0, 0, 0, '1373244816', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1372770977', '127.0.0.1', '1373244827', '127.0.0.1'),
 (68, 1, 60, NULL, 0, 0, 0, '1372889113', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1372889135', '127.0.0.1', '1372889135', '127.0.0.1'),
 (69, 1, 63, NULL, 0, 0, 0, '1373528349', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1373528357', '127.0.0.1', '1373528357', '127.0.0.1'),
-(70, 1, 64, NULL, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '111111', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1373948232', '127.0.0.1', '1373948239', '127.0.0.1');
+(70, 1, 64, NULL, 0, 0, 0, '1373963195', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '111111', '', '', '', '', '', '', '', '', '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1373948232', '127.0.0.1', '1373963215', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -6889,7 +6929,7 @@ CREATE TABLE IF NOT EXISTS `zx_user_backup` (
 CREATE TABLE IF NOT EXISTS `zx_user_cache` (
   `user_id` int(11) NOT NULL DEFAULT '0',
   `kefu_userid` int(11) DEFAULT NULL,
-  `kefu_username` int(11) DEFAULT NULL,
+  `kefu_username` varchar(250) DEFAULT NULL,
   `kefu_addtime` int(11) DEFAULT NULL,
   `vip_status` int(2) DEFAULT '0',
   `vip_remark` varchar(250) DEFAULT NULL,
@@ -6918,16 +6958,6 @@ CREATE TABLE IF NOT EXISTS `zx_user_cache` (
   `friends_apply` int(11) DEFAULT '0',
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `zx_user_cache`
---
-
-INSERT INTO `zx_user_cache` (`user_id`, `kefu_userid`, `kefu_username`, `kefu_addtime`, `vip_status`, `vip_remark`, `vip_money`, `vip_verify_remark`, `vip_verify_time`, `bbs_topics_num`, `bbs_posts_num`, `credit`, `account`, `account_use`, `account_nouse`, `account_waitin`, `account_waitintrest`, `account_intrest`, `account_award`, `account_payment`, `account_expired`, `account_waitvip`, `borrow_amount`, `vouch_amount`, `borrow_loan`, `borrow_success`, `borrow_wait`, `borrow_paymeng`, `friends_apply`) VALUES
-(56, 7, NULL, NULL, 1, '这是一个申请测试', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3000, 0, 0, 0, 0, 0, 0),
-(58, 7, NULL, NULL, 1, 'dasfas', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3000, 0, 0, 0, 0, 0, 0),
-(57, 7, NULL, NULL, 0, '我要申请成为会员', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3000, 0, 0, 0, 0, 0, 0),
-(63, 7, NULL, NULL, 0, '', NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3000, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 

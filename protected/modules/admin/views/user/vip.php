@@ -1,12 +1,12 @@
 	<div class="notification attention png_bg">
 				<div>
-					有<font color = "red"><?php echo $count;?></font>条VIP申请等待审核
+					共有<font color = "red"><?php echo $count;?></font>&nbsp;名VIP会员
 				</div>
 			</div>  
             
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-    'id' => 'vip-grid',
+    'id' => 'vip',
     'cssFile' => Yii::app()->baseUrl . '/css/grid_view.css',
     'dataProvider' => $model->search(),
     'filter' => $model,
@@ -25,13 +25,13 @@
             'type' => 'raw',
             ),
         //'kefu_username',
-
-        array(
-            'header' => '状态',
-            //'name'=>'vip_status',
-            'type' => 'raw',
-            'value' => array($this, 'vipStatus'),
-            ),
+//
+     //   array(
+//            'header' => '状态',
+//            'name'=>'vip_status',
+//            'type' => 'raw',
+//            'value' => array($this, 'vipStatus'),
+//            ),
         array(
             'header' => '是否缴费',
             //'name'=>'vip_status',
@@ -45,25 +45,25 @@
             ),
         array(
             'header' => '添加时间',
-            'value' => array($this, 'vipAddTime'),
+            'value' => 'date("Y-m-d H:i:s",$data->kefu_addtime)',
             'type' => 'raw',
             ),
         //'vip_remark',
+       // array(
+//            'header' => '操作',
+//            'value' => array($this, 'vipVerify'),
+//            'type' => 'raw',
+//            ),
         array(
             'header' => '操作',
-            'value' => array($this, 'vipVerify'),
-            'type' => 'raw',
+            'class' => 'CButtonColumn',
+            'deleteButtonOptions' => array('删除'),
+            //'updateButtonOptions' => array('title' => '审核'),
+
+            'buttons' => array('delete' => array('imageUrl' => null, 'label' => '删除'),
+                    ),
+            'template' => '{delete}',
+
             ),
-       // array(
-//            'header' => '审核',
-//            'class' => 'CButtonColumn',
-//            'deleteButtonOptions' => array('style' => 'display:none'),
-//            'updateButtonOptions' => array('title' => '审核'),
-//
-//            'buttons' => array('update' => array('imageUrl' => null, 'label' => '审核','url'=>'aa'),
-//                    ),
-//            'template' => '{update}',
-//
-//            ),
         ),
     )); ?>

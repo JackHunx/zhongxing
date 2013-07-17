@@ -28,49 +28,53 @@ class UserController extends SBaseController
         $this->render('info', array('model' => $model));
     }
     //get user name
-    public function getUser($data,$row,$c)
+    public function getUser($data, $row, $c)
     {
         return User::model()->findByPk($data->user_id)->username;
     }
     //house
-    public function house($data,$row,$c)
+    public function house($data, $row, $c)
     {
-       return $data->house_address==null? '未填写':'<font color="green">已填写</font>';
+        return $data->house_address == null ? '未填写' : '<font color="green">已填写</font>';
     }
-    //company 
-    public function company($data,$row,$c)
+    //company
+    public function company($data, $row, $c)
     {
-        return $data->company_address==null?'未填写':'<font color="green">已填写</font>';
+        return $data->company_address == null ? '未填写' : '<font color="green">已填写</font>';
     }
-    //private 
-    public function priv($data,$row,$c)
+    //private
+    public function priv($data, $row, $c)
     {
-        return $data->private_place ==null?'未填写':'<font color="green">已填写</font>';
+        return $data->private_place == null ? '未填写' : '<font color="green">已填写</font>';
     }
     //finance
-    public function finance($data,$row,$c)
+    public function finance($data, $row, $c)
     {
-        return $data->finance_repayment ==null?'未填写':'<font color="green">已填写</font>';
+        return $data->finance_repayment == null ? '未填写' :
+            '<font color="green">已填写</font>';
     }
     //mate
-    public function mate($data,$row,$c)
+    public function mate($data, $row, $c)
     {
-        return $data->mate_name ==null?'未填写':'<font color="green">已填写</font>';
+        return $data->mate_name == null ? '未填写' : '<font color="green">已填写</font>';
     }
     //education
-    public function edu($data,$row,$c)
+    public function edu($data, $row, $c)
     {
-        return $data->education_school ==null?'未填写':'<font color="green">已填写</font>';
+        return $data->education_school == null ? '未填写' :
+            '<font color="green">已填写</font>';
     }
     //other
-    public function contact($data,$row,$c)
+    public function contact($data, $row, $c)
     {
-       return ($data->tel==null&&$data->phone==null&&$data->area==null)?'未填写':'<font color="green">已填写</font>';
+        return ($data->tel == null && $data->phone == null && $data->area == null) ?
+            '未填写' : '<font color="green">已填写</font>';
     }
     //others
-    public function others($data,$row,$c)
+    public function others($data, $row, $c)
     {
-       return ($data->interest==null&&$data->experience==null&&$data->others==null)?'未填写':'<font color="green">已填写</font>';
+        return ($data->interest == null && $data->experience == null && $data->others == null) ?
+            '未填写' : '<font color="green">已填写</font>';
     }
     //get status
     public function islock($data, $row, $c)
@@ -82,7 +86,40 @@ class UserController extends SBaseController
     {
         return $data->sex == null ? '未填写' : ($data->sex == 1 ? '男' : '女');
     }
+    /**
+     * vip user list 
+     * 这个列表时vip通过审核后vip用户列表
+     */
+    public function actionVip()
+    {
+        $model = new Vip('search');
 
+        $model->unsetAttributes();
+        $model->attributes = array('vip_status' => '1');
+        if (isset($_GET['Vip']))
+            $model->attributes = $_GET['Vip'];
+        $count = Vip::model()->count('vip_status=:vip_status', array(':vip_status' =>
+                '1'));
+        $this->render('vip', array('model' => $model, 'count' => $count));
+    }
+    public function vipMoney($data, $row, $c)
+    {
+        return $data->vip_money == null ? '<font color="red">否</font>' :
+            '<font color="green">已缴费</font>';
+    }
+    public function actionDelete($id)
+    {
+        if (isset($_GET['ajax'])) {
+            switch ($_GET['ajax']){
+                case 'vip':
+                    Vip::model()->findByPk($id)->delete();
+                    break;
+                
+            }
+                
+            $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('vip'));
+        }
+    }
     // Uncomment the following methods and override them if needed
     /*
     public function filters()
