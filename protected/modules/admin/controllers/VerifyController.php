@@ -33,7 +33,7 @@ class VerifyController extends SBaseController
                 // echo "<pre>";
                 //                    print_r($val);
             } else {
-                $userModel->attributes = array($_POST['cate'] => null);
+                $userModel->attributes = array($_POST['cate'] => '0');
                 if (!$userModel->update())
                     throw new CException('real name save to table {User} error');
             }
@@ -247,7 +247,7 @@ class VerifyController extends SBaseController
     }
     public function validateVideo($data, $row, $c)
     {
-        return $data->video_status == null ? '<font color="grey">未申请</font>' : ($data->
+        return $data->video_status == '0' ? '<font color="grey">未申请</font>' : ($data->
             video_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::
             app()->baseUrl . '/index.php?r=admin/verify/video&id=' . $data->user_id .
             '"><font color="red">等待审核</font></a>');
@@ -261,7 +261,7 @@ class VerifyController extends SBaseController
     }
     public function validateScene($data, $row, $c)
     {
-        return $data->scene_status == null ? '<font color="grey">未申请</font>' : ($data->
+        return $data->scene_status == '0' ? '<font color="grey">未申请</font>' : ($data->
             scene_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::
             app()->baseUrl . '/index.php?r=admin/verify/scene&id=' . $data->user_id .
             '"><font color="red">等待审核</font></a>');
