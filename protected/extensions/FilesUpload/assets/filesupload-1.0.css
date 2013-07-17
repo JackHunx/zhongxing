@@ -1,0 +1,6 @@
+#flash{ margin:5px;}  
+#upload{width: 100px;height: 30px;float:left; background: url("images/upload.png"); margin:3px 6px 0 5px;cursor: pointer;}
+       
+#txt{ width:100%; float:left; clear:both; margin:5px; line-height:25px; font-size:14px; font-family:微软雅黑;} 
+#txt span{ color:Green;}
+#txt strong{ color:blue;}

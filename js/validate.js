@@ -2,7 +2,8 @@
  * @author Administrator
  */
 function initValidator(base){
-	
+    
+	url=window.location.pathname;
 	$("#registerForm").validate({
 		onkeyup:false,
 		//设置验证规则  
@@ -12,7 +13,7 @@ function initValidator(base){
 				required: true,
 				userNameCheck: true,
                 remote:{
-                    url:"/zhongxing/index.php?r=user/check_username",
+                    url:url+"?r=user/check_username",
                     type:"get",
                     data:{
                         username:function(){
@@ -35,7 +36,7 @@ function initValidator(base){
 				required: true,
 				isEmail: true,
                 remote:{
-                    url:"/zhongxing/index.php?r=user/check_email",
+                    url:url+"?r=user/check_email",
                     type:"get",
                     data:{
                         email:function(){

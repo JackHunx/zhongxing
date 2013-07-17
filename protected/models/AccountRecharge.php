@@ -22,6 +22,8 @@
  */
 class AccountRecharge extends CActiveRecord
 {
+    //public $verifyCode;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -48,6 +50,11 @@ class AccountRecharge extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+            //array(
+//                'verifyCode',
+//                'captcha',
+//                //'on'=>'User/account/recharge',
+//                'allowEmpty' => !CCaptcha::checkRequirements()),
 			array('user_id, status, verify_userid', 'numerical', 'integerOnly'=>true),
 			array('trade_no', 'length', 'max'=>20),
 			array('money, type, fee', 'length', 'max'=>10),

@@ -1,180 +1,26 @@
-<div class="wrap950 " style="margin-top:0">
-	<!--左边的导航 开始-->
-	<div class="user_left">
-		
-		<script type="text/javascript">
- function changeUserMenu(id){
-    var mu = $("#user_title_"+id);
-    var qe = $("#user_menu_"+id);
-    if(qe.css('display')=='none'){
-        mu.removeClass('title1').addClass('title');
-        qe.css('display', 'block');
-    }else{
-        mu.removeClass('title').addClass('title1');
-        qe.css('display', 'none');
-    }
-}
- </script>
 
- 
-<div class="user_menus">
-	<div class="title" id="user_title_touzi"><span onclick="changeUserMenu('touzi')">&nbsp;</span>我是投资者</div>
-	<div class="menu">
-		<ul id="user_menu_touzi" style="display:block">
-			<li><a href="/invest/index.html" target="_blank">我要投资</a></li>
-			<li><a href="/index.php?user&amp;q=code/borrow/succes">已成功投资的借款</a></li>
-			<li><a href="/index.php?user&amp;q=code/borrow/bid">正在投标的借款</a></li>
-			<li><a href="/index.php?user&amp;q=code/borrow/tender_vouch">我担保的借款</a></li>
-			<!--
-			<li><a href="/index.php?user&q=code/borrow/appraisal">我的评价</a></li>
-			<li><a href="/index.php?user&q=code/borrow/attention">我关注的借款</a></li>
-			<li><a href="/index.php?user&q=code/borrow/tender_reply">贷款者回复</a></li>
-			-->
-		</ul>
-	</div>
-</div>
- 
-
-  
-<div class="user_menus">
-	<div class="title" id="user_title_jiekuan"><span onclick="changeUserMenu('jiekuan')">&nbsp;</span>我是借款者</div>
-	<div class="menu">
-		<ul id="user_menu_jiekuan">
-			<li><a href="borrow/index.html" target="_blank">我要借款</a></li>
-			<li><a href="/index.php?user&amp;q=code/borrow/publish">正在招标的借款</a></li>
-			<li><a href="/index.php?user&amp;q=code/borrow/unpublish">尚未发布的借款</a></li>
-			<li><a href="/index.php?user&amp;q=code/borrow/repayment">正在还款的借款</a></li>
-			<li><a href="/index.php?user&amp;q=code/borrow/loanermsg">投资者回复</a></li>
-			<li><a href="/index.php?user&amp;q=code/borrow/limitapp">额度申请</a></li>
-		</ul>
-	</div>
-</div>
- 
- 
-<div class="user_menus">
-	<div class="title" id="user_title_zijin"><span onclick="changeUserMenu('zijin')">&nbsp;</span>资金管理</div>
-	<div class="menu">
-		<ul id="user_menu_zijin">
-			<li><a href="/index.php?user&amp;q=code/account">帐户详情</a></li>
-			<li><a href="/index.php?user&amp;q=code/account/bank">银行帐户</a></li>
-			<li><a href="/index.php?user&amp;q=code/account/cash_new">帐户提现</a></li>
-			<li><a href="/index.php?user&amp;q=code/account/recharge_new">帐户充值</a></li>
-			<li><a href="/index.php?user&amp;q=code/account/cash">提现记录</a></li>
-			<li><a href="/index.php?user&amp;q=code/account/recharge">充值记录</a></li>
-			<li><a href="/index.php?user&amp;q=code/account/log">资金记录</a></li>
-		</ul>
-	</div>
-</div>
- 
- <!--
-<div class="user_menus">
-	<div class="title" id="user_title_kefu" ><span onclick="changeUserMenu('kefu')">&nbsp;</span>客户服务</div>
-	<div class="menu">
-		<ul id="user_menu_kefu">
-			<li><a href="/index.php?user&q=view#info">我要提问</a></li>
-			<li><a href="/index.php?user&q=view#info">在线客户</a></li>
-		</ul>
-	</div>
-</div> 
--->	
-
-<div class="user_menus">
-	<div class="title" id="user_title_shezhi"><span onclick="changeUserMenu('shezhi')">&nbsp;</span>基本设置</div>
-	<div class="menu">
-		<ul id="user_menu_shezhi">
-			<li><a href="/index.php?user&amp;q=code/userinfo">填写个人资料</a></li>
-			<li><a href="/index.php?user&amp;q=code/user/avatar">更换头像</a></li>
-			<li><a href="/index.php?user&amp;q=code/user/privacy">设置隐私</a></li>
-			<li><a href="/index.php?user&amp;q=code/message">站内信</a></li>
-			<li><a href="/index.php?user&amp;q=code/remind">提醒设置</a></li>
-		</ul>
-	</div>
-</div>
-
-<div class="user_menus">
-	<div class="title" id="user_title_renzheng"><span onclick="changeUserMenu('renzheng')">&nbsp;</span>认证中心</div>
-	<div class="menu">
-		<ul id="user_menu_renzheng">
-			<li><a href="/index.php?user&amp;q=code/user/realname">实名认证</a></li>
-			<li><a href="/index.php?user&amp;q=code/user/email_status">邮箱认证</a></li>
-			<li><a href="/index.php?user&amp;q=code/user/phone_status">手机认证</a></li>
-			<li><a href="/index.php?user&amp;q=code/user/video_status">视频认证</a></li>
-			<li><a href="/index.php?user&amp;q=code/user/scene_status">现场认证</a></li>
-			<li><a href="/index.php?user&amp;q=code/attestation">资料证明</a></li>
-		</ul>
-	</div>
-</div>
-
-
-<div class="user_menus">
-	<div class="title" id="user_title_haoyou"><span onclick="changeUserMenu('haoyou')">&nbsp;</span>好友管理</div>
-	<div class="menu">
-		<ul id="user_menu_haoyou">
-			<li><a href="/index.php?user&amp;q=code/user/reginvite">邀请好友</a></li>
-			<li><a href="/index.php?user&amp;q=code/user/request">好友请求</a></li>
-			<li><a href="/index.php?user&amp;q=code/user/myfriend">我的好友</a></li>
-			<li><a href="/index.php?user&amp;q=code/user/black">我的黑名单</a></li>
-		</ul>
-	</div>
-</div>
-
-
-
-<div class="user_menus">
-	<div class="title" id="user_title_safe"><span onclick="changeUserMenu('safe')">&nbsp;</span>安全中心</div>
-	<div class="menu">
-		<ul id="user_menu_safe">
-			<li><a href="/index.php?user&amp;q=code/user/userpwd">修改登录密码</a></li>
-			<li><a href="/index.php?user&amp;q=code/user/paypwd">修改支付密码</a></li>
-			<li><a href="/index.php?user&amp;q=code/user/protection">密码保护</a></li>
-		</ul>
-	</div>
-</div>
-
-<!--
-<div class="user_menus">
-	<div class="title" id="user_title_jifen" ><span onclick="changeUserMenu('jifen')">&nbsp;</span>礼品折扣</div>
-	<div class="menu">
-		<ul id="user_menu_jifen">
-			<li><a href="/index.php?user&q=view#info">积分礼品</a></li>
-			<li><a href="/index.php?user&q=view#info">折扣商家</a></li>
-		</ul>
-	</div>
-</div>
--->
-<div class="user_menus">
-	<div class="title" id="user_title_shequ"><span onclick="changeUserMenu('shequ')">&nbsp;</span>社区管理</div>
-	<div class="menu">
-		<ul id="user_menu_shequ">
-			<li><a href="/index.php?user&amp;q=view#info">我的话题</a></li>
-		</ul>
-	</div>
-</div>
-	</div>
-	<!--左边的导航 结束-->
-	
 	<!--右边的内容 开始-->
 	<div class="user_right ">
 		<div class="user_right_l ">
 						<div class="user_right_lmain">
 				<div class="user_right_img">
-					<img src="/data/avatar/30_avatar_middle.jpg" height="90" class="picborder"><br>
-					<a href="index.php?user&amp;q=code/user/avatar"><font color="#FF0000">[更换头像]</font></a>
+					<img src="<?php echo $info['avatar'];?>" height="90" class="picborder"><br>
+					<a href="index.php?r=User/avatar"><font color="#FF0000">[更换头像]</font></a>
 				</div>
 				<div class="user_right_txt">
 					<ul>
-						<li><span>信用等级：</span><img src="<?php echo $baseUrl?>/images/credit/credit_s15.gif" title="67"><a href="/index.php?user&amp;q=code/user/credit"><font color="#FF0000">积分查看</font></a></li>
+						<li><span>信用等级：</span><img src="<?php $credit=Yii::app()->credit; echo $baseUrl.'/images/credit/'.$credit->getRank($credit->get(Yii::app()->user->id));?>" title="<?php echo Yii::app()->credit->get(Yii::app()->user->id);?>"><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/credit"><font color="#FF0000">积分查看</font></a></li>
 						<li style="overflow:hidden">
 							<div class="floatl"><span> 认&nbsp;&nbsp;&nbsp;   证：</span></div> 
-							<a href="/index.php?user&amp;q=code/user/realname"><div class="credit_pic_card_1" title="实名已认证"></div></a>
-							<a href="/index.php?user&amp;q=code/user/phone_status"><div class="credit_pic_phone_<?php echo $model->phone_status;?>" title="手机已认证"></div></a>
-							<a href="/index.php?user&amp;q=code/user/email_status"><div class="credit_pic_email_<?php echo $model->email_status;?>" title="邮箱已认证"></div></a>
-							<a href="/index.php?user&amp;q=code/user/video_status"><div class="credit_pic_video_<?php echo $model->video_status;?>" title="视频已认证"></div></a>
-							<a href="/vip/index.html"><div class="credit_pic_vip_<?php echo $vip['status'];?>" title="VIP"></div></a>
-							<a href="/index.php?user&amp;q=code/user/scene_status"><div class="credit_pic_scene_0" title="未通过现场认证"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/realname"><div class="credit_pic_card_<?php echo ($model->real_status==null)?'0':$model->real_status;?>" title="实名认证"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/phone"><div class="credit_pic_phone_<?php echo ($model->phone_status==null)?'0':$model->phone_status;?>" title="手机认证"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/email"><div class="credit_pic_email_<?php echo $model->email_status;?>" title="邮箱认证"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/video"><div class="credit_pic_video_<?php echo $model->video_status;?>" title="视频认证"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/vip"><div class="credit_pic_vip_<?php echo $vip['status'];?>" title="VIP"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/scene"><div class="credit_pic_scene_0" title="现场认证"></div></a>
 						</li>
 
-						<li>  <a href="/index.php?user&amp;q=code/account/recharge_new"><font color="#FF0000">账号充值</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=credit"><font color="#FF0000">申请信用额度</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=vouch"><font color="#FF0000">申请担保额度</font></a> </li>
+						<li>  <a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/account/recharge"><font color="#FF0000">账号充值</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=credit"><font color="#FF0000">申请信用额度</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=vouch"><font color="#FF0000">申请担保额度</font></a> </li>
 						<li><span>VIP 期限： <a href="<?php echo $baseUrl; ?>/index.php?r=User/validate/vip"><?php echo $vip['msg']; ?></a></span></li>
 						<li><span>系统告知：</span><a href="/index.php?user&amp;q=code/message"><font color="#FF0000">24</font> 封未读信息</a>&nbsp; &nbsp; <a href="/index.php?user&amp;q=code/user/request">0 个好友邀请</a></li>
 					</ul>
@@ -214,20 +60,20 @@
 		  <div class="title">
 		      <table width="100%" cellspacing="0" cellpadding="0" border="0">
   <tbody><tr>
-    <td width="12" align="left"><img height="30" width="12" src="/themes/61dai/images/t_left.gif"></td>
-    <td background="/themes/61dai/images/t_bg.gif" align="left"><h1 class="dd">借入流程</h1></td>
-    <td width="12" align="right"><img height="30" width="12" src="/themes/61dai/images/t_right.gif"></td>
+    <td width="12" align="left"><img height="30" width="12" src="<?php echo Yii::app()->baseUrl;?>/images/t_left.gif"></td>
+    <td background="<?php echo Yii::app()->baseUrl;?>/images/t_bg.gif" align="left"><h1 class="dd">借入流程</h1></td>
+    <td width="12" align="right"><img height="30" width="12" src="<?php echo Yii::app()->baseUrl;?>/images/t_right.gif"></td>
   </tr>
 </tbody></table>
           </div>
 		  <div class="m_l_bor">
 	  <div class="process">
             <ul>
-                <li><a target="_blank" href="/?user&amp;q=code/userinfo">填写详细信息</a></li><li class="icon2">
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info">填写详细信息</a></li><li class="icon2">
                 </li>
-                <li><a target="_blank" href="/?user&amp;q=code/attestation">上传资料证明</a></li><li class="icon2">
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/upload">上传资料证明</a></li><li class="icon2">
                 </li>
-                <li><a target="_blank" href="/vip/index.html">申请VIP</a></li><li class="icon2">
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/validate/vip">申请VIP</a></li><li class="icon2">
                 </li>
 
                 <li><a target="_blank" href="/publish/index.html">发布借款信息</a></li><li class="icon2">
@@ -242,23 +88,23 @@
 		  <div class="title">
 		      <table width="100%" cellspacing="0" cellpadding="0" border="0">
   <tbody><tr>
-    <td width="12" align="left"><img height="30" width="12" src="/themes/61dai/images/t_left.gif"></td>
-    <td background="/themes/61dai/images/t_bg.gif" align="left"><h1 class="dd">投资者上手</h1></td>
-    <td width="12" align="right"><img height="30" width="12" src="/themes/61dai/images/t_right.gif"></td>
+    <td width="12" align="left"><img height="30" width="12" src="<?php echo Yii::app()->baseUrl;?>/images/t_left.gif"></td>
+    <td background="<?php echo Yii::app()->baseUrl;?>/images/t_bg.gif" align="left"><h1 class="dd">投资者上手</h1></td>
+    <td width="12" align="right"><img height="30" width="12" src="<?php echo Yii::app()->baseUrl;?>/images/t_right.gif"></td>
   </tr>
 </tbody></table>
           </div>
 		  <div class="m_l_bor">
         <div class="process">
             <ul>
-                <li><a target="_blank" href="/?user&amp;q=code/userinfo">填写详细信息</a></li><li class="icon2">
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl; ?>/index.php?r=User/info">填写详细信息</a></li><li class="icon2">
+                </li> 
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/validate/realname">实名认证</a></li><li class="icon2">
                 </li>
-                <li><a target="_blank" href="/?user&amp;q=code/user/realname">实名认证</a></li><li class="icon2">
-                </li>
-                <li><a target="_blank" href="/vip/index.html">申请VIP</a></li><li class="icon2">
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/validate/vip">申请VIP</a></li><li class="icon2">
                 </li>
 
-                <li><a target="_blank" href="/invest/index.html">投标借出</a></li><li class="icon2"></li>
+                <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=user/invest">投标借出</a></li><li class="icon2"></li>
                 <li><a target="_blank" href="/?user&amp;q=code/borrow/success">等待回收还款</a></li>
             </ul>
         </div></div></div>
@@ -277,12 +123,12 @@
 				<div class="title"><strong>个人资料完成率</strong></div> 
 				<div>
 				<ul>
-									<li><span><a href="/index.php?user&amp;q=code/userinfo/building"><font color="#009900">已填写</font></a></span>房产资料</li>
-					<li><span><a href="/index.php?user&amp;q=code/userinfo/company"><font color="#FF0000">未填写</font></a></span>单位资料</li>
-					<li><span><a href="/index.php?user&amp;q=code/userinfo/firm"><font color="#FF0000">未填写</font></a></span>私营业主</li>
-					<li><span><a href="/index.php?user&amp;q=code/userinfo/finance"><font color="#FF0000">未填写</font></a></span>财务状况</li>
-					<li><span><a href="/index.php?user&amp;q=code/userinfo/contact"><font color="#FF0000">未填写</font></a></span>联系方式</li>
-					<li><span><a href="/index.php?user&amp;q=code/userinfo/edu"><font color="#FF0000">未填写</font></a></span>教育背景</li>
+									<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/building"><?php echo $info['house'];?></a></span>房产资料</li>
+					<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/company"><?php echo $info['company'];?></a></span>单位资料</li>
+					<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/firm"><?php echo $info['firm'];?></a></span>私营业主</li>
+					<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/finance"><?php echo $info['finance'];?></a></span>财务状况</li>
+					<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/contact"><?php echo $info['contact'];?></a></span>联系方式</li>
+					<li><span><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/info/edu"><?php echo $info['edu'];?></a></span>教育背景</li>
 					<!--<li><span>已填写</span><a href="/index.php?user&q=code/userinfo/building">工作经历</a></li>-->
 				</ul>
 								</div>

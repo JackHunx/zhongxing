@@ -43,7 +43,12 @@ class UserController extends SBaseController
                 ),
             array(
                 'allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update','setquestion'),
+                'actions' => array(
+                    'create',
+                    'update',
+                    'setquestion',
+                    'email',
+                    'changeemail'),
                 'users' => array('@'),
                 ),
             array(
@@ -72,25 +77,27 @@ class UserController extends SBaseController
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate()
-    {   
-        $userid='6';
-        $this->render('msg',array('msg'=>'邮箱激活成功','msg_url'=>Yii::app()->baseUrl.'/index.php?r=User&id='.$userid,'msg_content'=>'进入用户中心'));
+    {
+        $userid = '6';
+        $this->render('msg', array(
+            'msg' => '邮箱激活成功',
+            'msg_url' => Yii::app()->baseUrl . '/index.php?r=User',
+            'msg_content' => '进入用户中心'));
         exit();
-        $code='2&159.mzod@163.com';
-        $string = Yii::app()->authstring->authcode($code, 'ENCODE', $this->
-            authKey);
+        $code = '2&159.mzod@163.com';
+        $string = Yii::app()->authstring->authcode($code, 'ENCODE', $this->authKey);
         //对加密字符串进行编码传递 不能用urlencode()函数 此函数不能编码 ‘/’ 等数据
         $string = rawurlencode($string);
         print_r($string);
-        echo"</br>";
+        echo "</br>";
         $string = rawurldecode($string);
-        $value=Yii::app()->authstring->authcode($string,'DECODE',$this->authKey);
+        $value = Yii::app()->authstring->authcode($string, 'DECODE', $this->authKey);
         print_r($value);
         echo "</br>";
-        list($id,$email)=explode('&',$value);
-        echo 'id='.$id.'</br>';
-        
-        echo 'email='.$email;
+        list($id, $email) = explode('&', $value);
+        echo 'id=' . $id . '</br>';
+
+        echo 'email=' . $email;
         /**
 
          *         $email = '43555015@qq.com';
@@ -122,9 +129,8 @@ class UserController extends SBaseController
     //return email post body
     private function getEmailBody()
     {
-        $code=$this->userInfo['id'].'&'.$this->userInfo['email'];
-        $string = Yii::app()->authstring->authcode($code, 'ENCODE', $this->
-            authKey);
+        $code = $this->userInfo['id'] . '&' . $this->userInfo['email'];
+        $string = Yii::app()->authstring->authcode($code, 'ENCODE', $this->authKey);
         //对加密字符串进行编码传递 不能用urlencode()函数 此函数不能编码 ‘/’ 等数据
         $string = rawurlencode($string);
         return "
@@ -136,7 +142,7 @@ class UserController extends SBaseController
 			<a title=\"众兴投资用户中心\" href=\"" . $this->userInfo['webUrl'] .
             "/index.php?r=User\" target=\"_blank\" swaped=\"true\">
 			<img style=\"border-width: 0px; padding: 0px; margin: 0px;\" alt=\"众兴投资用户中心\" src=\"" .
-            $this->userInfo['webUrl'] . "/data/images/base/email_logo.png\" height=\"48\" width=\"208\">		</a>
+            $this->userInfo['webUrl'] . "/images/base/email_logo.png\" height=\"48\" width=\"208\">		</a>
 		</h1>
 		<div style=\"padding: 0px 20px; overflow: hidden; line-height: 40px; height: 50px; text-align: right;\"> </div>
 		<div style=\"padding: 2px 20px 30px;\">
@@ -169,21 +175,20 @@ class UserController extends SBaseController
      */
     public function actionRegister()
     {
-
         $model = new User;
-        if(isset(Yii::app()->user->id))
-        {
+        if (isset(Yii::app()->user->id)) {
             $this->redirect(array('User/'));
         }
         //print_r($model->attributes);
         if (isset($_POST['User'])) {
             $value = $_POST['User'];
-            $value['username'] = strtolower($value['username']);
+            $username = $value['username'] = strtolower($value['username']);
+            $password = $value['password'];
             $value['password'] = $this->encypt($value['password']);
             $value['addip'] = Yii::app()->request->getUserHostAddress();
             $value['addtime'] = time();
-            $value['uptime']=$value['addtime'];
-            $value['upip']=$value['addip'];
+            $value['uptime'] = $value['addtime'];
+            $value['upip'] = $value['addip'];
             //发送验证邮件
             //$this->sendEmail($value['email'], $value['realname']);
             //            header("Content-Type: text/html; charset=utf-8");
@@ -194,10 +199,23 @@ class UserController extends SBaseController
             if ($model->save()) {
                 //发送验证邮件并记录
                 $this->sendEmail($value['email'], $value['realname'], $model->user_id);
-                //进入用户中心
-                 $this->redirect(array('User/','id'=>$model->user_id));
+                //用户在线持续化验证
+                $identity = new UserIdentity($username, $password);
+                if ($identity->authenticate()) {
+                    Yii::app()->user->login($identity);
+                    //初始化用户积分并记录
+                    Yii::app()->credit->initalize();
+                    //进入用户中心邮箱
+                    $this->redirect(array(
+                        'User/email',
+                        'email' => $value['email'],
+                        'realname' => $value['realname']));
+                } else {
+                    //进入用户中心
+                    $this->redirect(array('User/'));
+                }
                 //$this->redirect(array('view', 'id' => $model->user_id));
-                
+
             }
             //$model->attributes = $_POST['User'];
             //print_r($_POST['User']);
@@ -205,27 +223,36 @@ class UserController extends SBaseController
         $this->render('register');
     }
     /**
-     * check user name exist
-     * 
+     * send email 
+     * need login 
+     * @return bolean true or flase 
      */
-    /**
-     *  public function actionCheck_exists()
-     *     {
-     *         $key='admin';
-     *         
-     *         $value=User::model()->find('LOWER(username)=?',array($username));
-     *         //$exists=User::model()->exists($value);
-     *         echo'<pre>';
-     *         print_r($value);
-     *         exit();
-     *         if($exists=='')
-     *         {
-     *             return true;
-     *         }else{
-     *             return false;
-     *         }
-     *     }
-     */
+    public function actionEmail()
+    {
+        $id = Yii::app()->user->id;
+        if ($id == null || !isset($_POST['email']) || !isset($_POST['realname'])) {
+            echo "邮箱发送失败,请过1分钟后重新发送";
+        } elseif ($this->sendEmail($_POST['email'], $_POST['realname'], $id))
+            echo "邮件发送成功,请查收邮箱";
+        else
+            echo "邮件发送失败,请跳过后重新发送";
+
+    }
+    //
+    //change email
+    public function actionChangeEmail()
+    {
+        $id = Yii::app()->user->id;
+        if ($id == null || !isset($_POST['email']) || !isset($_POST['realname'])) {
+            echo "邮箱发送失败,请过1分钟后重新发送";
+        } elseif ($this->sendEmail($_POST['email'], $_POST['realname'], $id) && User::
+        model()->updateByPk($id, array('email' => $_POST['email'])))
+            echo "邮件发送成功,请查收邮箱";
+        else
+            echo "邮件发送失败,请跳过后重新发送";
+    }
+
+
     //check email
 
     public function actionCheck_email()
@@ -262,37 +289,43 @@ class UserController extends SBaseController
         $string = $_GET['string'];
         //decode string
         $string = rawurldecode($string);
-        
+
         $value = Yii::app()->authstring->authcode($string, 'DECODE', $this->authKey);
         //验证开始
-        list($userid,$email)=explode('&',$value);
+        list($userid, $email) = explode('&', $value);
         $model = $this->loadModel($userid);
-        if($model->email == $email)
-        {
+        if ($model->email == $email) {
             //验证成功 更改状态
-            $model->email_status='1';
-            if($model->save())
-            {
+            $model->email_status = '1';
+            if ($model->save()) {
                 //邮箱验证状态更改
-                $this->render('msg',array('msg'=>'邮箱激活成功','msg_url'=>Yii::app()->baseUrl.'/index.php?r=User&id='.$userid,'msg_content'=>'进入用户中心'));
+                $this->render('msg', array(
+                    'msg' => '邮箱激活成功',
+                    'msg_url' => Yii::app()->baseUrl . '/index.php?r=User&id=' . $userid,
+                    'msg_content' => '进入用户中心'));
             }
-            
-        }else{
+
+        } else {
             //邮箱验证失败，有可能是邮箱验证超出时间，有可能数据不对跳转到重新发送验证邮件
-            $this->render('msg',array('msg'=>'验证失败,进入用户中心重新验证','msg_url'=>'','msg_content'=>''));
+            $this->render('msg', array(
+                'msg' => '验证失败,进入用户中心重新验证',
+                'msg_url' => '',
+                'msg_content' => ''));
         }
         //
-      //  print_r($email);
+        //  print_r($email);
     }
     //send auth email
     private function sendEmail($email, $realname, $userid)
     {
         $model = new UserSendemailLog;
-        $this->userInfo['id']=$userid;
+        $this->userInfo['id'] = $userid;
         $this->userInfo['email'] = $email;
         $this->userInfo['realname'] = $realname;
-        $this->userInfo['webUrl'] = System::model()->find('nid=:nid', array(':nid' =>
-                'con_weburl'))->value;
+        $webUrl = System::model()->find('nid=:nid', array(':nid' => 'con_weburl'))->
+            value;
+        $this->userInfo['webUrl'] = ($webUrl == null) ? Yii::app()->request->hostInfo .
+            Yii::app()->baseUrl : $webUrl;
         //save log to user_sendemail_log
         $model->attributes = array(
             'status' => '1',
@@ -305,8 +338,11 @@ class UserController extends SBaseController
             'addip' => Yii::app()->request->getUserHostAddress(),
             );
         if ($model->save()) {
-            return Yii::app()->sendemail->send($this->userInfo['email'], '众兴投资有限公司', '邮件验证',
-                $this->getEmailBody());
+            Yii::app()->sendemail->send($this->userInfo['email'], '众兴投资有限公司', '邮件验证', $this->
+                getEmailBody());
+            return true;
+        } else {
+            return false;
         }
     }
     //encypt password by md5

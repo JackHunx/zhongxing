@@ -2,7 +2,7 @@
 
 class VipController extends SBaseController
 {
-private $_user;
+    private $_user;
     private $_vip;
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -85,11 +85,11 @@ private $_user;
             $vip = array(
                 'user_id' => $this->_user->id,
                 'vip_status' => '0',
-                
+
                 );
-                $this->_vip = array_merge($vip,$_POST['UserCache']);
-                
-                $model->attributes=$this->_vip;
+            $this->_vip = array_merge($vip, $_POST['UserCache']);
+
+            $model->attributes = $this->_vip;
             if ($model->save())
                 $this->redirect(array('view', 'id' => $model->user_id));
         }

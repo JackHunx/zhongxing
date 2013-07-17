@@ -9,7 +9,7 @@
  * @property integer $op_user
  * @property integer $addtime
  * @property string $addip
- * @property string $updatetime
+ * @property integer $updatetime
  * @property string $updateip
  */
 class Credit extends CActiveRecord
@@ -40,9 +40,8 @@ class Credit extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, value, op_user, addtime', 'numerical', 'integerOnly'=>true),
+			array('user_id, value, op_user, addtime, updatetime', 'numerical', 'integerOnly'=>true),
 			array('addip, updateip', 'length', 'max'=>30),
-			array('updatetime', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('user_id, value, op_user, addtime, addip, updatetime, updateip', 'safe', 'on'=>'search'),
@@ -92,7 +91,7 @@ class Credit extends CActiveRecord
 		$criteria->compare('op_user',$this->op_user);
 		$criteria->compare('addtime',$this->addtime);
 		$criteria->compare('addip',$this->addip,true);
-		$criteria->compare('updatetime',$this->updatetime,true);
+		$criteria->compare('updatetime',$this->updatetime);
 		$criteria->compare('updateip',$this->updateip,true);
 
 		return new CActiveDataProvider($this, array(

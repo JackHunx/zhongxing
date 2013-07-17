@@ -117,14 +117,14 @@ class User extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'user_id' => 'User',
+			'user_id' => '编号',
 			'type_id' => 'Type',
 			'order' => 'Order',
 			'purview' => 'Purview',
-			'username' => 'Username',
+			'username' => '用户名',
 			'password' => 'Password',
 			'paypassword' => 'Paypassword',
-			'islock' => 'Islock',
+			'islock' => '锁定',
 			'invite_userid' => 'Invite Userid',
 			'invite_money' => 'Invite Money',
 			'real_status' => 'Real Status',
@@ -132,8 +132,8 @@ class User extends CActiveRecord
 			'card_id' => 'Card',
 			'card_pic1' => 'Card Pic1',
 			'card_pic2' => 'Card Pic2',
-			'nation' => 'Nation',
-			'realname' => 'Realname',
+			'nation' => '民族',
+			'realname' => '姓名',
 			'integral' => 'Integral',
 			'status' => 'Status',
 			'avatar_status' => 'Avatar Status',
@@ -141,12 +141,12 @@ class User extends CActiveRecord
 			'phone_status' => 'Phone Status',
 			'video_status' => 'Video Status',
 			'scene_status' => 'Scene Status',
-			'email' => 'Email',
-			'sex' => 'Sex',
+			'email' => '邮箱',
+			'sex' => '性别',
 			'litpic' => 'Litpic',
 			'tel' => 'Tel',
-			'phone' => 'Phone',
-			'qq' => 'Qq',
+			'phone' => '手机',
+			'qq' => 'QQ',
 			'wangwang' => 'Wangwang',
 			'question' => 'Question',
 			'answer' => 'Answer',
@@ -193,7 +193,7 @@ class User extends CActiveRecord
 		$criteria->compare('card_id',$this->card_id,true);
 		$criteria->compare('card_pic1',$this->card_pic1,true);
 		$criteria->compare('card_pic2',$this->card_pic2,true);
-		$criteria->compare('nation',$this->nation,true);
+		//$criteria->compare('nation',$this->nation,true);
 		$criteria->compare('realname',$this->realname,true);
 		$criteria->compare('integral',$this->integral,true);
 		$criteria->compare('status',$this->status);
@@ -227,6 +227,8 @@ class User extends CActiveRecord
 		$criteria->compare('lastip',$this->lastip,true);
 
 		return new CActiveDataProvider($this, array(
+            'pagination'=>array('pageSize'=>20,),
+            'sort'=>array('defaultOrder'=>'addtime DESC',),
 			'criteria'=>$criteria,
 		));
 	}

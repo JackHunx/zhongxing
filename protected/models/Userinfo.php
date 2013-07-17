@@ -388,6 +388,8 @@ class Userinfo extends CActiveRecord
 		$criteria->compare('updateip',$this->updateip,true);
 
 		return new CActiveDataProvider($this, array(
+            'pagination'=>array('pageSize'=>20,),
+            'sort'=>array('defaultOrder'=>'addtime DESC',),
 			'criteria'=>$criteria,
 		));
 	}

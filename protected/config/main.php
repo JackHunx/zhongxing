@@ -8,7 +8,7 @@
 return array(
     'basePath' => dirname(__file__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'My Web Application',
-    'language' => 'zh',
+    'language' => 'zh_cn',
     // preloading 'log' component
     'preload' => array('log'),
 
@@ -89,6 +89,8 @@ return array(
         'authstring'=>array('class'=>'AuthString',),
         //send email to user 邮箱验证等
         'sendemail'=>array('class'=>'SendEmail'),
+        //credit 积分管理
+        'credit'=>array('class'=>'UserCredit'),
         
         // uncomment the following to enable URLs in path-format
         /*
@@ -107,11 +109,12 @@ return array(
         // uncomment the following to use a MySQL database
         */
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=zx',
+            'connectionString' => 'mysql:host=localhost;dbname=zxnew',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',
+            'tablePrefix'=>'zx_',
             ),
 
         'errorHandler' => array( // use 'site/error' action to display errors
