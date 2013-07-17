@@ -17,7 +17,7 @@
 							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/email"><div class="credit_pic_email_<?php echo $model->email_status;?>" title="邮箱认证"></div></a>
 							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/video"><div class="credit_pic_video_<?php echo $model->video_status;?>" title="视频认证"></div></a>
 							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/vip"><div class="credit_pic_vip_<?php echo $vip['status'];?>" title="VIP"></div></a>
-							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/scene"><div class="credit_pic_scene_0" title="现场认证"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/scene"><div class="credit_pic_scene_<?php echo $model->scene_status;?>" title="现场认证"></div></a>
 						</li>
 
 						<li>  <a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/account/recharge"><font color="#FF0000">账号充值</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=credit"><font color="#FF0000">申请信用额度</font></a>  <a href="/index.php?user&amp;q=code/borrow/limitapp&amp;type=vouch"><font color="#FF0000">申请担保额度</font></a> </li>
