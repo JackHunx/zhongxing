@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- ‰∏ªÊú∫: 127.0.0.1
--- ÁîüÊàêÊó•Êúü: 2013 Âπ¥ 06 Êúà 21 Êó• 04:19
+-- ÁîüÊàêÊó•Êúü: 2013 Âπ¥ 07 Êúà 17 Êó• 09:14
 -- ÊúçÂä°Âô®ÁâàÊú¨: 5.5.27
 -- PHP ÁâàÊú¨: 5.4.7
 
@@ -31,8 +31,8 @@ CREATE TABLE IF NOT EXISTS `zx_account` (
   `user_id` int(11) DEFAULT '0' COMMENT '”√ªß√˚≥∆',
   `total` decimal(11,2) DEFAULT '0.00' COMMENT '◊ Ω◊‹∂Ó',
   `use_money` decimal(11,2) DEFAULT '0.00',
-  `no_use_money` decimal(11,2) DEFAULT '0.00',
-  `collection` decimal(11,2) DEFAULT '0.00',
+  `no_use_money` decimal(11,2) DEFAULT '0.00' COMMENT 'ÂÜªÁªìÈáë',
+  `collection` decimal(11,2) DEFAULT '0.00' COMMENT 'ÂæÖÂõûÊî∂ÈáëÈ¢ù',
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `zx_account_bank` (
   `addip` varchar(15) CHARACTER SET gbk DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='“¯––’ ªß' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='“¯––’ ªß' AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -138,26 +138,26 @@ CREATE TABLE IF NOT EXISTS `zx_account_payment` (
 
 CREATE TABLE IF NOT EXISTS `zx_account_recharge` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `trade_no` varchar(20) CHARACTER SET gbk DEFAULT NULL COMMENT '∂©µ•∫≈',
-  `user_id` int(11) DEFAULT '0' COMMENT '”√ªßID',
+  `trade_no` varchar(20) DEFAULT NULL,
+  `user_id` int(11) DEFAULT '0',
   `status` int(2) DEFAULT '0' COMMENT '◊¥Ã¨',
-  `money` decimal(10,2) DEFAULT '0.00' COMMENT 'Ω∂Ó',
-  `payment` varchar(100) CHARACTER SET gbk DEFAULT NULL COMMENT 'À˘ Ù“¯––',
-  `return` text CHARACTER SET gbk,
-  `type` varchar(10) CHARACTER SET gbk DEFAULT '0' COMMENT '¿‡–Õ',
-  `remark` varchar(250) CHARACTER SET gbk DEFAULT '0' COMMENT '±∏◊¢',
-  `fee` varchar(10) CHARACTER SET gbk DEFAULT NULL,
-  `verify_userid` int(11) DEFAULT '0' COMMENT '…Û∫À»À',
-  `verify_time` varchar(11) CHARACTER SET gbk DEFAULT NULL COMMENT '…Û∫À ±º‰',
-  `verify_remark` varchar(250) CHARACTER SET gbk DEFAULT '' COMMENT '…Û∫À±∏◊¢',
-  `addtime` varchar(11) CHARACTER SET gbk DEFAULT NULL,
-  `addip` varchar(15) CHARACTER SET gbk DEFAULT NULL,
+  `money` decimal(10,2) DEFAULT '0.00' COMMENT 'ÂÖÖÂÄºÈáëÈ¢ù',
+  `payment` varchar(100) DEFAULT NULL COMMENT 'ÂÖ∑‰ΩìÂÖÖÂÄºÊñπÂºè',
+  `return` text,
+  `type` varchar(10) DEFAULT '0' COMMENT '1.offline 2.online',
+  `remark` varchar(250) DEFAULT '0' COMMENT 'Ë¥¶ÂçïÊµÅÊ∞¥Âè∑',
+  `fee` varchar(10) DEFAULT NULL,
+  `verify_userid` int(11) DEFAULT '0',
+  `verify_time` varchar(11) DEFAULT NULL,
+  `verify_remark` varchar(250) DEFAULT NULL,
+  `addtime` varchar(11) DEFAULT NULL,
+  `addip` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `user_ids` (`user_id`,`status`),
   KEY `user_idp` (`user_id`,`payment`),
   KEY `user_idv` (`user_id`,`payment`,`verify_userid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='≥‰÷µº«¬º' AUTO_INCREMENT=35 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='≥‰÷µº«¬º' AUTO_INCREMENT=50 ;
 
 -- --------------------------------------------------------
 
@@ -252,10 +252,10 @@ CREATE TABLE IF NOT EXISTS `zx_article_fields` (
 --
 
 CREATE TABLE IF NOT EXISTS `zx_assignments` (
-  `itemname` varchar(64) CHARACTER SET latin1 NOT NULL,
-  `userid` varchar(64) CHARACTER SET latin1 NOT NULL,
-  `bizrule` text CHARACTER SET latin1,
-  `data` text CHARACTER SET latin1,
+  `itemname` varchar(64) NOT NULL,
+  `userid` varchar(64) NOT NULL,
+  `bizrule` text,
+  `data` text,
   PRIMARY KEY (`itemname`,`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -284,7 +284,7 @@ CREATE TABLE IF NOT EXISTS `zx_attestation` (
   `addip` varchar(50) CHARACTER SET gbk DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `type_id` (`type_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=329 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=372 ;
 
 -- --------------------------------------------------------
 
@@ -980,9 +980,9 @@ CREATE TABLE IF NOT EXISTS `zx_credit` (
   `value` int(11) DEFAULT '0' COMMENT 'ª˝∑÷ ˝÷µ',
   `op_user` int(11) DEFAULT NULL COMMENT '≤Ÿ◊˜’ﬂ',
   `addtime` int(11) DEFAULT NULL COMMENT 'ÃÌº” ±º‰',
-  `addip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT 'ÃÌº”IP',
-  `updatetime` varchar(11) CHARACTER SET gbk DEFAULT NULL COMMENT '◊Ó∫Û∏¸–¬ ±º‰',
-  `updateip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT '◊Ó∫Û∏¸–¬ID',
+  `addip` varchar(30) DEFAULT NULL,
+  `updatetime` int(11) DEFAULT NULL,
+  `updateip` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='ª·‘±ª˝∑÷';
 
@@ -996,14 +996,14 @@ CREATE TABLE IF NOT EXISTS `zx_credit_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL COMMENT 'ª·‘±ID',
   `type_id` int(11) DEFAULT '0' COMMENT 'ª˝∑÷¿‡–ÕID',
-  `op` tinyint(1) DEFAULT '1' COMMENT '±‰∂Ø¿‡–Õ,1:‘ˆº”,2:ºı…Ÿ',
+  `op` tinyint(1) DEFAULT '1' COMMENT '1.Â¢ûÂä† 2.ÂáèÂ∞ë',
   `value` int(11) DEFAULT '0' COMMENT '±‰∂Øª˝∑÷ ˝÷µ',
   `remark` text CHARACTER SET gbk COMMENT '±∏◊¢',
   `op_user` int(11) DEFAULT NULL COMMENT '≤Ÿ◊˜’ﬂ',
   `addtime` int(11) DEFAULT NULL COMMENT 'ÃÌº” ±º‰',
   `addip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT 'ÃÌº”IP',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='ª·‘±ª˝∑÷»’÷æ' AUTO_INCREMENT=362 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='ª·‘±ª˝∑÷»’÷æ' AUTO_INCREMENT=408 ;
 
 -- --------------------------------------------------------
 
@@ -1013,16 +1013,16 @@ CREATE TABLE IF NOT EXISTS `zx_credit_log` (
 
 CREATE TABLE IF NOT EXISTS `zx_credit_rank` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET gbk DEFAULT NULL COMMENT 'µ»º∂√˚≥∆',
-  `rank` int(11) DEFAULT '0' COMMENT 'µ»º∂',
-  `point1` int(11) DEFAULT '0' COMMENT 'ø™ º∑÷÷µ',
-  `point2` int(11) DEFAULT '0' COMMENT '◊Ó∫Û∑÷÷µ',
-  `pic` varchar(100) CHARACTER SET gbk DEFAULT NULL COMMENT 'Õº∆¨',
-  `remark` text CHARACTER SET gbk COMMENT '±∏◊¢',
-  `addtime` int(11) DEFAULT NULL COMMENT 'ÃÌº” ±º‰',
-  `addip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT 'ÃÌº”IP',
+  `name` varchar(50) DEFAULT NULL COMMENT 'Á≠âÁ∫ßÂêçÁß∞',
+  `rank` int(11) DEFAULT '0' COMMENT 'Á≠âÁ∫ß',
+  `point1` int(11) DEFAULT '0' COMMENT 'ÂºÄÂßãÂàÜÂÄº',
+  `point2` int(11) DEFAULT '0' COMMENT 'ÊúÄÂêéÂàÜÂÄº',
+  `pic` varchar(100) DEFAULT NULL COMMENT 'ÂõæÁâá',
+  `remark` text COMMENT 'Â§áÊ≥®',
+  `addtime` int(11) DEFAULT NULL COMMENT 'Ê∑ªÂä†Êó∂Èó¥',
+  `addip` varchar(30) DEFAULT NULL COMMENT 'Ê∑ªÂä†IP',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='ª·‘±ª˝∑÷µ»º∂' AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='‰ºöÂëòÁßØÂàÜÁ≠âÁ∫ß' AUTO_INCREMENT=27 ;
 
 -- --------------------------------------------------------
 
@@ -1032,21 +1032,21 @@ CREATE TABLE IF NOT EXISTS `zx_credit_rank` (
 
 CREATE TABLE IF NOT EXISTS `zx_credit_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET gbk DEFAULT NULL COMMENT 'ª˝∑÷√˚≥∆',
-  `nid` varchar(50) CHARACTER SET gbk DEFAULT NULL COMMENT 'ª˝∑÷¥˙¬Î',
-  `value` int(11) DEFAULT '0' COMMENT 'ª˝∑÷ ˝÷µ',
-  `cycle` tinyint(1) DEFAULT '2' COMMENT 'ª˝∑÷÷‹∆⁄£¨1:“ª¥Œ,2:√øÃÏ,3:º‰∏Ù∑÷÷”,4:≤ªœﬁ',
-  `award_times` tinyint(4) DEFAULT NULL COMMENT 'Ω±¿¯¥Œ ˝,0:≤ªœﬁ',
-  `interval` int(11) DEFAULT '1' COMMENT ' ±º‰º‰∏Ù£¨µ•Œª∑÷÷”',
-  `remark` text CHARACTER SET gbk COMMENT '±∏◊¢',
-  `op_user` int(11) DEFAULT NULL COMMENT '≤Ÿ◊˜’ﬂ',
-  `addtime` int(11) DEFAULT NULL COMMENT 'ÃÌº” ±º‰',
-  `addip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT 'ÃÌº”IP',
-  `updatetime` int(11) DEFAULT NULL COMMENT '◊Ó∫Û∏¸–¬ ±º‰',
-  `updateip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT '◊Ó∫Û∏¸–¬ID',
+  `name` varchar(50) DEFAULT NULL COMMENT 'ÁßØÂàÜÂêçÁß∞',
+  `nid` varchar(50) DEFAULT NULL COMMENT 'ÁßØÂàÜ‰ª£Á†Å',
+  `value` int(11) DEFAULT '0' COMMENT 'ÁßØÂàÜÊï∞ÂÄº',
+  `cycle` tinyint(1) DEFAULT '2' COMMENT 'ÁßØÂàÜÂë®ÊúüÔºå1:‰∏ÄÊ¨°,2:ÊØèÂ§©,3:Èó¥ÈöîÂàÜÈíü,4:‰∏çÈôê',
+  `award_times` tinyint(4) DEFAULT NULL COMMENT 'Â•ñÂä±Ê¨°Êï∞,0:‰∏çÈôê',
+  `interval` int(11) DEFAULT '1' COMMENT 'Êó∂Èó¥Èó¥ÈöîÔºåÂçï‰ΩçÂàÜÈíü',
+  `remark` text COMMENT 'Â§áÊ≥®',
+  `op_user` int(11) DEFAULT NULL COMMENT 'Êìç‰ΩúËÄÖ',
+  `addtime` int(11) DEFAULT NULL COMMENT 'Ê∑ªÂä†Êó∂Èó¥',
+  `addip` varchar(30) DEFAULT NULL COMMENT 'Ê∑ªÂä†IP',
+  `updatetime` int(11) DEFAULT NULL COMMENT 'ÊúÄÂêéÊõ¥Êñ∞Êó∂Èó¥',
+  `updateip` varchar(30) DEFAULT NULL COMMENT 'ÊúÄÂêéÊõ¥Êñ∞ID',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_ct_nid` (`nid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='ª˝∑÷¿‡–Õ' AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='ÁßØÂàÜÁ±ªÂûã' AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
 
@@ -1476,8 +1476,8 @@ CREATE TABLE IF NOT EXISTS `zx_invite_type` (
 --
 
 CREATE TABLE IF NOT EXISTS `zx_itemchildren` (
-  `parent` varchar(64) CHARACTER SET latin1 NOT NULL,
-  `child` varchar(64) CHARACTER SET latin1 NOT NULL,
+  `parent` varchar(64) NOT NULL,
+  `child` varchar(64) NOT NULL,
   PRIMARY KEY (`parent`,`child`),
   KEY `child` (`child`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1489,11 +1489,11 @@ CREATE TABLE IF NOT EXISTS `zx_itemchildren` (
 --
 
 CREATE TABLE IF NOT EXISTS `zx_items` (
-  `name` varchar(64) CHARACTER SET latin1 NOT NULL,
+  `name` varchar(64) NOT NULL,
   `type` int(11) NOT NULL,
-  `description` text CHARACTER SET latin1,
-  `bizrule` text CHARACTER SET latin1,
-  `data` text CHARACTER SET latin1,
+  `description` text,
+  `bizrule` text,
+  `data` text,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1531,15 +1531,15 @@ CREATE TABLE IF NOT EXISTS `zx_linkage` (
   `status` smallint(2) unsigned DEFAULT '0' COMMENT '◊¥Ã¨',
   `order` smallint(6) DEFAULT '0' COMMENT '≈≈–Ú',
   `type_id` smallint(5) unsigned DEFAULT '0' COMMENT '¿‡–Õ',
-  `pid` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT 'À˘ Ù¡™∂Ø',
-  `name` varchar(250) CHARACTER SET gbk DEFAULT NULL COMMENT '¡™∂Ø√˚≥∆',
-  `value` varchar(250) CHARACTER SET gbk DEFAULT NULL COMMENT '¡™∂Øµƒ÷µ',
+  `pid` varchar(30) DEFAULT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  `value` varchar(250) DEFAULT NULL,
   `addtime` int(10) DEFAULT '0',
-  `addip` varchar(20) CHARACTER SET gbk DEFAULT NULL,
+  `addip` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `type_id` (`type_id`),
   KEY `type_ida` (`type_id`,`value`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=492 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=491 ;
 
 -- --------------------------------------------------------
 
@@ -1550,10 +1550,10 @@ CREATE TABLE IF NOT EXISTS `zx_linkage` (
 CREATE TABLE IF NOT EXISTS `zx_linkage_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order` smallint(6) DEFAULT '0',
-  `name` varchar(50) CHARACTER SET gbk DEFAULT NULL,
-  `nid` varchar(50) CHARACTER SET gbk DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `nid` varchar(50) DEFAULT NULL,
   `addtime` int(10) DEFAULT '0',
-  `addip` varchar(20) CHARACTER SET gbk DEFAULT NULL,
+  `addip` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `nid` (`nid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
@@ -1746,13 +1746,13 @@ CREATE TABLE IF NOT EXISTS `zx_payment` (
 
 CREATE TABLE IF NOT EXISTS `zx_payment_type` (
   `id` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) CHARACTER SET gbk DEFAULT NULL,
-  `nid` varchar(100) CHARACTER SET gbk DEFAULT NULL,
-  `type` varchar(30) CHARACTER SET gbk DEFAULT NULL,
-  `description` longtext CHARACTER SET gbk,
+  `name` varchar(100) DEFAULT NULL,
+  `nid` varchar(100) DEFAULT NULL COMMENT 'offline or online',
+  `type` varchar(30) DEFAULT NULL COMMENT '1.offline 2.online',
+  `description` longtext,
   `order` smallint(3) unsigned DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -1784,10 +1784,10 @@ CREATE TABLE IF NOT EXISTS `zx_remind` (
 CREATE TABLE IF NOT EXISTS `zx_remind_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order` smallint(6) DEFAULT '0',
-  `name` varchar(50) CHARACTER SET gbk DEFAULT NULL,
-  `nid` varchar(50) CHARACTER SET gbk DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `nid` varchar(50) DEFAULT NULL,
   `addtime` int(10) DEFAULT '0',
-  `addip` varchar(20) CHARACTER SET gbk DEFAULT NULL,
+  `addip` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
@@ -1921,7 +1921,7 @@ CREATE TABLE IF NOT EXISTS `zx_upfiles` (
   `updatetime` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT '–ﬁ∏ƒ ±º‰',
   `updateip` varchar(30) CHARACTER SET gbk DEFAULT NULL COMMENT '–ﬁ∏ƒip',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=455 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=540 ;
 
 -- --------------------------------------------------------
 
@@ -1960,7 +1960,7 @@ CREATE TABLE IF NOT EXISTS `zx_user` (
   `tel` varchar(50) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
   `qq` varchar(50) DEFAULT NULL,
-  `wangwang` varchar(100) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `wangwang` varchar(100) DEFAULT NULL,
   `question` varchar(10) DEFAULT NULL,
   `answer` varchar(100) DEFAULT NULL,
   `birthday` varchar(11) DEFAULT NULL,
@@ -1979,7 +1979,7 @@ CREATE TABLE IF NOT EXISTS `zx_user` (
   `lastip` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   FULLTEXT KEY `purview` (`purview`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=48 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=65 ;
 
 -- --------------------------------------------------------
 
@@ -2092,7 +2092,7 @@ CREATE TABLE IF NOT EXISTS `zx_userinfo` (
   `updateip` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=65 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=71 ;
 
 -- --------------------------------------------------------
 
@@ -2286,32 +2286,32 @@ CREATE TABLE IF NOT EXISTS `zx_user_backup` (
 CREATE TABLE IF NOT EXISTS `zx_user_cache` (
   `user_id` int(11) NOT NULL DEFAULT '0',
   `kefu_userid` int(11) DEFAULT NULL,
-  `kefu_username` int(11) DEFAULT NULL,
+  `kefu_username` varchar(250) DEFAULT NULL,
   `kefu_addtime` int(11) DEFAULT NULL,
   `vip_status` int(2) DEFAULT '0',
-  `vip_remark` varchar(250) CHARACTER SET gbk DEFAULT NULL,
-  `vip_money` varchar(100) CHARACTER SET gbk DEFAULT NULL,
-  `vip_verify_remark` varchar(100) CHARACTER SET gbk DEFAULT NULL,
-  `vip_verify_time` varchar(100) CHARACTER SET gbk DEFAULT NULL,
+  `vip_remark` varchar(250) DEFAULT NULL,
+  `vip_money` varchar(100) DEFAULT NULL,
+  `vip_verify_remark` varchar(100) DEFAULT NULL,
+  `vip_verify_time` varchar(100) DEFAULT NULL,
   `bbs_topics_num` int(11) DEFAULT '0',
   `bbs_posts_num` int(11) DEFAULT '0',
-  `credit` int(11) DEFAULT '0' COMMENT 'ª˝∑÷',
-  `account` int(11) DEFAULT '0' COMMENT '’ ªß◊‹∂Ó',
-  `account_use` int(11) DEFAULT '0' COMMENT 'ø…”√Ω∂Ó',
-  `account_nouse` int(11) DEFAULT '0' COMMENT '∂≥Ω·Ω∂Ó',
-  `account_waitin` int(11) DEFAULT '0' COMMENT '¥˙ ’◊‹∂Ó',
-  `account_waitintrest` int(11) DEFAULT '0' COMMENT '¥˙ ’¿˚œ¢',
-  `account_intrest` int(11) DEFAULT '0' COMMENT 'æª◊¨¿˚œ¢',
-  `account_award` int(11) DEFAULT '0' COMMENT 'Õ∂±ÍΩ±¿¯',
-  `account_payment` int(11) DEFAULT '0' COMMENT '¥˝ªπ◊‹∂Ó',
-  `account_expired` int(11) DEFAULT '0' COMMENT '”‚∆⁄◊‹∂Ó',
-  `account_waitvip` int(11) DEFAULT '0' COMMENT 'vipª·∑—',
-  `borrow_amount` int(11) DEFAULT '3000' COMMENT 'ΩËøÓ∂Ó∂»',
-  `vouch_amount` int(11) NOT NULL DEFAULT '0' COMMENT 'µ£±£∂Ó∂»',
-  `borrow_loan` int(11) DEFAULT '0' COMMENT '≥…π¶ΩË≥ˆ',
-  `borrow_success` int(11) DEFAULT '0' COMMENT '≥…π¶ΩËøÓ',
-  `borrow_wait` int(11) DEFAULT '0' COMMENT 'µ»¥˝¬˙±Í',
-  `borrow_paymeng` int(11) DEFAULT '0' COMMENT '¥˝ªπΩËøÓ',
+  `credit` int(11) DEFAULT '0' COMMENT 'ÁßØÂàÜ',
+  `account` int(11) DEFAULT '0' COMMENT 'Â∏êÊà∑ÊÄªÈ¢ù',
+  `account_use` int(11) DEFAULT '0' COMMENT 'ÂèØÁî®ÈáëÈ¢ù',
+  `account_nouse` int(11) DEFAULT '0' COMMENT 'ÂÜªÁªìÈáëÈ¢ù',
+  `account_waitin` int(11) DEFAULT '0' COMMENT '‰ª£Êî∂ÊÄªÈ¢ù',
+  `account_waitintrest` int(11) DEFAULT '0' COMMENT '‰ª£Êî∂Âà©ÊÅØ',
+  `account_intrest` int(11) DEFAULT '0' COMMENT 'ÂáÄËµöÂà©ÊÅØ',
+  `account_award` int(11) DEFAULT '0' COMMENT 'ÊäïÊ†áÂ•ñÂä±',
+  `account_payment` int(11) DEFAULT '0' COMMENT 'ÂæÖËøòÊÄªÈ¢ù',
+  `account_expired` int(11) DEFAULT '0' COMMENT 'ÈÄæÊúüÊÄªÈ¢ù',
+  `account_waitvip` int(11) DEFAULT '0' COMMENT 'vip‰ºöË¥π',
+  `borrow_amount` int(11) DEFAULT '3000' COMMENT 'ÂÄüÊ¨æÈ¢ùÂ∫¶',
+  `vouch_amount` int(11) NOT NULL DEFAULT '0' COMMENT 'ÊãÖ‰øùÈ¢ùÂ∫¶',
+  `borrow_loan` int(11) DEFAULT '0' COMMENT 'ÊàêÂäüÂÄüÂá∫',
+  `borrow_success` int(11) DEFAULT '0' COMMENT 'ÊàêÂäüÂÄüÊ¨æ',
+  `borrow_wait` int(11) DEFAULT '0' COMMENT 'Á≠âÂæÖÊª°Ê†á',
+  `borrow_paymeng` int(11) DEFAULT '0' COMMENT 'ÂæÖËøòÂÄüÊ¨æ',
   `friends_apply` int(11) DEFAULT '0',
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -2350,7 +2350,7 @@ CREATE TABLE IF NOT EXISTS `zx_user_sendemail_log` (
   `addtime` varchar(50) CHARACTER SET gbk DEFAULT NULL,
   `addip` varchar(50) CHARACTER SET gbk DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=73 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=93 ;
 
 -- --------------------------------------------------------
 
