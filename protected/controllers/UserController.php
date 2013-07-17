@@ -154,7 +154,7 @@ class UserController extends SBaseController
 			<p style=\"overflow: hidden; width: 100%; word-wrap: break-word;\"><a title=\"点击完成注册\" href=\"" .
             $this->userInfo['webUrl'] . "/index.php?r=user/checkstring&string=" . $string .
             "\" target=\"_blank\" swaped=\"true\">" . $this->userInfo['webUrl'] .
-            "/index.php?r=user/checkestring&string=" . $string . "</a>
+            "/index.php?r=user/checkstring&string=" . $string . "</a>
 			<br><span style=\"color: rgb(153, 153, 153);\">(如果链接无法点击，请将它拷贝到浏览器的地址栏中)</span></p>
 
 			<p>感谢您光临众兴投资用户中心，我们的宗旨：为您提供优秀的产品和优质的服务！ <br>现在就登录吧!
@@ -298,6 +298,17 @@ class UserController extends SBaseController
             //验证成功 更改状态
             $model->email_status = '1';
             if ($model->save()) {
+                //验证通过积分
+                $credit = CreditType::model()->findByPk('1');
+                 $val = array(
+                    'user_id' => $userid,
+                    'type_id' => '1', //积分类型 在此处固定
+                    'value' => $credit->value,
+                    'remark' => $credit->name,
+                    'op' => '1', //增加积分
+                    'op_user' => $userid,
+                    );
+                Yii::app()->credit->set($userid, $val);
                 //邮箱验证状态更改
                 $this->render('msg', array(
                     'msg' => '邮箱激活成功',
