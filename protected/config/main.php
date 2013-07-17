@@ -109,7 +109,7 @@ return array(
         // uncomment the following to use a MySQL database
         */
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=zx',
+            'connectionString' => 'mysql:host=localhost;dbname=zxnew',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '',

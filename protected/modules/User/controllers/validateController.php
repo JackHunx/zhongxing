@@ -179,8 +179,15 @@ class ValidateController extends SBaseController
     public function actionVideo()
     {
         //$info = User::model()->findByPk(Yii::app()->user->id);
+        if(isset($_POST['video']))
+        {
+            $model = User::model()->findByPk(Yii::app()->user->id);
+            $model->attributes = array('video_status'=>$_POST['video']);
+            if(!$model->update())
+                throw new CException('error');
+        }
         $userCache = UserCache::model()->findByPk(Yii::app()->user->id);
-        $video_status = User::model()->findByPk(Yii::app()->user->id);
+        $video_status = User::model()->findByPk(Yii::app()->user->id)->video_status;
         if ($userCache == null) {
             $vip_status = '0';
         } else
@@ -194,7 +201,24 @@ class ValidateController extends SBaseController
     //scene validate
     public function actionScene()
     {
-        $this->render('scene');
+         if(isset($_POST['scene']))
+        {
+            $model = User::model()->findByPk(Yii::app()->user->id);
+            $model->attributes = array('scene_status'=>$_POST['scene']);
+            if(!$model->update())
+                throw new CException('error');
+        }
+        $userCache = UserCache::model()->findByPk(Yii::app()->user->id);
+        $video_status = User::model()->findByPk(Yii::app()->user->id)->scene_status;
+        if ($userCache == null) {
+            $vip_status = '0';
+        } else
+            $vip_status = $userCache->vip_status;
+        $info = array(
+            'vip_status' => $vip_status,
+            'scene_status' => $video_status,
+            );
+        $this->render('scene', array('info' => $info));
     }
     //csrect setting
     public function actionSecret()
