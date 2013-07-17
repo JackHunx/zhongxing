@@ -1,6 +1,6 @@
 	<div class="notification attention png_bg">
 				<div>
-					共有<font color = "red"><?php echo $count;?></font>&nbsp;名VIP会员
+					共有<font color = "red"><?php echo $count;?></font>&nbsp;名VIP会员--<font color="red">如要删除VIP用户请谨慎操作.</font>
 				</div>
 			</div>  
             

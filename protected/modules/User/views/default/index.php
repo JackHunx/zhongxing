@@ -13,7 +13,7 @@
 						<li style="overflow:hidden">
 							<div class="floatl"><span> 认&nbsp;&nbsp;&nbsp;   证：</span></div> 
 							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/realname"><div class="credit_pic_card_<?php echo ($model->real_status==null)?'0':$model->real_status;?>" title="实名认证"></div></a>
-							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/phone"><div class="credit_pic_phone_<?php echo $model->phone_status;?>" title="手机认证"></div></a>
+							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/phone"><div class="credit_pic_phone_<?php echo ($model->phone_status==null)?'0':$model->real_status;?>" title="手机认证"></div></a>
 							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/email"><div class="credit_pic_email_<?php echo $model->email_status;?>" title="邮箱认证"></div></a>
 							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/video"><div class="credit_pic_video_<?php echo $model->video_status;?>" title="视频认证"></div></a>
 							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/vip"><div class="credit_pic_vip_<?php echo $vip['status'];?>" title="VIP"></div></a>

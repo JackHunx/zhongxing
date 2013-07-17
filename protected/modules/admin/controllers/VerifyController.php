@@ -9,7 +9,40 @@ class VerifyController extends SBaseController
     }
     public function actionIndex()
     {
-        $this->render('index');
+        //添加记录并积分
+        if (isset($_POST['validate'])&&isset($_POST['cate'])) {
+            //更新积分并通过认证
+            $user = $_POST['validate'];
+            $userModel = User::model()->findByPk($user['id']);
+            if ($user['status'] == 1) // $this->render()
+                {
+
+                $userModel->attributes = array($_POST['cate'] => '1');
+                $val = array(
+                    'user_id' => $user['id'],
+                    'type_id' => $user['type_id'], //积分类型 在此处固定
+                    'value' => $user['credit'],
+                    'remark' => $user['remark'],
+                    'op' => '1', //增加积分
+                    'op_user' => Yii::app()->user->id,
+                    );
+                Yii::app()->credit->set($user['id'], $val);
+                if (!$userModel->update())
+                    throw new CException('real name save to table {User} error');
+
+                // echo "<pre>";
+                //                    print_r($val);
+            } else {
+                $userModel->attributes = array($_POST['cate'] => null);
+                if (!$userModel->update())
+                    throw new CException('real name save to table {User} error');
+            }
+        }
+        $model = new User('search');
+        $model->unsetAttributes();
+        if (isset($_GET['User']))
+            $model->attributes = $_GET['User'];
+        $this->render('index', array('model' => $model));
     }
     //verify admin
     public function actionRealname()
@@ -61,7 +94,7 @@ class VerifyController extends SBaseController
     //verify vip
     public function actionVip()
     {
-         if (isset($_GET['id']) || isset($_POST['Vip'])) {
+        if (isset($_GET['id']) || isset($_POST['Vip'])) {
             //添加记录并积分
             if (isset($_GET['id']) && isset($_POST['Vip'])) {
                 //更新积分并通过认证
@@ -72,10 +105,10 @@ class VerifyController extends SBaseController
 
                     $vipModel->attributes = array(
                         'vip_status' => '1',
-                        'vip_verify_time'=>time(),
-                        'vip_verify_remark'=>$vip['vip_verify_remark'],
-                        'credit'=>$vip['credit'],
-                    );
+                        'vip_verify_time' => time(),
+                        'vip_verify_remark' => $vip['vip_verify_remark'],
+                        'credit' => $vip['credit'],
+                        );
                     $val = array(
                         'user_id' => $_GET['id'],
                         'type_id' => '2', //积分类型 在此处固定
@@ -107,8 +140,9 @@ class VerifyController extends SBaseController
         //$count = count($model)
         if (isset($_GET['Vip']))
             $model->attributes = $_GET['Vip'];
-        $count = Vip::model()->count('vip_status=:vip_status',array(':vip_status'=>'0'));
-        $this->render('vip', array('model' => $model,'count'=>$count));
+        $count = Vip::model()->count('vip_status=:vip_status', array(':vip_status' =>
+                '0'));
+        $this->render('vip', array('model' => $model, 'count' => $count));
 
 
     }
@@ -192,6 +226,52 @@ class VerifyController extends SBaseController
         return $data->real_status == 0 ? Yii::app()->createUrl("/admin/verify/realname",
             array("id" => $data->user_id)) : '#';
     }
+    /**
+     * 认证
+     * 
+     */
+    //user list
+    public function validateRealname($data, $row, $c)
+    {
+        return $data->real_status == null ? '<font color="grey">未申请</font>' : ($data->
+            real_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::app
+            ()->baseUrl . '/index.php?r=admin/verify/realname&id=' . $data->user_id .
+            '"><font color="red">等待审核</font></a>');
+    }
+    public function validatePhone($data, $row, $c)
+    {
+        return $data->phone == null ? '<font color="grey">未申请</font>' : ($data->
+            phone_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::app
+            ()->baseUrl . '/index.php?r=admin/verify/phone&id=' . $data->user_id .
+            '"><font color="red">等待审核</font></a>');
+    }
+    public function validateVideo($data, $row, $c)
+    {
+        return $data->video_status == null ? '<font color="grey">未申请</font>' : ($data->
+            video_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::app
+            ()->baseUrl . '/index.php?r=admin/verify/video&id=' . $data->user_id .
+            '"><font color="red">等待审核</font></a>');
+    }
+    public function validateEmail($data, $row, $c)
+    {
+        //系统自动认证不需要人工干预
+        return $data->email_status == null ? '<font color="grey">未申请</font>' : ($data->
+            email_status == '1' ? '<font color="green">审核通过</font>' :
+            '<font color="red">等待审核</font>');
+    }
+    public function validateScene($data, $row, $c)
+    {
+        return $data->scene_status == null ? '<font color="grey">未申请</font>' : ($data->
+            scene_status == '1' ? '<font color="green">审核通过</font>' : '<a href="' . Yii::app
+            ()->baseUrl . '/index.php?r=admin/verify/scene&id=' . $data->user_id .
+            '"><font color="red">等待审核</font></a>');
+    }
+    //phone
+    public function actionPhone()
+    {
+        $this->render('_phone');
+    }
+
     // Uncomment the following methods and override them if needed
     /*
     public function filters()
