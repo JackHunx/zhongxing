@@ -15,34 +15,19 @@
 				</div> <!-- End .content-box-header -->
 				
 				<div class="content-box-content">
-					<table>
-                    <tbody>
-                        <tr class="alt-row">
-                            <td style="width: 100px!important;">用户名:</td>
-                            <td>value</td>
-                        </tr>
-                         <tr class="alt-row">
-                            <td style="width: 100px!important;">用户名:</td>
-                            <td>value</td>
-                        </tr>
-                         <tr class="alt-row">
-                            <td style="width: 100px!important;">用户名:</td>
-                            <td>value</td>
-                        </tr>
-                         <tr class="alt-row">
-                            <td style="width: 100px!important;">用户名:</td>
-                            <td>value</td>
-                        </tr>
-                         <tr class="alt-row">
-                            <td style="width: 100px!important;">用户名:</td>
-                            <td>value</td>
-                        </tr>
-                         <tr class="alt-row">
-                            <td style="width: 100px!important;">用户名:</td>
-                            <td>value</td>
-                        </tr>
-                    </tbody>
-					</table>
+				    <form>
+                    <p><label>用户名：</label></p>
+                    <p><label>充值类型：value</label></p>
+                    <p><label>支付方式：value</label></p>
+                    <p><label>充值总额：value</label></p>
+                    <p><label>费用：value</label></p>
+                    <p><label>实际到账：value</label></p>
+                    <p><label>用户备注：value</label></p>
+                    <p><label>流水号：value</label></p>
+                    <p><label>状态：value</label></p>
+                    <p><label>添加时间/IP：value</label></p>
+                    
+                    </form>
 					
 				</div> <!-- End .content-box-content -->
 				
