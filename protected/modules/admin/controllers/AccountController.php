@@ -17,6 +17,11 @@ class AccountController extends SBaseController
     }
     public function actionRechargeLog()
     {
+        if(isset($_GET['id']))
+        {
+           $this->render('_recharge');
+           Yii::app()->end();
+        }
         $model=new AccountRecharge('search');
         $model->unsetAttributes();
         if(isset($_GET['AccountRecharge']))
@@ -43,7 +48,7 @@ class AccountController extends SBaseController
     }
     public function verifyRecharge($data,$row,$c)
     {
-        return $data->status == '0' ? '<a href ="">审核</a>':'-';
+        return $data->status == '0' ? '<a href ="'.Yii::app()->baseUrl.'/index.php?r=admin/account/rechargeLog&id='.$data->id.'">审核</a>':'-';
     }
     // Uncomment the following methods and override them if needed
     /*

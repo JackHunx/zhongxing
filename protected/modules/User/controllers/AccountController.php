@@ -148,12 +148,6 @@ class AccountController extends SBaseController
      */
     public function actionRecharge()
     {
-        //throw new CHttpException('505');
-        //$value = $this->getPaymentType('3');
-        //        header("Content-Type:text/html;charset=utf-8");
-        //        echo "<pre>";
-        //        print_r($value);
-        //        exit();
         $offline = $this->getPaymentType('1');
         $online = $this->getPaymentType('2');
         $webname = $this->getWebName();

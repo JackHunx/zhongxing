@@ -43,29 +43,43 @@ class AccountManage
     }
     /**
      * recharge and log
-     * @param var $userid
-     * @param str $money
+     * @param string $userid
+     * @param array $value
+     * @return boolean true or false
      */
-    public function recharge($userid, $money)
+    public function recharge($userid, $value)
     {
-        $account = $this->getAccount($userid);
-        $value = array( //'user_id'=>$userid,
-                'total' => $money + $account->total, );
-        if ($this->update($accouont->id, $value)) {
-            $logvalue = array(
-                'user_id' => $userid,
-                'type' => 'recharge',
-                'total' => $value['total'],
-                'money' => $money,
-                'addtime' => time(),
-                'addip' => Yii::app()->request->getUserHostAddress(),
-                );
-            //log add return ture of false
-            $this->log($this->_userid, $val);
-            //return true;
-
+        $model = new AccountRecharge;
+        $val = array(
+            'trade_no' => time() . $userid . rand(1, 999),
+            'user_id' => $userid,
+            'status' => '0',
+            'addtime' => time(),
+            'addip' => Yii::app()->request->getUserHostAddress());
+        $model->attributes = array_merge($val, $value);
+        if ($model->save()) {
+            return true;
         } else
             return false;
+
+        //$account = $this->getAccount($userid);
+        //        $value = array( //'user_id'=>$userid,
+        //                'total' => $money + $account->total, );
+        //        if ($this->update($accouont->id, $value)) {
+        //            $logvalue = array(
+        //                'user_id' => $userid,
+        //                'type' => 'recharge',
+        //                'total' => $value['total'],
+        //                'money' => $money,
+        //                'addtime' => time(),
+        //                'addip' => Yii::app()->request->getUserHostAddress(),
+        //                );
+        //            //log add return ture of false
+        //            $this->log($this->_userid, $val);
+        //            //return true;
+        //
+        //        } else
+        //            return false;
     }
     /**
      * getbank
@@ -144,16 +158,33 @@ class AccountManage
     }
     /**
      * 更新账户
-     * @param array $val
+     * @param array $val=array('user_id'=>'','money'=>'')
      * @return boolean true or false
      */
-    private function update($id, $val)
+    private function update(array $val)
     {
-        $record = Account::model()->findByPk($id);
-        $record->attributes = $val;
-        if ($record->update())
-            return true;
-        else
+        $record = Account::model()->find('user_id=:user_id',array(':user_id'=>$val->user_id));
+        if($record==null)
+        {
+            $model = new Account;
+            $model->attributes=$val;
+            if(!$model->save())
+                return false;
+            else
+                return true;
+        }
+        //获取当前账户余额
+        $record->attributes = array(
+            'total'=>$val->money,
+        );
+        if(!$record->update())
             return false;
+        return false;
+        //$record = Account::model()->findByPk($id);
+//        $record->attributes = $val;
+//        if ($record->update())
+//            return true;
+//        else
+//            return false;
     }
 }
