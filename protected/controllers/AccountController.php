@@ -63,7 +63,8 @@ class AccountController extends SBaseController
 	public function actionCreate()
 	{
 		$model=new Account;
-
+        print_r($model);
+        exit();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 

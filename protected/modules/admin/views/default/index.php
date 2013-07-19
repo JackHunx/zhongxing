@@ -26,9 +26,9 @@
             
 			<ul class="shortcut-buttons-set">
 				
-				<li><a class="shortcut-button" href="#"><span>
-					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/pencil_48.png" alt="icon" /><br />
-					Write an Article
+				<li><a class="shortcut-button" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/account"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/account.png" alt="icon" /><br />
+					资金管理
 				</span></a></li>
 				
 				<li><a class="shortcut-button" href="#"><span>
