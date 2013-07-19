@@ -15,19 +15,28 @@
 				</div> <!-- End .content-box-header -->
 				
 				<div class="content-box-content">
-				    <form>
-                    <p><label>用户名：</label></p>
-                    <p><label>充值类型：value</label></p>
-                    <p><label>支付方式：value</label></p>
-                    <p><label>充值总额：value</label></p>
-                    <p><label>费用：value</label></p>
-                    <p><label>实际到账：value</label></p>
-                    <p><label>用户备注：value</label></p>
-                    <p><label>流水号：value</label></p>
-                    <p><label>状态：value</label></p>
-                    <p><label>添加时间/IP：value</label></p>
-                    
-                    </form>
+				   <form class="form-horizontal">
+							<fieldset>
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput">用户名:</label>
+								<div class="controls">
+								 value
+								</div>
+							  </div>
+                              <div class="control-group">
+								<label class="control-label" for="focusedInput">充值类型:</label>
+								<div class="controls">
+								 value
+								</div>
+							  </div>
+                              <div class="control-group">
+								<label class="control-label" for="focusedInput">:</label>
+								<div class="controls">
+								 value
+								</div>
+							  </div>
+                              </fieldset>
+                              </form>
 					
 				</div> <!-- End .content-box-content -->
 				
