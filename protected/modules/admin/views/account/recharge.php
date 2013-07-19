@@ -1,3 +1,4 @@
+
 <div class="notification png_bg">
 				<div>
 		<a href="<?php echo Yii::app()->baseUrl; ?>/index.php?r=admin/account">【账户信息】</a>
@@ -8,9 +9,8 @@
         <a href="<?php echo Yii::app()->baseUrl; ?>/index.php?r=admin/account">【扣除费用】</a>
 				</div>
 			</div>  
-<!--- user list -->
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-    'id' => 'account-list',
+    'id' => 'rechargeLog-list',
     'cssFile' => Yii::app()->baseUrl . '/css/grid_view.css',
     'dataProvider' => $model->search(),
     'filter' => $model,
@@ -26,28 +26,45 @@
             'header' => '用户',
             'name' => 'username',
             'value' => '$data->user->username'),
-
         array(
-            'header' => '真实姓名',
-            'name' => 'realname',
-            'value' => '$data->user->realname'),
+            'header' => '类型',
+            //'name' => 'total',
+            'value' => array($this, 'rechargeType'),
+            'type' => 'raw',
+            ),
         array(
-            'header' => '总余额',
-            'name' => 'total',
-            'value' => '$data->total'),
+            'header' => '所属银行',
+            'value' => array($this, 'payment'),
+            'type' => 'raw',
+            ),
         array(
-            'header' => '可用余额',
-            'name' => 'use_money',
-            'value' => '$data->use_money'),
+            'header' => '流水号',
+            'value' => '$data->trade_no',
+            'type' => 'raw'),
         array(
-            'header' => '冻结金额',
-            'name' => 'no_use_money',
-            'value' => '$data->no_use_money'),
+            'header' => '充值金额(元)',
+            'value' => '$data->money',
+            'type' => 'raw'),
         array(
-            'header' => '待收金额',
-            'name' => 'collection',
-            'value' => '$data->collection'),
-
+            'header' => '费用(元)',
+            'value' => '$data->fee',
+            'type' => 'raw'),
+        array(
+            'header' => '到账金额(元)',
+            'value' => array($this, 'afterfee'),
+            'type' => 'raw'),
+        array(
+            'header' => '充值时间',
+            'value' => 'date("Y-m-d H:i:s",$data->addtime)',
+            'type' => 'raw'),
+        array(
+            'header' => '状态',
+            'value' => array($this, 'rechargeStatus'),
+            'type' => 'raw'),
+        array(
+            'header' => '操作',
+            'value' => array($this, 'verifyRecharge'),
+            'type' => 'raw'),
 
         ),
     )); ?>
