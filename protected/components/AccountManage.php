@@ -167,7 +167,9 @@ class AccountManage
         if($record==null)
         {
             $model = new Account;
-            $model->attributes=$val;
+            $model->attributes=array(
+                'total'=>$val['money'],
+            );
             if(!$model->save())
                 return false;
             else
@@ -175,7 +177,7 @@ class AccountManage
         }
         //获取当前账户余额
         $record->attributes = array(
-            'total'=>$val->money,
+            'total'=>$val['money']+$record->total,
         );
         if(!$record->update())
             return false;

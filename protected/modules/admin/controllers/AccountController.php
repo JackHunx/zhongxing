@@ -20,6 +20,7 @@ class AccountController extends SBaseController
     {
         if(isset($_GET['id']))
         {
+            //提交form 待定
            $this->render('_recharge');
            Yii::app()->end();
         }
