@@ -15,6 +15,7 @@ class AccountController extends SBaseController
         $model->unsetAttributes();
         if (isset($_GET['Account']))
             $model->attributes = $_GET['Account'];
+    
         $this->render('index', array('model' => $model));
     }
     public function actionRechargeLog()

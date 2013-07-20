@@ -71,9 +71,9 @@ class Account extends CActiveRecord
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array('user' => array(
-                self::HAS_ONE,
+                self::BELONGS_TO,
                 'User',
-                'user_id',
+                'user_id'
                 ), );
     }
 
@@ -83,8 +83,8 @@ class Account extends CActiveRecord
     public function attributeLabels()
     {
         return array(
-            'username',
-            'realname',
+            'username'=>'Username',
+            'realname'=>'Realname',
             'id' => 'ID',
             'user_id' => 'User',
             'total' => 'Total',
@@ -105,7 +105,7 @@ class Account extends CActiveRecord
 
         $criteria = new CDbCriteria;
         $criteria->with = array('user');
-        $criteria->alias = 'prefix';
+        $criteria->alias = "prefix";
         $criteria->compare('user.username', $this->username, true);
         $criteria->compare('user.realname', $this->realname, true);
         $criteria->compare('id', $this->id, true);
