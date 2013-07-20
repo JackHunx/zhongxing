@@ -148,8 +148,8 @@ class AccountController extends SBaseController
      */
     public function actionRecharge()
     {
-        $offline = $this->getPaymentType('1');
-        $online = $this->getPaymentType('2');
+        $offline = $this->getPaymentType('2');
+        $online = $this->getPaymentType('1');
         $webname = $this->getWebName();
         $user = User::model()->findByPk(Yii::app()->user->id);
         if (isset($_POST['recharge'])) {

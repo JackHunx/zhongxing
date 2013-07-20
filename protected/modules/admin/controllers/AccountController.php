@@ -82,7 +82,7 @@ class AccountController extends SBaseController
             {
                 Yii::app()->end();
             }
-            if($_GET['id'])
+            if(isset($_GET['id']))
             {
                 $model = PaymentType::model()->findByPk($_GET['id']);
                 $this->render('_payment',array('model'=>$model));

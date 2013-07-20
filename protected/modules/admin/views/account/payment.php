@@ -22,8 +22,8 @@
 								
 								<p>
 									<label>账号类型</label>
-									<input type="radio" name="Payment[type]" value="1" checked="checked" /> 网上充值
-									<input type="radio" name="Payment[type]" value="2" /> 线下充值
+				
+									<input type="radio" name="Payment[type]" value="2" checked="checked"  /> 线下充值
 								</p>
 								
 								<p>

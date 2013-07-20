@@ -32,14 +32,7 @@
 			<div class="user_right_border">
 				<div class="l">充值类型：</div>
 				<div class="c">
-		
-         <?php 
-                    foreach($online as $key=>$val)
-                    {
-                        echo '<input type="radio" name="recharge[payment]" class="input_border" value="'.$val['id'].'" />'.$val['name'].'<br/><font color="#ff0000">'.$val['description'].'</font><br/>';
-                    }
-                
-                ?>
+		              <font color="red">功能未开放</font>
 				</div>
 			</div>
 		</div>
@@ -52,7 +45,7 @@
                 <?php 
                     foreach($offline as $key=>$val)
                     {
-                        echo '<input type="radio" name="recharge[payment]" class="input_border" value="'.$val['id'].'" />'.$val['name'].'<br/><font color="#ff0000">'.$val['description'].'</font><br/>';
+                        echo '开户行：'.$val['name'].'<br/>账号：<font color="#ff0000">'.$val['description'].'</font><br/>';
                     }
                 
                 ?>
