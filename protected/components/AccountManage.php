@@ -35,7 +35,7 @@ class AccountManage
                     'addip' => Yii::app()->request->getUserHostAddress(),
                     );
                 //save to log
-                $this->log($this->_userid, $val);
+                $this->log($logvalue);
             } else
                 throw new CException('Error');
         }
@@ -80,6 +80,44 @@ class AccountManage
         //
         //        } else
         //            return false;
+    }
+    /**
+     * updateAccount and log
+     *  account array('*user_id','total','use_money','no_use_money','collection') and * is must need
+     * @param  Array $log 
+     * @return boolean true or false
+     */
+    public function updateAccount(array $log)
+    {
+        //获取当前账户信息
+
+        //$this->log
+    }
+    /**
+     * update recharge
+     * 更新recharge 记录
+     * @param Array $data
+     * @return true or false
+     */
+    public function updateRecharge($data)
+    {
+        $record = AccountRecharge::model()->findByPk($data['id']);
+        $record->attributes=$data;
+        if(!$record->update())
+            return false;
+        return true;
+    }
+    /**
+     * get payment type
+     * @param string $id
+     */
+    public function getPaymentType($id)
+    {
+        $type = PaymentType::model()->findByPk($id);
+        if ($type == null)
+            return '无充值方式';
+        else
+            return $type->name . '(' . $type->description . ')';
     }
     /**
      * getbank
@@ -128,7 +166,7 @@ class AccountManage
      */
     public function getAccount($userid)
     {
-        $model = Accouont::model()->find('user_id=:user_id', array(':user_id' => $userid));
+        $model = Account::model()->find('user_id=:user_id', array(':user_id' => $userid));
         if ($model == null) {
             //给初始化此账户
             $model = new Account;
@@ -157,36 +195,67 @@ class AccountManage
         return Linkage::model()->findAll('type_id=:tppe_id', array(':type_id' => '30'));
     }
     /**
+     * 资金扣除
+     * 
+     * 扣除费用 例如 认证费用 vip费用 等待
+     * @param array $data array('user_id','type','money','remark')
+     * @return boolean true or false
+     */
+    public function deduct($data)
+    {
+        //获取account信息
+        $account = $this->getAccount($data['user_id']);
+        //判段扣除金额不能为负数
+        if ($data['money'] < 0)
+            return "操作金额不能为负数";
+        $log = array(
+            'user_id' => $data['user_id'],
+            'type' => $data['type'],
+            'money' => $data['money'],
+            'total' => $account->total - $data['money'],
+            'use_money' => $account->use_money - $data['money'],
+            'no_use_money' => $account->no_use_money,
+            'collection' => $account->collection,
+            'to_user' => '0',
+            'remark' => $data['remark'],
+            );
+        $this->log($log);
+    }
+    /**
      * 更新账户
      * @param array $val=array('user_id'=>'','money'=>'')
      * @return boolean true or false
      */
     private function update(array $val)
     {
-        $record = Account::model()->find('user_id=:user_id',array(':user_id'=>$val->user_id));
-        if($record==null)
-        {
+        $record = Account::model()->find('user_id=:user_id', array(':user_id' => $val->
+                user_id));
+        if ($record == null) {
             $model = new Account;
-            $model->attributes=array(
-                'total'=>$val['money'],
-            );
-            if(!$model->save())
+            $model->attributes = array(
+                'total' => $val['money'],
+                'use_money' => $val['money'],
+                'no_use_money' => $val['no_use_money'],
+                'collection' => $val['collection'],
+                );
+            if (!$model->save())
                 return false;
             else
                 return true;
         }
         //获取当前账户余额
         $record->attributes = array(
-            'total'=>$val['money']+$record->total,
-        );
-        if(!$record->update())
+            'total' => $val['money'] + $record->total,
+            'use_nomey' => $val['money'] + $record->use_money,
+            '');
+        if (!$record->update())
             return false;
         return false;
         //$record = Account::model()->findByPk($id);
-//        $record->attributes = $val;
-//        if ($record->update())
-//            return true;
-//        else
-//            return false;
+        //        $record->attributes = $val;
+        //        if ($record->update())
+        //            return true;
+        //        else
+        //            return false;
     }
 }
