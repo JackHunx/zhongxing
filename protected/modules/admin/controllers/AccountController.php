@@ -2,7 +2,7 @@
 
 class AccountController extends SBaseController
 {
-    public $layout = '/layouts/admin';
+    public $layout = '/layouts/account';
     public function init()
     {
         Yii::app()->clientScript->registerCoreScript('jquery');
@@ -15,7 +15,7 @@ class AccountController extends SBaseController
         $model->unsetAttributes();
         if (isset($_GET['Account']))
             $model->attributes = $_GET['Account'];
-    
+
         $this->render('index', array('model' => $model));
     }
     public function actionRechargeLog()
@@ -33,31 +33,27 @@ class AccountController extends SBaseController
                         );
                     if ($account->update()) {
                         //更行recharge
-                       $rechargeValue = array(
-                            'id'=>$_GET['id'],
-                            'status'=>$_POST['Account']['status'],
-                            'verify_userid'=>Yii::app()->user->id,
-                            'verify_time'=>time(),
-                            'verify_remark'=>$_POST['Account']['verify_remark'],
-                       );
-                       Yii::app()->account->updateRecharge($rechargeValue);
-                       $this->redirect(Yii::app()->createUrl('admin/account/rechargeLog'));
-                    }
-                }else{
-                    $rechargeValue = array(
-                            'id'=>$_GET['id'],
-                            'status'=>$_POST['Account']['status'],
-                            'verify_userid'=>Yii::app()->user->id,
-                            'verify_time'=>time(),
-                            'verify_remark'=>$_POST['Account']['verify_remark'],
-                       );
-                       Yii::app()->account->updateRecharge($rechargeValue);
+                        $rechargeValue = array(
+                            'id' => $_GET['id'],
+                            'status' => $_POST['Account']['status'],
+                            'verify_userid' => Yii::app()->user->id,
+                            'verify_time' => time(),
+                            'verify_remark' => $_POST['Account']['verify_remark'],
+                            );
+                        Yii::app()->account->updateRecharge($rechargeValue);
                         $this->redirect(Yii::app()->createUrl('admin/account/rechargeLog'));
+                    }
+                } else {
+                    $rechargeValue = array(
+                        'id' => $_GET['id'],
+                        'status' => $_POST['Account']['status'],
+                        'verify_userid' => Yii::app()->user->id,
+                        'verify_time' => time(),
+                        'verify_remark' => $_POST['Account']['verify_remark'],
+                        );
+                    Yii::app()->account->updateRecharge($rechargeValue);
+                    $this->redirect(Yii::app()->createUrl('admin/account/rechargeLog'));
                 }
-
-                // 'total'=>
-
-
             }
             //提交form 待定
 
@@ -69,6 +65,35 @@ class AccountController extends SBaseController
         if (isset($_GET['AccountRecharge']))
             $model->attributes = $_GET['AccountRecharge'];
         $this->render('recharge', array('model' => $model));
+    }
+    //payment type
+    public function actionPaymentList()
+    {
+        $model = new PaymentType('search');
+        $model->unsetAttributes();
+        if (isset($_GET['PaymentType']))
+            $model->attributes = $_GET['PaymentType'];
+        $this->render('addpayment', array('model' => $model));
+    }
+    public function actionAddPayment()
+    {
+        if (isset($_POST['Payment'])||isset($_GET['id'])) {
+            if(isset($_POST['Payment'])&&isset($_GET['id']))
+            {
+                Yii::app()->end();
+            }
+            if($_GET['id'])
+            {
+                $model = PaymentType::model()->findByPk($_GET['id']);
+                $this->render('_payment',array('model'=>$model));
+                Yii::app()->end();
+            }
+            $model = new PaymentType;
+            $model->attributes = array_merge(array('nid'=>$_POST['Payment']['type']==1?'online':'offline',),$_POST['Payment']);
+            if($model->save())
+                $this->redirect(Yii::app()->createUrl('admin/account/paymentList'));
+        }
+        $this->render('payment');
     }
     //recaharge type
     public function rechargeType($data, $row, $c)
@@ -96,6 +121,23 @@ class AccountController extends SBaseController
         return $data->status == '0' ? '<a href ="' . Yii::app()->baseUrl .
             '/index.php?r=admin/account/rechargeLog&id=' . $data->id . '">审核</a>' : '-';
     }
+    public function getPaymentType($data,$row,$c)
+    {
+        return $data->type==1 ? '<font color="green">网上充值</font>':'<font color="blue">线下充值</font>';
+    }
+    /**
+	 * Deletes a particular model.
+	 * If deletion is successful, the browser will be redirected to the 'admin' page.
+	 * @param integer $id the ID of the model to be deleted
+	 */
+	public function actionDeletePaymentType($id)
+	{
+		PaymentType::model()->findByPk($id)->delete();
+
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
     // Uncomment the following methods and override them if needed
     /*
     public function filters()

@@ -1,13 +1,4 @@
-<div class="notification png_bg">
-				<div>
-		<a href="<?php echo Yii::app()->baseUrl; ?>/index.php?r=admin/account">【账户信息】</a>
-        <a href="<?php echo Yii::app()->baseUrl; ?>/index.php?r=admin/account/rechargeLog">【充值记录】</a>
-       <a href="<?php echo Yii::app()->baseUrl; ?>/index.php?r=admin/account/cash">【申请提现】</a>
-        <a href="<?php echo Yii::app()->baseUrl; ?>/index.php?r=admin/account/cash">【提现成功】</a>
-        <a href="<?php echo Yii::app()->baseUrl; ?>/index.php?r=admin/account/">【添加充值】</a>
-        <a href="<?php echo Yii::app()->baseUrl; ?>/index.php?r=admin/account">【扣除费用】</a>
-				</div>
-			</div>  
+
 <!--- user list -->
 <?php $this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'account-list',
