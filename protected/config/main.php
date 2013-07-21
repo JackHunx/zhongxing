@@ -92,6 +92,7 @@ return array(
         //credit 积分管理
         'credit'=>array('class'=>'UserCredit'),
         'account'=>array('class'=>'AccountManage'),
+        'interest'=>array('class'=>'Interest'),
         // uncomment the following to enable URLs in path-format
         /*
         'urlManager'=>array(

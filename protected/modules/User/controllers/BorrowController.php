@@ -6,7 +6,7 @@ class BorrowController extends SBaseController
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	//
 
 	/**
 	 * @return array action filters
@@ -66,9 +66,20 @@ class BorrowController extends SBaseController
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+        //数据处理
+       
+        
 		if(isset($_POST['Borrow']))
 		{
+		  $repayment = Yii::app()->interest->average(array('money'=>$_POST['Borrow']['account'],'rate'=>$_POST['Borrow']['apr'],'last'=>$_POST['Borrow']['time_limit']));
+		   $val = array(
+            'user_id'=>Yii::app()->user->id,
+            'repayment_account'=>$repayment['total'],
+            'monthly_repayment'=>$repayment['monthRepay'],
+            'name'=>'0',
+            'addtime'=>time(),
+            'addip'=>Yii::app()->request->getUserHostAddress(),
+        );
 			$model->attributes=$_POST['Borrow'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));

@@ -27,7 +27,7 @@
 			<div id="profile-links">
 				Hello, <a href="#" title="Edit your profile"><?php echo Yii::app()->user->username;?></a>, 你有 <a href="#messages" rel="modal" title="3 Messages">x 条未读信息</a><br />
 				<br />
-				<a href="<?php echo Yii::app()->baseUrl;?>/index.php" target="_blank" title="View the Site">查看首页</a> | <a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=site/logout" title="Sign Out">退出</a>
+				<a href="<?php echo Yii::app()->baseUrl;?>/index.php" target="_blank" title="View the Site">前台首页</a> | <a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=site/logout" title="Sign Out">退出</a>
 			</div>        
 			
 			<ul id="main-nav">  <!-- Accordion Menu -->
@@ -112,12 +112,12 @@
 					</ul>
 				</li> 
 				<li>
-					<a href="#" class="nav-top-item">
+					<a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/system" class="nav-top-item">
 						系统设置
 					</a>
 					<ul>
 						<li><a href="#">系统参数</a></li>
-						<li><a href="#">邮箱设置</a></li>
+						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/system/email">邮箱设置</a></li>
 						<li><a href="#">数据库管理</a></li>
 						
 					</ul>

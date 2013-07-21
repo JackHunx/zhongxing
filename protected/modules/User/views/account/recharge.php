@@ -147,7 +147,7 @@
 			}
         }
     </script>
-		{/literal}
+		
 		<div class="user_right_foot">
 		* 温馨提示：网上银行充值过程中请耐心等待,充值成功后，请不要关闭浏览器,充值成功后返回<?php echo $webname;?>,充值金额才能打入您的帐号。如有问题,请与我们联系
 		</div>
