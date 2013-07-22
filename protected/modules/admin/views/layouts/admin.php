@@ -75,8 +75,6 @@
 						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user">用户列表</a></li>
                         <li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user/info">用户信息</a></li>
                         <li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user/vip">VIP用户</a></li>
-						<li><a href="#">用户组</a></li>
-						<li><a href="#">权限分配</a></li>
 					</ul>
 				</li>
                 <li>

@@ -2,19 +2,19 @@
 <?php if(Yii::app()->user->id==null){?>
 <script>
 	alert("你还没有登录，请先登录");
-	location.href='/index.php?r=site/login';
+	location.href='<?php echo Yii::app()->createUrl('site/login');?>';
 </script>
 <?php }?>
 <?php if($user['real_status']!=1){?>
 <script>
 	alert("你还没通过实名认证，还不能发借款标");
-	location.href='/index.php?r=User/validate/realname';
+	location.href='<?php echo Yii::app()->createUrl('User/validate/realname');?>';
 </script>
 <?php }?>
 <?php if($user['credit']<30){?>
 <script>
 alert("您的信用积分还未到30分，请先上传资料认证");
-location.href="/index.php?r=User/upload";
+location.href='<?php echo Yii::app()->createUrl('User/upload'); ?>';
 </script>
 
 <?php }?>
