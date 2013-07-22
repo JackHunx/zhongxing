@@ -21,7 +21,7 @@ location.href="/index.php?r=User/upload";
 
 
 
-{if $magic.request.type=="" && $magic.request.article_id==""}
+
 <?php if(!isset($_GET['type'])&&!isset($_GET['id'])){?>
 <div class="wrap950 list_1">
 	<div class="borrow_box">
@@ -43,8 +43,8 @@ location.href="/index.php?r=User/upload";
 	</div>
 </div>
 <?php }else{?>
-{else}
-	{if $magic.request.type=="vouch"}
+
+
 	<!--
 	{if $_G.user_result.borrow_vouch==0}
 	<script>
@@ -53,9 +53,9 @@ location.href="/index.php?r=User/upload";
 	</script>
 	{/if}
 	-->
-	{/if}
+
 	
-{article module="borrow" function="GetOnes" article_id="request" user_id="0" }
+
 <!--子栏目 开始-->
 <div class="wrap950 header_site_sub">
 	{if $magic.request.type=="vouch" || $var.is_vouch==1}
@@ -64,7 +64,7 @@ location.href="/index.php?r=User/upload";
 	{/if}
 </div>
 <!--子栏目 结束-->
-<form name="form1" method="post" action="/index.php?user&q=code/borrow/{if $var.user_id==""}add{else}update{/if}"  enctype="multipart/form-data" onsubmit="return check_form();" >
+<form name="form1" method="post" action=""  enctype="multipart/form-data" onsubmit="return check_form();" >
 <!--借款信息 开始-->
 <div class="wrap950 list_1">
 	<div class="title"><img src="<?php echo Yii::app()->baseUrl;?>/images/ico_4.gif"  /> 借款信息：</div>
@@ -97,7 +97,7 @@ location.href="/index.php?r=User/upload";
 		<div class="module_border">
 			<div class="w">借贷总金额：</div>
 			<div class="c">
-					<input type="text" name="account"  id="account" value="<?php echo $model->account;?>" onkeyup="value=value.replace(/[^0-9]/g,'')" /> 
+					<input type="text" name="Borrow[account]"  id="account" value="<?php echo $model->account;?>" onkeyup="value=value.replace(/[^0-9]/g,'')" /> 
 			</div>
 			<div class="sco" >借款金额应在500元至500,000元之间。交易币种均为人民币。借款成功后, 借款2个月 ,收取当前借款金额{$_G.system.con_borrow_fee*100}%的管理费,借款三个月以上的每月增加0.4%管理费,冻结{$_G.system.con_exbaozhengjinbilv}%作为保证金,正常还款完后,网站解冻{$_G.system.con_exbaozhengjinbilv}%的保证金。</div>
 		</div>
@@ -105,7 +105,7 @@ location.href="/index.php?r=User/upload";
 		<div class="module_border">
 			<div class="w">年利率：</div>
 			<div class="c">
-				<input type="text" name="apr" value="<?php echo $model->apr;?>" onkeyup="value=value.replace(/[^0-9.]/g,'')" /> % 
+				<input type="text" name="Borrow[apr]" value="<?php echo $model->apr;?>" onkeyup="value=value.replace(/[^0-9.]/g,'')" /> % 
 			</div>
 			<div class="sco" >1～6个月，借款标利率下限为{$_G.system.con_xiaxian16}%上限为{$_G.system.con_shangxian16}%，超过6个月～12个月借款标利率下限为{$_G.system.con_xiaxian612}%上限为{$_G.system.con_shangxian612}%
 </div>
@@ -246,13 +246,15 @@ location.href="/index.php?r=User/upload";
 		<div class="module_border">
 			<div class="w">标题：</div>
 			<div>
-			<input type="text" name="name" value="抵押/担保/联保/推荐/考察：{$var.name}" size="80" />	
+			<input type="text" name="Borrow[name]" value="抵押/担保/联保/推荐/考察：<?php echo $model->name;?>" size="80" />	
 			</div>	
 			<div class="sco" >填写借款的标题，类型必须且只能保留一个(抵押/担保/联保/推荐/考察)</div>
 		</div>
-		
 		<div class="module_border">
-			<div class="w">信息：</div>
+        <div class="w">信息：</div>
+        </div>
+		<div class="module_border">
+			
 			<div >
 				<textarea name="Borrow[content]" id="content" class="ckeditor" style="display:none;"><?php if($model->content!=""){
 				    echo $model->content;
@@ -287,8 +289,7 @@ ETO;
 <div class="wrap950 list_1">
 	<div class="title"><img src="<?php echo Yii::app()->baseUrl;?>/images/ico_4.gif"  /> 提交：</div>
 	<div class="content">
-		<input type="hidden" value="{$var.id}" name="id" />
-		<input name="valicode" type="text" size="11" maxlength="4"  tabindex="3"/>&nbsp;<?php  $this->widget('CCaptcha',array('showRefreshButton'=>false,'clickableImage'=>true,'imageOptions'=>array('alt'=>'点击换图','title'=>'点击换图','style'=>'cursor:pointer'))); ?>
+		<input name="verifyCode" type="text" size="11" maxlength="5"  tabindex="3"/>&nbsp;<?php  $this->widget('CCaptcha',array('showRefreshButton'=>false,'clickableImage'=>true,'imageOptions'=>array('alt'=>'点击换图','title'=>'点击换图','style'=>'cursor:pointer'))); ?>
 		<input type="submit" value="确认提交" name="submit" id="submitsubmit" /> <input type="submit" value="保存草稿"  name="submit" />
          <input   type="button"   value="刷新"   name="refresh"   onclick= "window.location.reload() ">
 	</div>
@@ -299,25 +300,29 @@ ETO;
 <script>
 
 function check_form(){
+    
 	document.getElementById("submitsubmit").disabled = true;
+          
 	 var frm = document.forms['form1'];
-	 var account = frm.elements['account'].value;
-	 var title = frm.elements['name'].value;
-	 var style = frm.elements['style'].value;
-	 var content = frm.elements['content'].value;
-	 var time_limit = frm.elements['time_limit'].value;
+	 var account = frm.elements['Borrow[account]'].value;
+	 var title = frm.elements['Borrow[name]'].value;
+	 var style = frm.elements['Borrow[style]'].value;
+	 var content = frm.elements['Borrow[content]'].value;
+	 var time_limit = frm.elements['Borrow[time_limit]'].value;
+
 	 var award = get_award_value();
-	 var part_account = frm.elements['part_account'].value;
-	 var funds = frm.elements['funds'].value;
-	 var apr = frm.elements['apr'].value;
-	 var valicode = frm.elements['valicode'].value;
-	 var most_account = frm.elements['most_account'].value;
-	 var use = frm.elements['most_account'].value;
-	 var lowest_account = frm.elements['lowest_account'].value;
-	
+	 var part_account = frm.elements['Borrow[part_account]'].value;
+	 var funds = frm.elements['Borrow[funds]'].value;
+	 var apr = frm.elements['Borrow[apr]'].value;
+	 var valicode = frm.elements['verifyCode'].value;
+	 var most_account = frm.elements['Borrow[most_account]'].value;
+	 var use = frm.elements['Borrow[most_account]'].value;
+	 var lowest_account = frm.elements['Borrow[lowest_account]'].value;
+ 
 	 var errorMsg = '';
 	  if (account.length == 0 ) {
 		errorMsg += '- 总金额不能为空' + '\n';
+       
 	  }
 	  if (account<500 || account>500000) {
 		errorMsg += '- 借款金额不能小于500且不能大于500000' + '\n';
@@ -337,7 +342,7 @@ function check_form(){
 	  }
 */
 /**易行**/
- 
+  
 	  if (time_limit >=1 && time_limit<=6 && (apr>shangxian16||apr<xiaxian16)) {
 		errorMsg += '- 1至6个月的年利率不能超过'+shangxian16+'%,且不能低于'+xiaxian16+ '%\n';
 	  }else if (time_limit >6  && (apr>shangxian612||apr<xiaxian612)) {
