@@ -2,12 +2,13 @@
 
 class TestController extends SBaseController
 {
+    public function init()
+    {
+        Yii::app()->clientScript->registerCoreScript('jquery');
+    }
 	public function actionIndex()
 	{
-	   $val = array('money'=>'12000','rate'=>'11','last'=>'2');
-		$return = Yii::app()->interest->average($val);
-        echo '<pre>';
-        print_r($return);
+	   $this->render('index');
 	}
 
 	// Uncomment the following methods and override them if needed

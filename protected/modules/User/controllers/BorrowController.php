@@ -6,8 +6,35 @@ class BorrowController extends SBaseController
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	//
-
+	public $layout="//layouts/main";
+    //verifycode
+    public function actions()
+    {
+        return array('captcha' => array(
+                'class' => 'CCaptchaAction',
+                'backColor' => 0xFFFFFF,
+                'maxLength' => '5',
+                'minLength' => '4',
+                'height' => '30'), //'page' => array('class' => 'CViewAction', ),
+                );
+    }
+    //init
+    public function init()
+    {
+        $cs = Yii::app()->clientScript;
+        $cs->registerCoreScript('jquery');
+        $cs->registerScriptFile(Yii::app()->baseUrl . '/js/base.js');
+        $cs->registerScriptFile(Yii::app()->baseUrl . '/js/validate_tab.js');
+        $cs->registerScriptFile(Yii::app()->baseUrl .
+            '/js/My97DatePicker/WdatePicker.js');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/user_new.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/index.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/main_user.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
+        $cs->registerCssFile(Yii::app()->baseUrl . '/css/css.css');
+    }
+    
 	/**
 	 * @return array action filters
 	 */
@@ -28,7 +55,7 @@ class BorrowController extends SBaseController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','captcha'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -84,9 +111,10 @@ class BorrowController extends SBaseController
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
-
+        $user['real_status']=User::model()->findByPk(Yii::app()->user->id)->real_status;
+        $user['credit']=Vip::model()->findByPk(Yii::app()->user->id)->credit;
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model,'user'=>$user
 		));
 	}
 

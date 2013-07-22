@@ -144,7 +144,7 @@ ETO;
             
             <?php 
             
-            for($i=0;$i<5;$i++)
+            for($i=0;$i<10;$i++)
             {
             echo <<<ETO
                 <!-- single around -->
@@ -154,6 +154,7 @@ ETO;
                             <div>
                                 <a href="/list/293426">
                                     线下考察 *****加工厂 经营周转借款</a>
+                                    
                                 <div>
                                     <ul class="l nowlist_2nav">
                                         <li>借款金额：<span class="color3">¥140,000</span></li>
@@ -164,10 +165,12 @@ ETO;
                                             <label class="color3 l" style="width: 97px; display: block;">
                                                 16.00%</label>
                                             借款期限：9个月</li>
-                                        <li><span class="l">借款进度：</span> <span class="loading" style="border: 1px solid #E2E2E2;
-                                            background-color: rgb(226,226,226);"><span style="width: 79%">
-                                            </span></span><span class="l" style="margin-right: 5px;">
-                                                79%</span>已完成439笔投标</li>
+                                        <li>
+ETO;
+                                        $this->widget('application.widget.ProgressBar.ProgressBar',array('params'=>'60','style'=>'blue'));
+echo <<<ETO
+
+          </li>
                                     </ul>
                                 </div>
                             </div>

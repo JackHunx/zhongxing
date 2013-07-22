@@ -11,7 +11,7 @@ class GetDropValueController extends SBaseController
         //获取数组 并重新排序
         $value = array();
         for ($i = 0; $i < count($record); $i++) {
-            $value[$record[$i]->id] = $record[$i]->value;
+            $value[$record[$i]->id] = $record[$i]->name;
         }
         //升序排序 arsort
         ksort($value);
