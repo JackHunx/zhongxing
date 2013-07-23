@@ -9,7 +9,11 @@ class BorrowController extends SBaseController
     }
 	public function actionIndex()
 	{
-		$this->render('index');
+	   $model = new UserAmount('search');
+       $model->unsetAttributes();
+       if(isset($_GET['UserAmount']))
+            $model->attributes=$_GET['UserAmount'];
+		$this->render('index',array('model'=>$model));
 	}
 
 	// Uncomment the following methods and override them if needed
