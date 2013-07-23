@@ -17,7 +17,12 @@ class CreditController extends SBaseController
             $model->attributes=$_GET['UserAmount'];
 		$this->render('index',array('model'=>$model));
 	}
-    //update 
-    
+    /**
+     * 信用额度申请
+     */
+    public function actionApply()
+    {
+        $this->render('apply');
+    }
 
 }

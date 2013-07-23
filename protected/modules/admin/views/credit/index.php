@@ -1,8 +1,8 @@
 	<ul class="shortcut-buttons-set">
 				
-				<li><a class="shortcut-button" href="#"><span>
-					<img src="<?php echo Yii::app()->baseUrl; ?>/images/admin//icons/image_add_48.png" alt="icon" /><br />
-					借贷管理
+				<li><a class="shortcut-button" href="<?php echo Yii::app()->createUrl('admin/credit/apply'); ?>"><span>
+					<img src="<?php echo Yii::app()->baseUrl; ?>/images/admin//icons/credit_add-48.png" alt="icon" /><br />
+					额度申请
 				</span></a></li>
 				
 				<li><a class="shortcut-button" href="#"><span>
