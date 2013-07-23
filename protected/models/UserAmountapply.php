@@ -47,7 +47,7 @@ class UserAmountapply extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('content, remark', 'required'),
+			array('content', 'required'),
 			array('user_id, status, verify_user', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>50),
 			array('account, account_new, account_old', 'length', 'max'=>11),

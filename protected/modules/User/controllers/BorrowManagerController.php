@@ -77,35 +77,48 @@ class BorrowManagerController extends SBaseController
     public function actionCredit()
     {
         if (isset($_POST['credit'])) {
-           
+
+            if ($_POST['credit']['content'] == null || $_POST['credit']['account']==null) {
+                $this->layout = '//layouts/main';
+                $this->render('//site/msg', array(
+                    'msg' => '<font color="red">额度或详细说明不能为空</font>',
+                    'msg_url' => Yii::app()->request->urlReferrer,
+                    'msg_content' => '点击返回'));
+                Yii::app()->end();
+            }
             $criteria = new CDbCriteria;
             $criteria->addCondition('user_id=:user_id');
-            $criteria->params[':id'] = Yii::app()->user->id;
+            $criteria->params[':user_id'] = Yii::app()->user->id;
             $criteria->addCondition('addtime<:time');
             $criteria->params[':time'] = time() - 30 * 24 * 60 * 60;
             $record = UserAmountapply::model()->findAll($criteria);
             if ($record == null) {
                 $model = new UserAmountapply;
                 $val = array(
-                    'addtime'=>time(),
-                    'addip'=>Yii::app()->request->getUserHostAddress(),
+                    'user_id' => Yii::app()->user->id,
+                    'addtime' => time(),
+                    'addip' => Yii::app()->request->getUserHostAddress(),
                     );
-                $model->attributes = array_merge($val,$_POST['credit']);
+                $model->attributes = array_merge($val, $_POST['credit']);
                 if (!$model->save())
                     throw new CException('404');
-                $this->render('credit',array('model'=>$model));
+                $this->render('credit', array('model' => $model));
                 Yii::app()->end();
-            }else
-                $this->redirect('site/msg',array('msg'=>'请一个月后再申请','msg_url'=>Yii::app()->createUrl('User'),'msg_content'=>'进入用户中心'));
-            
+            }
+            $this->layout='//layout/main';
+            $this->render('//site/msg', array(
+                'msg' => '请一个月后再申请',
+                'msg_url' => Yii::app()->createUrl('User'),
+                'msg_content' => '进入用户中心'));
+
         }
         $criteria = new CDbCriteria;
         $criteria->addCondition('user_id=:user_id');
-        $criteria->params[':user_id']=Yii::app()->user->id;
-        $criteria->order='id DESC';
-        
+        $criteria->params[':user_id'] = Yii::app()->user->id;
+        $criteria->order = 'id DESC';
+
         $model = UserAmountapply::model()->find($criteria);
-        $this->render('credit',array('model'=>$model));
+        $this->render('credit', array('model' => $model));
     }
 
 

@@ -4,20 +4,15 @@
 		额度申请原则上每次最多申请1万
 		</div>
         <?php if ($model !=null &&$model->status != 1) { ?>
-			<div align="center"><font color="#FF0000"><br />
-<br />
-{$_G.system.con_webname}提醒你：</font>你还不是VIP会员，请先成为<a href="/vip/index.html"><strong>VIP会员</strong></a>。</div><br /><br /><br />
-
-		{else}
-		{article module="borrow" function="GetAmountApplyOne" user_id="0" var="var"}
+			
 		
 		<div class="user_right_border">
 			<div class="e">申请者：</div>
 			<div class="c">
-				{$_G.user_result.username}
+				<?php echo User::model()->findByPk(Yii::app()->user->id)->username;?>
 			</div>
 		</div>
-		{if $var.status==2}
+		
 		<div class="user_right_border">
 			<div class="e"> 状态：</div>
 			<div class="c">
