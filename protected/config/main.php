@@ -91,7 +91,8 @@ return array(
         'sendemail'=>array('class'=>'SendEmail'),
         //credit 积分管理
         'credit'=>array('class'=>'UserCredit'),
-        
+        'account'=>array('class'=>'AccountManage'),
+        'interest'=>array('class'=>'Interest'),
         // uncomment the following to enable URLs in path-format
         /*
         'urlManager'=>array(
@@ -109,7 +110,7 @@ return array(
         // uncomment the following to use a MySQL database
         */
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=zxnew',
+            'connectionString' => 'mysql:host=localhost;dbname=newzx',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => '',

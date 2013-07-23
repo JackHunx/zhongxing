@@ -137,6 +137,8 @@ dl,dd,dt{ margin:0; padding:0}
 	font-weight:bold;
 	font-size: 14px;
 	color: #02549B;
+    text-align:left;
+    margin-bottom:0px;
 }
 .list_1 .content { border:1px solid #D9D9D9; border-bottom:none; border-top:none; padding:10px 0 0 10px; overflow:hidden; height:auto}
 .list_1 .foot {border:1px solid #B2DBFF; border-top:none; height:20px; overflow:hidden; margin-bottom:10px }
