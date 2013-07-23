@@ -77,9 +77,7 @@ class BorrowManagerController extends SBaseController
     public function actionCredit()
     {
         if (isset($_POST['credit'])) {
-            echo "<pre>";
-            print_r($_POST['credit']);
-            exit();
+           
             $criteria = new CDbCriteria;
             $criteria->addCondition('user_id=:user_id');
             $criteria->params[':id'] = Yii::app()->user->id;
@@ -88,7 +86,11 @@ class BorrowManagerController extends SBaseController
             $record = UserAmountapply::model()->findAll($criteria);
             if ($record == null) {
                 $model = new UserAmountapply;
-                $model->attributes = $_POST['credit'];
+                $val = array(
+                    'addtime'=>time(),
+                    'addip'=>Yii::app()->request->getUserHostAddress(),
+                    );
+                $model->attributes = array_merge($val,$_POST['credit']);
                 if (!$model->save())
                     throw new CException('404');
                 $this->render('credit',array('model'=>$model));

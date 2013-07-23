@@ -10,7 +10,7 @@
 
 		{else}
 		{article module="borrow" function="GetAmountApplyOne" user_id="0" var="var"}
-		<form action="" method="post">
+		
 		<div class="user_right_border">
 			<div class="e">申请者：</div>
 			<div class="c">
@@ -58,7 +58,7 @@
 			</div>
 		</div>
 		<?php } else { ?>
-		
+		<form action="" method="post">
 		
 		<div class="user_right_border">
 			<div class="e"> 申请类型：</div>
@@ -98,5 +98,6 @@
 				<input type="submit" name="name"  value="确认提交" size="30" /> 
 			</div>
 		</div>
+        </form>
 		<?php } ?>
 		
