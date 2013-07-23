@@ -24,8 +24,6 @@ class CreditController extends SBaseController
      */
     public function actionApply()
     {
-        
-        
         if(isset($_GET['id']))
         {   
             $model=UserAmountapply::model()->findByPk($_GET['id']);
