@@ -96,6 +96,8 @@ class BorrowManagerController extends SBaseController
                 $model = new UserAmountapply;
                 $val = array(
                     'user_id' => Yii::app()->user->id,
+                    'account_old'=>UserAmount::model()->find('user_id=:user_id',array(':user_id'=>Yii::app()->user->id))->credit,
+                    'status'=>'2',
                     'addtime' => time(),
                     'addip' => Yii::app()->request->getUserHostAddress(),
                     );

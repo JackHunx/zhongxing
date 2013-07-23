@@ -205,6 +205,8 @@ class UserController extends SBaseController
                     Yii::app()->user->login($identity);
                     //初始化用户积分并记录
                     Yii::app()->credit->initalize();
+                    //初始化信用额度
+                    $this->initAmount($model->user_id);
                     //进入用户中心邮箱
                     $this->redirect(array(
                         'User/email',
@@ -360,6 +362,21 @@ class UserController extends SBaseController
     private function encypt($value)
     {
         return md5($value);
+    }
+    //init amount 
+    private function initAmount($userid)
+    {
+        //获取系统设置初始化额度
+        $record = System::model()->find('nid=:nid',array(':nid'=>'con_user_amount'));
+        $amount = $record==null ? '2000':$record->value;
+        $model = new UserAmount;
+        $model->attributes = array(
+            'user_id'=>$userid,
+            'credit'=>$amount,
+            'credit_use'=>$amount,
+        );
+        if(!$model->save())
+            throw new CException('init amount error when register user');
     }
     /**
      * Updates a particular model.
