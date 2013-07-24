@@ -40,8 +40,8 @@ class CreditController extends SBaseController
                     //update ammout and log
                     $amount = UserAmount::model()->find('user_id=:user_id',array(':user_id'=>$model->user_id));
                     $amount->attributes=array(
-                        'credit'=>$_POST['credit']['account'],
-                        'credit_use'=>$_POST['credit']['account'],
+                        'credit'=>$_POST['credit']['account_new'],
+                        'credit_use'=>$_POST['credit']['account_new'],
                     );
                     if($amount->update())
                     {
@@ -90,7 +90,7 @@ class CreditController extends SBaseController
     //return apply status
     public function applyStatus($data,$row,$c)
     {
-        return $data->status==1?'<font color="green">通过</font>':($data->status==0?'<font color="red">为通过</font':'<font color="grey">未审核</font>');
+        return $data->status==1?'<font color="green">通过</font>':($data->status==0?'<font color="red">未通过</font':'<font color="grey">未审核</font>');
     }
     //verify apply
     public function verifyApply($data,$row,$c)

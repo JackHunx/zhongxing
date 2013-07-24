@@ -13,6 +13,7 @@
         <a href="<?php echo Yii::app()->baseUrl; ?>/index.php?r=admin/account/addPayment">【<font color="red">添加账号</font>】</a>
 				</div>
 			</div>  
+            
 <?php echo $content;?>
 
 <?php $this->endContent();?>

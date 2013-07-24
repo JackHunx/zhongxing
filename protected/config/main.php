@@ -57,9 +57,8 @@ return array(
             'alwaysAllowedPath' => 'srbac.components',
             ),
         // uncomment the following to enable the Gii tool
-        'admin'=>array(
-        //'defaultController'=>'system',
-        ),
+        'admin' => array( //'defaultController'=>'system',
+                ),
         'bbs',
         //用户中心模块
         'User',
@@ -86,13 +85,13 @@ return array(
             ),
         'request' => array('class' => 'CmsCHttpRequest', ),
         //encrypt string
-        'authstring'=>array('class'=>'AuthString',),
+        'authstring' => array('class' => 'AuthString', ),
         //send email to user 邮箱验证等
-        'sendemail'=>array('class'=>'SendEmail'),
+        'sendemail' => array('class' => 'SendEmail'),
         //credit 积分管理
-        'credit'=>array('class'=>'UserCredit'),
-        'account'=>array('class'=>'AccountManage'),
-        'interest'=>array('class'=>'Interest'),
+        'credit' => array('class' => 'UserCredit'),
+        'account' => array('class' => 'AccountManage'),
+        'interest' => array('class' => 'Interest'),
         // uncomment the following to enable URLs in path-format
         /*
         'urlManager'=>array(
@@ -115,22 +114,30 @@ return array(
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',
-            'tablePrefix'=>'zx_',
+            'tablePrefix' => 'zx_',
             ),
 
         'errorHandler' => array( // use 'site/error' action to display errors
                 'errorAction' => 'site/error', ),
         'log' => array(
             'class' => 'CLogRouter',
-            'routes' => array(array(
+            'routes' => array(
+                array(
                     'class' => 'CFileLogRoute',
                     'levels' => 'error, warning',
-                    ), // uncomment the following to show log messages on web pages
-                    /*
+                    ), 
+                    //sql trace
                 array(
-                'class'=>'CWebLogRoute',
-                ),
-                */
+                    'class' => 'CWebLogRoute',
+                    'levels' => 'profile,trace',
+                    ),
+                array(
+                    'class' => 'CProfileLogRoute',
+                    'levels' => 'profile',
+                    ),
+                    // uncomment the following to show log messages on web pages
+                array('class' => 'CWebLogRoute', ),
+
                 ),
             ),
         ),

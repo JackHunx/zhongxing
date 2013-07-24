@@ -48,13 +48,13 @@ class BorrowManagerController extends SBaseController
     public function accessRules()
     {
         return array(
-            //array(
-            //                'allow', // allow all users to perform 'index' and 'view' actions
-            //                'actions' => array(
-            //                    'index',
-            //                   ),
-            //                'users' => array('*'),
-            //                ),
+            array(
+                            'allow', // allow all users to perform 'index' and 'view' actions
+                            'actions' => array(
+                                'index',
+                               ),
+                            'users' => array('*'),
+                            ),
             array(
                 'allow', // allow authenticated user to perform 'create' and 'update' actions
                 'actions' => array('credit'),
@@ -89,7 +89,7 @@ class BorrowManagerController extends SBaseController
             $criteria = new CDbCriteria;
             $criteria->addCondition('user_id=:user_id');
             $criteria->params[':user_id'] = Yii::app()->user->id;
-            $criteria->addCondition('addtime<:time');
+            $criteria->addCondition('addtime>:time');
             $criteria->params[':time'] = time() - 30 * 24 * 60 * 60;
             $record = UserAmountapply::model()->findAll($criteria);
             if ($record == null) {
@@ -107,11 +107,12 @@ class BorrowManagerController extends SBaseController
                 $this->render('credit', array('model' => $model));
                 Yii::app()->end();
             }
-            $this->layout='//layout/main';
+            $this->layout='//layouts/main';
             $this->render('//site/msg', array(
                 'msg' => '请一个月后再申请',
                 'msg_url' => Yii::app()->createUrl('User'),
                 'msg_content' => '进入用户中心'));
+            Yii::app()->end();
 
         }
         $criteria = new CDbCriteria;

@@ -14,7 +14,8 @@
 
 
 </head>
-	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
+	<body>
+    <div id="content"><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		
 		<div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
 			
@@ -173,9 +174,10 @@
 		
 		<!-- content begin-->
         <div id="main-content">
+        
 <?php echo $content;?>
 </div>
 		<!-- End #main-content -->
 
-	</div></body>
+	</div></div></body>
 </html>

@@ -72,7 +72,8 @@ class UserAmount extends CActiveRecord
         return array('user' => array(
                 self::HAS_ONE,
                 'User',
-                'user_id',
+                '',
+                'on'=>'prefix.user_id=user.user_id',
                 ), );
     }
 

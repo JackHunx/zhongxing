@@ -3,7 +3,7 @@
 		<div class="user_main_title"> 
 		额度申请原则上每次最多申请1万
 		</div>
-        <?php if ($model !=null &&$model->status != 1) { ?>
+        <?php if ($model !=null &&$model->status != 1&&$model->status!=0) { ?>
 			
 		
 		<div class="user_right_border">
@@ -16,7 +16,7 @@
 		<div class="user_right_border">
 			<div class="e"> 状态：</div>
 			<div class="c">
-				正在审核中
+				<font color="grey">正在审核中</font>
 			</div>
 		</div>
 		<div class="user_right_border">
@@ -52,14 +52,18 @@
             <?php echo $model->remark;?>
 			</div>
 		</div>
-		<?php } else { ?>
+		<?php } else {
+		      if(isset($_GET['type']))
+                    $type=$_GET['type'];
+                else 
+                    $type='credit';?>
 		<form action="" method="post">
 		
 		<div class="user_right_border">
 			<div class="e"> 申请类型：</div>
 			<div class="c">
-				<select name="credit[type]"><option value="credit" <?php echo $_GET['type'] == 'credit'? 'seclected="selected"':'';?>> 借款信用额度</option><option value="tender_vouch" <?php echo $_GET['type'] == 'render_vouch' ? 'seclected="selected"':'';?> >投资担保额度</option>
-<option value="borrow_vouch" <?php echo $_GET['type'] == 'borrow_vouch' ? 'seclected="selected"':'';?> >借款担保额度</option>				
+				<select name="credit[type]"><option value="credit" <?php echo $type == 'credit'? 'seclected="selected"':'';?>> 借款信用额度</option><option value="tender_vouch" <?php echo $type == 'render_vouch' ? 'seclected="selected"':'';?> >投资担保额度</option>
+<option value="borrow_vouch" <?php echo $type == 'borrow_vouch' ? 'seclected="selected"':'';?> >借款担保额度</option>				
 				</select>
 			</div>
 		</div>
