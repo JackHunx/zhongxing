@@ -28,7 +28,7 @@ class BorrowController extends SBaseController
         $cs->registerScriptFile(Yii::app()->baseUrl .
             '/js/My97DatePicker/WdatePicker.js');
         $cs->registerScriptFile(Yii::app()->baseUrl . '/js/ueditor/ueditor.config.js');
-         $cs->registerScriptFile(Yii::app()->baseUrl . '/js/ueditor/ueditor.all.min.js');
+        $cs->registerScriptFile(Yii::app()->baseUrl . '/js/ueditor/ueditor.all.min.js');
         //$cs->registerScriptFile(Yii::app()->baseUrl . '/js/ckeditor/ckeditor.js');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user_new.css');
@@ -125,9 +125,6 @@ class BorrowController extends SBaseController
                     'money' => $_POST['Borrow']['account'],
                     'rate' => $_POST['Borrow']['apr'],
                     'last' => Linkage::model()->findByPk($_POST['Borrow']['time_limit'])->value));
-                echo "<pre>";
-                print_r($repayment);
-                exit();
                 $val = array(
                     'user_id' => Yii::app()->user->id,
                     'repayment_account' => $repayment['total'],
