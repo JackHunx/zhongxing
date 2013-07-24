@@ -245,7 +245,7 @@ location.href='<?php echo Yii::app()->createUrl('User/upload'); ?>';
 			<div>
 			<input type="text" name="Borrow[name]" value="抵押/担保/联保/推荐/考察：<?php echo $model->name;?>" size="80" />	
 			</div>	
-			<div class="sco" >填写借款的标题，类型必须且只能保留一个(抵押/担保/联保/推荐/考察)</div>
+			<div class="sco" ><font color="red">填写借款的标题，类型必须且只能保留一个(抵押/担保/联保/推荐/考察)</font></div>
 		</div>
 		<div class="module_border">
         <div class="w">信息：</div>

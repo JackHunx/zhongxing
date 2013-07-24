@@ -124,7 +124,10 @@ class BorrowController extends SBaseController
                 $repayment = Yii::app()->interest->average(array(
                     'money' => $_POST['Borrow']['account'],
                     'rate' => $_POST['Borrow']['apr'],
-                    'last' => $_POST['Borrow']['time_limit']));
+                    'last' => Linkage::model()->findByPk($_POST['Borrow']['time_limit'])->value));
+                echo "<pre>";
+                print_r($repayment);
+                exit();
                 $val = array(
                     'user_id' => Yii::app()->user->id,
                     'repayment_account' => $repayment['total'],
@@ -134,7 +137,7 @@ class BorrowController extends SBaseController
                     'addtime' => time(),
                     'addip' => Yii::app()->request->getUserHostAddress(),
                     );
-                $model->attributes = array_merge($val, $_POST['Brorrow']); // $_POST['Borrow'];
+                $model->attributes = array_merge($val, $_POST['Borrow']); // $_POST['Borrow'];
                 if ($model->save())
                     $this->redirect(array('view', 'id' => $model->id));
             }

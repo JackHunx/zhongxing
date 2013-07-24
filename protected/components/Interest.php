@@ -21,11 +21,11 @@ class Interest
         $monthRate = $data['rate'] / 100 / 12; //月利率
         //等额本息
         //Ci= M×（R％÷12）×（1+ R％÷12）N÷[（1+ R％÷12）N—1]
-        $monthRepay = $data['money']*$monthRate*pow(1+$monthRate,$data['last'])/(pow(1+$monthRate,$data['last'])-1);
+        $monthRepay = round($data['money']*$monthRate*pow(1+$monthRate,$data['last'])/(pow(1+$monthRate,$data['last'])-1),2);
         $total = $monthRepay*$data['last'];
         return array(
             'total'=>sprintf("%.2f",$total),//四舍五入
-            'mothRepay'=>sprintf("%.2f",$monthRepay),
+            'monthRepay'=>sprintf("%.2f",$monthRepay),
             'monthRate'=>sprintf("%.2f",$monthRate*100)//返回的数值是百分之多少
         
         );
