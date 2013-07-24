@@ -27,7 +27,9 @@ class BorrowController extends SBaseController
         $cs->registerScriptFile(Yii::app()->baseUrl . '/js/validate_tab.js');
         $cs->registerScriptFile(Yii::app()->baseUrl .
             '/js/My97DatePicker/WdatePicker.js');
-        $cs->registerScriptFile(Yii::app()->baseUrl . '/js/ckeditor/ckeditor.js');
+        $cs->registerScriptFile(Yii::app()->baseUrl . '/js/ueditor/ueditor.config.js');
+         $cs->registerScriptFile(Yii::app()->baseUrl . '/js/ueditor/ueditor.all.min.js');
+        //$cs->registerScriptFile(Yii::app()->baseUrl . '/js/ckeditor/ckeditor.js');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/user_new.css');
         $cs->registerCssFile(Yii::app()->baseUrl . '/css/index.css');
@@ -103,28 +105,44 @@ class BorrowController extends SBaseController
 
 
         if (isset($_POST['Borrow'])) {
-            echo "<pre>";
-            print_r($_POST);
-            exit();
-            $repayment = Yii::app()->interest->average(array(
-                'money' => $_POST['Borrow']['account'],
-                'rate' => $_POST['Borrow']['apr'],
-                'last' => $_POST['Borrow']['time_limit']));
-            $val = array(
-                'user_id' => Yii::app()->user->id,
-                'repayment_account' => $repayment['total'],
-                'monthly_repayment' => $repayment['monthRepay'],
-                'name' => '0',
-                'addtime' => time(),
-                'addip' => Yii::app()->request->getUserHostAddress(),
-                );
-            $model->attributes = $_POST['Borrow'];
-            if ($model->save())
-                $this->redirect(array('view', 'id' => $model->id));
+            //验证码验证
+            if (!$this->createAction('captcha')->validate($_POST['verifyCode'], false)) {
+                $this->layout = "//layouts/main";
+                $this->render("//site/msg", array(
+                    'msg' => "验证码输入错误",
+                    'msg_url' => Yii::app()->request->urlReferrer,
+                    'msg_content' => '点击返回'));
+                Yii::app()->end();
+            }
+
+            if (isset($_GET['id'])) {
+                //更新
+                //$model = Borrow::model()->findByPk($_GET['id']);
+
+            } else {
+                //创建
+                $repayment = Yii::app()->interest->average(array(
+                    'money' => $_POST['Borrow']['account'],
+                    'rate' => $_POST['Borrow']['apr'],
+                    'last' => $_POST['Borrow']['time_limit']));
+                $val = array(
+                    'user_id' => Yii::app()->user->id,
+                    'repayment_account' => $repayment['total'],
+                    'monthly_repayment' => $repayment['monthRepay'],
+                    'name' => '0',
+                    'status' => '3', //状态3为发标 还未初审
+                    'addtime' => time(),
+                    'addip' => Yii::app()->request->getUserHostAddress(),
+                    );
+                $model->attributes = array_merge($val, $_POST['Brorrow']); // $_POST['Borrow'];
+                if ($model->save())
+                    $this->redirect(array('view', 'id' => $model->id));
+            }
         }
         $user['real_status'] = User::model()->findByPk(Yii::app()->user->id)->
             real_status;
-        $user['credit'] = Vip::model()->findByPk(Yii::app()->user->id)->credit;
+        $vip = Vip::model()->findByPk(Yii::app()->user->id);
+        $user['credit'] = $vip == null ? '0' : $vip->credit;
         $this->render('create', array('model' => $model, 'user' => $user));
     }
 

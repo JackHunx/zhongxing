@@ -1,4 +1,3 @@
-{include file="header.html"}
 
 <link href="<?php echo Yii::app()->baseUrl;?>/css/borrow_new.css" rel="stylesheet" type="text/css" />
 
@@ -8,7 +7,7 @@
 
 <div class="con_box t10"><img border="0" usemap="#Map" src="<?php echo Yii::app()->baseUrl;?>/images/banner3.jpg"></div>
 
-<map id="Map" name="Map"><area href="/publish/index.html?type=0" coords="32,109,135,141" shape="rect"><area href="/publish/index.html?type=1" coords="153,106,257,140" shape="rect"><area href="/publish/index.html?type=vouch" coords="277,103,384,143" shape="rect"></map><div class="foot" style="border:0 none; height:10px"></div>
+
 
 
 
@@ -20,15 +19,15 @@
 
             <ul style="width: 900px;">
 
-            <li><a href="/index.php?user&amp;q=action/reg">注册</a></li>
+            <li><a href="<?php echo Yii::app()->createUrl('user/register');?>">注册</a></li>
 
-			<li><a href="/index.php?user&amp;q=code/user/realname">实名认证</a></li>
+			<li><a href="<?php echo Yii::app()->createUrl('User/validate/realname');?>">实名认证</a></li>
 
-			<li><a href="/index.php?user&amp;q=code/userinfo">填写个人资料</a></li>
+			<li><a href="<?php echo Yii::app()->createUrl('User/info');?>">填写个人资料</a></li>
 
-			<li><a href="/index.php?user&amp;q=code/attestation">上传资料证明    </a></li>
+			<li><a href="<?php echo Yii::app()->createUrl('User/upload');?>">上传资料证明    </a></li>
 
-			<li><a href="/publish/index.html?type=month">发布借款标</a></li>
+			<li><a href="<?php echo Yii::app()->createUrl('User/borrow/create');?>">发布借款标</a></li>
 
 			<li><a href="/index.php?user&amp;q=code/borrow/repayment">借款成功</a></li>
 
@@ -38,7 +37,7 @@
 
         </div>
 
-       </div>	<div class="foot" style="border:0 none; height:1px"></div>
+       </div>	
 
 </div>
 
@@ -219,7 +218,3 @@
 </div>
 
 <!--注意事项 结束-->
-
-
-
-{include file="footer.html"}

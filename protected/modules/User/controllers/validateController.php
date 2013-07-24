@@ -137,7 +137,7 @@ class ValidateController extends SBaseController
                         findByPk($_POST['Vip']['kefu_userid'])->realname),
                     'kefu_addtime' => time(),
                     );
-          
+
                 //
                 $model->attributes = array_merge($vip, $_POST['Vip']);
                 //return $model->save();
@@ -146,9 +146,9 @@ class ValidateController extends SBaseController
                 {
                     $this->redirect(array('validate/vip', 'id' => $model->user_id));
                     Yii::app()->end();
-                }else
+                } else
                     throw new CException('save to table {vip} error');
-               
+
             }
             //$model = new User;
             $custom = Assignments::model()->findAll('itemname=:itemname', array(':itemname' =>
@@ -179,11 +179,10 @@ class ValidateController extends SBaseController
     public function actionVideo()
     {
         //$info = User::model()->findByPk(Yii::app()->user->id);
-        if(isset($_POST['video']))
-        {
+        if (isset($_POST['video'])) {
             $model = User::model()->findByPk(Yii::app()->user->id);
-            $model->attributes = array('video_status'=>$_POST['video']);
-            if(!$model->update())
+            $model->attributes = array('video_status' => $_POST['video']);
+            if (!$model->update())
                 throw new CException('error');
         }
         $userCache = UserCache::model()->findByPk(Yii::app()->user->id);
@@ -201,11 +200,10 @@ class ValidateController extends SBaseController
     //scene validate
     public function actionScene()
     {
-         if(isset($_POST['scene']))
-        {
+        if (isset($_POST['scene'])) {
             $model = User::model()->findByPk(Yii::app()->user->id);
-            $model->attributes = array('scene_status'=>$_POST['scene']);
-            if(!$model->update())
+            $model->attributes = array('scene_status' => $_POST['scene']);
+            if (!$model->update())
                 throw new CException('error');
         }
         $userCache = UserCache::model()->findByPk(Yii::app()->user->id);
@@ -235,30 +233,5 @@ class ValidateController extends SBaseController
 
     }
 
-    // Uncomment the following methods and override them if needed
-    /*
-    public function filters()
-    {
-    // return the filter configuration for this controller, e.g.:
-    return array(
-    'inlineFilterName',
-    array(
-    'class'=>'path.to.FilterClass',
-    'propertyName'=>'propertyValue',
-    ),
-    );
-    }
 
-    public function actions()
-    {
-    // return external action classes, e.g.:
-    return array(
-    'action1'=>'path.to.ActionClass',
-    'action2'=>array(
-    'class'=>'path.to.AnotherActionClass',
-    'propertyName'=>'propertyValue',
-    ),
-    );
-    }
-    */
 }

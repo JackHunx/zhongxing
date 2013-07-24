@@ -27,19 +27,19 @@ location.href='<?php echo Yii::app()->createUrl('User/upload'); ?>';
 	<div class="borrow_box">
 		<div><strong>发布按月借款</strong></div>
 		<div>按等额本息法进行计算</div>
-		<div align="center"><a href="/publish/index.html?type=month"><img src="<?php echo Yii::app()->baseUrl;?>/images/borrow_yue.jpg" align=""/></a></div>
+		<div align="center"><a href="<?php echo Yii::app()->createUrl('User/borrow/create',array('type'=>'month')); ?>"><img src="<?php echo Yii::app()->baseUrl;?>/images/borrow_yue.jpg" align=""/></a></div>
 	</div>
 	
 	<div class="borrow_box">
 		<div><strong>发布按季借款</strong></div>
 		<div>按等额本息法进行计算</div>
-		<div align="center"><a href="/publish/index.html?type=month"><img src="<?php echo Yii::app()->baseUrl;?>/images/borrow_ji.jpg" align=""/></div>
+		<div align="center"><a href="<?php echo Yii::app()->createUrl('User/borrow/create',array('type'=>'month')); ?>"><img src="<?php echo Yii::app()->baseUrl;?>/images/borrow_ji.jpg" align=""/></div>
 	</div>
 	
 	<div class="borrow_box">
 		<div><strong>发布担保借款</strong></div>
 		<div>按等额本息法进行计算</div>
-		<div align="center"><a href="/publish/index.html?type=vouch"><img src="<?php echo Yii::app()->baseUrl;?>/images/borrow_danbao.jpg" align=""/></a></div>
+		<div align="center"><a href="<?php echo Yii::app()->createUrl('User/borrow/create',array('type'=>'vouch')); ?>"><img src="<?php echo Yii::app()->baseUrl;?>/images/borrow_danbao.jpg" align=""/></a></div>
 	</div>
 </div>
 <?php }else{?>
@@ -58,10 +58,7 @@ location.href='<?php echo Yii::app()->createUrl('User/upload'); ?>';
 
 <!--子栏目 开始-->
 <div class="wrap950 header_site_sub">
-	{if $magic.request.type=="vouch" || $var.is_vouch==1}
-	<a><font color="#FF0000">您正在借的是担保标，担保标将先由有担保额度的用户进行担保，等担保额度满了自动会进行投标</font></a>
-	{else}
-	{/if}
+
 </div>
 <!--子栏目 结束-->
 <form name="form1" method="post" action=""  enctype="multipart/form-data" onsubmit="return check_form();" >
@@ -182,7 +179,7 @@ location.href='<?php echo Yii::app()->createUrl('User/upload'); ?>';
 </div>
 <!--投标奖励 结束-->
 
-{if $magic.request.type=="vouch" || $var.is_vouch==1}
+
 <?php if(isset($_GET['type'])&&$_GET['type']=='vouch'){?>
 <!--担保奖励 开始-->
 <div class="wrap950 list_1">
@@ -256,7 +253,7 @@ location.href='<?php echo Yii::app()->createUrl('User/upload'); ?>';
 		<div class="module_border">
 			
 			<div >
-				<textarea name="Borrow[content]" id="content" class="ckeditor" style="display:none;"><?php if($model->content!=""){
+				<textarea name="Borrow[content]" id="contentEditor" ><?php if($model->content!=""){
 				    echo $model->content;
 				}else{
 				 
@@ -279,6 +276,21 @@ location.href='<?php echo Yii::app()->createUrl('User/upload'); ?>';
                     
 ETO;
 				}?></textarea>
+                <script type="text/javascript">
+        UE.getEditor('contentEditor',{
+            //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
+            toolbars:[['FullScreen', 'Source', 'Undo', 'Redo','Bold','test']],
+            //focus时自动清空初始化时的内容
+            autoHeightEnabled: false,
+            //关闭字数统计
+            wordCount:false,
+            //关闭elementPath
+            elementPathEnabled:false,
+            //默认的编辑区域高度
+            initialFrameHeight:300
+            //更多其他参数，请参考ueditor.config.js中的配置项
+        })
+    </script>
 			</div>
 		</div>
 	</div>
@@ -296,8 +308,18 @@ ETO;
 	<div class="foot"></div>
 </div>
 </form>
-{/article}
+
 <script>
+<?php $system = System::model();?>
+var max_account = <?php echo UserAmount::model()->find('user_id=:user_id',array(':user_id'=>Yii::app()->user->id))->credit_use ?>;
+var max_apr =<?php $max_apr = $system->find('nid=:nid',array(':nid'=>'con_borrow_apr'))->value;
+    echo $max_apr == null ? '22.18':$max_apr;
+    ?>;
+
+var shangxian16=<?php echo $system->find('nid=:nid',array(':nid'=>'con_shangxian16'))->value;?>;
+var xiaxian16=<?php echo $system->find('nid=:nid',array(':nid'=>'con_xiaxian16'))->value;?>;
+var shangxian612=<?php echo $system->find('nid=:nid',array(':nid'=>'con_shangxian612'))->value;?>;
+var xiaxian612=<?php echo $system->find('nid=:nid',array(':nid'=>'con_xiaxian612'))->value;?>;
 
 function check_form(){
     
@@ -318,7 +340,7 @@ function check_form(){
 	 var most_account = frm.elements['Borrow[most_account]'].value;
 	 var use = frm.elements['Borrow[most_account]'].value;
 	 var lowest_account = frm.elements['Borrow[lowest_account]'].value;
- 
+             
 	 var errorMsg = '';
 	  if (account.length == 0 ) {
 		errorMsg += '- 总金额不能为空' + '\n';
@@ -342,7 +364,7 @@ function check_form(){
 	  }
 */
 /**易行**/
-  
+   
 	  if (time_limit >=1 && time_limit<=6 && (apr>shangxian16||apr<xiaxian16)) {
 		errorMsg += '- 1至6个月的年利率不能超过'+shangxian16+'%,且不能低于'+xiaxian16+ '%\n';
 	  }else if (time_limit >6  && (apr>shangxian612||apr<xiaxian612)) {

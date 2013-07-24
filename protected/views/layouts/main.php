@@ -250,7 +250,7 @@ ETO;
 				</div>
 			</li>
 			<li class="" id="">
-				<span class="v"> <a class="whiete" href="http://www.17sucai.com/" class="">我要贷款</a><span class="vertical pull-right"></span></span> 
+				<span class="v"> <a class="whiete" href="<?php echo Yii::app()->createUrl('User/borrow/create'); ?>" class="">我要贷款</a><span class="vertical pull-right"></span></span> 
 				<div class="kind_menu" style=" display: none;">
 				
 				<!-- befor login-->

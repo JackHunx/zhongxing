@@ -122,21 +122,21 @@ return array(
         'log' => array(
             'class' => 'CLogRouter',
             'routes' => array(
-                array(
-                    'class' => 'CFileLogRoute',
-                    'levels' => 'error, warning',
-                    ), 
-                    //sql trace
-                array(
-                    'class' => 'CWebLogRoute',
-                    'levels' => 'profile,trace',
-                    ),
-                array(
-                    'class' => 'CProfileLogRoute',
-                    'levels' => 'profile',
-                    ),
+                //array(
+//                    'class' => 'CFileLogRoute',
+//                    'levels' => 'error, warning',
+//                    ), 
+//                    //sql trace
+//                array(
+//                    'class' => 'CWebLogRoute',
+//                    'levels' => 'profile,trace',
+//                    ),
+//                array(
+//                    'class' => 'CProfileLogRoute',
+//                    'levels' => 'profile',
+//                    ),
                     // uncomment the following to show log messages on web pages
-                array('class' => 'CWebLogRoute', ),
+               // array('class' => 'CWebLogRoute', ),
 
                 ),
             ),

@@ -8,6 +8,12 @@ class TestController extends SBaseController
     }
 	public function actionIndex()
 	{
+	   $model1 = Linkage::model()->findAll('type_id=:type_id',array(':type_id'=>'1'));
+       $model2 = Linkage::model()->findAll('type_id=:type_id',array(':type_id'=>'2'));
+       $model = array_merge($model1,$model2);
+       echo "<pre>";
+       print_r($model[0]->name); 
+	   exit();
 	   $this->render('index');
 	}
 

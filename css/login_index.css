@@ -96,7 +96,6 @@ h3 { font-size: 2em; margin: 5px auto 10px; background: url(http://static.ppdai.
 .formActions label { color: #393C3D; display: block; float: right; font-size: 13px; padding: 10px 0 0; width: 240px; }
 #signUpBox, .smallBox { background: #fff; }
 ol, ul { list-style: none outside none; }
-.foot { margin-top: 50px; }
 .clearfix { zoom: 1; }
 .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 #header_inner { width: 980px; position: relative; margin: 0 auto; }
