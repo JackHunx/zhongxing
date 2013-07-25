@@ -150,7 +150,7 @@ class Borrow extends CActiveRecord
                 self::BELONGS_TO,
                 'User',
                 '',
-                'on' => 'prefx.user_id = user.user_id',
+                'on' => 'prefix.user_id = user.user_id',
                 ),
             'vip' => array(
                 self::BELONGS_TO,
@@ -242,11 +242,11 @@ class Borrow extends CActiveRecord
         $criteria->alias = 'prefix';
         $criteria->compare('user.username', $this->username, true);
         $criteria->compare('vip.credit', $this->credit, true);
-        $criteria->compare('id', $this->id, true);
+        $criteria->compare('prefix.id', $this->id, true);
         $criteria->compare('site_id', $this->site_id);
-        $criteria->compare('user_id', $this->user_id);
+        $criteria->compare('prefix.user_id', $this->user_id);
         $criteria->compare('name', $this->name, true);
-        $criteria->compare('status', $this->status);
+        $criteria->compare('prefix.status', $this->status);
         $criteria->compare('order', $this->order);
         $criteria->compare('hits', $this->hits);
         $criteria->compare('litpic', $this->litpic, true);
@@ -280,7 +280,7 @@ class Borrow extends CActiveRecord
         $criteria->compare('use', $this->use, true);
         $criteria->compare('time_limit', $this->time_limit, true);
         $criteria->compare('style', $this->style, true);
-        $criteria->compare('account', $this->account, true);
+        $criteria->compare('prefix.account', $this->account, true);
         $criteria->compare('account_yes', $this->account_yes, true);
         $criteria->compare('tender_times', $this->tender_times, true);
         $criteria->compare('apr', $this->apr, true);
@@ -303,6 +303,7 @@ class Borrow extends CActiveRecord
             'pagination' => array('pageSize' => 15),
             'sort' => array(
                 'defaultOrder' => 'id ASC',
+                'attributes'=>array(
                 'username' => array(
                     'asc' => 'user.username',
                     'desc' => 'user.username DESC',
@@ -310,7 +311,7 @@ class Borrow extends CActiveRecord
                 'credit' => array(
                     'asc' => 'vip.credit',
                     'desc' => 'vip.credit DESC',
-                    ),'*',
+                    ),'*',),
                 ),
             'criteria' => $criteria,
             ));

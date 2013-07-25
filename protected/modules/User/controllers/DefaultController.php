@@ -83,9 +83,6 @@ class DefaultController extends SBaseController
 
         $this->getAvatar('small');
         $this->getInfo();
-        //echo "<pre>";
-        //        print_r($this->info);
-        //        exit();
         $this->render('index', array(
             'model' => $userModel,
             'info' => $this->info,

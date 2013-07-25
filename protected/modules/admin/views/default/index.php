@@ -26,7 +26,7 @@
             
 			<ul class="shortcut-buttons-set">
 				
-				<li><a class="shortcut-button" href="<?php echo Yii::app()->createUrl; ?>"><span>
+				<li><a class="shortcut-button" href="<?php echo Yii::app()->createUrl('admin/borrow'); ?>"><span>
 					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/image_add_48.png" alt="icon" /><br />
 					借贷管理
 				</span></a></li>

@@ -1,8 +1,8 @@
 
 <div class="clear"></div>
-	<div class="notification information png_bg">
+	<div class="notification attention png_bg">
 				<div>
-					有**条成功借款,列表如下
+					有<font color="red">[<?php echo $model->count('status=:status',array(':status'=>'0')); ?>]</font>条发标等待审核。
 				</div>
 			</div>
 <?php $this->widget('zii.widgets.grid.CGridView', array(

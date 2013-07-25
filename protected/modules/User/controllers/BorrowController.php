@@ -130,7 +130,7 @@ class BorrowController extends SBaseController
                     'repayment_account' => $repayment['total'],
                     'monthly_repayment' => $repayment['monthRepay'],
                     'name' => '0',
-                    'status' => '3', //状态3为发标 还未初审
+                    'status' => '0', //状态3为发标 还未初审
                     'addtime' => time(),
                     'addip' => Yii::app()->request->getUserHostAddress(),
                     );
