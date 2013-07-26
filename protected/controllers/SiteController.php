@@ -306,4 +306,18 @@ class SiteController extends SBaseController
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
     }
+    public function actionImage()
+    {
+        if(!isset($_GET['url']))
+        {
+            $this->layout = "//layouts/main";
+            $this->render('//site/msg', array(
+                    'msg' => '图像地址不存在',
+                    'msg_url' => Yii::app()->request->urlReferrer,
+                    'msg_content' => '点击返回'));
+            Yii::app()->end();
+        }
+        $this->layout="//layouts/blank";
+        $this->render('image',array('image'=>$_GET['url']));   
+    }
 }
