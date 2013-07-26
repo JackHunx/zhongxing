@@ -27,7 +27,7 @@ LI {
 	LIST-STYLE-TYPE: none
 }
 #about {
-	PADDING-BOTTOM: 20px; WIDTH: 550px; BORDER-BOTTOM: #ccc 1px solid
+	PADDING-BOTTOM: 20px;BORDER-BOTTOM: #ccc 1px solid
 }
 #about .planeart {
 	COLOR: #ccc
