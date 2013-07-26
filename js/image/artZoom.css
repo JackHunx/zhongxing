@@ -35,7 +35,7 @@ A.artZoom SPAN.loading {
 	BACKGROUND-POSITION: 0px -24px
 }
 .artZoomBox A.maxImgLink {
-	DISPLAY: inline; CURSOR: url(../images/zoomout.cur), pointer; ZOOM: 1
+	DISPLAY: inline; CURSOR: url(./zoomout.cur), pointer; ZOOM: 1
 }
 .artZoomBox A.maxImgLink .maxImg {
 	BORDER-RIGHT: #ccc 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ccc 1px solid; PADDING-LEFT: 5px; BACKGROUND: #fff; PADDING-BOTTOM: 5px; BORDER-LEFT: #ccc 1px solid; PADDING-TOP: 5px; BORDER-BOTTOM: #ccc 1px solid
