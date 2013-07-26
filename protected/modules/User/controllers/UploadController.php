@@ -63,7 +63,7 @@ class UploadController extends SBaseController
     {
         $model = new Attestation('search');
         $model->unsetAttributes();
-        $model->attributes = array('prefix.user_id' => Yii::app()->user->id);
+        $model->attributes = array('user_id' => Yii::app()->user->id);
         if (isset($_GET['Attestation']))
             $model->attributes = $_GET['Attestation'];
         $this->render('list', array('model' => $model));
