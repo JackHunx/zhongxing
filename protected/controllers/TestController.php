@@ -8,6 +8,8 @@ class TestController extends SBaseController
     }
 	public function actionIndex()
 	{
+	   $this->redirect('testurl');
+	   exit();
 	   $this->layout='adf';
 	   $this->render('index');
 	}
