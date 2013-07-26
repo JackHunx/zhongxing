@@ -42,7 +42,7 @@
 								
 								<p>
 									<label>通过积分</label>
-										<input class="text-input small-input" type="text" id="small-input" name="Attestation[value]"  value="15" />分<!-- Classes for input-notification: success, error, information, attention -->
+										<input class="text-input small-input" type="text" id="small-input" name="Attestation[value]"  value="" />分<!-- Classes for input-notification: success, error, information, attention -->
 									
 								</p>
 								
