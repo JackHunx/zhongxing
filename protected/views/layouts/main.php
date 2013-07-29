@@ -182,30 +182,7 @@ ETO;
 <!-- end navbar -->
 	
 	
-	<!--
-	<div class="headertabnav"><ul><li class="l cursor on"><a href="http://www.ppdai.com/"><span class="l center">首页</span></a><span class="r vertical"></span></li><li class="l cursor"><a href="http://www.ppdai.com/lend/"><span class="l center">我要借出</span></a><span class="r vertical"></span></li><li class="l cursor"><a href="http://www.ppdai.com/borrow/"><span class="l center">我要借入</span></a><span class="r vertical"></span></li><li class="l cursor"><a href="http://www.ppdai.com/account1/"><span class="l center">我的账户</span></a><span class="r vertical"></span></li><li class="l cursor"><a href="http://help.ppdai.com/"><span class="l center">帮助</span></a><span class="r vertical"></span></li><li class="l cursor"><a href="http://group.ppdai.com/"><span class="l center">论坛</span></a><span class="r vertical"></span></li><li class="l cursor"><a href="http://www.ppdai.com/bjbz/cxbz.html"><span class="l center">本金保障</span></a><span class="r vertical"></span></li><li class="r yahei" style="width:230px;display:none;">咨询电话：400-1181-081</li></ul></div>
-	<div class="headertabbottom"><ul><li class="l cursor on"><a href="http://www.ppdai.com/">欢迎</a></li><li class="l cursor"><a href="http://www.ppdai.com/help/how_it_works.htm">工作原理</a></li><li class="l cursor"><a href="http://www.ppdai.com/help/law.htm">法律政策</a></li><li class="l cursor"><a href="http://www.ppdai.com/help/fees.htm">资费说明</a></li><li class="l cursor"><a href="http://www.ppdai.com/help/aboutus.htm">关于我们</a></li><li class="l cursor"><a href="http://group.ppdai.com/forum.php?mod=announcement">最新公告</a></li></ul></div>
-		--><!--- user guid ---
-		<div id="slide" class="row-fluid span7 show-grid">
-			<p class="btn-group green ">
-			<ul class="dashboard-list">
-			<li class="pull-left"><button class="btn btn-large btn-primary"><a class="white" href="<?php echo
-    Yii::app()->baseUrl; ?>">首页</a></button>
-				<p class="btn-group green">
-					<button class="btn btn-primary">test1</button>
-					<button class="btn">test2</button>
-				</p>
-			</li>
-			<li class="pull-left"><button class="btn btn-large btn-primary">我要投资</button></li>
-			<li class="pull-left"><button class="btn btn-large btn-primary">我要贷款</button></li>
-			<li class="pull-left"><button class="btn btn-large btn-primary">我的账号</button></li>
-			<li class="pull-left"><button class="btn btn-large btn-primary">工具箱</button></li>
-			<li class="pull-left"><button class="btn btn-large btn-primary">客服中心</button></li>
-			<li class="pull-left"><button class="btn btn-large btn-primary">借贷论坛</button></li>
-			</ul>
-			</p>
-		</div>
-		<!--- end guid --->
+	
 		
 		<!---- test --->
 		
@@ -235,7 +212,7 @@ ETO;
 		
 			
 			<li class="" id="">
-				<span class="v"> <a class="whiete" href="http://www.17sucai.com/" class="">我要投资</a><span class="vertical pull-right"></span></span> 
+				<span class="v"> <a class="whiete" href="<?php echo Yii::app()->createUrl('User/invest'); ?>" class="">我要投资</a><span class="vertical pull-right"></span></span> 
 				<div class="kind_menu" style="display: none;">
 				
 					<a href="http://www.17sucai.com/">正在投标</a>
@@ -280,7 +257,7 @@ ETO;
 				</div>
 			</li>
 			<li class="" id="">
-				<span class="v"><a class="whiete" href="http://www.17sucai.com/" class="">工具箱</a><span class="vertical pull-right"></span></span> 
+				<span class="v"><a class="whiete" href="<?php echo Yii::app()->createUrl('tool'); ?>" class="">工具箱</a><span class="vertical pull-right"></span></span> 
 				<div class="kind_menu" style=" display: none;">
 				
 					<a href="http://www.17sucai.com/">利息计算</a>
@@ -291,7 +268,7 @@ ETO;
 				</div>
 			</li>
 			<li class="" id="">
-				<span class="v"> <a class="whiete" href="http://www.17sucai.com/" class="">帮助</a><span class="vertical pull-right"></span></span> 
+				<span class="v"> <a class="whiete" href="<?php echo Yii::app()->createUrl('help'); ?>" class="">帮助</a><span class="vertical pull-right"></span></span> 
 				<div class="kind_menu" style=" display: none;">
 					<a href="http://www.17sucai.com/">帮助中心</a>
 					<a href="http://www.17sucai.com/">客服中心</a>
@@ -300,7 +277,7 @@ ETO;
 				</div>
 			</li>
 			<li class="" id="">
-				<span class="v"> <a class="whiete" href="http://www.17sucai.com/" class="">借贷论坛</a></span> 
+				<span class="v"> <a class="whiete" href="#" class="">借贷论坛</a></span> 
 				<div class="kind_menu" style=" display: none;">
 					<a href="http://www.17sucai.com/">进入论坛</a>
 				</div>
@@ -489,6 +466,20 @@ date('Y') ?></p>
 		//判断当前频道属于哪个根目录模块就设置频道标签高亮
 			$("#nav li").attr("class","");
 			$("#nav li").eq(3).attr("class","nav_lishw"); //设置当前频道标签高亮
+			$(".nav_lishw .v a").attr("class","sele");
+			$(".nav_lishw .kind_menu").show();
+			break;
+            case  site_url.indexOf("index.php?r=tool") > 0 : 
+		//判断当前频道属于哪个根目录模块就设置频道标签高亮
+			$("#nav li").attr("class","");
+			$("#nav li").eq(4).attr("class","nav_lishw"); //设置当前频道标签高亮
+			$(".nav_lishw .v a").attr("class","sele");
+			$(".nav_lishw .kind_menu").show();
+			break;
+            case  site_url.indexOf("index.php?r=help") > 0 : 
+		//判断当前频道属于哪个根目录模块就设置频道标签高亮
+			$("#nav li").attr("class","");
+			$("#nav li").eq(5).attr("class","nav_lishw"); //设置当前频道标签高亮
 			$(".nav_lishw .v a").attr("class","sele");
 			$(".nav_lishw .kind_menu").show();
 			break;
