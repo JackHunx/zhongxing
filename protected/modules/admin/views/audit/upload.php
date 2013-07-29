@@ -23,12 +23,14 @@ Yii::app()->baseUrl; ?>/index.php?r=admin/audit/upload&Attestation[status]=2">�
         array(
             'header' => '用户',
             'name' => 'user_search',
-            'value' => '$data->user->username'),
+            'value' => '$data->user->username',
+            'headerHtmlOptions'=>array('width'=>100)),
 
         array(
             'header' => '真实姓名',
             'name' => 'user_realname',
-            'value' => '$data->user->realname'),
+            'value' => '$data->user->realname',
+            'headerHtmlOptions'=>array('width'=>100)),
         array(
             'header' => "认证类型",
             'value' => array($this, 'verifyType'),

@@ -2,7 +2,7 @@
 <div class="clear"></div>
 	<div class="notification attention png_bg">
 				<div>
-					有<font color="red">[<?php echo $model->count('status=:status',array(':status'=>'3')); ?>]</font>条流标。
+					有<font color="red">[<?php echo $model->count('status=:status',array(':status'=>'4')); ?>]</font>条流标。
 				</div>
 			</div>
 <?php $this->widget('zii.widgets.grid.CGridView', array(

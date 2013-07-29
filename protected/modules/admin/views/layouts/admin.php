@@ -62,7 +62,6 @@
 					</a>
 					<ul>
 						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/audit/upload">上传资料</a></li>
-						<li><a href="#"></a></li>
 					</ul>
 				</li>
 				
