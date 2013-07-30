@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
@@ -5215,7 +5215,7 @@ CREATE TABLE IF NOT EXISTS `zx_linkage` (
   `name` varchar(250) DEFAULT NULL,
   `value` varchar(250) DEFAULT NULL,
   `addtime` int(10) DEFAULT '0',
-  `addip` varchar(20) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `addip` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `type_id` (`type_id`),
   KEY `type_ida` (`type_id`,`value`)
@@ -5716,7 +5716,7 @@ INSERT INTO `zx_linkage` (`id`, `status`, `order`, `type_id`, `pid`, `name`, `va
 CREATE TABLE IF NOT EXISTS `zx_linkage_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `order` smallint(6) DEFAULT '0',
-  `name` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `nid` varchar(50) DEFAULT NULL,
   `addtime` int(10) DEFAULT '0',
   `addip` varchar(20) DEFAULT NULL,
