@@ -98,33 +98,7 @@ class UserController extends SBaseController
         echo 'id=' . $id . '</br>';
 
         echo 'email=' . $email;
-        /**
-
-         *         $email = '43555015@qq.com';
-         *         $safeEmail = Yii::app()->authstring->authcode($email,'ENCODE','safeEmail');
-         *         $urlEnsafeEmail=urlencode($safeEmail);
-         *         print_r($urlEnsafeEmail);
-         */
-        /**
-         * $model=new User;
-
-         * 		// Uncomment the following line if AJAX validation is needed
-         * 		// $this->performAjaxValidation($model);
-
-         * 		if(isset($_POST['User']))
-         * 		{
-         * 		  echo '<pre>';
-         * 		  print_r($_POST['User']);
-         *           exit();
-         * 			$model->attributes=$_POST['User'];
-         * 			if($model->save())
-         * 				$this->redirect(array('view','id'=>$model->user_id));
-         * 		}
-
-         * 		$this->render('create',array(
-         * 			'model'=>$model,
-         * 		));
-         */
+        
     }
     //return email post body
     private function getEmailBody()
@@ -296,6 +270,11 @@ class UserController extends SBaseController
         //验证开始
         list($userid, $email) = explode('&', $value);
         $model = $this->loadModel($userid);
+        if($model->email_status == '1')
+        {
+            $this->render('msg',array('msg'=>'<font color="red">邮箱已经验证请勿重复验证</font>','msg_url'=>Yii::app()->createUrl('User'),'msg_content'=>'进入用户中心'));
+            Yii::app()->end();
+        }
         if ($model->email == $email) {
             //验证成功 更改状态
             $model->email_status = '1';
