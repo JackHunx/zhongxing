@@ -70,24 +70,24 @@ class DefaultController extends SBaseController
     public function actionIndex()
     {
 
-
-        //$this->_user = Yii::app()->user;
-
-        // if (isset($_GET['id'])) {
-        //            $this->_userId = $_GET['id'];\
-        //        }
-        //$this->_userId = $_GET['id'];
-
         $userModel = $this->loadUserModel($this->_user->id);
         //get avatar
-
+        //获取用户账户信息
+        $account = Account::model()->find('user_id=:user_id', array(':user_id' => $this->
+                _user->id));
+        //get user amonut credit
+        $amount = UserAmount::model()->find('user_id=:user_id', array(':user_id' => $this->
+                _user->id));
+        //if($account == null)
         $this->getAvatar('small');
         $this->getInfo();
         $this->render('index', array(
             'model' => $userModel,
             'info' => $this->info,
             'vip' => $this->_vip,
-            'baseUrl' => Yii::app()->baseUrl));
+            'baseUrl' => Yii::app()->baseUrl,
+            'account' => $account,
+            'amount' => $amount));
     }
     /**
      * vip 查询

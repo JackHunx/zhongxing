@@ -193,7 +193,7 @@ ETO;
 		<ul class="c">
 		
 			<li class="nav_lishw" id="">
-				<span class="v"><a class="white" href="<?php echo Yii::app()->baseUrl; ?>"  class="sele">首页</a><span class="vertical pull-right"></span></span> 
+				<span class="v"><a class="white" href="<?php echo Yii::app()->baseUrl."/"; ?>"  class="sele">首页</a><span class="vertical pull-right"></span></span> 
 				<div class="kind_menu" >
 					<a href="">欢迎</a>
 					<a href="http://www.17sucai.com/">关于我们</a>

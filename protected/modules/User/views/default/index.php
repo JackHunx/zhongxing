@@ -20,21 +20,21 @@
 							<a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/validate/scene"><div class="credit_pic_scene_<?php echo $model->scene_status;?>" title="现场认证"></div></a>
 						</li>
 
-						<li>  <a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/account/recharge"><font color="#FF0000">账号充值</font></a>  <a href="<?php echo Yii::app()->createUrl('User/borrowManager/credit',array('type'=>'credit'));?>"><font color="#FF0000">申请信用额度</font></a>  <a href="#"><font color="#FF0000">申请担保额度</font></a> </li>
+						<li>  <a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/account/recharge"><font color="#FF0000">账号充值</font></a>  <a href="<?php echo Yii::app()->createUrl('User/borrowManager/credit',array('type'=>'credit'));?>"><font color="#FF0000">申请信用额度</font></a> <!-- <a href="#"><font color="#FF0000">申请担保额度</font></a>--> </li>
 						<li><span>VIP 期限： <a href="<?php echo $baseUrl; ?>/index.php?r=User/validate/vip"><?php echo $vip['msg']; ?></a></span></li>
-						<li><span>系统告知：</span><a href="/index.php?user&amp;q=code/message"><font color="#FF0000">24</font> 封未读信息</a>&nbsp; &nbsp; <a href="/index.php?user&amp;q=code/user/request">0 个好友邀请</a></li>
+						<li><span>系统告知：</span><a href="/index.php?user&amp;q=code/message"><font color="#FF0000">0</font> 封未读信息</a>&nbsp; &nbsp; <a href="/index.php?user&amp;q=code/user/request">0 个好友邀请</a></li>
 					</ul>
 				</div>
 			</div>
 			
 			<div class="user_right_li">
-				<div class="title"><span style="float:right; font-size:12px; font-weight:normal"> 上次登录IP：112.233.85.210 - 上次登录时间：2013-06-22 13:49 </span>账号详情 </div>
+				<div class="title"><span style="float:right; font-size:12px; font-weight:normal"> 上次登录IP：--------- - 上次登录时间：-------------- </span>账号详情 </div>
 				<div class="content">
 									<ul>
-						<li><span> 账户总额[?]：<font>￥0.10</font>  <a href="index.php?user&amp;q=code/account/log">资金记录查询</a>  | <a href="index.php?user&amp;q=code/account">账户资金详情</a> </span></li>
-						<li><span> 可用余额[?]：<font>￥0.10</font>   </span>&nbsp;<a href="index.php?user&amp;q=code/account/cash_new"><font style="font-size:12px;" color="#FF0000">[提现]</font></a> <a href="index.php?user&amp;q=code/account/recharge_new"><font style="font-size:12px;" color="#FF0000">[充值]</font>  </a> </li>
-						<li><span> 冻结总额[?]：<font>￥0.00</font>   </span></li>
-						<li><span> 待收总额[?]：<font>￥0.00</font></span></li>
+						<li><span> 账户总额[?]：<font>￥<?php echo $account==null ? '0':$account->total; ?></font>  <a href="<?php echo Yii::app()->createUrl('User/account/log'); ?>">资金记录查询</a>  | <a href="<?php echo Yii::app()->createUrl('User/account');?>">账户资金详情</a> </span></li>
+						<li><span> 可用余额[?]：<font>￥<?php echo $account==null ? "0.00":$account->use_money;?></font>   </span>&nbsp;<a href="<?php echo $this->createUrl('account/cash');?>"><font style="font-size:12px;" color="#FF0000">[提现]</font></a> <a href="<?php echo $this->createUrl('account/recharge');?>"><font style="font-size:12px;" color="#FF0000">[充值]</font>  </a> </li>
+						<li><span> 冻结总额[?]：<font>￥<?php echo $account == null ? "0.00":$account->no_use_money;?></font>   </span></li>
+						<li><span> 待收总额[?]：<font>￥<?php echo $account == null ? '0.00':$account->collection;?></font></span></li>
 						<li><span> 待收利息[?]：<font>￥0</font>   </span></li>
 						<li><span> 最近待收金额[?]：<font>￥0</font></span></li>
 						<li><span> 最近待收时间[?]：<font></font> <a href="index.php?user&amp;q=code/borrow/gathering&amp;status=0">[待收明细]</a></span></li>
@@ -45,8 +45,8 @@
 						<li><span> 最近待还金额[?]：<font>￥0</font></span></li>
 						<li><span> 最近待还时间[?]：<font>-</font> <a href="index.php?user&amp;q=code/borrow/repaymentplan">[还款明细]</a></span></li>
 						<li><span> 待扣会费[?]：<font>￥0</font>   </span></li>
-						<li><span> 信用额度[?]：<font>￥20000.00</font>    </span></li>
-						<li><span> 可用信用额度[?]：<font>￥20000.00</font>    </span></li>
+						<li><span> 信用额度[?]：<font>￥<?php echo $amount == null ? System::model()->find('nid=:nid',array(':nid'=>'con_user_amount'))->value:$amount->credit;?></font>    </span></li>
+						<li><span> 可用信用额度[?]：<font>￥<?php echo $amount->credit_use;?></font>    </span></li>
 						<li><span> 借款担保额度[?]：<font>￥0.00</font>    </span></li>
 						<li><span> 可用借款担保额度[?]：<font>￥0.00</font>    </span></li>
 						<li><span> 投资担保额度[?]：<font>￥0.00</font>    </span></li>
@@ -76,9 +76,10 @@
                 <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=User/validate/vip">申请VIP</a></li><li class="icon2">
                 </li>
 
-                <li><a target="_blank" href="/publish/index.html">发布借款信息</a></li><li class="icon2">
+                <li><a target="_blank" href="<?php echo 
+				$this->createUrl('borrow/create',array('type'=>'month'));?>">发布借款信息</a></li><li class="icon2">
                 </li>
-                <li><a target="_blank" href="/?user&amp;q=code/borrow/repayment">借款成功</a></li>
+                <li><a target="_blank" href="<?php echo $this->createUrl('borrow/repayment');?>">借款成功</a></li>
             </ul>
         </div></div></div>			
 
@@ -105,7 +106,7 @@
                 </li>
 
                 <li><a target="_blank" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=user/invest">投标借出</a></li><li class="icon2"></li>
-                <li><a target="_blank" href="/?user&amp;q=code/borrow/success">等待回收还款</a></li>
+                <li><a target="_blank" href="<?php echo $this->createUrl('borrow/success');?>">等待回收还款</a></li>
             </ul>
         </div></div></div>
 			
