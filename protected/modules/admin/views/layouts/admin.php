@@ -99,11 +99,11 @@
 					</ul>
 				</li>      
 				<li>
-					<a href="#" class="nav-top-item">
+					<a href="<?php echo Yii::app()->createUrl('admin/site');?>" class="nav-top-item">
 						网站管理
 					</a>
 					<ul>
-						<li><a href="#">滚动图片</a></li>
+						<li><a href="<?php echo $this->createUrl('site/scroll'); ?>">滚动图片</a></li>
 						<li><a href="#">站内公告</a></li>
 						
 					</ul>

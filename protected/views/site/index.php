@@ -13,7 +13,7 @@
      
 
                     echo <<<ETO
-                    <div><a href="{$scroll[$i]['url']}" title="{$scroll[$i]['title']}"><img width="620" height="340" alt="{$scroll[$i]['title']}" src="{$scroll[$i]['src']}"></a></div>
+                    <div><a href="{$scroll[$i]['url']}" title="{$scroll[$i]['title']}"><img width="650" height="200" alt="{$scroll[$i]['title']}" src="{$scroll[$i]['src']}"></a></div>
                     
 ETO;
                     
