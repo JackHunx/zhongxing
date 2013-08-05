@@ -78,7 +78,7 @@ background-position:0 -99px;
 	_background:url('./img/wage_earners.png') 0 0 no-repeat;background-position: -152px -62px;}
 #nav li .v a{font-weight:bold;width:100px;height:14px;line-height:33px;display:block;color:#FFF;float:left;font-family:Arial,Verdana,Tahoma,"宋体";}
 #nav li .v a:hover,#nav li .v .sele{background:url('./img/wage_earners.png') 0 0 no-repeat;
-	_background:url('./img/wage_earners.png') 0 0 no-repeat; background-position: -152px -62px;width:105px; text-decoration:none;height:33px;line-height:33px;font-size:15px;padding-left:0px;}
+	_background:url('./img/wage_earners.png') 0 0 no-repeat; background-position: -154px -63px;width:105px; text-decoration:none;height:33px;line-height:33px;font-size:15px;padding-left:0px;}
 #nav .kind_menu{top:35px;height:17px;*height:16px;line-height:20px;vertical-align:middle;position:absolute;left:2px;width:880px;text-align:left;display:none;color:#000;font-size:12px;}
 #nav .kind_menu a{color:#000;float:left;text-align:center;width:80px;font-family:Arial,Verdana,Tahoma,"宋体";font-size:12px;}
 #nav .kind_menu a:hover{color:#000;border-bottom:2px #369bd7 solid;}

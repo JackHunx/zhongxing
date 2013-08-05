@@ -79,7 +79,7 @@ class DefaultController extends SBaseController
         $amount = UserAmount::model()->find('user_id=:user_id', array(':user_id' => $this->
                 _user->id));
         //if($account == null)
-        $this->getAvatar('small');
+        $this->getAvatar('big');
         $this->getInfo();
         $this->render('index', array(
             'model' => $userModel,

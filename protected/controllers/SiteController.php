@@ -179,7 +179,7 @@ class SiteController extends SBaseController
         // get scrolPic
         $scroll = $this->getScrolPic();
         //get user info
-        $this->getUserInfo('small');
+        $this->getUserInfo('big');
         // renders the view file 'protected/views/site/index.php'
         // using the default layout 'protected/views/layouts/main.php'
         $this->render('index', array('scroll' => $scroll, 'userInfo' => $this->info));
