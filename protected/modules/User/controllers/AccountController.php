@@ -148,14 +148,8 @@ class AccountController extends SBaseController
      */
     public function actionRecharge()
     {
-        //throw new CHttpException('505');
-        //$value = $this->getPaymentType('3');
-        //        header("Content-Type:text/html;charset=utf-8");
-        //        echo "<pre>";
-        //        print_r($value);
-        //        exit();
-        $offline = $this->getPaymentType('1');
-        $online = $this->getPaymentType('2');
+        $offline = $this->getPaymentType('2');
+        $online = $this->getPaymentType('1');
         $webname = $this->getWebName();
         $user = User::model()->findByPk(Yii::app()->user->id);
         if (isset($_POST['recharge'])) {
@@ -213,7 +207,7 @@ class AccountController extends SBaseController
         $pages->applyLimit($criteria);
         $criteria->limit = $pages->pageSize;
         $criteria->offset = $pages->currentPage * $pages->pageSize;
-        $record=AccountRecharge::model()->findAll($criteria);
+        $record = AccountRecharge::model()->findAll($criteria);
 
         // print_r();
         //$criteria = new CDbCriteria();
@@ -268,30 +262,5 @@ class AccountController extends SBaseController
         return $value;
 
     }
-    // Uncomment the following methods and override them if needed
-    /*
-    public function filters()
-    {
-    // return the filter configuration for this controller, e.g.:
-    return array(
-    'inlineFilterName',
-    array(
-    'class'=>'path.to.FilterClass',
-    'propertyName'=>'propertyValue',
-    ),
-    );
-    }
 
-    public function actions()
-    {
-    // return external action classes, e.g.:
-    return array(
-    'action1'=>'path.to.ActionClass',
-    'action2'=>array(
-    'class'=>'path.to.AnotherActionClass',
-    'propertyName'=>'propertyValue',
-    ),
-    );
-    }
-    */
 }

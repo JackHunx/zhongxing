@@ -96,7 +96,6 @@ h3 { font-size: 2em; margin: 5px auto 10px; background: url(http://static.ppdai.
 .formActions label { color: #393C3D; display: block; float: right; font-size: 13px; padding: 10px 0 0; width: 240px; }
 #signUpBox, .smallBox { background: #fff; }
 ol, ul { list-style: none outside none; }
-.foot { margin-top: 50px; }
 .clearfix { zoom: 1; }
 .clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
 #header_inner { width: 980px; position: relative; margin: 0 auto; }
@@ -123,7 +122,7 @@ TD{color:#55483a;}
 HR{border:0;height:0;color:#b6aca3;height:1px;background-color:#b6aca3;}
 IMG{border:0;}
 FORM{padding:0;margin:0;}
-H1{font-weight:bold;font-size:14px;margin:12px 0px 0px;font-family:宋体;color:#3c488f;}
+H1{font-weight:bold;font-size:14px;font-family:宋体;color:#3c488f;}
 H2{font-weight:bolder;font-size:12px;margin:0;color:#3c488f;}
 H3{font-weight:bolder;font-size:12px;margin:0;color:#515b82;}
 H4{font-weight:bolder;font-size:12px;margin:0;color:#666666;}

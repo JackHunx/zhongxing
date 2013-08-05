@@ -13,7 +13,7 @@
      
 
                     echo <<<ETO
-                    <div><a href="{$scroll[$i]['url']}" title="{$scroll[$i]['title']}"><img width="620" height="340" alt="{$scroll[$i]['title']}" src="{$scroll[$i]['src']}"></a></div>
+                    <div><a href="{$scroll[$i]['url']}" title="{$scroll[$i]['title']}"><img width="650" height="200" alt="{$scroll[$i]['title']}" src="{$scroll[$i]['src']}"></a></div>
                     
 ETO;
                     
@@ -39,7 +39,12 @@ ETO;
         $logout = Yii::app()->baseUrl.'/index.php?r=site/logout';
         $userCenter = Yii::app()->baseUrl.'/index.php?r=User';
         $username = Yii::app()->user->username;
-        
+        $account = Yii::app()->createUrl('User/account');
+        $accountlog=Yii::app()->createUrl('User/account/log');
+        $accountrecharge=Yii::app()->createUrl('User/account/recharge');
+        $accountrepayment=Yii::app()->createUrl('User/account/repayment');
+        $accountinvite=Yii::app()->createUrl('User/account/invite');
+        $accountcash=Yii::app()->createUrl('User/account/cash');
         //after login
         echo <<<ETO
         <div class="l index_topnav_loginnav">
@@ -66,12 +71,12 @@ ETO;
 			</li>
 
 			<li class="index_log_li1" style="line-height:15px">
-				<a href="">资金记录</a>&nbsp;&nbsp;&nbsp;
-				<a href="">帐户详情</a>&nbsp;&nbsp;&nbsp;
-				<a href="">我要收款</a><br>
-				<a href="">我要充值</a>&nbsp;&nbsp;&nbsp;
-				<a href="">我要提现</a>&nbsp;&nbsp;&nbsp;
-				<a href="">我要还款</a>
+				<a href="$accountlog">资金记录</a>&nbsp;&nbsp;&nbsp;
+				<a href="$account">帐户详情</a>&nbsp;&nbsp;&nbsp;
+				<a href="$accountinvite">我要收款</a><br>
+				<a href="$accountrecharge">我要充值</a>&nbsp;&nbsp;&nbsp;
+				<a href="$accountcash">我要提现</a>&nbsp;&nbsp;&nbsp;
+				<a href="$accountrepayment">我要还款</a>
 			</li>
 		</ul>
                     
@@ -144,7 +149,7 @@ ETO;
             
             <?php 
             
-            for($i=0;$i<5;$i++)
+            for($i=0;$i<10;$i++)
             {
             echo <<<ETO
                 <!-- single around -->
@@ -154,6 +159,7 @@ ETO;
                             <div>
                                 <a href="/list/293426">
                                     线下考察 *****加工厂 经营周转借款</a>
+                                    
                                 <div>
                                     <ul class="l nowlist_2nav">
                                         <li>借款金额：<span class="color3">¥140,000</span></li>
@@ -164,10 +170,12 @@ ETO;
                                             <label class="color3 l" style="width: 97px; display: block;">
                                                 16.00%</label>
                                             借款期限：9个月</li>
-                                        <li><span class="l">借款进度：</span> <span class="loading" style="border: 1px solid #E2E2E2;
-                                            background-color: rgb(226,226,226);"><span style="width: 79%">
-                                            </span></span><span class="l" style="margin-right: 5px;">
-                                                79%</span>已完成439笔投标</li>
+                                        <li>
+ETO;
+                                        $this->widget('application.widget.ProgressBar.ProgressBar',array('params'=>'60','style'=>'blue'));
+echo <<<ETO
+
+          </li>
                                     </ul>
                                 </div>
                             </div>

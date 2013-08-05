@@ -32,7 +32,8 @@ class UploadController extends SBaseController
                 'actions' => array(
                     'card',
                     'attestation',
-                    'moreAttestation'),
+                    'moreAttestation',
+                    'scroll'),
                 'users' => array('@'),
                 ),
             array(
@@ -71,6 +72,66 @@ class UploadController extends SBaseController
         $result['url'] = Yii::app()->getBaseUrl() . '/upload/card/' . $uploader->
             getUploadName();
         $result['saveUrl'] = $url = '/upload/card/' . $uploader->getUploadName();
+        //$resuslt['response'] = "test";
+        // $result['folder'] = $webFolder;
+
+        $model = new Upfiles;
+        $value = array(
+            'name' => $result['filename'],
+            'user_id' => Yii::app()->user->id,
+            'code' => $_POST['code'],
+            'aid' => '0',
+            'status' => '0',
+            'filetype' => $this->extend($result['filename']),
+            'filename' => $result['filename'],
+            'filesize' => filesize($tempFolder . $result['filename']),
+            'fileurl' => $url,
+            'if_cover' => '0',
+            'order' => '0',
+            'hits' => '0',
+            'addtime' => time(),
+            'addip' => Yii::app()->request->getUserHostAddress(),
+            );
+        $value['updatetime'] = $value['addtime'];
+        $value['updateip'] = $value['addip'];
+        $model->attributes = $value;
+
+        if ($model->save()) {
+            $uploadedFile = $tempFolder . $result['filename'];
+
+            header("Content-Type: text/html");
+            $result = json_encode($result);
+            echo $result;
+            //echo "haha";
+            Yii::app()->end();
+        }
+
+    }
+    //
+    
+    /**
+     * upload scroll pic 
+     */
+    public function actionScroll()
+    {
+        $tempFolder = Yii::getPathOfAlias('webroot') . '/upload/scroll/';
+        Yii::import("ext.EFineUploader.qqFileUploader");
+        $uploader = new qqFileUploader();
+        $uploader->allowedExtensions = array(
+            'jpg',
+            'jpeg',
+            'png',
+            'gif');
+        //the max size
+        $uploader->sizeLimit = 500 * 1024; //100kb
+        $uploader->chunksFolder = $tempFolder . 'chunks';
+        $result = $uploader->handleUpload($tempFolder);
+        //save to db
+
+        $result['filename'] = $uploader->getUploadName();
+        $result['url'] = Yii::app()->getBaseUrl() . '/upload/scroll/' . $uploader->
+            getUploadName();
+        $result['saveUrl'] = $url = '/upload/scroll/' . $uploader->getUploadName();
         //$resuslt['response'] = "test";
         // $result['folder'] = $webFolder;
 

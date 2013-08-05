@@ -14,7 +14,8 @@
 
 
 </head>
-	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
+	<body>
+    <div id="content"><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		
 		<div id="sidebar"><div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
 			
@@ -25,9 +26,9 @@
 		  
 			<!-- Sidebar Profile links -->
 			<div id="profile-links">
-				Hello, <a href="#" title="Edit your profile"><?php echo Yii::app()->user->username;?></a>, 你有 <a href="#messages" rel="modal" title="3 Messages">x 条未读信息</a><br />
+				Hello, <a href="#" title="Edit your profile"><?php echo Yii::app()->user->username;?></a>, 你有 <a href="<?php echo Yii::app()->createUrl('test');?>" rel="modal" title="3 Messages">x 条未读信息</a><br />
 				<br />
-				<a href="<?php echo Yii::app()->baseUrl;?>/index.php" target="_blank" title="View the Site">查看首页</a> | <a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=site/logout" title="Sign Out">退出</a>
+				<?php echo CHtml::link('后台首页',Yii::app()->createUrl('admin'));?> | <a href="<?php echo Yii::app()->baseUrl;?>/index.php" target="_blank" title="View the Site">前台首页</a> | <a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=site/logout" title="Sign Out">退出</a>
 			</div>        
 			
 			<ul id="main-nav">  <!-- Accordion Menu -->
@@ -61,7 +62,6 @@
 					</a>
 					<ul>
 						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/audit/upload">上传资料</a></li>
-						<li><a href="#"></a></li>
 					</ul>
 				</li>
 				
@@ -75,8 +75,6 @@
 						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user">用户列表</a></li>
                         <li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user/info">用户信息</a></li>
                         <li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/user/vip">VIP用户</a></li>
-						<li><a href="#">用户组</a></li>
-						<li><a href="#">权限分配</a></li>
 					</ul>
 				</li>
                 <li>
@@ -101,23 +99,22 @@
 					</ul>
 				</li>      
 				<li>
-					<a href="#" class="nav-top-item">
+					<a href="<?php echo Yii::app()->createUrl('admin/site');?>" class="nav-top-item">
 						网站管理
 					</a>
 					<ul>
-						<li><a href="#">滚动图片</a></li>
+						<li><a href="<?php echo $this->createUrl('site/scroll'); ?>">滚动图片</a></li>
 						<li><a href="#">站内公告</a></li>
-						<li><a href="#">帖子管理</a></li>
-						<li><a href="#">主题管理</a></li>
+						
 					</ul>
 				</li> 
 				<li>
-					<a href="#" class="nav-top-item">
+					<a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/system" class="nav-top-item">
 						系统设置
 					</a>
 					<ul>
 						<li><a href="#">系统参数</a></li>
-						<li><a href="#">邮箱设置</a></li>
+						<li><a href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/system/email">邮箱设置</a></li>
 						<li><a href="#">数据库管理</a></li>
 						
 					</ul>
@@ -176,9 +173,10 @@
 		
 		<!-- content begin-->
         <div id="main-content">
+        
 <?php echo $content;?>
 </div>
 		<!-- End #main-content -->
 
-	</div></body>
+	</div></div></body>
 </html>

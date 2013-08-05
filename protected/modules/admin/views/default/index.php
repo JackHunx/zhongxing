@@ -26,20 +26,21 @@
             
 			<ul class="shortcut-buttons-set">
 				
-				<li><a class="shortcut-button" href="#"><span>
-					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/pencil_48.png" alt="icon" /><br />
-					Write an Article
+				<li><a class="shortcut-button" href="<?php echo Yii::app()->createUrl('admin/borrow'); ?>"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/image_add_48.png" alt="icon" /><br />
+					借贷管理
 				</span></a></li>
 				
 				<li><a class="shortcut-button" href="#"><span>
 					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/xindaishenhe.png" alt="icon" /><br />
 					信贷审核
 				</span></a></li>
-				
-				<li><a class="shortcut-button" href="#"><span>
-					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/image_add_48.png" alt="icon" /><br />
-					Upload an Image
+                <li><a class="shortcut-button" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/account"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/account.png" alt="icon" /><br />
+					资金管理
 				</span></a></li>
+				
+				
 				
 				<li><a class="shortcut-button" href="#"><span>
 					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/clock_48.png" alt="icon" /><br />
@@ -63,10 +64,137 @@
 			</ul>
             	
             
+            <div class="content-box column-left">
+				
+				<div class="content-box-header"> <!-- Add the class "closed" to the Content box header to have it closed by default -->
+					
+					<h3>借贷管理</h3>
+					
+				</div> <!-- End .content-box-header -->
+				
+				<div class="content-box-content">
+					
+				      	<ul class="shortcut-buttons-set">
+				
+				<li><a class="shortcut-button" href="<?php echo Yii::app()->createUrl('admin/borrow/push');?>"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/borrow.png" alt="icon" /><br />
+					发标待审
+				</span></a></li>
+                 <li><a class="shortcut-button" href="<?php echo Yii::app()->createUrl('admin/borrow/inviteTender');?>"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/account.png" alt="icon" /><br />
+					正在招标
+				</span></a></li>
+				
+				
+				<li><a class="shortcut-button" href="<?php echo Yii::app()->createUrl('admin/borrow/finish');?>"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/xindaishenhe.png" alt="icon" /><br />
+					已满标待审
+				</span></a></li>
+               
+				
+				
+				
+				
+				<li><a class="shortcut-button" href="<?php Yii::app()->createUrl('admin/borrow/flowStandard');?>"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/tender-48.png" alt="icon" /><br />
+					流标
+				</span></a></li>
+                <li><a class="shortcut-button" href="#messages" rel="modal"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
+					已还款
+				</span></a></li>
+                <li><a class="shortcut-button" href="http://localhost/test/index.jpg" rel="modal"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
+					逾期
+				</span></a></li>
+                
+                 <li><a class="shortcut-button" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/credit"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/Price_Tag-48.png" alt="icon" /><br />
+					额度管理
+				</span></a></li>
+                <li><a class="shortcut-button" href="#messages" rel="modal"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
+					借款明细
+				</span></a></li>
+               
+				
+			</ul>
+					
+				</div> <!-- End .content-box-content -->
+				
+			</div> <!-- End .content-box -->
+            
+            <div class="content-box column-right closed-box">
+				
+				<div class="content-box-header"> <!-- Add the class "closed" to the Content box header to have it closed by default -->
+					
+					<h3>用户管理</h3>
+					
+				</div> <!-- End .content-box-header -->
+				
+				<div class="content-box-content">
+					
+				      	<ul class="shortcut-buttons-set">
+				
+				<li><a class="shortcut-button" href="#"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/image_add_48.png" alt="icon" /><br />
+					发标待审
+				</span></a></li>
+                 <li><a class="shortcut-button" href="<?php echo Yii::app()->baseUrl;?>/index.php?r=admin/account"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/account.png" alt="icon" /><br />
+					正在招标
+				</span></a></li>
+				
+				
+				<li><a class="shortcut-button" href="#"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/xindaishenhe.png" alt="icon" /><br />
+					已满标待审
+				</span></a></li>
+               
+				
+				
+				<li><a class="shortcut-button" href="#"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/clock_48.png" alt="icon" /><br />
+					满标审核
+				</span></a></li>
+				
+				<li><a class="shortcut-button" href="#messages" rel="modal"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
+					流标
+				</span></a></li>
+                <li><a class="shortcut-button" href="#messages" rel="modal"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
+					已还款
+				</span></a></li>
+                <li><a class="shortcut-button" href="#messages" rel="modal"><span>
+					<img src="<?php echo Yii::app()->baseUrl;?>/images/admin//icons/comment_48.png" alt="icon" /><br />
+					逾期
+				</span></a></li>
+                
+                
+               
+				
+			</ul>
+					
+				</div> <!-- End .content-box-content -->
+				
+			</div> <!-- End .content-box -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             <!-- End .shortcut-buttons-set -->
 			
 			<div class="clear"></div> <!-- End .clear -->
+            
+ 
 			
 			<div class="content-box"><!-- Start Content Box -->
 				

@@ -32,14 +32,7 @@
 			<div class="user_right_border">
 				<div class="l">充值类型：</div>
 				<div class="c">
-		
-         <?php 
-                    foreach($online as $key=>$val)
-                    {
-                        echo '<input type="radio" name="recharge[payment]" class="input_border" value="'.$val['id'].'" />'.$val['name'].'<br/><font color="#ff0000">'.$val['description'].'</font><br/>';
-                    }
-                
-                ?>
+		              <font color="red">功能未开放</font>
 				</div>
 			</div>
 		</div>
@@ -52,7 +45,7 @@
                 <?php 
                     foreach($offline as $key=>$val)
                     {
-                        echo '<input type="radio" name="recharge[payment]" class="input_border" value="'.$val['id'].'" />'.$val['name'].'<br/><font color="#ff0000">'.$val['description'].'</font><br/>';
+                        echo '开户行：'.$val['name'].'<br/>账号：<font color="#ff0000">'.$val['description'].'</font><br/>';
                     }
                 
                 ?>
@@ -154,7 +147,7 @@
 			}
         }
     </script>
-		{/literal}
+		
 		<div class="user_right_foot">
 		* 温馨提示：网上银行充值过程中请耐心等待,充值成功后，请不要关闭浏览器,充值成功后返回<?php echo $webname;?>,充值金额才能打入您的帐号。如有问题,请与我们联系
 		</div>

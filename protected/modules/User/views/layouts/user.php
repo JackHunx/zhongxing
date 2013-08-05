@@ -45,7 +45,7 @@
 	<div class="title" id="user_title_jiekuan"><span onclick="changeUserMenu('jiekuan')">&nbsp;</span>我是借款者</div>
 	<div class="menu">
 		<ul id="user_menu_jiekuan">
-			<li><a href="borrow/index.html" target="_blank">我要借款</a></li>
+			<li><a href="<?php echo Yii::app()->createUrl('User/borrow/create',array('type'=>'credit')) ;?>" target="_blank">我要借款</a></li>
 			<li><a href="/index.php?user&amp;q=code/borrow/publish">正在招标的借款</a></li>
 			<li><a href="/index.php?user&amp;q=code/borrow/unpublish">尚未发布的借款</a></li>
 			<li><a href="/index.php?user&amp;q=code/borrow/repayment">正在还款的借款</a></li>

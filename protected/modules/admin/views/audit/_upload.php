@@ -28,7 +28,7 @@
 								    用户名:<?php echo $username; ?><br />
                                     类型:<?php echo $attestationType; ?><br />
                                     <label>证件图片</label>
-                                    <a href="<?php echo Yii::app()->baseUrl.$attestation->litpic ;?>" target="_blank"><img src="<?php echo Yii::app()->baseUrl.$attestation->litpic ;?>" width="100" height="100" /></a><br />
+                                    <a href="<?php echo Yii::app()->createUrl('site/image',array('url'=> Yii::app()->baseUrl.$attestation->litpic));?>" target="_blank"><img src="<?php echo Yii::app()->baseUrl.$attestation->litpic ;?>" width="100" height="100" /></a><br />
                                     说明:<?php echo $attestation->content; ?><br /><br />
                                     添加时间/IP:<?php echo date('Y-m-d H:i:s',$attestation->addtime).'/'.$attestation->addip;?>
 								</p>
@@ -42,7 +42,7 @@
 								
 								<p>
 									<label>通过积分</label>
-										<input class="text-input small-input" type="text" id="small-input" name="Attestation[value]"  value="15" />分<!-- Classes for input-notification: success, error, information, attention -->
+										<input class="text-input small-input" type="text" id="small-input" name="Attestation[value]"  value="" />分<!-- Classes for input-notification: success, error, information, attention -->
 									
 								</p>
 								

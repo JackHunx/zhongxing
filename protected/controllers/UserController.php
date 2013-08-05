@@ -98,33 +98,7 @@ class UserController extends SBaseController
         echo 'id=' . $id . '</br>';
 
         echo 'email=' . $email;
-        /**
-
-         *         $email = '43555015@qq.com';
-         *         $safeEmail = Yii::app()->authstring->authcode($email,'ENCODE','safeEmail');
-         *         $urlEnsafeEmail=urlencode($safeEmail);
-         *         print_r($urlEnsafeEmail);
-         */
-        /**
-         * $model=new User;
-
-         * 		// Uncomment the following line if AJAX validation is needed
-         * 		// $this->performAjaxValidation($model);
-
-         * 		if(isset($_POST['User']))
-         * 		{
-         * 		  echo '<pre>';
-         * 		  print_r($_POST['User']);
-         *           exit();
-         * 			$model->attributes=$_POST['User'];
-         * 			if($model->save())
-         * 				$this->redirect(array('view','id'=>$model->user_id));
-         * 		}
-
-         * 		$this->render('create',array(
-         * 			'model'=>$model,
-         * 		));
-         */
+        
     }
     //return email post body
     private function getEmailBody()
@@ -154,7 +128,7 @@ class UserController extends SBaseController
 			<p style=\"overflow: hidden; width: 100%; word-wrap: break-word;\"><a title=\"点击完成注册\" href=\"" .
             $this->userInfo['webUrl'] . "/index.php?r=user/checkstring&string=" . $string .
             "\" target=\"_blank\" swaped=\"true\">" . $this->userInfo['webUrl'] .
-            "/index.php?r=user/checkestring&string=" . $string . "</a>
+            "/index.php?r=user/checkstring&string=" . $string . "</a>
 			<br><span style=\"color: rgb(153, 153, 153);\">(如果链接无法点击，请将它拷贝到浏览器的地址栏中)</span></p>
 
 			<p>感谢您光临众兴投资用户中心，我们的宗旨：为您提供优秀的产品和优质的服务！ <br>现在就登录吧!
@@ -205,6 +179,8 @@ class UserController extends SBaseController
                     Yii::app()->user->login($identity);
                     //初始化用户积分并记录
                     Yii::app()->credit->initalize();
+                    //初始化信用额度
+                    $this->initAmount($model->user_id);
                     //进入用户中心邮箱
                     $this->redirect(array(
                         'User/email',
@@ -294,10 +270,26 @@ class UserController extends SBaseController
         //验证开始
         list($userid, $email) = explode('&', $value);
         $model = $this->loadModel($userid);
+        if($model->email_status == '1')
+        {
+            $this->render('msg',array('msg'=>'<font color="red">邮箱已经验证请勿重复验证</font>','msg_url'=>Yii::app()->createUrl('User'),'msg_content'=>'进入用户中心'));
+            Yii::app()->end();
+        }
         if ($model->email == $email) {
             //验证成功 更改状态
             $model->email_status = '1';
             if ($model->save()) {
+                //验证通过积分
+                $credit = CreditType::model()->findByPk('1');
+                 $val = array(
+                    'user_id' => $userid,
+                    'type_id' => '1', //积分类型 在此处固定
+                    'value' => $credit->value,
+                    'remark' => $credit->name,
+                    'op' => '1', //增加积分
+                    'op_user' => $userid,
+                    );
+                Yii::app()->credit->set($userid, $val);
                 //邮箱验证状态更改
                 $this->render('msg', array(
                     'msg' => '邮箱激活成功',
@@ -349,6 +341,21 @@ class UserController extends SBaseController
     private function encypt($value)
     {
         return md5($value);
+    }
+    //init amount 
+    private function initAmount($userid)
+    {
+        //获取系统设置初始化额度
+        $record = System::model()->find('nid=:nid',array(':nid'=>'con_user_amount'));
+        $amount = $record==null ? '2000':$record->value;
+        $model = new UserAmount;
+        $model->attributes = array(
+            'user_id'=>$userid,
+            'credit'=>$amount,
+            'credit_use'=>$amount,
+        );
+        if(!$model->save())
+            throw new CException('init amount error when register user');
     }
     /**
      * Updates a particular model.

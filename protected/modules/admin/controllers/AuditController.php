@@ -29,9 +29,9 @@ class AuditController extends SBaseController
                     $model->attributes = array(
                         'status' => $_POST['Attestation']['status'],
                         'jifen' => $attestation['value'],
-                        'verify_time'=>time(),
-                        'verify_user'=>Yii::app()->user->id,
-                        'verify_remark'=>$_POST['Attestation']['remark'],
+                        'verify_time' => time(),
+                        'verify_user' => Yii::app()->user->id,
+                        'verify_remark' => $_POST['Attestation']['remark'],
                         );
                     $val = array(
                         'user_id' => $model->user_id,
@@ -49,8 +49,8 @@ class AuditController extends SBaseController
                     //审核不通过 status == 2
                     $model->attributes = array(
                         'status' => $_POST['Attestation']['status'],
-                        'verify_remark'=>$_POST['Attestation']['remark'],
-                     );
+                        'verify_remark' => $_POST['Attestation']['remark'],
+                        );
 
                     if (!$model->update())
                         throw new CException('update to table {attestion} error');
@@ -71,10 +71,11 @@ class AuditController extends SBaseController
 
         }
         $count = array(
-            'success'=>Attestation::model()->count('status=:status', array(':status' => '1')),
-            'wait'=>Attestation::model()->count('status=:status', array(':status' => '0')),
-            'fail'=>Attestation::model()->count('status=:status', array(':status' => '2')),
-        );
+            'success' => Attestation::model()->count('status=:status', array(':status' =>
+                    '1')),
+            'wait' => Attestation::model()->count('status=:status', array(':status' => '0')),
+            'fail' => Attestation::model()->count('status=:status', array(':status' => '2')),
+            );
         // Attestation::model()->count('status=:status', array(':status' => '0'));
         $model = new Attestation('search');
         $model->unsetAttributes();
@@ -101,8 +102,9 @@ class AuditController extends SBaseController
     //get verify pic
     public function verifyPic($data, $row, $c)
     {
-        return '<a href = "' . Yii::app()->baseUrl . $data->litpic .
-            '" target="_blank"><img src="' . Yii::app()->baseUrl . $data->litpic .
+        return '<a href = "' . Yii::app()->createUrl('site/image', array('url' => Yii::
+                app()->baseUrl . $data->litpic)) . '" target="_blank"><img src="' . Yii::app()->
+            baseUrl . $data->litpic .
             '" width="50" height="50" style="border:1px solid #CCCCCC"></a>';
     }
     //verify status
@@ -121,7 +123,7 @@ class AuditController extends SBaseController
     /**
      * VIP 审核
      */
-     //public function a
+    //public function a
     // Uncomment the following methods and override them if needed
     /*
     public function filters()

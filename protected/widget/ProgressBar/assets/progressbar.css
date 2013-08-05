@@ -1,0 +1,11 @@
+/* barbox */
+.barbox{height:18px;line-height:18px;overflow:hidden;padding:0px 0 0 0px;width:220px;float:left}
+.barbox dt{float:left;font-size:14px;width:112px;text-align:right;}
+.barbox dt a{color:#0048CC;}
+.barbox dd{float:left;}
+.barbox dd.last{color:#999;}
+.barbox dd.barline{width:160px;background:#E3E3E3;height:12px;overflow:hidden;margin:3px 10px 0 10px;display:inline;border-bottom:solid 1px #F4F4F4;border-right:solid 1px #F4F4F4;}
+.barbox dd.barline div.charts{height:10px;overflow:hidden;background:url(images/barbg.gif) repeat-x;}
+.barbox dd.barline div.charts.barred{background-position:0 0;border:1px solid #C2142C;}
+.barbox dd.barline div.charts.baryellow{background-position:0 -10px;border:1px solid #EFA804;}
+.barbox dd.barline div.charts.barblue{background-position:0 -20px;border:1px solid #0A83E6;}

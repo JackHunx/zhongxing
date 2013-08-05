@@ -5,7 +5,7 @@
 		
 			<ul id="validate_tab">
 				<li class="title" ><a href="">证明信息 </a></li>
-				<li><a href="">证明材料</a></li>
+				<li><a href="<?php echo Yii::app()->createUrl('User/upload/list');?>">证明材料</a></li>
 				<li><a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/upload/one">单个资料上传</a></li>
 				<li><a href="<?php echo Yii::app()->baseUrl ;?>/index.php?r=User/upload/more">多个资料上传</a></li>
 			</ul>

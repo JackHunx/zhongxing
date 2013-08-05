@@ -15,8 +15,16 @@
     //'htmlOptions'=>array('stytle'=>'textalgin:center'),
     'columns' => array(
 
-        'username',
-        'realname',
+        //'username',
+         array(
+            'name'=>'username',
+            'headerHtmlOptions'=>array('width'=>'100'),
+        ),
+        //'realname',
+       array(
+            'name'=>'realname',
+            'headerHtmlOptions'=>array('width'=>'100'),
+        ),
 
         //'sex',
         array(

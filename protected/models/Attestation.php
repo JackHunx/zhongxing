@@ -140,7 +140,7 @@ class Attestation extends CActiveRecord
         $criteria->compare('user.username', $this->user_search, true);
         $criteria->compare('user.realname', $this->user_realname, true);
         $criteria->compare('id', $this->id, true);
-        $criteria->compare('user_id', $this->user_id);
+        $criteria->compare('prefix.user_id', $this->user_id);
         $criteria->compare('type_id', $this->type_id);
         $criteria->compare('name', $this->name, true);
         $criteria->compare('prefix.status', $this->status);

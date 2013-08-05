@@ -58,30 +58,34 @@ class UploadController extends SBaseController
     {
         $this->render('more');
     }
-    // Uncomment the following methods and override them if needed
-    /*
-    public function filters()
+    //list upload file
+    public function actionList()
     {
-    // return the filter configuration for this controller, e.g.:
-    return array(
-    'inlineFilterName',
-    array(
-    'class'=>'path.to.FilterClass',
-    'propertyName'=>'propertyValue',
-    ),
-    );
+        $model = new Attestation('search');
+        $model->unsetAttributes();
+        $model->attributes = array('user_id' => Yii::app()->user->id);
+        if (isset($_GET['Attestation']))
+            $model->attributes = $_GET['Attestation'];
+        $this->render('list', array('model' => $model));
+    }
+    //get verfiy type
+    public function verifyType($data, $row, $c)
+    {
+        return AttestationType::model()->findByPk($data->type_id)->name;
+    }
+    //get verify pic
+    public function verifyPic($data, $row, $c)
+    {
+        return '<a href = "' . Yii::app()->createUrl('site/image', array('url' => Yii::
+                app()->baseUrl . $data->litpic)) . '" target="_blank"><img src="' . Yii::app()->
+            baseUrl . $data->litpic .
+            '" width="50" height="50" style="border:1px solid #CCCCCC"></a>';
+    }
+    //verify status
+    public function verifyStatus($data, $row, $c)
+    {
+        return $data->status == 0 ? '<font color="red">等待审核</font>' : ($data->status ==
+            1 ? '<font color="green">审核通过</font>' : '<font color="grey">未通过</font>');
     }
 
-    public function actions()
-    {
-    // return external action classes, e.g.:
-    return array(
-    'action1'=>'path.to.ActionClass',
-    'action2'=>array(
-    'class'=>'path.to.AnotherActionClass',
-    'propertyName'=>'propertyValue',
-    ),
-    );
-    }
-    */
 }

@@ -70,27 +70,24 @@ class DefaultController extends SBaseController
     public function actionIndex()
     {
 
-
-        //$this->_user = Yii::app()->user;
-
-        // if (isset($_GET['id'])) {
-        //            $this->_userId = $_GET['id'];\
-        //        }
-        //$this->_userId = $_GET['id'];
-
         $userModel = $this->loadUserModel($this->_user->id);
         //get avatar
-        
-        $this->getAvatar('small');
+        //获取用户账户信息
+        $account = Account::model()->find('user_id=:user_id', array(':user_id' => $this->
+                _user->id));
+        //get user amonut credit
+        $amount = UserAmount::model()->find('user_id=:user_id', array(':user_id' => $this->
+                _user->id));
+        //if($account == null)
+        $this->getAvatar('big');
         $this->getInfo();
-        //echo "<pre>";
-//        print_r($this->info);
-//        exit();
         $this->render('index', array(
             'model' => $userModel,
             'info' => $this->info,
             'vip' => $this->_vip,
-            'baseUrl' => Yii::app()->baseUrl));
+            'baseUrl' => Yii::app()->baseUrl,
+            'account' => $account,
+            'amount' => $amount));
     }
     /**
      * vip 查询
@@ -99,12 +96,16 @@ class DefaultController extends SBaseController
     private function checkVip()
     {
         $record = UserCache::model()->findByPk($this->_user->id);
-        if ($record === null || $record->vip_status = 0) {
+        if ($record === null) {
             $this->_vip['status'] = '0';
             $this->_vip['msg'] = "申请vip";
-        } elseif ($record->vip_status = 1) {
+        } elseif ($record->vip_status == 0) {
+            $this->_vip['status'] = '0';
+            $this->_vip['msg'] = "vip申请中";
+        } elseif ($record->vip_status == 1) {
             $this->_vip['status'] = '1';
-            $this->_vip['msg'] = ''; //返回vip期限
+            $this->_vip['msg'] = date("Y-m-d", $record->vip_verify_time) . '到' . date("Y-m-d",
+                $record->vip_verify_time + 365 * 24 * 60 * 60); //返回vip期限
         }
 
 
@@ -140,17 +141,17 @@ class DefaultController extends SBaseController
     {
         $record = Userinfo::model()->findByAttributes(array('user_id' => $this->_user->
                 id));
-        $this->info['house'] = (($record!=null&&$record->house_address != null) ?
+        $this->info['house'] = (($record != null && $record->house_address != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
-        $this->info['company'] = (($record!=null&&$record->company_name != null) ?
+        $this->info['company'] = (($record != null && $record->company_name != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
-        $this->info['firm'] = (($record!=null&&$record->private_type != null) ?
+        $this->info['firm'] = (($record != null && $record->private_type != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
-        $this->info['finance'] = (($record!=null&&$record->finance_car != null) ?
+        $this->info['finance'] = (($record != null && $record->finance_car != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
-        $this->info['contact'] = (($record!=null&&$record->area != null) ?
+        $this->info['contact'] = (($record != null && $record->area != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
-        $this->info['edu'] = (($record!=null&&$record->education_record != null) ?
+        $this->info['edu'] = (($record != null && $record->education_record != null) ?
             '<font color="#009900">已填写</font>' : '<font color="#FF0000">未填写</font>');
     }
     //加载用户信息模型
